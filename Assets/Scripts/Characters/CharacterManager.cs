@@ -36,5 +36,6 @@ public class CharacterManager : MonoBehaviour
         Destroy(human);
         Zombie zom = go.AddComponent<Zombie>();
         instance.zombies.Add(zom);
+        Debug.Log("zombification complete");
     }
 }

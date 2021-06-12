@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  visionDistance: 5
-  visionAngle: 60
+  visionDistance: 10
+  visionAngle: 90
+  infectionTime: 10
 --- !u!114 &4614906186400585533
 MonoBehaviour:
   m_ObjectHideFlags: 0

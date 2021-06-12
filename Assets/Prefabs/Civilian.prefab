@@ -24,9 +24,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a1a1d25a5c67cc7acd172bb9138be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  visionDistance: 90
+  moveSpeed: 10
+  visionDistance: 10
   visionAngle: 90
+  infectionTime: 10
 --- !u!1001 &5242066641881457092
 PrefabInstance:
   m_ObjectHideFlags: 0
