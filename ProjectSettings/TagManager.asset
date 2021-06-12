@@ -12,10 +12,10 @@ TagManager:
   - Water
   - UI
   - player
-  - infected
+  - zombie
   - human
-  - 
-  - 
+  - wall
+  - obstacles
   - 
   - 
   - 

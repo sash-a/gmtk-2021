@@ -90,26 +90,22 @@ public class Controller : MonoBehaviour
 
     public void glow()
     {
-        if (glowTimeLeft > 0) // isnt currently glowing
+        glowTimeLeft = glowTime;
+        if (! glowEffect.gameObject.activeSelf) // not currently glowing
         {
             glowTimeLeft = glowTime;
-        }
-        else // already glowing
-        {
-            glowTimeLeft = glowTime;
+            glowEffect.gameObject.SetActive(true);
             StartCoroutine(glowForTime());
         }
     }
     
     private IEnumerator glowForTime()
     {
-        glowEffect.gameObject.SetActive(true);
         while (glowTimeLeft > 0)
         {
             yield return new WaitForSeconds(0.05f);
             glowTimeLeft -= 0.05f;
         }
         glowEffect.gameObject.SetActive(false);
-        glowTimeLeft = 0;
     }
 }
