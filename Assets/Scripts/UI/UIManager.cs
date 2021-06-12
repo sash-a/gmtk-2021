@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
+    
+    
+
     public float ZomHealth = 1f;
     
     // Start is called before the first frame update
@@ -25,7 +28,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ZomHealth =  0.5f;  //(time.time-timeOfInfection)/infectionTime;
+        ZomHealth =  0.3f; //(time.time-timeOfInfection)/infectionTime;
         SetZomHealth();
     
     }
