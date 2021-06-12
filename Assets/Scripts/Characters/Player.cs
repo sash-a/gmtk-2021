@@ -22,12 +22,15 @@ public class Player : Controller
     // Update is called once per frame
     void Update()
     { 
-        move();   
-    }
+        move();
 
-    private void FixedUpdate()
-    {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("mouse Click");
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Attack(mousePos);
+            
+        }
     }
 
     void move()
@@ -52,5 +55,33 @@ public class Player : Controller
         
         dir = dir.normalized;
         moveDirection(dir);
+    }
+
+    void Attack(Vector3 mousePos)
+    {
+        // Get attack script
+        Attacker attacker = GetComponent<Attacker>();
+
+        if (attacker)
+        {
+            RaycastHit2D hitInfo = Physics2D.Raycast(attacker.attackPoint.position, mousePos, attacker.attackRange);
+
+            if (hitInfo)
+            {
+                Debug.Log(hitInfo.transform.name);
+                Character character = hitInfo.transform.GetComponent<Character>();
+
+                if (character) {
+                    character.die();
+                }
+
+                // Draw ray for testing
+                Debug.DrawRay(attacker.attackPoint.position, mousePos, Color.red, attacker.attackRange);
+
+                // TODO: Add hit effect on impact
+                // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            }
+        }
+      
     }
 }
