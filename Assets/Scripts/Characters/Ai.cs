@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Ai : Controller
 {
-    protected NavMeshAgent agent;
+    public NavMeshAgent agent;
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
