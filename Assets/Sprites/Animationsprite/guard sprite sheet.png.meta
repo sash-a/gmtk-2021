@@ -1,0 +1,498 @@
+fileFormatVersion: 2
+guid: 71fdb675b9fbb904996e4209207eb3e2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7757400595020585278
+    second: guard sprite sheet_0
+  - first:
+      213: -7329094823576514385
+    second: guard sprite sheet_1
+  - first:
+      213: -457411925030571961
+    second: guard sprite sheet_2
+  - first:
+      213: -3729588462967005606
+    second: guard sprite sheet_3
+  - first:
+      213: -2866991306937890847
+    second: guard sprite sheet_4
+  - first:
+      213: 4164085142721248109
+    second: guard sprite sheet_5
+  - first:
+      213: -2525756751222054818
+    second: guard sprite sheet_6
+  - first:
+      213: 3778912419173804525
+    second: guard sprite sheet_7
+  - first:
+      213: 6384319520378320502
+    second: guard sprite sheet_8
+  - first:
+      213: -4316136117117394051
+    second: guard sprite sheet_9
+  - first:
+      213: -5794689428373989524
+    second: guard sprite sheet_10
+  - first:
+      213: -6689809940128343989
+    second: guard sprite sheet_11
+  - first:
+      213: -2405303495859446560
+    second: guard sprite sheet_12
+  - first:
+      213: -6490452760100597203
+    second: guard sprite sheet_13
+  - first:
+      213: 9133674192172557748
+    second: guard sprite sheet_14
+  - first:
+      213: 197259854039421607
+    second: guard sprite sheet_15
+  - first:
+      213: 388915035259076306
+    second: guard sprite sheet_16
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: guard sprite sheet_0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 3444
+        width: 975
+        height: 1516
+      alignment: 9
+      pivot: {x: 0.4578177, y: 0.21243149}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e391b9e9db2d7ab60800000000000000
+      internalID: 7757400595020585278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 3441
+        width: 1003
+        height: 623
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa05193d613d94a90800000000000000
+      internalID: -7329094823576514385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_2
+      rect:
+        serializedVersion: 2
+        x: 2407
+        y: 3455
+        width: 936
+        height: 1493
+      alignment: 9
+      pivot: {x: 0.5175758, y: 0.20800143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74076841742f6a9f0800000000000000
+      internalID: -457411925030571961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_3
+      rect:
+        serializedVersion: 2
+        x: 3562
+        y: 3249
+        width: 873
+        height: 1696
+      alignment: 9
+      pivot: {x: 0.49999973, y: 0.16535245}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ed47a9d07dd3cc0800000000000000
+      internalID: -3729588462967005606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_4
+      rect:
+        serializedVersion: 2
+        x: 4599
+        y: 3242
+        width: 850
+        height: 1718
+      alignment: 9
+      pivot: {x: 0.49999943, y: 0.18400131}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e785d7a8966638d0800000000000000
+      internalID: -2866991306937890847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_5
+      rect:
+        serializedVersion: 2
+        x: 5427
+        y: 3401
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6bb162006dc9c930800000000000000
+      internalID: 4164085142721248109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_6
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 2790
+        width: 453
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e506d56ed95b2fcd0800000000000000
+      internalID: -2525756751222054818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 1954
+        width: 650
+        height: 1308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9aa2ed2d4617430800000000000000
+      internalID: 3778912419173804525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2727
+        y: 1954
+        width: 641
+        height: 1285
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 676fdb837c8a99850800000000000000
+      internalID: 6384319520378320502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 475
+        width: 953
+        height: 1328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48d5c7bd450923a0800000000000000
+      internalID: -6689809940128343989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 474
+        width: 1003
+        height: 624
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecda40e635ae9ed0800000000000000
+      internalID: -2405303495859446560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_13
+      rect:
+        serializedVersion: 2
+        x: 2407
+        y: 485
+        width: 914
+        height: 1270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2210c24a974de5a0800000000000000
+      internalID: -6490452760100597203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_14
+      rect:
+        serializedVersion: 2
+        x: 3562
+        y: 283
+        width: 873
+        height: 1695
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b52996194451ce70800000000000000
+      internalID: 9133674192172557748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_15
+      rect:
+        serializedVersion: 2
+        x: 4599
+        y: 272
+        width: 832
+        height: 1698
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a21778caceccb200800000000000000
+      internalID: 197259854039421607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guard sprite sheet_16
+      rect:
+        serializedVersion: 2
+        x: 5426
+        y: 432
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2defc6cf924b56500800000000000000
+      internalID: 388915035259076306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
