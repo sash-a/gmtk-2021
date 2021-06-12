@@ -16,7 +16,7 @@ public class Ai : Controller
 
     public void FixedUpdate()
     {
-        character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, agent.velocity);
+        character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.right, agent.velocity);
         character.SpriteController.legsAnimator.SetFloat("Speed", agent.velocity.magnitude);
     }
 }
