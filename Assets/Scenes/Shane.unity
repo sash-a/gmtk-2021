@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -707664188630381918, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2340020323868620826, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -177,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 4881681628523474284, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
       propertyPath: m_Name
       value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881681628523474284, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
@@ -276,11 +284,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1319650585977791923, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
       propertyPath: visionDistance
-      value: 100000
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1969523293678078924, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
       propertyPath: m_Name
       value: Civilian
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969523293678078924, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8688425019708612282, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
       propertyPath: m_RootOrder

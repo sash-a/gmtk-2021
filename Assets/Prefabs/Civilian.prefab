@@ -82,6 +82,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Civilian
       objectReference: {fileID: 0}
+    - target: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7329423486415830983, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_Color.g
       value: 0.24652743

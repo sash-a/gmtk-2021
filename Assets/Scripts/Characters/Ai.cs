@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ai : Controller
 {
-    public bool checkVisisble(GameObject go)
+    public bool checkVisisble(GameObject go, bool targetIsHuman)
     {
         var target = (Vector2)go.transform.position;
         var pos = (Vector2)transform.position;
@@ -12,24 +12,39 @@ public class Ai : Controller
         {
             return false;
         }
-        print("within dist");
+        // print("within dist");
         float angle = Vector2.Angle(transform.right, target - pos);
-        Debug.Log("angle:" + angle + " forward: " +  transform.right + " diff: " + (target - pos) + " target: " + target + " pos: " + pos);
+        // Debug.Log("angle:" + angle + " forward: " +  transform.right + " diff: " + (target - pos) + " target: " + target + " pos: " + pos);
         if (angle > character.visionAngle / 2f)
         {
             return false;
         }
         
-        print("within angle");
+        // print("within angle");
 
-        var hit = Physics2D.Raycast( pos, target - pos, character.visionDistance, go.layer);
-        Debug.DrawLine(pos, target);
-        Debug.DrawLine(pos, (Vector3)pos + transform.forward);
-        if (hit.collider != null)
+        int layer_mask;
+        if (targetIsHuman)
         {
-            return hit.collider.gameObject == go;
+            layer_mask = LayerMask.GetMask("human");
+        }
+        else
+        {
+            layer_mask = LayerMask.GetMask("player",  "infected");
         }
 
+        var hit = Physics2D.Raycast( pos, target - pos, character.visionDistance, layer_mask);
+        Debug.DrawLine(pos, target);
+        Debug.DrawLine(pos, (Vector3)pos + transform.forward);
+        
+        print($"checking for collision with:{go.name} on layer {go.layer}");
+        // print($"checking for collision with:{go.name}");
+        
+        if (hit.collider != null)
+        {
+            print($"collided with:{hit.collider.gameObject.name}");
+            return hit.collider.gameObject == go;
+        }
+        Debug.Log("no collision");
         return false;
     }
 }

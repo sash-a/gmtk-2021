@@ -9,6 +9,6 @@ public class Human : Ai
 
     private void FixedUpdate()
     {
-        print(checkVisisble(Player.instance.gameObject));
+        print("visible:" + checkVisisble(Player.instance.gameObject, false));
     }
 }
