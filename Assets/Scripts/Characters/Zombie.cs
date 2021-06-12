@@ -7,5 +7,6 @@ public class Zombie : Ai
     private void Start()
     {
         CharacterManager.registerZombie(this);
+        base.Start();
     }
 }

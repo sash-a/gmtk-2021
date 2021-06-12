@@ -34,7 +34,7 @@ public class Controller : MonoBehaviour
 
     public void moveDirection(Vector2 dir)
     {
-        rb.MovePosition(((Vector2)transform.position) + dir * (character.moveSpeed * Time.deltaTime));
+            rb.MovePosition(((Vector2)transform.position) + dir * (character.moveSpeed * Time.deltaTime));
     }
 
     void Attack()
