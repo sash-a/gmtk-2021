@@ -16,7 +16,7 @@ public class Human : Ai
     {
         // print($"dest:{agent.destination}|player:{Player.instance.transform.position}");
             // print("visible:" + checkVisisble(Player.instance.gameObject));
-        agent.SetDestination(Player.instance.transform.position);
+        // agent.SetDestination(Player.instance.transform.position);
 
         if (Input.GetKeyUp(KeyCode.Z))
         {
