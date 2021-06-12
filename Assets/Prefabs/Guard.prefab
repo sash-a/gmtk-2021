@@ -22,6 +22,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-615529014299677247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674994383637705079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6a702336badbd6ba0942d2426c7ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6891916732546692228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,8 +51,8 @@ MonoBehaviour:
   visionAngle: 90
   infectionTime: 10
   timeOfInfection: -1
-  attackPoint: {fileID: 0}
   attackRange: 0
+  bulletRange: 0
 --- !u!1001 &1101394888739330943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6409759198867330897, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2c92b068947a56847b626a32c5b5cfc1, type: 2}
     - target: {fileID: 7329423486415830983, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_Color.b
       value: 0.016239643

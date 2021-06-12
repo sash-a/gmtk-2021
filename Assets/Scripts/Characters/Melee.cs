@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Melee : Attacker
 {
-    public void Attack()
+    public override void Attack()
     {
-        base.Attack();
-        // TODO: Play animation
-
+        throw new System.NotImplementedException();
     }
-
 }

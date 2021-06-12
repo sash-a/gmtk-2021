@@ -39,8 +39,6 @@ MonoBehaviour:
   visionAngle: 90
   infectionTime: 10
   timeOfInfection: -1
-  attackPoint: {fileID: 0}
-  attackRange: 0
 --- !u!1001 &8965097344386034121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +98,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6409759198867330897, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2c92b068947a56847b626a32c5b5cfc1, type: 2}
     - target: {fileID: 7329423486415830983, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_Color.b
       value: 0
