@@ -27,4 +27,15 @@ public class Human : Ai
         base.FixedUpdate();
 
     }
+
+    private void LateUpdate()
+    {
+        Debug.DrawLine(transform.position, transform.position + transform.forward);
+        var newDir = agent.velocity.normalized;
+        // newDir.x = transform.rotation.x;
+        // newDir.y = transform.rotation.y;
+        transform.rotation = Quaternion.LookRotation(transform.forward, newDir);
+        // transform.rotation = Quaternion.LookRotation(newDir);
+        // transform.rotation=Quaternion.SetLookRotation(agent.velocity);
+    }
 }
