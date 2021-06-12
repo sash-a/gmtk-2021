@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Ai : Controller
 {
+<<<<<<< HEAD
     public bool checkVisisble(GameObject go)
     {
         var target = (Vector2)go.transform.position;
@@ -49,4 +51,7 @@ public class Ai : Controller
         Debug.Log("no collision");
         return false;
     }
+=======
+    
+>>>>>>> 2940224d8bc9c0f0b4550df32091e132048fb5ef
 }

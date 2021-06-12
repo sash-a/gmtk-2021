@@ -12,7 +12,7 @@ public class Human : Ai
 
     private void FixedUpdate()
     {
-        print("visible:" + checkVisisble(Player.instance.gameObject));
+        // print("visible:" + checkVisisble(Player.instance.gameObject));
 
         if (Input.GetKeyUp(KeyCode.Z))
         {

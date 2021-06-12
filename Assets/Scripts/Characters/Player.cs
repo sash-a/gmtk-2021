@@ -19,19 +19,45 @@ public class Player : Controller
     }
 
 
-    // Update is called once per frame
+    // ReSharper disable Unity.PerformanceAnalysis
     void Update()
     { 
         move();
+        findHosts();
+        tryAttack();
+        handleRotation();
+    }
 
-        if (Input.GetMouseButtonDown(0))
+    void handleRotation()
+    {
+        Vector3 mouseScreen = Input.mousePosition;
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void findHosts()
+    {
+        HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
+        foreach (var human in visibleHumans)
         {
-            Debug.Log("mouse Click");
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Attack(mousePos);
-            
+            human.glow();
         }
     }
+    
+    private void jumpHost()
+    {
+        if (!Input.GetKeyDown(KeyCode.Space))
+        { // space not pushed. no jumping/infecting
+            return;
+        }
+        Sauce sauce = GetComponent<Sauce>();
+        if (sauce != null)
+        { // the player is not in a character. is in sauce form
+        }
+    }
+    
+
 
     void move()
     {
@@ -56,6 +82,17 @@ public class Player : Controller
         dir = dir.normalized;
         moveDirection(dir);
     }
+    
+    private void tryAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse Click");
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Attack(mousePos-transform.position);
+            
+        }
+    }
 
     void Attack(Vector3 mousePos)
     {
@@ -76,7 +113,6 @@ public class Player : Controller
                 }
 
                 // Draw ray for testing
-                Debug.DrawRay(attacker.attackPoint.position, mousePos, Color.red, attacker.attackRange);
 
                 // TODO: Add hit effect on impact
                 // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
