@@ -5,7 +5,6 @@ using UnityEngine;
 public class Chase : StateMachineBehaviour
 {
 
-    private Transform playerPos;
     private Controller controller;
     public float chaseSpeed = 10;
 
@@ -13,7 +12,6 @@ public class Chase : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        playerPos = Player.instance.transform;
         controller = animator.GetComponent<Controller>();
     }
 

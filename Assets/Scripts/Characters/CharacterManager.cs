@@ -81,7 +81,6 @@ public class CharacterManager : MonoBehaviour
         instance.zombies.Add(zom);
         go.name = "Zombie";
         go.layer = LayerMask.NameToLayer("zombie");
-        zom.renderer.color = Color.gray;
         zom.GetComponent<NavMeshAgent>().enabled = true;
 
         // Debug.Log("zombification complete");
@@ -132,6 +131,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         return visible;
+
     }
 
     public static HashSet<Controller> getVisibleHumans(Controller looker)
@@ -155,7 +155,11 @@ public class CharacterManager : MonoBehaviour
         HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
         zombies.UnionWith(infected);
         HashSet<Controller> horde = zombies;
-        horde.Add(Player.instance.GetComponent<Controller>());
+        if (looker.checkVisisble(Player.instance.gameObject))
+        {
+            horde.Add(Player.instance.GetComponent<Controller>());
+        }
+        
         return horde;
     }
 }
