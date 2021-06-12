@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-707664188630381918
+--- !u!114 &-1798767388913220638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4881681628523474284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a1a1d25a5c67cc7acd172bb9138be8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a9804c13dc6f7f1f93ea1d005154a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  visionDistance: 10
-  visionAngle: 90
-  infectionTime: 10
+  moveSpeed: 15
+  visionDistance: 3
+  visionAngle: 45
+  infectionTime: -1
 --- !u!114 &4614906186400585533
 MonoBehaviour:
   m_ObjectHideFlags: 0

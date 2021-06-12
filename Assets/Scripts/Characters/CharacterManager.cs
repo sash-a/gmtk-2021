@@ -38,4 +38,29 @@ public class CharacterManager : MonoBehaviour
         instance.zombies.Add(zom);
         Debug.Log("zombification complete");
     }
+
+    private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
+    {
+        HashSet<Controller> visible = new HashSet<Controller>();
+        foreach (var controller in controllers)
+        {
+            if (looker.checkVisisble(controller.gameObject))
+            {
+                visible.Add(controller);
+            }
+        }
+
+        return visible;
+    }
+
+    public static HashSet<Controller> getVisibleHumans(Controller looker)
+    {
+        return instance.getVisibleCharacters(looker, instance.humans);
+    }
+    
+    public static HashSet<Controller> getVisibleZombies(Controller looker)
+    {
+        return instance.getVisibleCharacters(looker, instance.zombies);
+    }
+    
 }

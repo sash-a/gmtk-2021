@@ -39,5 +39,9 @@ public abstract class Character : MonoBehaviour
         Human human = GetComponent<Human>();
         CharacterManager.zombify(human);
     }
-
+    
+    public void eject() // method should be called when the player leaps out of the character
+    {
+        
+    }
 }

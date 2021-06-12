@@ -19,16 +19,38 @@ public class Player : Controller
     }
 
 
-    // Update is called once per frame
+    // ReSharper disable Unity.PerformanceAnalysis
     void Update()
     { 
         move();
+        // findHosts();
+        tryAttack();
+    }
 
-        if (Input.GetMouseButtonDown(0))
+    // ReSharper disable Unity.PerformanceAnalysis
+        private void findHosts()
         {
-            Debug.Log("Mouse Click");
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Attack(mousePos-transform.position);
+            HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
+            
+        }
+    
+    private void jumpHost()
+    {
+        if (!Input.GetKeyDown(KeyCode.Space))
+        { // space not pushed. no jumping/infecting
+            return;
+        }
+        Sauce sauce = GetComponent<Sauce>();
+        if (sauce != null)
+        { // the player is not in a character. is in sauce form
+            tryInfect();
+        }
+    }
+    
+    private void tryInfect()
+    {//player is in sauce form. we should check if there are any characters in front of us
+        foreach (var human in CharacterManager.instance.humans)
+        {
             
         }
     }
@@ -55,6 +77,17 @@ public class Player : Controller
         
         dir = dir.normalized;
         moveDirection(dir);
+    }
+    
+    private void tryAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse Click");
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Attack(mousePos-transform.position);
+            
+        }
     }
 
     void Attack(Vector3 mousePos)
