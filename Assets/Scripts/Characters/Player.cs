@@ -26,9 +26,9 @@ public class Player : Controller
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("mouse Click");
+            Debug.Log("Mouse Click");
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Attack(mousePos);
+            Attack(mousePos-transform.position);
             
         }
     }
@@ -76,7 +76,6 @@ public class Player : Controller
                 }
 
                 // Draw ray for testing
-                Debug.DrawRay(attacker.attackPoint.position, mousePos, Color.red, attacker.attackRange);
 
                 // TODO: Add hit effect on impact
                 // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
