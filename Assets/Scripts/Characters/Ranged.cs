@@ -20,7 +20,7 @@ public class Ranged : Character
 
     void shoot()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(shootPoint.position, shootPoint.right, range);
+        RaycastHit2D hitInfo = Physics2D.Raycast(shootPoint.position, shootPoint.right, shootRange);
     
         if (hitInfo)
         {
