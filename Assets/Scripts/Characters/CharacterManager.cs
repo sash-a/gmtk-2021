@@ -139,17 +139,20 @@ public class CharacterManager : MonoBehaviour
 
     public static HashSet<Controller> getVisibleHorde(Controller looker)
     {
-        HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
-        HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
-        zombies.UnionWith(infected);
-        HashSet<Controller> horde = zombies;
-        horde.Add(Player.instance.GetComponent<Controller>());
+        //HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
+        //HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
+        //zombies.UnionWith(infected);
+        HashSet<Controller> horde = new HashSet<Controller>();
+        if (looker.checkVisisble(Player.instance.gameObject)) {
+            horde.Add(Player.instance.GetComponent<Controller>());
+        }
+      
         return horde;
     }
 
     private void Update()
     {
-        Debug.Log("num infected:" + infected.Count);
+        //Debug.Log("num infected:" + infected.Count);
     }
 
 }

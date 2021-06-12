@@ -14,21 +14,19 @@ public class Patrol : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         targetPatrolPoint = Random.insideUnitCircle * patrolRange;
+        controller = animator.GetComponent<Controller>();
     } 
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        // TODO: ADD PATROl LOGIC
+        // TODO: ADD PROPER PATROL LOGIC
         RandomPatrol(animator.transform);
 
-       
         if (CharacterManager.getVisibleHorde(controller).Count > 0)
         {
-            animator.SetBool("isPatrolling", false);
             animator.SetBool("isChasing", true);
-
         }
 
     }

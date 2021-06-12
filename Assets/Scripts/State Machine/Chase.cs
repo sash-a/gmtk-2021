@@ -21,13 +21,14 @@ public class Chase : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Transform target = getClosestTarget(animator.transform.position);
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
-
+        if (target)
+        {
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
+        }
+        
         if (CharacterManager.getVisibleHorde(controller).Count == 0)
         {
-            animator.SetBool("isPatrolling", true);
             animator.SetBool("isChasing", false);
-
         }
 
     }
