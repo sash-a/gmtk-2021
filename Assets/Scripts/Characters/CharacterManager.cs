@@ -114,6 +114,13 @@ public class CharacterManager : MonoBehaviour
                     visible.Add(controller);
                 }
             }
+            else if (looker is Zombie)
+            {
+                if (looker.checkVisisble(controller.gameObject, visionDistance: Zombie.visionDistance, visionAngle: Zombie.visionAngle))
+                {
+                    visible.Add(controller);
+                }
+            }
             else
             {
                 if (looker.checkVisisble(controller.gameObject))
