@@ -107,6 +107,10 @@ public class Player : Controller
             dir += Vector2.down;
         }
         
+        character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
+        character.SpriteController.legsAnimator.SetFloat("Speed", dir.magnitude);
+
+        
         dir = dir.normalized;
         moveDirection(dir);
     }

@@ -13,6 +13,8 @@ public abstract class Character : MonoBehaviour
 
     public abstract void die();
 
+    public CharacterSpriteController SpriteController;
+
     public void infect()
     {
         if (Math.Abs(timeOfInfection - (-1)) < 0.00001f)
