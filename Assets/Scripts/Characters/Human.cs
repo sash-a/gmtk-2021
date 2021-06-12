@@ -10,7 +10,6 @@ public class Human : Ai
         CharacterManager.registerHuman(this);
     }
 
-
     private void FixedUpdate()
     {
         print("visible:" + checkVisisble(Player.instance.gameObject));

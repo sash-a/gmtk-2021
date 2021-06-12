@@ -16,8 +16,7 @@ public class Melee : Character
         
     }
 
-    public override void die()
-    {
-
+    public override void die() {
+        Destroy(gameObject);
     }
 }
