@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ai : Controller
 {
-    public bool checkVisisble(GameObject go, bool targetIsHuman)
+    public bool checkVisisble(GameObject go)
     {
         var target = (Vector2)go.transform.position;
         var pos = (Vector2)transform.position;
@@ -21,18 +21,19 @@ public class Ai : Controller
         }
         
         // print("within angle");
-
-        int layer_mask;
-        if (targetIsHuman)
+        
+        
+        int layerMask = LayerMask.GetMask(LayerMask.LayerToName(go.layer));
+        /*if (targetIsHuman)
         {
             layer_mask = LayerMask.GetMask("human");
         }
         else
         {
             layer_mask = LayerMask.GetMask("player",  "infected");
-        }
+        }*/
 
-        var hit = Physics2D.Raycast( pos, target - pos, character.visionDistance, layer_mask);
+        var hit = Physics2D.Raycast( pos, target - pos, character.visionDistance, layerMask);
         Debug.DrawLine(pos, target);
         Debug.DrawLine(pos, (Vector3)pos + transform.forward);
         
