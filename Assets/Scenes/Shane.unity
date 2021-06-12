@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881681628523474284, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: Sauce
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
@@ -370,6 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45818188bfb5a6488b0adddbe48e6c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saucePrefab: {fileID: 4881681628523474284, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
 --- !u!4 &1924599135
 Transform:
   m_ObjectHideFlags: 0

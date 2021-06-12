@@ -7,7 +7,10 @@ public class Player : Controller
 {
 
     public static Player instance;
-
+    public static float infectionDistance = 3;
+    public static float infectionAngle = 45;
+    public static float ejectDistance = 2f;
+    
     void Awake()
     {
         base.Awake();
@@ -37,6 +40,7 @@ public class Player : Controller
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
         if (visibleHumans.Count == 0)
         {// noone in range
+            noHostCandidates();
             Debug.Log("no one in range");
             return;
         }
@@ -64,6 +68,18 @@ public class Player : Controller
         {
             jumpToHost(targetHuman);
         }
+    }
+
+    private void noHostCandidates()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (GetComponent<Sauce>() == null) // cannot eject from sauce
+            {
+                character.eject();
+                CharacterManager.humanify(this);
+            }
+        }    
     }
 
     private void jumpToHost(Controller targetHuman)

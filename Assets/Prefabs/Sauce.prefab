@@ -28,6 +28,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f0bed983afe2e78328c33e7a4f654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glowTimeLeft: 0
+  saucePrefab: {fileID: 4881681628523474284}
 --- !u!1001 &1177021999692629860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,7 +83,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: Sauce
       objectReference: {fileID: 0}
     - target: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_Layer
