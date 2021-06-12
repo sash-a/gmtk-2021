@@ -7,14 +7,13 @@ public class Player : Controller
 {
 
     public static Player instance;
-
+    public static float infectionDistance = 3;
+    public static float infectionAngle = 45;
+    public static float ejectDistance = 2f;
+    
     void Awake()
     {
         base.Awake();
-        if (instance != null)
-        {
-            throw new Exception("WTF are you doing there is only one player!!!!!!!!!!!!!!!!!!");
-        }
         instance = this;
     }
 
@@ -32,32 +31,61 @@ public class Player : Controller
     {
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private void findHosts()
+    private void findHosts()  // finds candidate host humans. checks for space input to jump
     {
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
-        foreach (var human in visibleHumans)
-        {
-            human.glow();
-        }
-    }
-    
-    private void jumpHost()
-    {
-        if (!Input.GetKeyDown(KeyCode.Space))
-        { // space not pushed. no jumping/infecting
+        if (visibleHumans.Count == 0)
+        {// noone in range
+            noHostCandidates();
+            Debug.Log("no one in range");
             return;
         }
-        Sauce sauce = GetComponent<Sauce>();
-        if (sauce != null)
-        { // the player is not in a character. is in sauce form
+
+        Controller targetHuman = null;
+        // if multiple humans in range, must select the one which is closest
+        float minDistance = float.MaxValue;
+        foreach (var human in visibleHumans)
+        {
+            float distance = Vector3.Distance(transform.position, human.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                targetHuman = human;
+            }
+        }
+
+        if (targetHuman == null)
+        {
+            throw new Exception("should never happen");
+        }
+
+        targetHuman.glow();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpToHost(targetHuman);
         }
     }
-    
 
+    private void noHostCandidates()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (GetComponent<Sauce>() == null) // cannot eject from sauce
+            {
+                character.eject();
+                CharacterManager.humanify(this);
+            }
+        }    
+    }
+
+    private void jumpToHost(Controller targetHuman)
+    { // the human should be given a player controller, and the current player object should be destroyed
+        CharacterManager.bodySnatch(targetHuman, this);
+    }
 
     void move()
     {

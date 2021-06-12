@@ -11,7 +11,6 @@ public abstract class Character : MonoBehaviour
     public float infectionTime = 10; // how much time from infection until zombification
     private float timeOfInfection;  // -1 if not infected
 
-
     public abstract void die();
 
     public void infect()
@@ -27,21 +26,31 @@ public abstract class Character : MonoBehaviour
         zombify();
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void zombify()
     {
         Debug.Log("zombifying " + this);
         Player player = GetComponent<Player>();
-        if (player != null)
+        if (player != null) // player must be ejected
         {
-            throw new Exception("player is in zombified character");
+            eject();
+            CharacterManager.zombify(player);
+        }
+        else
+        { // player has already left
+            Human human = GetComponent<Human>();
+            if (human != null)
+            {
+                CharacterManager.zombify(human);
+            } // else is already a zombie (don't really understand this behaviour, but it seems to work fine)
         }
 
-        Human human = GetComponent<Human>();
-        CharacterManager.zombify(human);
+        
     }
     
     public void eject() // method should be called when the player leaps out of the character
     {
-        
+        Vector3 ejectPos = transform.position + transform.right * Player.ejectDistance;
+        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, ejectPos, transform.rotation);
     }
 }

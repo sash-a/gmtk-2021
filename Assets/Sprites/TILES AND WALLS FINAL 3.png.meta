@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: eb7206678ec633683b42f4226d8bce94
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6287500937173838885
+    second: Test
+  - first:
+      213: 3342608372285265429
+    second: TILES AND WALLS FINAL 3_1
+  - first:
+      213: 1708909934005891440
+    second: TILES AND WALLS FINAL 3_2
+  - first:
+      213: -8733423470546196314
+    second: TILES AND WALLS FINAL 3_3
+  - first:
+      213: 1550138173274115460
+    second: TILES AND WALLS FINAL 3_4
+  - first:
+      213: -4457645829890923970
+    second: TILES AND WALLS FINAL 3_5
+  - first:
+      213: 1645096485392471739
+    second: The one
+  - first:
+      213: -7473828705569217930
+    second: TILES AND WALLS FINAL 3_7
+  - first:
+      213: 5506173557441136897
+    second: TILES AND WALLS FINAL 3_8
+  - first:
+      213: 496558488177156961
+    second: TILES AND WALLS FINAL 3_9
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Test
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 2206
+        width: 631
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52cae2d2ac0b14750800000000000000
+      internalID: 6287500937173838885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_1
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 1975
+        width: 630
+        height: 632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5165f4dca94536e20800000000000000
+      internalID: 3342608372285265429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_2
+      rect:
+        serializedVersion: 2
+        x: 1658
+        y: 1978
+        width: 629
+        height: 631
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 071be81e78447b710800000000000000
+      internalID: 1708909934005891440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1053
+        width: 633
+        height: 639
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8e80d00a5acc680800000000000000
+      internalID: -8733423470546196314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_4
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1002
+        width: 629
+        height: 636
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48dc6c2a472338510800000000000000
+      internalID: 1550138173274115460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_5
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 1010
+        width: 634
+        height: 633
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32a9de3cb24322c0800000000000000
+      internalID: -4457645829890923970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The one
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 193
+        width: 630
+        height: 641
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -18.866821, y: 320.5}
+        - {x: -23.119354, y: -305.2157}
+        - {x: 33.288147, y: -303.73663}
+        - {x: 33.30249, y: 316.67896}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6df01998e84d610800000000000000
+      internalID: 1645096485392471739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_7
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 202
+        width: 633
+        height: 632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672ed6ce360a74890800000000000000
+      internalID: -7473828705569217930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_8
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 204
+        width: 638
+        height: 632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1098de27dabd96c40800000000000000
+      internalID: 5506173557441136897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILES AND WALLS FINAL 3_9
+      rect:
+        serializedVersion: 2
+        x: 2434
+        y: 498
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 163210a605124e600800000000000000
+      internalID: 496558488177156961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape:
+    - - {x: -1215.7241, y: -508.6923}
+      - {x: -1254.5386, y: -511.46445}
+      - {x: -1254.5386, y: -1153.2206}
+      - {x: -622.4175, y: -1153.2206}
+      - {x: -622.4175, y: -510.07837}
+      - {x: -644.59717, y: -508.6923}
+    - - {x: -442.20752, y: -508.6923}
+      - {x: -442.20752, y: -1143.5181}
+      - {x: 188.52734, y: -1143.5181}
+      - {x: 194.07227, y: -892.63715}
+      - {x: 194.07227, y: -737.3959}
+      - {x: 188.52734, y: -508.6923}
+    - - {x: 375.66846, y: -507.30618}
+      - {x: 375.66846, y: -1142.132}
+      - {x: 1006.4033, y: -1142.132}
+      - {x: 1013.3345, y: -1000.7516}
+      - {x: 1013.3345, y: -583.5407}
+      - {x: 1010.562, y: -507.30618}
+    - - {x: 266.15625, y: 293.8495}
+      - {x: -359.0337, y: 293.8495}
+      - {x: -359.0337, y: -342.36237}
+      - {x: 271.70117, y: -342.36237}
+      - {x: 271.70117, y: 292.4634}
+    - - {x: 456.06982, y: 299.39383}
+      - {x: 379.82715, y: 298.00775}
+      - {x: 379.82715, y: -127.51959}
+      - {x: 381.21338, y: -334.04587}
+      - {x: 382.5996, y: -335.43198}
+      - {x: 1014.7207, y: -335.43198}
+      - {x: 1014.7207, y: 298.00775}
+      - {x: 989.76855, y: 299.39383}
+    - - {x: -1248.5, y: 345.5}
+      - {x: -1249.5, y: -289.5}
+      - {x: -614.5, y: -288.5}
+      - {x: -616.5, y: -251.5}
+      - {x: -1213.5, y: -249.5}
+      - {x: -1209.5, y: 346.5}
+    - - {x: -540.6299, y: 1264.1072}
+      - {x: -540.6299, y: 630.66754}
+      - {x: 91.49121, y: 630.66754}
+      - {x: 91.49121, y: 1264.1072}
+    - - {x: 306.35693, y: 1265.4933}
+      - {x: 238.43164, y: 1262.7212}
+      - {x: 238.43164, y: 634.8258}
+      - {x: 241.2041, y: 632.0536}
+      - {x: 866.39404, y: 632.0536}
+      - {x: 869.1665, y: 633.4397}
+      - {x: 869.1665, y: 1265.4933}
+    - - {x: -1272.5596, y: 1266.8794}
+      - {x: -1272.5596, y: 633.4397}
+      - {x: -641.8247, y: 633.4397}
+      - {x: -641.8247, y: 1266.8794}
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
