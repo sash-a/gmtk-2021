@@ -15,6 +15,7 @@ public class Patrol : StateMachineBehaviour
     {
         targetPatrolPoint = Random.insideUnitCircle * patrolRange;
         controller = animator.GetComponent<Ai>();
+        Debug.Log("Im patroling");
     } 
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
