@@ -77,11 +77,11 @@ public class Controller : MonoBehaviour
         string myLayer = LayerMask.LayerToName(gameObject.layer);
         if (myLayer == "zombie" || myLayer == "player")
         {
-            layerMask = LayerMask.GetMask("human");
+            layerMask = LayerMask.GetMask("human", "wall");
         }
         else if (myLayer == "human")
         {
-            layerMask = LayerMask.GetMask("player",  "infected");
+            layerMask = LayerMask.GetMask("player",  "infected", "wall");
         }
         else
         {
