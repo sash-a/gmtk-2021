@@ -9,6 +9,7 @@ public class CharacterManager : MonoBehaviour
 
     public HashSet<Controller> humans;
     public HashSet<Controller> zombies;
+    public HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
 
     private void Awake()
@@ -16,6 +17,7 @@ public class CharacterManager : MonoBehaviour
         instance = this;
         humans = new HashSet<Controller>();
         zombies = new HashSet<Controller>();
+        infected = new HashSet<Controller>();
     }
 
     public static void registerHuman(Controller human)
@@ -60,8 +62,9 @@ public class CharacterManager : MonoBehaviour
     {
         GameObject go = controller.gameObject;
         if (controller is Human)
-        {//is human
+        {//is human, so player has left the character already
             instance.humans.Remove(controller);
+            instance.infected.Remove(controller);
         } else if (controller is Player){ }
         else
         {
@@ -88,7 +91,7 @@ public class CharacterManager : MonoBehaviour
         human.enabled = true;
         hostObj.name = "Infected Human";
         hostObj.layer = LayerMask.NameToLayer("human");
-
+        instance.infected.Add(human);
         instance.humans.Add(human);
     }
 
@@ -126,5 +129,9 @@ public class CharacterManager : MonoBehaviour
     {
         return instance.getVisibleCharacters(looker, instance.zombies);
     }
-    
+
+    private void Update()
+    {
+        Debug.Log("num infected:" + infected.Count);
+    }
 }
