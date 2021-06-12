@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class Human : Ai
 {
-    
+    private void Start()
+    {
+        CharacterManager.registerHuman(this);
+    }
+
 
     private void FixedUpdate()
     {
