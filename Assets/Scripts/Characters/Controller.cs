@@ -34,7 +34,7 @@ public class Controller : MonoBehaviour
 
     public void moveDirection(Vector2 dir)
     {
-        rb.MovePosition(((Vector2)transform.position) + dir * (character.moveSpeed * Time.deltaTime));
+            rb.MovePosition(((Vector2)transform.position) + dir * (character.moveSpeed * Time.deltaTime));
     }
 
     void Attack()
@@ -91,8 +91,10 @@ public class Controller : MonoBehaviour
         }
 
         var hit = Physics2D.Raycast( pos, target - pos, visionDistance, layerMask);
-        Debug.DrawLine(pos, target);
-        Debug.DrawLine(pos, (Vector3)pos + transform.forward);
+        // Debug.DrawLine(pos, target);
+        Debug.DrawLine(pos, (Vector3)pos + transform.right * visionDistance);
+        Debug.DrawLine(pos, (Vector3)pos + Quaternion.AngleAxis(visionAngle / 2f, transform.forward) * transform.right * visionDistance);
+        Debug.DrawLine(pos, (Vector3)pos + Quaternion.AngleAxis(-visionAngle / 2f, transform.forward) * transform.right * visionDistance);
 
         if (hit.collider != null)
         {

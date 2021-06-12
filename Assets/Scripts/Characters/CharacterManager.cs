@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class CharacterManager : MonoBehaviour
         humanObject.name = "Player";
         humanObject.layer = LayerMask.NameToLayer("player");
         human.glowTimeLeft = 0;
+        humanObject.GetComponent<NavMeshAgent>().enabled = false;
         
         UIManager.setCurrentHost(player.character);
     }
@@ -80,6 +82,8 @@ public class CharacterManager : MonoBehaviour
         go.name = "Zombie";
         go.layer = LayerMask.NameToLayer("zombie");
         zom.renderer.color = Color.gray;
+        zom.GetComponent<NavMeshAgent>().enabled = true;
+
         // Debug.Log("zombification complete");
     }
     
@@ -95,6 +99,7 @@ public class CharacterManager : MonoBehaviour
         hostObj.layer = LayerMask.NameToLayer("human");
         instance.infected.Add(human);
         instance.humans.Add(human);
+        hostObj.GetComponent<NavMeshAgent>().enabled = true;
     }
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
@@ -105,6 +110,13 @@ public class CharacterManager : MonoBehaviour
             if (looker is Player)
             {
                 if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance, visionAngle: Player.infectionAngle))
+                {
+                    visible.Add(controller);
+                }
+            }
+            else if (looker is Zombie)
+            {
+                if (looker.checkVisisble(controller.gameObject, visionDistance: Zombie.visionDistance, visionAngle: Zombie.visionAngle))
                 {
                     visible.Add(controller);
                 }
@@ -130,5 +142,20 @@ public class CharacterManager : MonoBehaviour
     public static HashSet<Controller> getVisibleZombies(Controller looker)
     {
         return instance.getVisibleCharacters(looker, instance.zombies);
+    }
+
+    public static HashSet<Controller> getVisibleInfected(Controller looker)
+    {
+        return instance.getVisibleCharacters(looker, instance.infected);
+    }
+
+    public static HashSet<Controller> getVisibleHorde(Controller looker)
+    {
+        HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
+        HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
+        zombies.UnionWith(infected);
+        HashSet<Controller> horde = zombies;
+        horde.Add(Player.instance.GetComponent<Controller>());
+        return horde;
     }
 }
