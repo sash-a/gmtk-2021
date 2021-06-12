@@ -5,14 +5,14 @@ using UnityEngine;
 public class Chase : StateMachineBehaviour
 {
 
-    private Controller controller;
+    private Ai controller;
     public float chaseSpeed = 10;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller = animator.GetComponent<Controller>();
+        controller = animator.GetComponent<Ai>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,7 +21,8 @@ public class Chase : StateMachineBehaviour
         Transform target = getClosestTarget(animator.transform.position);
         if (target)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
+            //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
+            controller.agent.SetDestination(target.position);
         }
         
         if (CharacterManager.getVisibleHorde(controller).Count == 0)
