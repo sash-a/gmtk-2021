@@ -13,8 +13,7 @@ public class Controller : MonoBehaviour
     [NonSerialized] public Character character;
     [NonSerialized] public Rigidbody2D rb;
     [NonSerialized] public CharacterGlowEffect glowEffect;
-    [NonSerialized] public SpriteRenderer renderer;
-
+    
 
     [NonSerialized] public float glowTimeLeft = 0;
     public static float glowTime = 0.25f;
@@ -29,7 +28,6 @@ public class Controller : MonoBehaviour
             throw new Exception("no glow effect on character");
         }
         glowEffect.gameObject.SetActive(false);
-        renderer = GetComponent<SpriteRenderer>();
     }
 
     public void moveDirection(Vector2 dir)

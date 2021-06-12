@@ -81,7 +81,6 @@ public class CharacterManager : MonoBehaviour
         instance.zombies.Add(zom);
         go.name = "Zombie";
         go.layer = LayerMask.NameToLayer("zombie");
-        zom.renderer.color = Color.gray;
         zom.GetComponent<NavMeshAgent>().enabled = true;
 
         // Debug.Log("zombification complete");
@@ -132,6 +131,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         return visible;
+
     }
 
     public static HashSet<Controller> getVisibleHumans(Controller looker)

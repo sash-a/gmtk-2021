@@ -14,6 +14,7 @@ public class Human : Ai
 
     private void FixedUpdate()
     {
+
         // print($"dest:{agent.destination}|player:{Player.instance.transform.position}");
             // print("visible:" + checkVisisble(Player.instance.gameObject));
         // agent.SetDestination(Player.instance.transform.position);
@@ -22,5 +23,8 @@ public class Human : Ai
         {
             character.infect();
         }
+
+        base.FixedUpdate();
+
     }
 }

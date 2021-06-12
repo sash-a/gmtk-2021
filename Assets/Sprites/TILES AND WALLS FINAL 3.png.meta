@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6287500937173838885
-    second: Test
+    second: Pink wall crack
   - first:
       213: 3342608372285265429
-    second: TILES AND WALLS FINAL 3_1
+    second: Pink wall crack 2
   - first:
       213: 1708909934005891440
-    second: TILES AND WALLS FINAL 3_2
+    second: Pink wall
   - first:
       213: -8733423470546196314
     second: TILES AND WALLS FINAL 3_3
@@ -133,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Test
+      name: Pink wall crack
       rect:
         serializedVersion: 2
-        x: 147
-        y: 2206
-        width: 631
-        height: 192
+        x: 148
+        y: 1979
+        width: 628
+        height: 627
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,13 +154,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_1
+      name: Pink wall crack 2
       rect:
         serializedVersion: 2
-        x: 880
-        y: 1975
-        width: 630
-        height: 632
+        x: 881
+        y: 1976
+        width: 627
+        height: 629
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,13 +175,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_2
+      name: Pink wall
       rect:
         serializedVersion: 2
-        x: 1658
-        y: 1978
-        width: 629
-        height: 631
+        x: 1660
+        y: 1979
+        width: 627
+        height: 626
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,157 +191,6 @@ TextureImporter:
       bones: []
       spriteID: 071be81e78447b710800000000000000
       internalID: 1708909934005891440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_3
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 1053
-        width: 633
-        height: 639
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a8e80d00a5acc680800000000000000
-      internalID: -8733423470546196314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_4
-      rect:
-        serializedVersion: 2
-        x: 1062
-        y: 1002
-        width: 629
-        height: 636
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48dc6c2a472338510800000000000000
-      internalID: 1550138173274115460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_5
-      rect:
-        serializedVersion: 2
-        x: 1799
-        y: 1010
-        width: 634
-        height: 633
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e32a9de3cb24322c0800000000000000
-      internalID: -4457645829890923970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: The one
-      rect:
-        serializedVersion: 2
-        x: 166
-        y: 193
-        width: 630
-        height: 641
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -18.866821, y: 320.5}
-        - {x: -23.119354, y: -305.2157}
-        - {x: 33.288147, y: -303.73663}
-        - {x: 33.30249, y: 316.67896}
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb6df01998e84d610800000000000000
-      internalID: 1645096485392471739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_7
-      rect:
-        serializedVersion: 2
-        x: 979
-        y: 202
-        width: 633
-        height: 632
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 672ed6ce360a74890800000000000000
-      internalID: -7473828705569217930
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_8
-      rect:
-        serializedVersion: 2
-        x: 1795
-        y: 204
-        width: 638
-        height: 632
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1098de27dabd96c40800000000000000
-      internalID: 5506173557441136897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TILES AND WALLS FINAL 3_9
-      rect:
-        serializedVersion: 2
-        x: 2434
-        y: 498
-        width: 7
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 163210a605124e600800000000000000
-      internalID: 496558488177156961
       vertices: []
       indices: 
       edges: []
