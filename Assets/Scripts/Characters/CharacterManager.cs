@@ -24,6 +24,17 @@ public class CharacterManager : MonoBehaviour
     
     public static void registerZombie(Controller zombie)
     {
-        instance.humans.Add(zombie);
+        instance.zombies.Add(zombie);
+    }
+
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    public static void zombify(Human human)
+    {
+        GameObject go = human.gameObject;
+        instance.humans.Remove(human);
+        Destroy(human);
+        Zombie zom = go.AddComponent<Zombie>();
+        instance.zombies.Add(zom);
     }
 }
