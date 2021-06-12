@@ -10,7 +10,7 @@ public class Ai : Controller
         var pos = (Vector2)transform.position;
         if (Vector2.Distance(target, pos) > character.visionDistance)
         {
-            print("hello")
+            print("hello");
             return false;
         }
         // print("within dist");
