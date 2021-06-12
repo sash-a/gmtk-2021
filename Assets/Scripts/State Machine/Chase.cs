@@ -6,22 +6,30 @@ public class Chase : StateMachineBehaviour
 {
 
     private Transform playerPos;
+    private Controller controller;
     public float chaseSpeed = 10;
+
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerPos = Player.instance.transform;
+        controller = animator.GetComponent<Controller>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, playerPos.position, chaseSpeed*Time.deltaTime);
+        Transform target = getClosestTarget(animator.transform.position);
+        animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (CharacterManager.getVisibleHorde(controller).Count == 0)
         {
+            animator.SetBool("isPatrolling", true);
             animator.SetBool("isChasing", false);
+
         }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -30,15 +38,23 @@ public class Chase : StateMachineBehaviour
         
     }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+    Transform getClosestTarget(Vector3 currentPos)
+    {
+        Transform tMin = null;
+        float minDist = Mathf.Infinity;
+        foreach (Controller controller in CharacterManager.getVisibleHorde(controller))
+        {
+            float dist = Vector3.Distance(controller.transform.position, currentPos);
+            if (dist < minDist)
+            {
+                tMin = controller.transform;
+                minDist = dist;
+            }
+        }
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+        return tMin;
+
+    }
+
+
 }

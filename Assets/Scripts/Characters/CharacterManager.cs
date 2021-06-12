@@ -131,4 +131,25 @@ public class CharacterManager : MonoBehaviour
     {
         return instance.getVisibleCharacters(looker, instance.zombies);
     }
+
+    public static HashSet<Controller> getVisibleInfected(Controller looker)
+    {
+        return instance.getVisibleCharacters(looker, instance.infected);
+    }
+
+    public static HashSet<Controller> getVisibleHorde(Controller looker)
+    {
+        HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
+        HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
+        zombies.UnionWith(infected);
+        HashSet<Controller> horde = zombies;
+        horde.Add(Player.instance.GetComponent<Controller>());
+        return horde;
+    }
+
+    private void Update()
+    {
+        Debug.Log("num infected:" + infected.Count);
+    }
+
 }
