@@ -33,7 +33,7 @@ public abstract class Character : MonoBehaviour
         Player player = GetComponent<Player>();
         if (player != null) // player must be ejected
         {
-            eject(player);
+            eject();
             CharacterManager.zombify(player);
         }
         else
@@ -45,7 +45,7 @@ public abstract class Character : MonoBehaviour
         
     }
     
-    public void eject(Player player) // method should be called when the player leaps out of the character
+    public void eject() // method should be called when the player leaps out of the character
     {
         GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab);
     }

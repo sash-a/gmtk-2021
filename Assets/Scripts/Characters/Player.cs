@@ -37,6 +37,7 @@ public class Player : Controller
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
         if (visibleHumans.Count == 0)
         {// noone in range
+            noHostCandidates();
             Debug.Log("no one in range");
             return;
         }
@@ -64,6 +65,15 @@ public class Player : Controller
         {
             jumpToHost(targetHuman);
         }
+    }
+
+    private void noHostCandidates()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            character.eject();
+            CharacterManager.humanify(this);
+        }    
     }
 
     private void jumpToHost(Controller targetHuman)

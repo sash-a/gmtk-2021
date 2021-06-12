@@ -33,7 +33,16 @@ public class CharacterManager : MonoBehaviour
         Debug.Log("body snatching " + human);
         human.character.infect(); // star ts timer to become a zombie
         GameObject playerObject = currentPlayer.gameObject;
-        Destroy(playerObject);
+        Sauce sauce = playerObject.GetComponent<Sauce>();
+        if (sauce != null) // wasn't in a body yet
+        {
+            Destroy(playerObject);
+        }
+        else
+        {
+            humanify(currentPlayer);
+        }
+
         instance.humans.Remove(human);
         GameObject humanObject = human.gameObject;
         Destroy(humanObject.GetComponent<Human>());
@@ -54,8 +63,7 @@ public class CharacterManager : MonoBehaviour
         if (controller is Human)
         {//is human
             instance.humans.Remove(controller);
-        }else if (controller is Player)
-        { }
+        } else if (controller is Player){ }
         else
         {
             throw new Exception("unreckognised type");
@@ -68,6 +76,16 @@ public class CharacterManager : MonoBehaviour
         go.name = "Zombie";
         zom.renderer.color = Color.gray;
         Debug.Log("zombification complete");
+    }
+    
+    // ReSharper disable Unity.PerformanceAnalysis
+    public static void humanify(Controller controller) // turns a host back into a human temporarily
+    {
+        GameObject hostObj = controller.gameObject;
+        controller.glowEffect.gameObject.SetActive(true);
+        Destroy(hostObj.GetComponent<Player>());
+        hostObj.AddComponent<Human>().enabled = true;
+        hostObj.name = "Infected Human";
     }
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
