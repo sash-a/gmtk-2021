@@ -12,11 +12,21 @@ public class Controller : MonoBehaviour
     
     [NonSerialized] public Character character;
     [NonSerialized] public Rigidbody2D rb;
+    [NonSerialized] public CharacterGlowEffect glowEffect;
+
+
+    private float glowTimeLeft = 0;
+    public static float glowTime = 0.25f;
 
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         character = GetComponent<Character>();
+        glowEffect = GetComponentInChildren<CharacterGlowEffect>();
+        if (glowEffect == null)
+        {
+            throw new Exception("no glow effect on character");
+        }
     }
 
     public void moveDirection(Vector2 dir)
@@ -45,20 +55,16 @@ public class Controller : MonoBehaviour
         {
             return false;
         }
-        // print("within dist");
+
         float angle = Vector2.Angle(transform.right, target - pos);
-        // Debug.Log("angle:" + angle + " forward: " +  transform.right + " diff: " + (target - pos) + " target: " + target + " pos: " + pos);
         if (angle > character.visionAngle / 2f)
         {
             return false;
         }
-        
-        // print("within angle");
-        
-        
+
         int layerMask = LayerMask.GetMask(LayerMask.LayerToName(go.layer));
         string myLayer = LayerMask.LayerToName(gameObject.layer);
-        if (myLayer == "zombie")
+        if (myLayer == "zombie" || myLayer == "player")
         {
             layerMask = LayerMask.GetMask("human");
         }
@@ -74,16 +80,36 @@ public class Controller : MonoBehaviour
         var hit = Physics2D.Raycast( pos, target - pos, character.visionDistance, layerMask);
         Debug.DrawLine(pos, target);
         Debug.DrawLine(pos, (Vector3)pos + transform.forward);
-        
-        print($"checking for collision with:{go.name} on layer {go.layer}");
-        // print($"checking for collision with:{go.name}");
-        
+
         if (hit.collider != null)
         {
-            print($"collided with:{hit.collider.gameObject.name}");
             return hit.collider.gameObject == go;
         }
-        Debug.Log("no collision");
         return false;
+    }
+
+    public void glow()
+    {
+        if (glowTimeLeft > 0) // isnt currently glowing
+        {
+            glowTimeLeft = glowTime;
+        }
+        else // already glowing
+        {
+            glowTimeLeft = glowTime;
+            StartCoroutine(glowForTime());
+        }
+    }
+    
+    private IEnumerator glowForTime()
+    {
+        glowEffect.gameObject.SetActive(true);
+        while (glowTimeLeft > 0)
+        {
+            yield return new WaitForSeconds(0.05f);
+            glowTimeLeft -= 0.05f;
+        }
+        glowEffect.gameObject.SetActive(false);
+        glowTimeLeft = 0;
     }
 }

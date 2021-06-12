@@ -23,16 +23,19 @@ public class Player : Controller
     void Update()
     { 
         move();
-        // findHosts();
+        findHosts();
         tryAttack();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-        private void findHosts()
+    private void findHosts()
+    {
+        HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
+        foreach (var human in visibleHumans)
         {
-            HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
-            
+            human.glow();
         }
+    }
     
     private void jumpHost()
     {
@@ -43,17 +46,10 @@ public class Player : Controller
         Sauce sauce = GetComponent<Sauce>();
         if (sauce != null)
         { // the player is not in a character. is in sauce form
-            tryInfect();
         }
     }
     
-    private void tryInfect()
-    {//player is in sauce form. we should check if there are any characters in front of us
-        foreach (var human in CharacterManager.instance.humans)
-        {
-            
-        }
-    }
+
 
     void move()
     {
