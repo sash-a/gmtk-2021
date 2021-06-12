@@ -11,10 +11,6 @@ public class Player : Controller
     void Awake()
     {
         base.Awake();
-        if (instance != null)
-        {
-            throw new Exception("WTF are you doing there is only one player!!!!!!!!!!!!!!!!!!");
-        }
         instance = this;
     }
 
@@ -36,28 +32,44 @@ public class Player : Controller
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private void findHosts()
+    private void findHosts()  // finds candidate host humans. checks for space input to jump
     {
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
-        foreach (var human in visibleHumans)
-        {
-            human.glow();
-        }
-    }
-    
-    private void jumpHost()
-    {
-        if (!Input.GetKeyDown(KeyCode.Space))
-        { // space not pushed. no jumping/infecting
+        if (visibleHumans.Count == 0)
+        {// noone in range
+            Debug.Log("no one in range");
             return;
         }
-        Sauce sauce = GetComponent<Sauce>();
-        if (sauce != null)
-        { // the player is not in a character. is in sauce form
+
+        Controller targetHuman = null;
+        // if multiple humans in range, must select the one which is closest
+        float minDistance = float.MaxValue;
+        foreach (var human in visibleHumans)
+        {
+            float distance = Vector3.Distance(transform.position, human.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                targetHuman = human;
+            }
+        }
+
+        if (targetHuman == null)
+        {
+            throw new Exception("should never happen");
+        }
+
+        targetHuman.glow();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpToHost(targetHuman);
         }
     }
-    
 
+    private void jumpToHost(Controller targetHuman)
+    { // the human should be given a player controller, and the current player object should be destroyed
+        CharacterManager.bodySnatch(targetHuman, this);
+    }
 
     void move()
     {

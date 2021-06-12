@@ -27,6 +27,24 @@ public class CharacterManager : MonoBehaviour
         instance.zombies.Add(zombie);
     }
 
+    public static void bodySnatch(Controller human, Player currentPlayer)
+    {
+        Debug.Log("body snatching " + human);
+        human.character.infect(); // star ts timer to become a zombie
+        GameObject playerObject = currentPlayer.gameObject;
+        Destroy(playerObject);
+        instance.humans.Remove(human);
+        GameObject humanObject = human.gameObject;
+        Destroy(humanObject.GetComponent<Human>());
+        Player player = humanObject.AddComponent<Player>();
+        Player.instance = player;
+        CameraFollow.instance.target = humanObject.transform;
+        humanObject.name = "Player";
+        humanObject.layer = LayerMask.NameToLayer("player");
+        human.glowEffect.gameObject.SetActive(false);
+        human.glowTimeLeft = 0;
+    }
+
 
     // ReSharper disable Unity.PerformanceAnalysis
     public static void zombify(Human human)

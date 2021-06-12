@@ -15,7 +15,7 @@ public class Controller : MonoBehaviour
     [NonSerialized] public CharacterGlowEffect glowEffect;
 
 
-    private float glowTimeLeft = 0;
+    public float glowTimeLeft = 0;
     public static float glowTime = 0.25f;
 
     public void Awake()
