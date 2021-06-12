@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Human : Ai
 {
+    
 
     private void FixedUpdate()
     {
