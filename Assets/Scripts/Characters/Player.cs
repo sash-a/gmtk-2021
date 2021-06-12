@@ -115,7 +115,6 @@ public class Player : Controller
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse Click");
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Attack(mousePos-transform.position);
             

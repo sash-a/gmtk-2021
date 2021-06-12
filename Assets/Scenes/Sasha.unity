@@ -1255,6 +1255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Civilian
       objectReference: {fileID: 0}
+    - target: {fileID: 1969523293678078924, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8688425019708612282, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
