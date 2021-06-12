@@ -5,10 +5,10 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    public float moveSpeed;
-    public float visionDistance;
-    public float visionAngle;
-    public float infectionTime; // how much time from infection until zombification
+    public float moveSpeed = 10;
+    public float visionDistance = 10;
+    public float visionAngle = 90;
+    public float infectionTime = 10; // how much time from infection until zombification
     private float timeOfInfection;  // -1 if not infected
 
 
@@ -22,12 +22,14 @@ public abstract class Character : MonoBehaviour
 
     private IEnumerator WaitAndZombify()
     {
+        Debug.Log("waiting to zombify");
         yield return new WaitForSeconds(infectionTime);
         zombify();
     }
 
     private void zombify()
     {
+        Debug.Log("zombifying " + this);
         Player player = GetComponent<Player>();
         if (player != null)
         {
