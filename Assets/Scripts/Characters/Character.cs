@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     public float moveSpeed;
     public float visionDistance;
     public float visionAngle;
+    public float infectionTime;
+
+    public abstract void die();
 }

@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Ranged : Character
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform shootPoint;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("Shoot");
+            shoot();
+        }
+
+        Debug.DrawRay(shootPoint.position, shootPoint.right, Color.red);
+    }
+
+    void shoot()
+    {
+        RaycastHit2D hitInfo = Physics2D.Raycast(shootPoint.position, shootPoint.right);
+    
+        if (hitInfo)
+        {
+            Debug.Log(hitInfo.transform.name);
+        }
+
+    }
+
+    public override void die() {
+
     }
 }

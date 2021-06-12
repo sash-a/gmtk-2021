@@ -15,4 +15,9 @@ public class Melee : Character
     {
         
     }
+
+    public override void die()
+    {
+
+    }
 }
