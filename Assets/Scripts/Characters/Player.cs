@@ -41,7 +41,7 @@ public class Player : Controller
         if (visibleHumans.Count == 0)
         {// noone in range
             noHostCandidates();
-            Debug.Log("no one in range");
+            // Debug.Log("no one in range");
             return;
         }
 

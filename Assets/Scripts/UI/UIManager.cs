@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,31 +6,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+    private Character currentHost = null;
+    public InfectionBar mainInfectionBar;
 
-    
-    
-
-    public float ZomHealth = 1f;
-    
-    // Start is called before the first frame update
-    
-
-    public Slider slider;
-    public void SetZomHealth()
+    private void Awake()
     {
-        
-        slider.value = ZomHealth;
-    }
-    void Start()
-    {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void setCurrentHost(Character host)
     {
-        ZomHealth =  0.3f; //(time.time-timeOfInfection)/infectionTime;
-        SetZomHealth();
-    
+        instance.currentHost = host;
+        instance.mainInfectionBar.infectedCharacter = host;
     }
 }

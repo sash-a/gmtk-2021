@@ -32,7 +32,7 @@ public class CharacterManager : MonoBehaviour
 
     public static void bodySnatch(Controller human, Player currentPlayer)
     {
-        Debug.Log("body snatching " + human);
+        // Debug.Log("body snatching " + human);
         human.character.infect(); // star ts timer to become a zombie
         GameObject playerObject = currentPlayer.gameObject;
         Sauce sauce = playerObject.GetComponent<Sauce>();
@@ -54,6 +54,8 @@ public class CharacterManager : MonoBehaviour
         humanObject.name = "Player";
         humanObject.layer = LayerMask.NameToLayer("player");
         human.glowTimeLeft = 0;
+        
+        UIManager.setCurrentHost(player.character);
     }
 
 
@@ -78,7 +80,7 @@ public class CharacterManager : MonoBehaviour
         go.name = "Zombie";
         go.layer = LayerMask.NameToLayer("zombie");
         zom.renderer.color = Color.gray;
-        Debug.Log("zombification complete");
+        // Debug.Log("zombification complete");
     }
     
     // ReSharper disable Unity.PerformanceAnalysis
@@ -128,10 +130,5 @@ public class CharacterManager : MonoBehaviour
     public static HashSet<Controller> getVisibleZombies(Controller looker)
     {
         return instance.getVisibleCharacters(looker, instance.zombies);
-    }
-
-    private void Update()
-    {
-        Debug.Log("num infected:" + infected.Count);
     }
 }

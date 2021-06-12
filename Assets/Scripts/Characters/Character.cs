@@ -9,19 +9,23 @@ public abstract class Character : MonoBehaviour
     public float visionDistance = 10;
     public float visionAngle = 90;
     public float infectionTime = 10; // how much time from infection until zombification
-    private float timeOfInfection;  // -1 if not infected
+    public float timeOfInfection = -1;  // -1 if not infected
 
     public abstract void die();
 
     public void infect()
     {
-        timeOfInfection = Time.time;
+        if (Math.Abs(timeOfInfection - (-1)) < 0.00001f)
+        {
+            timeOfInfection = Time.time;
+        }
+
         StartCoroutine(WaitAndZombify());
     }
 
     private IEnumerator WaitAndZombify()
     {
-        Debug.Log("waiting to zombify");
+        // Debug.Log("waiting to zombify");
         yield return new WaitForSeconds(infectionTime);
         zombify();
     }
@@ -29,7 +33,7 @@ public abstract class Character : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void zombify()
     {
-        Debug.Log("zombifying " + this);
+        // Debug.Log("zombifying " + this);
         Player player = GetComponent<Player>();
         if (player != null) // player must be ejected
         {
