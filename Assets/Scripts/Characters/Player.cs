@@ -7,7 +7,10 @@ public class Player : Controller
 {
 
     public static Player instance;
-
+    public static float infectionDistance = 3;
+    public static float infectionAngle = 45;
+    public static float ejectDistance = 2f;
+    
     void Awake()
     {
         base.Awake();
@@ -71,8 +74,11 @@ public class Player : Controller
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            character.eject();
-            CharacterManager.humanify(this);
+            if (GetComponent<Sauce>() == null) // cannot eject from sauce
+            {
+                character.eject();
+                CharacterManager.humanify(this);
+            }
         }    
     }
 

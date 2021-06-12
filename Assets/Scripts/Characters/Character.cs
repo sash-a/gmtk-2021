@@ -39,7 +39,10 @@ public abstract class Character : MonoBehaviour
         else
         { // player has already left
             Human human = GetComponent<Human>();
-            CharacterManager.zombify(human);
+            if (human != null)
+            {
+                CharacterManager.zombify(human);
+            } // else is already a zombie (don't really understand this behaviour, but it seems to work fine)
         }
 
         
@@ -47,6 +50,7 @@ public abstract class Character : MonoBehaviour
     
     public void eject() // method should be called when the player leaps out of the character
     {
-        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab);
+        Vector3 ejectPos = transform.position + transform.right * Player.ejectDistance;
+        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, ejectPos, transform.rotation);
     }
 }

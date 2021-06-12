@@ -49,7 +49,6 @@ public class CharacterManager : MonoBehaviour
         human.glowEffect.gameObject.SetActive(true);
         Player player = humanObject.AddComponent<Player>();
         Player.instance = player;
-        CameraFollow.instance.target = humanObject.transform;
         humanObject.name = "Player";
         humanObject.layer = LayerMask.NameToLayer("player");
         human.glowTimeLeft = 0;
@@ -74,6 +73,7 @@ public class CharacterManager : MonoBehaviour
         Zombie zom = go.AddComponent<Zombie>();
         instance.zombies.Add(zom);
         go.name = "Zombie";
+        go.layer = LayerMask.NameToLayer("zombie");
         zom.renderer.color = Color.gray;
         Debug.Log("zombification complete");
     }
@@ -84,8 +84,12 @@ public class CharacterManager : MonoBehaviour
         GameObject hostObj = controller.gameObject;
         controller.glowEffect.gameObject.SetActive(true);
         Destroy(hostObj.GetComponent<Player>());
-        hostObj.AddComponent<Human>().enabled = true;
+        Human human = hostObj.AddComponent<Human>();
+        human.enabled = true;
         hostObj.name = "Infected Human";
+        hostObj.layer = LayerMask.NameToLayer("human");
+
+        instance.humans.Add(human);
     }
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
@@ -93,10 +97,21 @@ public class CharacterManager : MonoBehaviour
         HashSet<Controller> visible = new HashSet<Controller>();
         foreach (var controller in controllers)
         {
-            if (looker.checkVisisble(controller.gameObject))
+            if (looker is Player)
             {
-                visible.Add(controller);
+                if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance, visionAngle: Player.infectionAngle))
+                {
+                    visible.Add(controller);
+                }
             }
+            else
+            {
+                if (looker.checkVisisble(controller.gameObject))
+                {
+                    visible.Add(controller);
+                }
+            }
+
         }
 
         return visible;

@@ -50,17 +50,27 @@ public class Controller : MonoBehaviour
           
     }
 
-    public bool checkVisisble(GameObject go)
+    public bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1)
     {
         var target = (Vector2)go.transform.position;
         var pos = (Vector2)transform.position;
-        if (Vector2.Distance(target, pos) > character.visionDistance)
+        if (visionDistance == -1)
+        {
+            visionDistance = character.visionDistance;
+        }
+
+        if (visionAngle == -1)
+        {
+            visionAngle = character.visionAngle;
+        }
+
+        if (Vector2.Distance(target, pos) > visionDistance)
         {
             return false;
         }
 
         float angle = Vector2.Angle(transform.right, target - pos);
-        if (angle > character.visionAngle / 2f)
+        if (angle > visionAngle / 2f)
         {
             return false;
         }
@@ -80,7 +90,7 @@ public class Controller : MonoBehaviour
             throw new Exception("unreckognised layer: " + myLayer);
         }
 
-        var hit = Physics2D.Raycast( pos, target - pos, character.visionDistance, layerMask);
+        var hit = Physics2D.Raycast( pos, target - pos, visionDistance, layerMask);
         Debug.DrawLine(pos, target);
         Debug.DrawLine(pos, (Vector3)pos + transform.forward);
 
