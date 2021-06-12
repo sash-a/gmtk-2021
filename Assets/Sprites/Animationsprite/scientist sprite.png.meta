@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: dda9196a50376364dbd416d235575393
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2164291559989557306
+    second: scientist sprite_0
+  - first:
+      213: 2412238411379655029
+    second: scientist sprite_1
+  - first:
+      213: 6153790257657857643
+    second: scientist sprite_2
+  - first:
+      213: -6528812992533348137
+    second: scientist sprite_3
+  - first:
+      213: -5825265519339859691
+    second: scientist sprite_4
+  - first:
+      213: 2573686619557625380
+    second: scientist sprite_5
+  - first:
+      213: 3579907117314012869
+    second: scientist sprite_6
+  - first:
+      213: 5839755469791212396
+    second: scientist sprite_7
+  - first:
+      213: -4338507804144712403
+    second: scientist sprite_8
+  - first:
+      213: -6623346800404207664
+    second: scientist sprite_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +71,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +105,255 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: scientist sprite_0
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 3479
+        width: 1072
+        height: 1325
+      alignment: 9
+      pivot: {x: 0.52148336, y: 0.15816757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38bd87f4bb190e10800000000000000
+      internalID: 2164291559989557306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_1
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 3479
+        width: 1018
+        height: 452
+      alignment: 9
+      pivot: {x: 0.49245897, y: 0.43206355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57146d7fd0ef97120800000000000000
+      internalID: 2412238411379655029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_2
+      rect:
+        serializedVersion: 2
+        x: 2671
+        y: 3482
+        width: 1096
+        height: 1326
+      alignment: 9
+      pivot: {x: 0.4789872, y: 0.15842517}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b66c4f992a7a66550800000000000000
+      internalID: 6153790257657857643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_3
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 2077
+        width: 565
+        height: 761
+      alignment: 9
+      pivot: {x: 0.5179987, y: 0.52736366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d04817ac2ff465a0800000000000000
+      internalID: -6528812992533348137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_4
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 2032
+        width: 705
+        height: 1138
+      alignment: 9
+      pivot: {x: 0.49999878, y: 0.410622}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5119a6dafdf782fa0800000000000000
+      internalID: -5825265519339859691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_5
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 2048
+        width: 672
+        height: 1121
+      alignment: 9
+      pivot: {x: 0.56175375, y: 0.41115153}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e78e1385297b320800000000000000
+      internalID: 2573686619557625380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_6
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 2602
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c6f4685e826ea130800000000000000
+      internalID: 3579907117314012869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_7
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 2519
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c63bc00d8aafa0150800000000000000
+      internalID: 5839755469791212396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_8
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 2479
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25c1b673268ac3c0800000000000000
+      internalID: -4338507804144712403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scientist sprite_9
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 2444
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7efa15d252514a0800000000000000
+      internalID: -6623346800404207664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
