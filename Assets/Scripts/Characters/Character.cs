@@ -13,7 +13,7 @@ public abstract class Character : MonoBehaviour
 
 
     public abstract void die();
-    
+
     public void infect()
     {
         timeOfInfection = Time.time;
@@ -39,4 +39,5 @@ public abstract class Character : MonoBehaviour
         Human human = GetComponent<Human>();
         CharacterManager.zombify(human);
     }
+
 }

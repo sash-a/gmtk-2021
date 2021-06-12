@@ -2,21 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : Character
+public class Melee : Attacker
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Attack()
     {
-        
+        base.Attack();
+        // TODO: Play animation
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public override void die() {
-        Destroy(gameObject);
-    }
 }
