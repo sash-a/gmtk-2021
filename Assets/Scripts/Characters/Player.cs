@@ -25,6 +25,11 @@ public class Player : Controller
         move();   
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     void move()
     {
         Vector2 dir = Vector2.zero;
@@ -45,7 +50,7 @@ public class Player : Controller
             dir += Vector2.down;
         }
         
-        dir = dir.normalized * (character.moveSpeed * Time.deltaTime);
+        dir = dir.normalized;
         moveDirection(dir);
     }
 }
