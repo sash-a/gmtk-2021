@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: b3c45666b7ba44f4ca99595b67919ec4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2082582367047685379
+    second: parasite moving_0
+  - first:
+      213: -1908090436554946040
+    second: parasite moving_1
+  - first:
+      213: -7828320549415917940
+    second: parasite moving_2
+  - first:
+      213: -7958816394483578065
+    second: parasite moving_3
+  - first:
+      213: 5247115491262567233
+    second: parasite moving_4
+  - first:
+      213: 4347585714657367618
+    second: parasite moving_5
+  - first:
+      213: -4798241749545309219
+    second: parasite moving_6
+  - first:
+      213: 2379956977164465440
+    second: parasite moving_7
+  - first:
+      213: -2995179916773436998
+    second: parasite moving_8
+  - first:
+      213: 3706503936749299749
+    second: parasite moving_9
+  - first:
+      213: -4038832154903126756
+    second: parasite moving_10
+  - first:
+      213: 3870905437554649972
+    second: parasite moving_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +149,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: parasite moving_0
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 3556
+        width: 1012
+        height: 990
+      alignment: 9
+      pivot: {x: 0.41796905, y: 0.54192585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa61a40f5e2913e0800000000000000
+      internalID: -2082582367047685379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_1
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 3431
+        width: 901
+        height: 975
+      alignment: 9
+      pivot: {x: 0.49078608, y: 0.551086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a82d18bd91585e0800000000000000
+      internalID: -1908090436554946040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_2
+      rect:
+        serializedVersion: 2
+        x: 2869
+        y: 3407
+        width: 884
+        height: 890
+      alignment: 9
+      pivot: {x: 0.47182718, y: 0.555965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c866c20cfe73c5390800000000000000
+      internalID: -7828320549415917940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_3
+      rect:
+        serializedVersion: 2
+        x: 4125
+        y: 3418
+        width: 676
+        height: 1007
+      alignment: 9
+      pivot: {x: 0.52456, y: 0.5494626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b404628aa9c8190800000000000000
+      internalID: -7958816394483578065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_4
+      rect:
+        serializedVersion: 2
+        x: 5098
+        y: 3294
+        width: 778
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14397282dbf71d840800000000000000
+      internalID: 5247115491262567233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_5
+      rect:
+        serializedVersion: 2
+        x: 6086
+        y: 3253
+        width: 721
+        height: 1270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24617b84c2ab55c30800000000000000
+      internalID: 4347585714657367618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_6
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 2013
+        width: 723
+        height: 1307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb27eb0d88396db0800000000000000
+      internalID: -4798241749545309219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_7
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 1852
+        width: 712
+        height: 1333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025b99cd24e470120800000000000000
+      internalID: 2379956977164465440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_8
+      rect:
+        serializedVersion: 2
+        x: 2705
+        y: 1857
+        width: 722
+        height: 1233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1d55e1cbbfe66d0800000000000000
+      internalID: -2995179916773436998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_9
+      rect:
+        serializedVersion: 2
+        x: 3734
+        y: 1919
+        width: 783
+        height: 1243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 528678c41b5207330800000000000000
+      internalID: 3706503936749299749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_10
+      rect:
+        serializedVersion: 2
+        x: 5053
+        y: 2034
+        width: 666
+        height: 1013
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1dd293cd8f23f7c0800000000000000
+      internalID: -4038832154903126756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parasite moving_11
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 356
+        width: 1077
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ba29c8cf738b530800000000000000
+      internalID: 3870905437554649972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
