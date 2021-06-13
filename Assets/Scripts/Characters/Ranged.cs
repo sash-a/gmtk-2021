@@ -86,7 +86,7 @@ public class Ranged : Attacker
 
     }
 
-    public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer = false)
+    public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer=false)
     {
         Debug.Log("Waiting for fire");
         if (!isPlayer)

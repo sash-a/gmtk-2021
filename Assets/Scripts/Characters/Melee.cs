@@ -19,15 +19,19 @@ public class Melee : Attacker
         
         SpriteController.torsoAnimator.SetBool("Attacking", true);
         
-        StartCoroutine(WaitAndHit());
+        StartCoroutine(WaitAndHit(isPlayer));
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private IEnumerator WaitAndHit()
+    private IEnumerator WaitAndHit(bool isPlayer)
     {
         List<Controller> hits = new List<Controller>();
-        
-        
+
+
+        if (isPlayer)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         if (GetComponent<Zombie>() != null)
         {
             yield return new WaitForSecondsRealtime(0.35f);
