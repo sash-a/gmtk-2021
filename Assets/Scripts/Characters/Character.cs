@@ -21,6 +21,11 @@ public abstract class Character : MonoBehaviour
     public GameObject dieEffect;
     public GameObject greenDieEffect;
     
+    public Sprite face0;
+    public Sprite face1;
+    public Sprite face2;
+
+    
     private void Awake()
     {
         waypoints = new List<Vector3>();

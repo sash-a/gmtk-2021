@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 6479013248836043619}
   - component: {fileID: 8058756520545437647}
   - component: {fileID: 3691772382933628275}
-  - component: {fileID: 8679537157645573873}
+  - component: {fileID: 654211850317023415}
   m_Layer: 5
   m_Name: Face
   m_TagString: Untagged
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 20
---- !u!114 &8679537157645573873
+--- !u!114 &654211850317023415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1774,12 +1774,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637607502055408826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33a3851431396eb39bfa256a45c5a18, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b160fdb8cd5bedf4a5bb828cc392078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  display: {fileID: 0}
-  gun: {fileID: 21300000, guid: dd5b5a972a53e668c83ed72168fa3028, type: 3}
-  fist: {fileID: 21300000, guid: 22f905120fb3be6a2a15a06c5e889acd, type: 3}
 --- !u!1 &7795187144868595398
 GameObject:
   m_ObjectHideFlags: 0
