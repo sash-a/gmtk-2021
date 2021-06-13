@@ -57,7 +57,7 @@ public class Patrol : StateMachineBehaviour
         {
             animator.SetBool("isChasing", true);
             animator.SetBool("isPatroling", false);
-            Debug.Log("exiting patrol");
+            // Debug.Log("exiting patrol");
         }
 
     }

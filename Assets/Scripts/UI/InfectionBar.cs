@@ -21,6 +21,6 @@ public class InfectionBar : MonoBehaviour
             throw new Exception("uninfected character cannot  have infection bar");
         }
 
-        slider.value = (Time.time - infectedCharacter.timeOfInfection) / infectedCharacter.infectionTime;
+        slider.value = infectedCharacter.getInfectionFrac();
     }
 }

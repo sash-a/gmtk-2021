@@ -22,6 +22,7 @@ public abstract class Character : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void die()
     {
         Player player = GetComponent<Player>();
@@ -91,5 +92,14 @@ public abstract class Character : MonoBehaviour
     {
         Vector3 ejectPos = transform.position + transform.right * Player.ejectDistance;
         GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, ejectPos, transform.rotation);
+    }
+
+    public float getInfectionFrac() // -1 if not infected/ already zombie. [0,1] if turning
+    {
+        if (timeOfInfection == -1 || Time.time - timeOfInfection > infectionTime)
+        {
+            return -1;
+        }
+        return (Time.time - timeOfInfection) / infectionTime;
     }
 }
