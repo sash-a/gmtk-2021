@@ -34,7 +34,11 @@ public class Patrol : StateMachineBehaviour
         // RandomPatrol(animator.transform);
 
         if (controller == null) {
-            throw new System.Exception("Null controller in patrol");
+            controller = animator.GetComponent<Ai>();
+            if (controller == null)
+            {
+                throw new System.Exception("Null controller in patrol");
+            }
         }
 
         if (controller is Zombie)
@@ -53,6 +57,7 @@ public class Patrol : StateMachineBehaviour
         {
             animator.SetBool("isChasing", true);
             animator.SetBool("isPatroling", false);
+            Debug.Log("exiting patrol");
         }
 
     }
