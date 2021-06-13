@@ -176,7 +176,7 @@ MonoBehaviour:
   waypointTransforms:
   - {fileID: 8152176727292104640}
   SpriteController: {fileID: 6142571887036760336}
-  attackRange: 0.5
+  attackRange: 1
   hitBox: {fileID: 3997753200887388956}
 --- !u!1 &6011681835876198615
 GameObject:
