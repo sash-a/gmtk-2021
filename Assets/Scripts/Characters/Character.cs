@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour
 
     public List<Transform> waypointTransforms;
     [NonSerialized] public List<Vector3> waypoints;
-    private void Start()
+    private void Awake()
     {
         waypoints = new List<Vector3>();
         foreach (var waypoint in waypointTransforms)
