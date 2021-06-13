@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public abstract class Character : MonoBehaviour
 {
@@ -27,9 +29,7 @@ public abstract class Character : MonoBehaviour
     {
         Player player = GetComponent<Player>();
         if (player != null) {
-            Debug.LogError("player died");
-            return;
-            // throw new Exception("player died");
+            StartCoroutine(WaitAndRespawn());
         }
         Zombie zom = GetComponent<Zombie>();
         if (zom != null)
@@ -45,6 +45,12 @@ public abstract class Character : MonoBehaviour
         }
         
         Destroy(gameObject);
+    }
+
+    private IEnumerator WaitAndRespawn()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public CharacterSpriteController SpriteController;
