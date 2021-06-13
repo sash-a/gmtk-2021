@@ -9,6 +9,9 @@ public class Melee : Attacker
     
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+
+        AudioManager.instance.PlayRandom(new string[] { "melee_1", "melee_2" });
+
         if (myController == null)
         {
             myController = GetComponent<Controller>();

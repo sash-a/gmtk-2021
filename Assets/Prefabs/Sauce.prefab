@@ -200,37 +200,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1798767388913220638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4881681628523474284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a9804c13dc6f7f1f93ea1d005154a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  visionDistance: 3
-  visionAngle: 45
-  infectionTime: -1
-  waypointTransforms: []
-  SpriteController: {fileID: 996663334274836400}
-  sauceAnimator: {fileID: 1837293775}
---- !u!114 &4614906186400585533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4881681628523474284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa0f0bed983afe2e78328c33e7a4f654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1945795689202017989
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +250,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1798767388913220638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881681628523474284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9804c13dc6f7f1f93ea1d005154a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  visionDistance: 3
+  visionAngle: 45
+  infectionTime: -1
+  waypointTransforms: []
+  redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
+  greenBloodPuddle: {fileID: 4227105782261398518, guid: f33abfffc99ed4ea28914bafc8486041, type: 3}
+  dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
+  greenDieEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
+  SpriteController: {fileID: 996663334274836400}
+  sauceAnimator: {fileID: 1837293775}
+--- !u!114 &4614906186400585533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881681628523474284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0f0bed983afe2e78328c33e7a4f654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1177021999692629860
 PrefabInstance:
   m_ObjectHideFlags: 0

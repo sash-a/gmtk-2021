@@ -47,6 +47,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torso: {fileID: 0}
   legs: {fileID: 0}
+--- !u!195 &-7968066824720107767
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422951631151662017}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1741294662817688949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422951631151662017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130fcec4690b8f4469ddfe16270cf583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 50
+  visionDistance: 10
+  visionAngle: 90
+  infectionTime: 10
+  waypointTransforms: []
+  redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
+  greenBloodPuddle: {fileID: 4227105782261398518, guid: f33abfffc99ed4ea28914bafc8486041, type: 3}
+  dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
+  greenDieEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
+  SpriteController: {fileID: 0}
+  attackRange: 0
+  hitBox: {fileID: 0}
 --- !u!1 &7172844660038758133
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,48 +331,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!195 &-7968066824720107767
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3422951631151662017}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &1741294662817688949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3422951631151662017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130fcec4690b8f4469ddfe16270cf583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 50
-  visionDistance: 10
-  visionAngle: 90
-  infectionTime: 10
-  waypointTransforms: []
-  SpriteController: {fileID: 0}
-  attackRange: 0
-  hitBox: {fileID: 0}
 --- !u!1001 &8965097344386034121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,13 +444,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
---- !u!4 &5819787972674744857 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
-  m_PrefabInstance: {fileID: 8965097344386034121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3422951631151662017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+  m_PrefabInstance: {fileID: 8965097344386034121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5819787972674744857 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
   m_PrefabInstance: {fileID: 8965097344386034121}
   m_PrefabAsset: {fileID: 0}

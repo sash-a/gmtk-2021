@@ -14,7 +14,6 @@ public class Controller : MonoBehaviour
     [NonSerialized] public Rigidbody2D rb;
     [NonSerialized] public CharacterGlowEffect glowEffect;
     
-
     [NonSerialized] public float glowTimeLeft = 0;
     public static float glowTime = 0.25f;
 

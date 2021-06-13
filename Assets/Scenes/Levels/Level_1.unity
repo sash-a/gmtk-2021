@@ -3004,7 +3004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8655762229143345261, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8873400085513065096, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3023,6 +3023,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1154523706748761612, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
+      propertyPath: moveSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154523706748761612, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
+      propertyPath: bloodPuddle
+      value: 
+      objectReference: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
     - target: {fileID: 1154523706748761612, guid: 183347ea766eaba9c825908e55a576d3, type: 3}
       propertyPath: waypointTransforms.Array.size
       value: 1
