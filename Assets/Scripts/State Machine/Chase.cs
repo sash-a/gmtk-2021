@@ -17,7 +17,7 @@ public class Chase : StateMachineBehaviour
         Debug.Log("Im chasing");
 
         controller = animator.GetComponent<Ai>();
-        // controller.ClearAgentPath();
+        controller.ClearAgentPath();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -28,16 +28,17 @@ public class Chase : StateMachineBehaviour
         {
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
             lastKnownPos = target.position;
-            controller.agent.SetDestination(target.position);
         }
+
+        controller.agent.SetDestination(lastKnownPos);
         
         // Debug.Log($"Lastknow:{lastKnownPos}");
         
-        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
-        Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
+        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
+        // Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
 
         var d = Vector2.Distance(animator.transform.position, lastKnownPos);
-        if (CharacterManager.getVisibleHorde(controller).Count == 0 && d < 1)
+        if (CharacterManager.getVisibleOfInterest(controller).Count == 0 && d < 1)
         {
             animator.SetBool("isChasing", false);
             animator.SetBool("isPatroling", true);

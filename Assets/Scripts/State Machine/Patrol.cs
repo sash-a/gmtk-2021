@@ -37,12 +37,19 @@ public class Patrol : StateMachineBehaviour
             throw new System.Exception("Null controller in patrol");
         }
 
-        WaypointPatrol(animator.transform);
+        if (controller is Zombie)
+        {
+            RandomPatrol(animator.transform);
+        }
+        else
+        {
+            WaypointPatrol(animator.transform);
+        }
         
         Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx], Color.green);
         Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
         
-        if (CharacterManager.getVisibleHorde(controller).Count > 0)
+        if (CharacterManager.getVisibleOfInterest(controller).Count > 0)
         {
             animator.SetBool("isChasing", true);
             animator.SetBool("isPatroling", false);
@@ -56,8 +63,8 @@ public class Patrol : StateMachineBehaviour
         {
             wayptIdx++;
             wayptIdx %= _character.waypoints.Count; 
-            controller.agent.SetDestination(_character.waypoints[wayptIdx]);
         }
+        controller.agent.SetDestination(_character.waypoints[wayptIdx]);
     }
     
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -16,7 +16,7 @@ public class Search : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (CharacterManager.getVisibleHorde(controller).Count > 0)
+        if (CharacterManager.getVisibleOfInterest(controller).Count > 0)
         {
             controller.StopRotating();
             animator.SetBool("isChasing", true);
