@@ -6,9 +6,17 @@ public class Ranged : Attacker
 {
     public float attackRange; // distance guard will stop and shoot at
     public float bulletRange; // range of the gun
-
+    public float fireRate;
+    private float lastFire;
+    
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+        if (Time.time - lastFire < fireRate)
+        {
+            return;
+        }
+
+        lastFire = Time.time;
         if (dir == Vector3.zero)
             dir = transform.right;
 
@@ -28,15 +36,13 @@ public class Ranged : Attacker
             if (character) {
                 character.die();
             }
-            else
-            {
+            else {
                 Debug.Log("ranged guard hit: " + hitInfo.transform.gameObject);
             }
 
             // TODO: Add hit effect on impact
             // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
-            
-            
+            Debug.Log("SHOOTING!");
         }
 
     }

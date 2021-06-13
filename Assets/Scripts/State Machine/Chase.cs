@@ -8,6 +8,7 @@ public class Chase : StateMachineBehaviour
 {
 
     private Ai controller;
+    private Character _character;
     public float chaseSpeed = 10;
 
     private Vector3 lastKnownPos;
@@ -20,9 +21,11 @@ public class Chase : StateMachineBehaviour
         myGameObject = animator.gameObject;
 
         controller = animator.GetComponent<Ai>();
+        _character = animator.GetComponent<Character>();
         controller.ClearAgentPath();
     }
 
+    private bool attacking = false;
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -33,11 +36,33 @@ public class Chase : StateMachineBehaviour
             lastKnownPos = target.position;
         }
 
-        controller.agent.SetDestination(lastKnownPos);
-        
+        if (_character is Ranged rangedChar && target)
+        {
+            Debug.Log(myGameObject);
+            Debug.Log($"targ:{target}");
+            var dist = Vector2.Distance(myGameObject.transform.position, target.position);
+            if (dist < rangedChar.attackRange && rangedChar.checkCleanLineSight())
+            {
+                attacking = true;
+                controller.ClearAgentPath();
+                rangedChar.Attack();
+            }
+            else
+            {
+                Debug.Log("Chasing");
+                controller.agent.SetDestination(lastKnownPos);
+                Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
+            }
+        }
+
+        if (!attacking)
+        {
+            Debug.Log("Chasing");
+            controller.agent.SetDestination(lastKnownPos);
+            Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
+        }
         // Debug.Log($"Lastknow:{lastKnownPos}");
         
-        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
         // Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
 
         var d = Vector2.Distance(animator.transform.position, lastKnownPos);
