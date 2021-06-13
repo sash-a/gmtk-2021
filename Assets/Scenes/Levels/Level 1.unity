@@ -373,6 +373,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 811829237349854893, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: music.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 811829237349854893, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: music.Array.data[0].volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288534197078783748, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 1521702364}
     - target: {fileID: 2239994855886848981, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
@@ -424,6 +436,10 @@ PrefabInstance:
     - target: {fileID: 2239994856391736881, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_Name
       value: Stencil scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239994856650042444, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2239994856687713090, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3705,6 +3721,14 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 21b758959b529a230bc1c52e14bc822d, type: 2}
+    - target: {fileID: 3704368645005020601, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: music.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704368645005020601, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: music.Array.data[0].volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3951106632527020568, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.17
@@ -4482,6 +4506,11 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &1521702364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1790886990838979766, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+  m_PrefabInstance: {fileID: 242388947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1943136940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3515964528543480446, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
