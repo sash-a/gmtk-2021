@@ -60,7 +60,9 @@ public class Player : Controller
         foreach (var human in visibleHumans)
         {
             float distance = Vector3.Distance(transform.position, human.transform.position);
-            if (distance < minDistance)
+            bool canSeeYou = human.checkVisisble(gameObject);
+            
+            if (distance < minDistance && !canSeeYou)
             {
                 minDistance = distance;
                 targetHuman = human;
