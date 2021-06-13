@@ -86,7 +86,14 @@ public class Controller : MonoBehaviour
         }
         else if (myLayer == "human")
         {
-            layerMask = LayerMask.GetMask("player",  "infected", "wall", "zombie");
+            if (go.GetComponent<Sauce>() != null) // is searching for sauce. should not be able to see over obstacles
+            {
+                layerMask = LayerMask.GetMask("player", "infected", "wall", "zombie", "obstacles");
+            }
+            else
+            {
+                layerMask = LayerMask.GetMask("player", "infected", "wall", "zombie");
+            }
         }
         else
         {
