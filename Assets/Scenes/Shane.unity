@@ -4914,8 +4914,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6674994383637705079, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+      propertyPath: bloodPuddle
+      value: 
+      objectReference: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
+    - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+      propertyPath: envHitEffect
+      value: 
+      objectReference: {fileID: 3161923594832771667, guid: 534c1bd94aec6a3449c3c39462a17976, type: 3}
+    - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+      propertyPath: framesToFlash
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+      propertyPath: humanHitEffect
+      value: 
+      objectReference: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
+    - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+      propertyPath: sauceHitEffect
+      value: 
+      objectReference: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
     - target: {fileID: 6891916732546692228, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
       propertyPath: waypoints.Array.size
       value: 0
