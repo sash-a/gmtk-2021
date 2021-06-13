@@ -14,6 +14,10 @@ public class Human : Ai
 
     private void FixedUpdate()
     {
+        if(transform.GetComponent<Ai>().agent.velocity != Vector3.zero)
+        {
+            AudioManager.instance.Play("footstep_1");
+        }
 
         // print($"dest:{agent.destination}|player:{Player.instance.transform.position}");
             // print("visible:" + checkVisisble(Player.instance.gameObject));

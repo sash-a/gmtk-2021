@@ -98,3 +98,33 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: groan_1
+    clip: {fileID: 8300000, guid: d16db28b23bee8e4a961a7b97411f33d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: groan_2
+    clip: {fileID: 8300000, guid: 3590b46da77f76c4892a03634cbf85b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: cough_spit_1
+    clip: {fileID: 8300000, guid: e8105a5b7554ed545ae18c54f91523bd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: cough_spit_2
+    clip: {fileID: 8300000, guid: 0947c3085b3f07047a033f05d4b9bed8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sauce
+    clip: {fileID: 8300000, guid: 6c2442963b4b6404ebc1746687481a0e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

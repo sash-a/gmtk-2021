@@ -37,7 +37,7 @@ public class CharacterManager : MonoBehaviour
 
     public static void bodySnatch(Controller human, Player currentPlayer)
     {
-        AudioManager.instance.Play("gargle");
+        AudioManager.instance.PlayRandom(new string[] {"gargle_1", "gargle_2"});
         // Debug.Log("body snatching " + human);
         human.character.infect(); // star ts timer to become a zombie
         GameObject playerObject = currentPlayer.gameObject;
@@ -70,7 +70,7 @@ public class CharacterManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public static void zombify(Controller controller)
     {
-        AudioManager.instance.Play("groan_1");
+        AudioManager.instance.PlayRandom(new string[] { "groan_1", "groan_2" });
         GameObject go = controller.gameObject;
         if (controller is Human)
         {//is human, so player has left the character already
@@ -96,6 +96,8 @@ public class CharacterManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public static void humanify(Controller controller) // turns a host back into a human temporarily
     {
+
+        AudioManager.instance.PlayRandom(new string[] { "cough_spit_1", "cough_spit_2" });
         GameObject hostObj = controller.gameObject;
         controller.glowEffect.gameObject.SetActive(true);
         Destroy(hostObj.GetComponent<Player>());
