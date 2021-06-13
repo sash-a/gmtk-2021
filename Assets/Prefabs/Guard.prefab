@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a702336badbd6ba0942d2426c7ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotating: 0
 --- !u!114 &6891916732546692228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,10 +154,18 @@ MonoBehaviour:
   visionDistance: 10
   visionAngle: 90
   infectionTime: 10
-  timeOfInfection: -1
+  waypointTransforms:
+  - {fileID: 3951106631001585019}
   SpriteController: {fileID: 1353810597092359083}
   attackRange: 5
   bulletRange: 15
+  muzzleFlash: {fileID: 0}
+  framesToFlash: 0
+  humanHitEffect: {fileID: 0}
+  envHitEffect: {fileID: 0}
+  sauceHitEffect: {fileID: 0}
+  bloodPuddle: {fileID: 0}
+  fireRate: 0
 --- !u!1 &7679501436571808648
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,11 +383,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
   m_PrefabInstance: {fileID: 1101394888739330943}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2586920007192412335 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
-  m_PrefabInstance: {fileID: 1101394888739330943}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1353810597092359083 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2126054443003961556, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
@@ -390,3 +394,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd14fb899b337317a732528dc6f43c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2586920007192412335 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+  m_PrefabInstance: {fileID: 1101394888739330943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3951106631001585019 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4151710125724741124, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+  m_PrefabInstance: {fileID: 1101394888739330943}
+  m_PrefabAsset: {fileID: 0}
