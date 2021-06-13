@@ -39,7 +39,7 @@ public class Ranged : Attacker
     public void DoAttack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
 
-        AudioManager.instance.Play("gunshot");
+        AudioManager.instance.PlayRandom(new string[] { "gunshot_1", "gunshot_2" });
 
         if (!_isFlashing && muzzleFlash != null)
         {
