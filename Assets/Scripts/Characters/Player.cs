@@ -71,6 +71,7 @@ public class Player : Controller
 
         if (targetHuman == null)
         {
+            return;
             throw new Exception("should never happen");
         }
 
