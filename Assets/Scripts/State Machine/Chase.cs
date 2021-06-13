@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,11 +11,13 @@ public class Chase : StateMachineBehaviour
     public float chaseSpeed = 10;
 
     private Vector3 lastKnownPos;
+    private GameObject myGameObject;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Im chasing");
+        myGameObject = animator.gameObject;
 
         controller = animator.GetComponent<Ai>();
         controller.ClearAgentPath();
@@ -56,7 +59,16 @@ public class Chase : StateMachineBehaviour
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;
-        foreach (Controller controller in CharacterManager.getVisibleHorde(controller))
+        if (controller == null)
+        {
+            controller = myGameObject.GetComponent<Ai>();
+            if (controller == null)
+            {
+                throw new Exception("cannot get Ai from: " + myGameObject);
+            }
+        }
+
+        foreach (Controller controller in CharacterManager.getVisibleOfInterest(controller))
         {
             float dist = Vector3.Distance(controller.transform.position, currentPos);
             if (dist < minDist)
