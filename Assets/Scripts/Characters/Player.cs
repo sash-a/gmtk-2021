@@ -21,17 +21,24 @@ public class Player : Controller
     // ReSharper disable Unity.PerformanceAnalysis
     void Update()
     { 
-        move();
+        Vector2 dir = move();
         findHosts();
         tryAttack();
-        handleRotation();
+        handleRotation(dir);
     }
 
-    void handleRotation()
+    void handleRotation(Vector2 moveDir)
     {
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+        if (character is Sauce)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+        }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -87,7 +94,7 @@ public class Player : Controller
         CharacterManager.bodySnatch(targetHuman, this);
     }
 
-    void move()
+    Vector2 move()
     {
         Vector2 dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
@@ -107,12 +114,16 @@ public class Player : Controller
             dir += Vector2.down;
         }
         
-        character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
-        character.SpriteController.legsAnimator.SetFloat("Speed", dir.magnitude);
-
+        // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
+        character.SpriteController.legsAnimator.SetBool("walking", dir.magnitude > 0);
+        if (character is Sauce)
+        {
+            ((Sauce)character).sauceAnimator.SetBool("walking", dir.magnitude > 0);
+        }
         
         dir = dir.normalized;
         moveDirection(dir);
+        return dir;
     }
     
     private void tryAttack()

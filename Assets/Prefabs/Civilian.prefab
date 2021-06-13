@@ -152,6 +152,10 @@ MonoBehaviour:
   visionAngle: 90
   infectionTime: 10
   timeOfInfection: -1
+  waypointTransforms:
+  - {fileID: 8152176727292104640}
+  waypoints:
+  - {x: 0, y: 0, z: 0}
   SpriteController: {fileID: 6142571887036760336}
 --- !u!195 &4416174435886233383
 NavMeshAgent:
@@ -476,11 +480,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
   m_PrefabInstance: {fileID: 5242066641881457092}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7210800719534225940 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
-  m_PrefabInstance: {fileID: 5242066641881457092}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6142571887036760336 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2126054443003961556, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
@@ -492,3 +491,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd14fb899b337317a732528dc6f43c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7210800719534225940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+  m_PrefabInstance: {fileID: 5242066641881457092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8152176727292104640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4151710125724741124, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+  m_PrefabInstance: {fileID: 5242066641881457092}
+  m_PrefabAsset: {fileID: 0}

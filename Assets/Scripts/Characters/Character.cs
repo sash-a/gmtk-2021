@@ -12,9 +12,10 @@ public abstract class Character : MonoBehaviour
     public float timeOfInfection = -1;  // -1 if not infected
 
     public List<Transform> waypointTransforms;
-    public List<Vector3> waypoints;
+    [NonSerialized] public List<Vector3> waypoints;
     private void Start()
     {
+        waypoints = new List<Vector3>();
         foreach (var waypoint in waypointTransforms)
         {
             waypoints.Add(waypoint.position);
