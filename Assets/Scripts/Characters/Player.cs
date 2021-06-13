@@ -124,6 +124,11 @@ public class Player : Controller
         if (character is Sauce)
         {
             ((Sauce)character).sauceAnimator.SetBool("walking", dir.magnitude > 0);
+
+            if(dir.magnitude > 0)
+            {
+                AudioManager.instance.Play("sauce");
+            }
         }
         
         dir = dir.normalized;

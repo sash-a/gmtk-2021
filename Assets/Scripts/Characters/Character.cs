@@ -15,6 +15,12 @@ public abstract class Character : MonoBehaviour
 
     public List<Transform> waypointTransforms;
     [NonSerialized] public List<Vector3> waypoints;
+
+    public GameObject redBloodPuddle;
+    public GameObject greenBloodPuddle;
+    public GameObject dieEffect;
+    public GameObject greenDieEffect;
+    
     private void Awake()
     {
         waypoints = new List<Vector3>();
@@ -28,13 +34,21 @@ public abstract class Character : MonoBehaviour
     public void die()
     {
         Player player = GetComponent<Player>();
-        if (player != null) {
+        if (player != null)
+        {
+            Instantiate(greenBloodPuddle,transform.position, transform.rotation);
+            Instantiate(greenDieEffect,transform.position, transform.rotation);
+            Debug.Log("Playing!");
             StartCoroutine(WaitAndRespawn());
             return;
         }
         Zombie zom = GetComponent<Zombie>();
         if (zom != null)
         {
+            Instantiate(greenBloodPuddle,transform.position, transform.rotation);
+            Instantiate(greenDieEffect,transform.position, transform.rotation);
+            Debug.Log("Playing!");
+
             CharacterManager.instance.RemoveZombie(zom);
         }
         else {
@@ -42,6 +56,12 @@ public abstract class Character : MonoBehaviour
             if (timeOfInfection != -1) {
                 CharacterManager.instance.RemoveInfected(human);
             }
+
+            Instantiate(redBloodPuddle,transform.position, transform.rotation);
+            Instantiate(dieEffect,transform.position, transform.rotation);
+            Debug.Log("Playing!");
+
+
             CharacterManager.instance.RemoveHuman(human);
         }
         
