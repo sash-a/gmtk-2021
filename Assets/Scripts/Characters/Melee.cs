@@ -13,6 +13,8 @@ public class Melee : Attacker
         {
             myController = GetComponent<Controller>();
         }
+        
+        SpriteController.torsoAnimator.SetBool("Attacking", true);
 
         List<Controller> hits = new List<Controller>();
         foreach (var touched in hitBox.touchedCharacters)
@@ -36,5 +38,8 @@ public class Melee : Attacker
         {
             hits[i].character.die();
         }
+        
+        SpriteController.torsoAnimator.SetBool("Attacking", false);
+
     }
 }
