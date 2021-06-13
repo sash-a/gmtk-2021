@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
             numLayers = Mathf.Min(numLayers, musicLayers.Count);
             for (int i = 0; i < numLayers; i++)
             {
-                setMusicVolume(musicLayers[(int)i], 1);
+                setMusicVolume(musicLayers[(int)i], 0.75f);
             }     
         }
     }
