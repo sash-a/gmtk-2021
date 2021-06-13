@@ -90,6 +90,7 @@ public class CharacterManager : MonoBehaviour
         go.layer = LayerMask.NameToLayer("zombie");
         zom.GetComponent<NavMeshAgent>().enabled = true;
         zom.GetComponent<Animator>().enabled = true;
+        zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
         // Debug.Log("zombification complete");
     }
     
