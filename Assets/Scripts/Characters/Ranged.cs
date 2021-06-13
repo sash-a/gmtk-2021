@@ -38,6 +38,9 @@ public class Ranged : Attacker
     public void DoAttack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
 
+        FindObjectOfType<AudioManager>().Play("gunShot");
+        Debug.Log("SHOT");
+
         if (!_isFlashing && muzzleFlash != null)
         {
             StartCoroutine(doFlash());
