@@ -5,7 +5,7 @@ using UnityEngine;
 public class Patrol : StateMachineBehaviour
 {
 
-    public float patrolRange = 2;
+    public float patrolRange = 1;
     public float patrolSpeed = 5;
     private Vector2 targetPatrolPoint;
     private Ai controller;
@@ -18,7 +18,7 @@ public class Patrol : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        targetPatrolPoint = Random.insideUnitCircle * patrolRange;
+        targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
         controller = animator.GetComponent<Ai>();
         _character = animator.GetComponent<Character>();
         // controller.ClearAgentPath();
@@ -85,7 +85,7 @@ public class Patrol : StateMachineBehaviour
                 throw new System.Exception("Null controller in patrol");
             }
         }
-        if (Vector2.Distance(transform.position, targetPatrolPoint) > 1f)
+        if (Vector2.Distance(transform.position, targetPatrolPoint) > 3f || controller.agent.velocity.magnitude < 1)
         {
             //transform.position = Vector2.MoveTowards(transform.position, targetPatrolPoint, patrolSpeed * Time.deltaTime);
             controller.agent.SetDestination(targetPatrolPoint);
@@ -93,7 +93,7 @@ public class Patrol : StateMachineBehaviour
         }
         else
         {
-            targetPatrolPoint = Random.insideUnitCircle * patrolRange;
+            targetPatrolPoint = (Vector2) transform.position + Random.insideUnitCircle * patrolRange;
         }
     }
 
