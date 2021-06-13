@@ -97,6 +97,7 @@ public class CharacterManager : MonoBehaviour
         go.layer = LayerMask.NameToLayer("zombie");
         zom.GetComponent<NavMeshAgent>().enabled = true;
         zom.GetComponent<Animator>().enabled = true;
+        zom.character.tentacles.makeZombie();
         zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
 
         if (zom.character is Ranged)

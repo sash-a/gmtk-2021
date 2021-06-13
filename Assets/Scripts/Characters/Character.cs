@@ -27,6 +27,8 @@ public abstract class Character : MonoBehaviour
 
     private bool playerDead = false;
 
+    public Tentacles tentacles;
+
     private void Awake()
     {
         waypoints = new List<Vector3>();
