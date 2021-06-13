@@ -15,8 +15,25 @@ public class Melee : Attacker
         }
         
         SpriteController.torsoAnimator.SetBool("Attacking", true);
+        
+        StartCoroutine(WaitAndHit());
+    }
 
+    // ReSharper disable Unity.PerformanceAnalysis
+    private IEnumerator WaitAndHit()
+    {
         List<Controller> hits = new List<Controller>();
+        
+        
+        if (GetComponent<Zombie>() != null)
+        {
+            yield return new WaitForSecondsRealtime(0.35f);
+        }
+        else
+        {
+            yield return new WaitForSecondsRealtime(0.2f);
+        }
+        
         foreach (var touched in hitBox.touchedCharacters)
         {
             if (myController is Zombie || myController is Player)
@@ -33,17 +50,11 @@ public class Melee : Attacker
                 }
             }
         }
-
         for (int i = 0; i < hits.Count; i++)
         {
             hits[i].character.die();
         }
-        StartCoroutine(WaitAndStopAnim());
-    }
-
-    private IEnumerator WaitAndStopAnim()
-    {
-        yield return new WaitForSecondsRealtime(1f);
+        
         SpriteController.torsoAnimator.SetBool("Attacking", false);
     }
 }
