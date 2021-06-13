@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
-    guid: d196c85a2952a2a86879f405efb49348
-  - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 17c31c47eb4937b00b727a4e6d4a9cdc
-  - enabled: 1
-    path: Assets/Scenes/Liron.unity
-    guid: b80c3ac3a8c90ce43aa01bd557563774
+    path: Assets/Scenes/Levels/Level_1.unity
+    guid: 28744578b60fe7fd39cb66867300d646
   m_configObjects: {}

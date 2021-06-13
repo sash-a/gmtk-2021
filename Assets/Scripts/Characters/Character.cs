@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public abstract class Character : MonoBehaviour
 {
@@ -27,24 +29,29 @@ public abstract class Character : MonoBehaviour
     {
         Player player = GetComponent<Player>();
         if (player != null) {
-            Debug.LogError("player died");
+            StartCoroutine(WaitAndRespawn());
             return;
-            // throw new Exception("player died");
         }
         Zombie zom = GetComponent<Zombie>();
         if (zom != null)
         {
-            CharacterManager.instance.zombies.Remove(zom);
+            CharacterManager.instance.RemoveZombie(zom);
         }
         else {
             Human human = GetComponent<Human>();
             if (timeOfInfection != -1) {
-                CharacterManager.instance.infected.Remove(human);
+                CharacterManager.instance.RemoveInfected(human);
             }
-            CharacterManager.instance.humans.Remove(human);
+            CharacterManager.instance.RemoveHuman(human);
         }
         
         Destroy(gameObject);
+    }
+
+    private IEnumerator WaitAndRespawn()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public CharacterSpriteController SpriteController;
