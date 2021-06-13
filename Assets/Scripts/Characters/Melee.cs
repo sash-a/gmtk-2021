@@ -34,11 +34,11 @@ public class Melee : Attacker
         }
         if (GetComponent<Zombie>() != null)
         {
-            yield return new WaitForSecondsRealtime(0.35f);
+            yield return new WaitForSecondsRealtime(0.32f);
         }
         else
         {
-            yield return new WaitForSecondsRealtime(0.2f);
+            yield return new WaitForSecondsRealtime(0.22f);
         }
         
         foreach (var touched in hitBox.touchedCharacters)
