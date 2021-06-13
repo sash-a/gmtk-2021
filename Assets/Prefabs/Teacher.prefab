@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 0.80365, y: 0.80365, z: 0.80365}
   m_Children: []
   m_Father: {fileID: 7210800719534225940}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6147798884166791530
 SpriteRenderer:
@@ -160,6 +160,7 @@ MonoBehaviour:
   face0: {fileID: 5722292591904377752, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
   face1: {fileID: 5960844483514330289, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
   face2: {fileID: -272576515103492663, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
+  tentacles: {fileID: 417588525539511260}
   SpriteController: {fileID: 6142571887036760336}
   attackRange: 1
   hitBox: {fileID: 6117044950176314716}
@@ -258,7 +259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 12
   m_Sprite: {fileID: -135558089773148155, guid: 7df44e5350a441c4686529a6dba43bc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -304,6 +305,74 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &2824739899972876498
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7210800719534225940}
+    m_Modifications:
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191291953480952561, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614587320994153177, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+      propertyPath: m_Name
+      value: Tentacles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+--- !u!114 &417588525539511260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2520027274079548174, guid: bdaa759845b6c7c499ee2f7f06835c00, type: 3}
+  m_PrefabInstance: {fileID: 2824739899972876498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e757932299771968a26ac8398f4382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5242066641881457092
 PrefabInstance:
   m_ObjectHideFlags: 0
