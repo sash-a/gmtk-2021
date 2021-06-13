@@ -7,15 +7,20 @@ public class Ranged : Attacker
     public float bulletRange; // range of the gun
     public float fireRate;
     private float lastFire;
-    
+
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
         if (Time.time - lastFire < fireRate)
         {
             return;
         }
-
         lastFire = Time.time;
+
+        StartCoroutine(WaitForFire(dir, isPlayer));
+    }
+    
+    public void DoAttack(Vector3 dir = new Vector3(), bool isPlayer = false)
+    {
         if (dir == Vector3.zero)
             dir = transform.right;
 
@@ -46,6 +51,14 @@ public class Ranged : Attacker
 
     }
 
+    public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer = false)
+    {
+        Debug.Log("Waiting for fire");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("firing!");
+        DoAttack(dir, isPlayer);
+    }
+    
     public bool checkCleanLineSight()
     {    
         int layerMask = LayerMask.GetMask("player", "zombie", "wall");

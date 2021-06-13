@@ -146,7 +146,6 @@ public class CharacterManager : MonoBehaviour
         }
 
         return visible;
-
     }
 
     public static HashSet<Controller> getVisibleHumans(Controller looker)
