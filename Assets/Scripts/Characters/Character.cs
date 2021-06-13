@@ -11,6 +11,16 @@ public abstract class Character : MonoBehaviour
     public float infectionTime = 10; // how much time from infection until zombification
     public float timeOfInfection = -1;  // -1 if not infected
 
+    public List<Transform> waypointTransforms;
+    public List<Vector3> waypoints;
+    private void Start()
+    {
+        foreach (var waypoint in waypointTransforms)
+        {
+            waypoints.Add(waypoint.position);
+        }
+    }
+
     public void die()
     {
         Player player = GetComponent<Player>();
@@ -32,6 +42,7 @@ public abstract class Character : MonoBehaviour
         
         Destroy(gameObject);
     }
+
     public CharacterSpriteController SpriteController;
 
     public void infect()

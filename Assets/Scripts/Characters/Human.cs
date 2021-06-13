@@ -30,12 +30,12 @@ public class Human : Ai
 
     private void LateUpdate()
     {
-        Debug.DrawLine(transform.position, transform.position + transform.forward);
-        var newDir = agent.velocity.normalized;
-        // newDir.x = transform.rotation.x;
-        // newDir.y = transform.rotation.y;
-        transform.rotation = Quaternion.LookRotation(transform.forward, newDir);
-        // transform.rotation = Quaternion.LookRotation(newDir);
-        // transform.rotation=Quaternion.SetLookRotation(agent.velocity);
+        // Debug.DrawLine(transform.position, (transform.position + transform.forward) * 3, Color.red);
+        // Debug.DrawLine(transform.position, transform.position + agent.velocity, Color.blue);
+        Vector3 targetPosition = transform.position + agent.velocity.normalized;
+        Vector3 dir = targetPosition - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
     }
 }
