@@ -3721,6 +3721,14 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 21b758959b529a230bc1c52e14bc822d, type: 2}
+    - target: {fileID: 3704368645005020601, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: music.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704368645005020601, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: music.Array.data[0].volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3951106632527020568, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.17
