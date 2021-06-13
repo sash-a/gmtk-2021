@@ -6,9 +6,28 @@ public class Ranged : Attacker
 {
     public float attackRange; // distance guard will stop and shoot at
     public float bulletRange; // range of the gun
+    public GameObject muzzleFlash;
+    public float framesToFlash;
+    private bool _isFlashing = false;
+
+    public GameObject humanHitEffect;
+    public GameObject envHitEffect;
+    public GameObject sauceHitEffect;
+    public GameObject bloodPuddle;
+
+    private void Start()
+    {
+        if(muzzleFlash != null)
+            muzzleFlash.SetActive(false);
+    }
 
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+        if (!_isFlashing && muzzleFlash != null)
+        {
+            StartCoroutine(doFlash());
+        }
+        
         if (dir == Vector3.zero)
             dir = transform.right;
 
@@ -34,9 +53,23 @@ public class Ranged : Attacker
             }
 
             // TODO: Add hit effect on impact
-            // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            if(hitInfo.transform.GetComponent<Controller>() is Human)
+            {
+                Instantiate(humanHitEffect, hitInfo.point, Quaternion.identity);
+                Instantiate(bloodPuddle, hitInfo.point, Quaternion.identity);
+            }
+            else if(hitInfo.transform.GetComponent<Controller>() is Player)
+            {
+                Instantiate(sauceHitEffect, hitInfo.point, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(envHitEffect, hitInfo.point, Quaternion.identity);
+            }
+
             
-            
+
+
         }
 
     }
@@ -56,6 +89,22 @@ public class Ranged : Attacker
         }
 
         return false;
+    }
+
+    IEnumerator doFlash()
+    {
+        muzzleFlash.SetActive(true);
+        var framesFlashed = 0;
+        _isFlashing = true;
+
+        while(framesFlashed <= framesToFlash)
+        {
+            framesFlashed++;
+            yield return null;
+        }
+
+        muzzleFlash.SetActive(false);
+        _isFlashing = false;
     }
 
 }
