@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chase : StateMachineBehaviour
@@ -8,6 +9,7 @@ public class Chase : StateMachineBehaviour
     private Ai controller;
     public float chaseSpeed = 10;
 
+    private Vector3 lastKnownPos;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,14 +27,20 @@ public class Chase : StateMachineBehaviour
         if (target)
         {
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
+            lastKnownPos = target.position;
             controller.agent.SetDestination(target.position);
         }
         
-        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
+        // Debug.Log($"Lastknow:{lastKnownPos}");
         
-        if (CharacterManager.getVisibleHorde(controller).Count == 0)
+        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
+        Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
+
+        var d = Vector2.Distance(animator.transform.position, lastKnownPos);
+        if (CharacterManager.getVisibleHorde(controller).Count == 0 && d < 1)
         {
             animator.SetBool("isChasing", false);
+            animator.SetBool("isPatroling", true);
         }
 
     }
