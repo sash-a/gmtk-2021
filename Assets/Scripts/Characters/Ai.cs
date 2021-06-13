@@ -28,6 +28,7 @@ public class Ai : Controller
     {
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.right, agent.velocity);
         character.SpriteController.legsAnimator.SetBool("walking", agent.velocity.magnitude > 0);
+        // character.SpriteController.torsoAnimator.SetBool("walking", agent.velocity.magnitude > 0);
     }
 
     public List<Vector3> getRotationPoints(int points)
