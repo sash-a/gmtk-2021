@@ -24,7 +24,7 @@ public class Chase : StateMachineBehaviour
         if (target)
         {
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
-            controller.agent.SetDestination(target.position);
+            // controller.agent.SetDestination(target.position);
         }
         
         if (CharacterManager.getVisibleHorde(controller).Count == 0)

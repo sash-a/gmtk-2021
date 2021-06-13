@@ -9,13 +9,19 @@ public class Patrol : StateMachineBehaviour
     public float patrolSpeed = 5;
     private Vector2 targetPatrolPoint;
     private Ai controller;
+    private Character _character;
 
+    private int wayptIdx;
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         targetPatrolPoint = Random.insideUnitCircle * patrolRange;
         controller = animator.GetComponent<Ai>();
+        _character = animator.GetComponent<Character>();
         Debug.Log("Im patroling");
+        
+        controller.agent.SetDestination(_character.waypoints[wayptIdx]);
     } 
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,8 +29,17 @@ public class Patrol : StateMachineBehaviour
     {
 
         // TODO: ADD PROPER PATROL LOGIC
-        RandomPatrol(animator.transform);
+        // RandomPatrol(animator.transform);
 
+        if (controller == null) {
+            throw new System.Exception("Null controller in patrol");
+        }
+
+        WaypointPatrol(animator.transform);
+        
+        Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx]);
+        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
+        
         if (CharacterManager.getVisibleHorde(controller).Count > 0)
         {
             animator.SetBool("isChasing", true);
@@ -32,12 +47,23 @@ public class Patrol : StateMachineBehaviour
 
     }
 
+    void WaypointPatrol(Transform transform)
+    {
+        if (Vector2.Distance(transform.position, _character.waypoints[wayptIdx]) < 1)
+        {
+            wayptIdx++;
+            wayptIdx %= _character.waypoints.Count; 
+            controller.agent.SetDestination(_character.waypoints[wayptIdx]);
+        }
+    }
+    
     void RandomPatrol(Transform transform)
     {
-        if (Vector2.Distance(transform.position, targetPatrolPoint) > 0.2f)
+        if (Vector2.Distance(transform.position, targetPatrolPoint) > 1f)
         {
             //transform.position = Vector2.MoveTowards(transform.position, targetPatrolPoint, patrolSpeed * Time.deltaTime);
             controller.agent.SetDestination(targetPatrolPoint);
+            Debug.DrawLine(transform.position, targetPatrolPoint);
         }
         else
         {

@@ -125,30 +125,12 @@ public class Player : Controller
         }
     }
 
-    void Attack(Vector3 mousePos)
+    void Attack(Vector3 mouseDir)
     {
-        // // Get attack script
-        // Attacker attacker = GetComponent<Attacker>();
-        //
-        // if (attacker)
-        // {
-        //     RaycastHit2D hitInfo = Physics2D.Raycast(attacker.transform.position, mousePos, attacker.attackRange);
-        //
-        //     if (hitInfo)
-        //     {
-        //         Debug.Log(hitInfo.transform.name);
-        //         Character character = hitInfo.transform.GetComponent<Character>();
-        //
-        //         if (character) {
-        //             character.die();
-        //         }
-        //
-        //         // Draw ray for testing
-        //
-        //         // TODO: Add hit effect on impact
-        //         // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
-        //     }
-        // }
+        if (character is Ranged)
+        {
+            ((Ranged)character).Attack(mouseDir, isPlayer:true);
+        }
       
     }
 }

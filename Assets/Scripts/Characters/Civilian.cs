@@ -5,8 +5,5 @@ using UnityEngine;
 
 public class Civilian : Character
 {
-    public override void die()
-    {
-        Destroy(gameObject);
-    }
+    
 }
