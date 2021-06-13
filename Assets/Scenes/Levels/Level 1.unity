@@ -3720,7 +3720,7 @@ PrefabInstance:
     - target: {fileID: 3515964529144278371, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 21b758959b529a230bc1c52e14bc822d, type: 2}
+      objectReference: {fileID: 23800000, guid: ed6464f255f471420961fb99e66bc612, type: 2}
     - target: {fileID: 3704368645005020601, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: music.Array.size
       value: 6
