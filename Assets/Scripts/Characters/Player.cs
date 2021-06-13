@@ -33,7 +33,9 @@ public class Player : Controller
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
         if (character is Sauce)
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
+            // transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+            ((Sauce)character).sauceAnimator.gameObject.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(-moveDir.x, moveDir.y) * Mathf.Rad2Deg);
         }
         else
         {

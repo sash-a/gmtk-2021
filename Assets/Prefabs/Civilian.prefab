@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a702336badbd6ba0942d2426c7ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  rotating: 0
 --- !u!114 &1319650585977791923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,15 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a1a1d25a5c67cc7acd172bb9138be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 10
   visionDistance: 10
   visionAngle: 90
   infectionTime: 10
   timeOfInfection: -1
   waypointTransforms:
   - {fileID: 8152176727292104640}
-  waypoints:
-  - {x: 0, y: 0, z: 0}
   SpriteController: {fileID: 6142571887036760336}
 --- !u!195 &4416174435886233383
 NavMeshAgent:
