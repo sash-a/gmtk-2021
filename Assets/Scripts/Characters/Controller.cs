@@ -62,9 +62,15 @@ public class Controller : MonoBehaviour
             visionAngle = character.visionAngle;
         }
 
-        if (Vector2.Distance(target, pos) > visionDistance)
+        float dist = Vector2.Distance(target, pos);
+        if (dist > visionDistance)
         {
             return false;
+        }
+
+        if (dist < 2) // very close by enemies are visible in a larger cone
+        {
+            visionAngle = 270;
         }
 
         float angle = Vector2.Angle(transform.right, target - pos);
