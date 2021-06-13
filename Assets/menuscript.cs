@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class menuscript : MonoBehaviour
-public float level = 1
-
 {
+    public float level = 1;
+
+
 
    public void PlayGame (level) {
        Scenemanager.LoadScene(level);
