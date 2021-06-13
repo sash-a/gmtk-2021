@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
-using UnityEditor.U2D.Path.GUIFramework;
+// using UnityEditor.Animations;
+// using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine.AI;
 
 public class CharacterManager : MonoBehaviour
@@ -15,7 +15,7 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
 
-    public AnimatorController zombieController;
+    // public AnimatorController zombieController;
 
     private void Awake()
     {
