@@ -81,7 +81,7 @@ public class Controller : MonoBehaviour
         }
         else if (myLayer == "human")
         {
-            layerMask = LayerMask.GetMask("player",  "infected", "wall");
+            layerMask = LayerMask.GetMask("player",  "infected", "wall", "zombie");
         }
         else
         {
@@ -96,6 +96,7 @@ public class Controller : MonoBehaviour
 
         if (hit.collider != null)
         {
+            // Debug.Log(this + " hit: " + hit.collider.gameObject + " checking for: " + go + " eq: " + (hit.collider.gameObject == go));
             return hit.collider.gameObject == go;
         }
         return false;
