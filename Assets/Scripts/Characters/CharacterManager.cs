@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Animations;
 using UnityEngine.AI;
 
 public class CharacterManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class CharacterManager : MonoBehaviour
     public HashSet<Controller> zombies;
     public HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
+
+    public AnimatorController zombieController;
 
     private void Awake()
     {
@@ -56,6 +59,7 @@ public class CharacterManager : MonoBehaviour
         humanObject.layer = LayerMask.NameToLayer("player");
         human.glowTimeLeft = 0;
         humanObject.GetComponent<NavMeshAgent>().enabled = false;
+        humanObject.GetComponent<Animator>().enabled = false;
         
         UIManager.setCurrentHost(player.character);
     }
@@ -82,7 +86,7 @@ public class CharacterManager : MonoBehaviour
         go.name = "Zombie";
         go.layer = LayerMask.NameToLayer("zombie");
         zom.GetComponent<NavMeshAgent>().enabled = true;
-
+        zom.GetComponent<Animator>().enabled = true;
         // Debug.Log("zombification complete");
     }
     
@@ -99,6 +103,7 @@ public class CharacterManager : MonoBehaviour
         instance.infected.Add(human);
         instance.humans.Add(human);
         hostObj.GetComponent<NavMeshAgent>().enabled = true;
+        hostObj.GetComponent<Animator>().enabled = true;
     }
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)

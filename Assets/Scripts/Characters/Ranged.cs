@@ -7,10 +7,18 @@ public class Ranged : Attacker
     public float attackRange; // distance guard will stop and shoot at
     public float bulletRange; // range of the gun
 
-    public override void Attack()
+    public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+        if (dir == Vector3.zero)
+            dir = transform.right;
+
+        dir = dir.normalized;
+
         int layerMask = LayerMask.GetMask("player", "zombie", "wall");
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, attackRange, layerMask);
+        if(isPlayer)
+            layerMask = LayerMask.GetMask( "wall", "human");
+
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, attackRange, layerMask);
 
         if (hitInfo)
         {

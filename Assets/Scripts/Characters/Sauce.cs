@@ -9,10 +9,4 @@ public class Sauce : Character
     {
         UIManager.setCurrentHost(this);
     }
-
-    public override void die()
-    {
-        throw new Exception("player has died");
-    }
-    
 }

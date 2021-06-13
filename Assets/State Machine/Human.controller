@@ -95,7 +95,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dddf6074632ad42876776667ae66eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolRange: 5
-  patrolSpeed: 2
+  patrolRange: 3
+  patrolSpeed: 1
 --- !u!114 &2023488320630721629
 MonoBehaviour:
   m_ObjectHideFlags: 1

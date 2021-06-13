@@ -23,8 +23,10 @@ public class Patrol : StateMachineBehaviour
     {
 
         // TODO: ADD PROPER PATROL LOGIC
-        RandomPatrol(animator.transform);
-
+        // RandomPatrol(animator.transform);
+        if (controller == null) {
+            throw new System.Exception("null controller in patrol");
+        }
         if (CharacterManager.getVisibleHorde(controller).Count > 0)
         {
             animator.SetBool("isChasing", true);

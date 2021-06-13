@@ -4,11 +4,6 @@ using UnityEngine;
 
 public abstract class Attacker : Character
 {
-    public abstract void Attack();
-
-    public override void die()
-    {
-        Destroy(gameObject);
-    }
+    public abstract void Attack(Vector3 dir = new Vector3(), bool isPlayer = false);
 
 }

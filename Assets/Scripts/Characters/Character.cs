@@ -11,8 +11,27 @@ public abstract class Character : MonoBehaviour
     public float infectionTime = 10; // how much time from infection until zombification
     public float timeOfInfection = -1;  // -1 if not infected
 
-    public abstract void die();
-
+    public void die()
+    {
+        Player player = GetComponent<Player>();
+        if (player != null) {
+            throw new Exception("player died");
+        }
+        Zombie zom = GetComponent<Zombie>();
+        if (zom != null)
+        {
+            CharacterManager.instance.zombies.Remove(zom);
+        }
+        else {
+            Human human = GetComponent<Human>();
+            if (timeOfInfection != -1) {
+                CharacterManager.instance.infected.Remove(human);
+            }
+            CharacterManager.instance.humans.Remove(human);
+        }
+        
+        Destroy(gameObject);
+    }
     public CharacterSpriteController SpriteController;
 
     public void infect()
