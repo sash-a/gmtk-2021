@@ -37,6 +37,7 @@ public class CharacterManager : MonoBehaviour
 
     public static void bodySnatch(Controller human, Player currentPlayer)
     {
+        AudioManager.instance.Play("gargle");
         // Debug.Log("body snatching " + human);
         human.character.infect(); // star ts timer to become a zombie
         GameObject playerObject = currentPlayer.gameObject;
@@ -69,6 +70,7 @@ public class CharacterManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public static void zombify(Controller controller)
     {
+        AudioManager.instance.Play("groan_1");
         GameObject go = controller.gameObject;
         if (controller is Human)
         {//is human, so player has left the character already
