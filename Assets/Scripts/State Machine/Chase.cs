@@ -36,6 +36,20 @@ public class Chase : StateMachineBehaviour
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
             lastKnownPos = target.position;
         }
+        
+        if (controller == null)
+        {
+            controller = myGameObject.GetComponent<Ai>();
+            if (controller == null)
+            {
+                throw new Exception("cannot get Ai from: " + myGameObject);
+            }
+        }
+
+        if (controller.agent == null)
+        {
+            controller.agent = controller.GetComponent<NavMeshAgent>();
+        }
 
         if (_character is Attacker attacker && target)
         {
@@ -50,27 +64,22 @@ public class Chase : StateMachineBehaviour
             else
             {
                 // Debug.Log("Chasing");
-                controller.agent.SetDestination(lastKnownPos);
+                try
+                {
+                    controller.agent.SetDestination(lastKnownPos);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                    return;
+                }
+
                 Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
             }
         }
 
         if (!attacking)
         {
-            // Debug.Log("Chasing");
-            if (controller == null)
-            {
-                controller = myGameObject.GetComponent<Ai>();
-                if (controller == null)
-                {
-                    throw new Exception("cannot get Ai from: " + myGameObject);
-                }
-            }
-
-            if (controller.agent == null)
-            {
-                controller.agent = controller.GetComponent<NavMeshAgent>();
-            }
             controller.agent.SetDestination(lastKnownPos);
             Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
         }

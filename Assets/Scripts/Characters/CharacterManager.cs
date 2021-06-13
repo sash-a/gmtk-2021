@@ -10,9 +10,9 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
 
-    public HashSet<Controller> humans;
-    public HashSet<Controller> zombies;
-    public HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
+    private HashSet<Controller> humans;
+    private HashSet<Controller> zombies;
+    private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
 
     public AnimatorController zombieController;
@@ -50,7 +50,7 @@ public class CharacterManager : MonoBehaviour
             humanify(currentPlayer);
         }
 
-        instance.humans.Remove(human);
+        instance.RemoveHuman(human);
         GameObject humanObject = human.gameObject;
         Destroy(humanObject.GetComponent<Human>());
         human.glowEffect.gameObject.SetActive(true);
@@ -72,8 +72,8 @@ public class CharacterManager : MonoBehaviour
         GameObject go = controller.gameObject;
         if (controller is Human)
         {//is human, so player has left the character already
-            instance.humans.Remove(controller);
-            instance.infected.Remove(controller);
+            instance.RemoveHuman(controller);
+            instance.RemoveInfected(controller);
         } else if (controller is Player){ }
         else
         {
@@ -214,6 +214,25 @@ public class CharacterManager : MonoBehaviour
         else
         {
             return getVisibleHorde(looker);
+        }
+    }
+
+    public void RemoveZombie(Zombie zom)
+    {
+        zombies.Remove(zom);
+    }
+
+    public void RemoveInfected(Controller human)
+    {
+        infected.Remove(human);
+    }
+
+    public void RemoveHuman(Controller human)
+    {
+        humans.Remove(human);
+        if (humans.Count <= 0)
+        {
+            Debug.Log("WIN Level!");
         }
     }
 }

@@ -30,18 +30,19 @@ public abstract class Character : MonoBehaviour
         Player player = GetComponent<Player>();
         if (player != null) {
             StartCoroutine(WaitAndRespawn());
+            return;
         }
         Zombie zom = GetComponent<Zombie>();
         if (zom != null)
         {
-            CharacterManager.instance.zombies.Remove(zom);
+            CharacterManager.instance.RemoveZombie(zom);
         }
         else {
             Human human = GetComponent<Human>();
             if (timeOfInfection != -1) {
-                CharacterManager.instance.infected.Remove(human);
+                CharacterManager.instance.RemoveInfected(human);
             }
-            CharacterManager.instance.humans.Remove(human);
+            CharacterManager.instance.RemoveHuman(human);
         }
         
         Destroy(gameObject);
