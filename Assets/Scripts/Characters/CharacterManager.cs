@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 // using UnityEditor.Animations;
 // using UnityEditor.U2D.Path.GUIFramework;
@@ -14,6 +15,7 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> zombies;
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
+    public GameObject meleeBoxPrefab; 
 
     // public AnimatorController zombieController;
 
@@ -91,6 +93,29 @@ public class CharacterManager : MonoBehaviour
         zom.GetComponent<NavMeshAgent>().enabled = true;
         zom.GetComponent<Animator>().enabled = true;
         zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
+
+        if (zom.character is Ranged)
+        {
+            Ranged ran = (Ranged)zom.character;
+            
+            Melee mel = zom.AddComponent<Melee>();
+            GameObject hitbox = Instantiate(instance.meleeBoxPrefab, mel.transform);
+            mel.hitBox = hitbox.GetComponent<MeleeHitBox>();
+            mel.face0 = ran.face0;
+            mel.face1 = ran.face1;
+            mel.face2 = ran.face2;
+
+            mel.dieEffect = ran.dieEffect;
+            mel.greenBloodPuddle = ran.greenBloodPuddle;
+            mel.greenDieEffect = ran.greenDieEffect;
+
+            mel.redBloodPuddle = ran.redBloodPuddle;
+            mel.SpriteController = ran.SpriteController;
+            mel.attackRange = 1;
+            mel.waypointTransforms = ran.waypointTransforms;
+            zom.character = mel;
+            Destroy(ran);
+        }  // convert the ranged attacker to a melee attacker
         // Debug.Log("zombification complete");
     }
     

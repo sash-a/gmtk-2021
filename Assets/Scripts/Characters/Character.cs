@@ -10,7 +10,7 @@ public abstract class Character : MonoBehaviour
     public float moveSpeed = 10;
     public float visionDistance = 10;
     public float visionAngle = 90;
-    public float infectionTime = 6; // how much time from infection until zombification
+    public float infectionTime = 8; // how much time from infection until zombification
     [NonSerialized] public float timeOfInfection = -1;  // -1 if not infected
 
     public List<Transform> waypointTransforms;
@@ -30,9 +30,12 @@ public abstract class Character : MonoBehaviour
     private void Awake()
     {
         waypoints = new List<Vector3>();
-        foreach (var waypoint in waypointTransforms)
+        if (waypointTransforms != null)
         {
-            waypoints.Add(waypoint.position);
+            foreach (var waypoint in waypointTransforms)
+            {
+                waypoints.Add(waypoint.position);
+            }
         }
     }
 

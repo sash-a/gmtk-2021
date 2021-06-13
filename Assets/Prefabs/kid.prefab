@@ -414,13 +414,16 @@ MonoBehaviour:
   moveSpeed: 10
   visionDistance: 10
   visionAngle: 90
-  infectionTime: 10
+  infectionTime: 8
   waypointTransforms:
   - {fileID: 3554928068197515489}
   redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
   greenBloodPuddle: {fileID: 4227105782261398518, guid: f33abfffc99ed4ea28914bafc8486041, type: 3}
   dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
   greenDieEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
+  face0: {fileID: 0}
+  face1: {fileID: 0}
+  face2: {fileID: 0}
   SpriteController: {fileID: 1533811174434000433}
   attackRange: 1
   hitBox: {fileID: 8136175161604561103}

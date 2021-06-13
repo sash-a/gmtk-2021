@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stencil scene
       objectReference: {fileID: 0}
+    - target: {fileID: 2239994857078865833, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: meleeBoxPrefab
+      value: 
+      objectReference: {fileID: 3004812092100145605, guid: 748fecee876e5d0c1aaa693c968b5013, type: 3}
     - target: {fileID: 4059976635962905696, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

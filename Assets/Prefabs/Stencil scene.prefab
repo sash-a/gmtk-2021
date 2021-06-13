@@ -827,6 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saucePrefab: {fileID: 4881681628523474284, guid: d491653d60b51cba3a177bd3572a999a, type: 3}
+  meleeBoxPrefab: {fileID: 3004812092100145605, guid: 748fecee876e5d0c1aaa693c968b5013, type: 3}
 --- !u!1 &2239994857215057640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b160fdb8cd5bedf4a5bb828cc392078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  display: {fileID: 0}
 --- !u!1 &7795187144868595398
 GameObject:
   m_ObjectHideFlags: 0

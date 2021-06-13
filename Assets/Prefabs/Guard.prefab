@@ -153,7 +153,7 @@ MonoBehaviour:
   moveSpeed: 10
   visionDistance: 10
   visionAngle: 90
-  infectionTime: 10
+  infectionTime: 8
   waypointTransforms:
   - {fileID: 3951106631001585019}
   redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
