@@ -136,7 +136,7 @@ public class Player : Controller
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Attack(mousePos-transform.position);
-            
+            character.SpriteController.torsoAnimator.SetBool("Attacking", true);
         }
     }
 
