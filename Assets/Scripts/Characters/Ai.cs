@@ -14,6 +14,12 @@ public class Ai : Controller
         agent.updateUpAxis = false;
     }
 
+    public void ClearAgentPath()
+    {
+        agent.isStopped = true;
+        agent.ResetPath();   
+    }
+
     public void FixedUpdate()
     {
         character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.right, agent.velocity);

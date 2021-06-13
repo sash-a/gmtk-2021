@@ -19,8 +19,8 @@ public class Patrol : StateMachineBehaviour
         targetPatrolPoint = Random.insideUnitCircle * patrolRange;
         controller = animator.GetComponent<Ai>();
         _character = animator.GetComponent<Character>();
-        Debug.Log("Im patroling");
-        
+        Debug.Log($"Im patroling | waypoint count {_character.waypoints.Count}");
+        // controller.ClearAgentPath();
         controller.agent.SetDestination(_character.waypoints[wayptIdx]);
     } 
 
@@ -37,7 +37,7 @@ public class Patrol : StateMachineBehaviour
 
         WaypointPatrol(animator.transform);
         
-        Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx]);
+        Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx], Color.green);
         Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
         
         if (CharacterManager.getVisibleHorde(controller).Count > 0)
@@ -55,6 +55,11 @@ public class Patrol : StateMachineBehaviour
             wayptIdx %= _character.waypoints.Count; 
             controller.agent.SetDestination(_character.waypoints[wayptIdx]);
         }
+    }
+    
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // controller.ClearAgentPath();
     }
     
     void RandomPatrol(Transform transform)

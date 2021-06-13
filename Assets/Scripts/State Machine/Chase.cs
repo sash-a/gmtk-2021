@@ -15,6 +15,7 @@ public class Chase : StateMachineBehaviour
         Debug.Log("Im chasing");
 
         controller = animator.GetComponent<Ai>();
+        // controller.ClearAgentPath();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,8 +25,10 @@ public class Chase : StateMachineBehaviour
         if (target)
         {
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
-            // controller.agent.SetDestination(target.position);
+            controller.agent.SetDestination(target.position);
         }
+        
+        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
         
         if (CharacterManager.getVisibleHorde(controller).Count == 0)
         {
@@ -37,7 +40,7 @@ public class Chase : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        // controller.ClearAgentPath();
     }
 
     Transform getClosestTarget(Vector3 currentPos)
