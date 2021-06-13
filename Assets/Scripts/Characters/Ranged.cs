@@ -30,6 +30,7 @@ public class Ranged : Attacker
         {
             return;
         }
+        SpriteController.torsoAnimator.SetBool("Attacking", true);
         lastFire = Time.time;
 
         StartCoroutine(WaitForFire(dir, isPlayer));
@@ -37,6 +38,8 @@ public class Ranged : Attacker
     
     public void DoAttack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+
+        AudioManager.instance.Play("gunshot");
 
         if (!_isFlashing && muzzleFlash != null)
         {
@@ -89,7 +92,8 @@ public class Ranged : Attacker
     {
         Debug.Log("Waiting for fire");
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("firing!");
+        Debug.Log("firing!");        
+        SpriteController.torsoAnimator.SetBool("Attacking", false);
         DoAttack(dir, isPlayer);
     }
 

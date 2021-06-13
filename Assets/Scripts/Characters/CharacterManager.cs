@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
-using UnityEditor.U2D.Path.GUIFramework;
+// using UnityEditor.Animations;
+// using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine.AI;
 
 public class CharacterManager : MonoBehaviour
@@ -15,7 +15,7 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
 
-    public AnimatorController zombieController;
+    // public AnimatorController zombieController;
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class CharacterManager : MonoBehaviour
 
     public static void bodySnatch(Controller human, Player currentPlayer)
     {
+        AudioManager.instance.Play("gargle");
         // Debug.Log("body snatching " + human);
         human.character.infect(); // star ts timer to become a zombie
         GameObject playerObject = currentPlayer.gameObject;
@@ -69,6 +70,7 @@ public class CharacterManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public static void zombify(Controller controller)
     {
+        AudioManager.instance.Play("groan_1");
         GameObject go = controller.gameObject;
         if (controller is Human)
         {//is human, so player has left the character already

@@ -98,6 +98,7 @@ public class Player : Controller
 
     Vector2 move()
     {
+      
         Vector2 dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
@@ -136,7 +137,7 @@ public class Player : Controller
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Attack(mousePos-transform.position);
-            
+            character.SpriteController.torsoAnimator.SetBool("Attacking", true);
         }
     }
 

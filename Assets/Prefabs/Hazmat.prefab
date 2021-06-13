@@ -323,9 +323,10 @@ MonoBehaviour:
   visionDistance: 10
   visionAngle: 90
   infectionTime: 10
-  timeOfInfection: -1
   waypointTransforms: []
   SpriteController: {fileID: 0}
+  attackRange: 0
+  hitBox: {fileID: 0}
 --- !u!1001 &8965097344386034121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,6 +334,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2126054443003961556, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: legs
+      value: 
+      objectReference: {fileID: 7172844660038758133}
+    - target: {fileID: 2126054443003961556, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: torso
+      value: 
+      objectReference: {fileID: 7670173790125109559}
     - target: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -431,13 +440,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
---- !u!1 &3422951631151662017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
-  m_PrefabInstance: {fileID: 8965097344386034121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5819787972674744857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+  m_PrefabInstance: {fileID: 8965097344386034121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3422951631151662017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6046831088499616264, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
   m_PrefabInstance: {fileID: 8965097344386034121}
   m_PrefabAsset: {fileID: 0}
