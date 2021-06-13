@@ -14,7 +14,6 @@ public class Controller : MonoBehaviour
     [NonSerialized] public Rigidbody2D rb;
     [NonSerialized] public CharacterGlowEffect glowEffect;
     
-
     [NonSerialized] public float glowTimeLeft = 0;
     public static float glowTime = 0.25f;
 
@@ -87,7 +86,14 @@ public class Controller : MonoBehaviour
         }
         else if (myLayer == "human")
         {
-            layerMask = LayerMask.GetMask("player",  "infected", "wall", "zombie");
+            if (go.GetComponent<Sauce>() != null) // is searching for sauce. should not be able to see over obstacles
+            {
+                layerMask = LayerMask.GetMask("player", "infected", "wall", "zombie", "obstacles");
+            }
+            else
+            {
+                layerMask = LayerMask.GetMask("player", "infected", "wall", "zombie");
+            }
         }
         else
         {

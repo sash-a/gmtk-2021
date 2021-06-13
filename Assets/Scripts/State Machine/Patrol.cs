@@ -78,6 +78,13 @@ public class Patrol : StateMachineBehaviour
     
     void RandomPatrol(Transform transform)
     {
+        if (controller == null) {
+            controller = _character.GetComponent<Ai>();
+            if (controller == null)
+            {
+                throw new System.Exception("Null controller in patrol");
+            }
+        }
         if (Vector2.Distance(transform.position, targetPatrolPoint) > 1f)
         {
             //transform.position = Vector2.MoveTowards(transform.position, targetPatrolPoint, patrolSpeed * Time.deltaTime);

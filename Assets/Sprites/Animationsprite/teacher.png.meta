@@ -229,12 +229,12 @@ TextureImporter:
       name: teacher_4
       rect:
         serializedVersion: 2
-        x: 448
-        y: 1957
-        width: 1101
-        height: 780
+        x: 564
+        y: 2222
+        width: 919
+        height: 564
       alignment: 9
-      pivot: {x: 0.51507694, y: 0.6170479}
+      pivot: {x: 0.51507694, y: 0.3815905}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

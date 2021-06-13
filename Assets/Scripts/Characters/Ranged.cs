@@ -13,7 +13,7 @@ public class Ranged : Attacker
     public GameObject humanHitEffect;
     public GameObject envHitEffect;
     public GameObject sauceHitEffect;
-    public GameObject bloodPuddle;
+    // public GameObject bloodPuddle;
 
     public float fireRate;
     private float lastFire;
@@ -73,7 +73,6 @@ public class Ranged : Attacker
             if(hitInfo.transform.GetComponent<Controller>() is Human)
             {
                 Instantiate(humanHitEffect, hitInfo.point, Quaternion.identity);
-                Instantiate(bloodPuddle, hitInfo.point, Quaternion.identity);
             }
             else if(hitInfo.transform.GetComponent<Controller>() is Player)
             {
