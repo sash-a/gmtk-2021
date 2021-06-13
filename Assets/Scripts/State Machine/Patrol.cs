@@ -39,7 +39,7 @@ public class Patrol : StateMachineBehaviour
 
         WaypointPatrol(animator.transform);
         
-        Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx], Color.green);
+        // Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx], Color.green);
         Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
         
         if (CharacterManager.getVisibleHorde(controller).Count > 0)
