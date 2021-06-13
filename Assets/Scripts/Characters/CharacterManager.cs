@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Animations;
+using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine.AI;
 
 public class CharacterManager : MonoBehaviour
@@ -166,5 +167,17 @@ public class CharacterManager : MonoBehaviour
         }
         
         return horde;
+    }
+
+    public static HashSet<Controller> getVisibleOfInterest(Controller looker)
+    {
+        if (looker is Zombie)
+        {
+            return getVisibleHumans(looker);
+        }
+        else
+        {
+            return getVisibleHorde(looker);
+        }
     }
 }

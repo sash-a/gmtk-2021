@@ -38,7 +38,7 @@ public class Chase : StateMachineBehaviour
         // Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
 
         var d = Vector2.Distance(animator.transform.position, lastKnownPos);
-        if (CharacterManager.getVisibleHorde(controller).Count == 0 && d < 1)
+        if (CharacterManager.getVisibleOfInterest(controller).Count == 0 && d < 1)
         {
             animator.SetBool("isChasing", false);
             animator.SetBool("isPatroling", true);
