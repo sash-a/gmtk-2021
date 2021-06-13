@@ -14,26 +14,27 @@ public class Melee : Attacker
             myController = GetComponent<Controller>();
         }
 
+        List<Controller> hits = new List<Controller>();
         foreach (var touched in hitBox.touchedCharacters)
         {
             if (myController is Zombie || myController is Player)
             {
                 if (touched is Human)
                 {
-                    touched.character.die();
+                    hits.Add(touched);
                 }
             }
             else{ // my controller is human
                 if (touched is Zombie || touched is Player)
                 {
-                    touched.character.die();
+                    hits.Add(touched);
                 }
             }
         }
-        
-        if (myController is Zombie || myController is Player)
+
+        for (int i = 0; i < hits.Count; i++)
         {
-            
+            hits[i].character.die();
         }
     }
 }

@@ -216,7 +216,6 @@ MonoBehaviour:
   visionDistance: 3
   visionAngle: 45
   infectionTime: -1
-  timeOfInfection: -1
   waypointTransforms: []
   SpriteController: {fileID: 996663334274836400}
   sauceAnimator: {fileID: 1837293775}
@@ -315,15 +314,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3471416954414038910, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3471416954414038910, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3471416954414038910, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3471416954414038910, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_LocalPosition.x
