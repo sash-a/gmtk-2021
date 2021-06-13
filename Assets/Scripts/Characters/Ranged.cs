@@ -30,6 +30,7 @@ public class Ranged : Attacker
         {
             return;
         }
+        SpriteController.torsoAnimator.SetBool("Attacking", true);
         lastFire = Time.time;
 
         StartCoroutine(WaitForFire(dir, isPlayer));
@@ -89,7 +90,8 @@ public class Ranged : Attacker
     {
         Debug.Log("Waiting for fire");
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("firing!");
+        Debug.Log("firing!");        
+        SpriteController.torsoAnimator.SetBool("Attacking", false);
         DoAttack(dir, isPlayer);
     }
 
