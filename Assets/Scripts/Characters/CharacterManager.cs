@@ -27,6 +27,11 @@ public class CharacterManager : MonoBehaviour
         infected = new HashSet<Controller>();
     }
 
+    public int getNumberOfHumans()
+    {
+        return humans.Count;
+    }
+
     public static void registerHuman(Controller human)
     {
         instance.humans.Add(human);
