@@ -38,8 +38,12 @@ public class Melee : Attacker
         {
             hits[i].character.die();
         }
-        
-        SpriteController.torsoAnimator.SetBool("Attacking", false);
+        StartCoroutine(WaitAndStopAnim());
+    }
 
+    private IEnumerator WaitAndStopAnim()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        SpriteController.torsoAnimator.SetBool("Attacking", false);
     }
 }
