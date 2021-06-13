@@ -157,9 +157,9 @@ MonoBehaviour:
   greenBloodPuddle: {fileID: 4227105782261398518, guid: f33abfffc99ed4ea28914bafc8486041, type: 3}
   dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
   greenDieEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
-  face0: {fileID: 0}
-  face1: {fileID: 0}
-  face2: {fileID: 0}
+  face0: {fileID: 5722292591904377752, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
+  face1: {fileID: 5960844483514330289, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
+  face2: {fileID: -272576515103492663, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
   SpriteController: {fileID: 6142571887036760336}
   attackRange: 1
   hitBox: {fileID: 6117044950176314716}
