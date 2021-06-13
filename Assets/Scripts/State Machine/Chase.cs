@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Chase : StateMachineBehaviour
 {
@@ -17,7 +18,7 @@ public class Chase : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Im chasing");
+        // Debug.Log("Im chasing");
         myGameObject = animator.gameObject;
 
         controller = animator.GetComponent<Ai>();
@@ -35,29 +36,50 @@ public class Chase : StateMachineBehaviour
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
             lastKnownPos = target.position;
         }
-
-        if (_character is Ranged rangedChar && target)
+        
+        if (controller == null)
         {
-            Debug.Log(myGameObject);
-            Debug.Log($"targ:{target}");
+            controller = myGameObject.GetComponent<Ai>();
+            if (controller == null)
+            {
+                throw new Exception("cannot get Ai from: " + myGameObject);
+            }
+        }
+
+        if (controller.agent == null)
+        {
+            controller.agent = controller.GetComponent<NavMeshAgent>();
+        }
+
+        if (_character is Attacker attacker && target)
+        {
             var dist = Vector2.Distance(myGameObject.transform.position, target.position);
-            if (dist < rangedChar.attackRange && rangedChar.checkCleanLineSight())
+            if (dist < attacker.attackRange && attacker.checkCleanLineSight())
             {
                 attacking = true;
+                Debug.Log("ATTACKING!!!!");
                 controller.ClearAgentPath();
-                rangedChar.Attack();
+                attacker.Attack();
             }
             else
             {
-                Debug.Log("Chasing");
-                controller.agent.SetDestination(lastKnownPos);
+                // Debug.Log("Chasing");
+                try
+                {
+                    controller.agent.SetDestination(lastKnownPos);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                    return;
+                }
+
                 Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
             }
         }
 
         if (!attacking)
         {
-            Debug.Log("Chasing");
             controller.agent.SetDestination(lastKnownPos);
             Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
         }

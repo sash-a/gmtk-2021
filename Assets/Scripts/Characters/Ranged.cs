@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class Ranged : Attacker
 {
-    public float attackRange; // distance guard will stop and shoot at
     public float bulletRange; // range of the gun
+
+    public GameObject muzzleFlash;
+    public float framesToFlash;
+    private bool _isFlashing = false;
+
+    public GameObject humanHitEffect;
+    public GameObject envHitEffect;
+    public GameObject sauceHitEffect;
+    public GameObject bloodPuddle;
+
     public float fireRate;
     private float lastFire;
+
+    private void Start()
+    {
+        if (muzzleFlash != null)
+            muzzleFlash.SetActive(false);
+    }
 
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
@@ -22,6 +37,12 @@ public class Ranged : Attacker
     
     public void DoAttack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+
+        if (!_isFlashing && muzzleFlash != null)
+        {
+            StartCoroutine(doFlash());
+        }
+
         if (dir == Vector3.zero)
             dir = transform.right;
 
@@ -31,7 +52,7 @@ public class Ranged : Attacker
         if(isPlayer)
             layerMask = LayerMask.GetMask( "wall", "human");
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, attackRange, layerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, bulletRange, layerMask);
 
         if (hitInfo)
         {
@@ -46,8 +67,20 @@ public class Ranged : Attacker
             }
 
             // TODO: Add hit effect on impact
-            // Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
-            Debug.Log("SHOOTING!");
+            if(hitInfo.transform.GetComponent<Controller>() is Human)
+            {
+                Instantiate(humanHitEffect, hitInfo.point, Quaternion.identity);
+                Instantiate(bloodPuddle, hitInfo.point, Quaternion.identity);
+            }
+            else if(hitInfo.transform.GetComponent<Controller>() is Player)
+            {
+                Instantiate(sauceHitEffect, hitInfo.point, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(envHitEffect, hitInfo.point, Quaternion.identity);
+            }
+
         }
 
     }
@@ -59,22 +92,21 @@ public class Ranged : Attacker
         Debug.Log("firing!");
         DoAttack(dir, isPlayer);
     }
-    
-    public bool checkCleanLineSight()
-    {    
-        int layerMask = LayerMask.GetMask("player", "zombie", "wall");
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, attackRange, layerMask);
-        if (hitInfo)
-        {
-            Character character = hitInfo.transform.GetComponent<Character>();
 
-            if (character)
-            {
-                return true;
-            }
+    IEnumerator doFlash()
+    {
+        muzzleFlash.SetActive(true);
+        var framesFlashed = 0;
+        _isFlashing = true;
+
+        while(framesFlashed <= framesToFlash)
+        {
+            framesFlashed++;
+            yield return null;
         }
 
-        return false;
+        muzzleFlash.SetActive(false);
+        _isFlashing = false;
     }
 
 }

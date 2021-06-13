@@ -118,6 +118,8 @@ public class Player : Controller
         
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
         character.SpriteController.legsAnimator.SetBool("walking", dir.magnitude > 0);
+        character.SpriteController.torsoAnimator.SetBool("walking", dir.magnitude > 0);
+
         if (character is Sauce)
         {
             ((Sauce)character).sauceAnimator.SetBool("walking", dir.magnitude > 0);
@@ -144,6 +146,9 @@ public class Player : Controller
         {
             ((Ranged)character).Attack(mouseDir, isPlayer:true);
         }
-      
+        if (character is Melee)
+        {
+            ((Melee)character).Attack(mouseDir, isPlayer:true);
+        }
     }
 }

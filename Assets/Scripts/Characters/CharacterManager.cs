@@ -10,9 +10,9 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
 
-    public HashSet<Controller> humans;
-    public HashSet<Controller> zombies;
-    public HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
+    private HashSet<Controller> humans;
+    private HashSet<Controller> zombies;
+    private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
 
     public AnimatorController zombieController;
@@ -50,7 +50,7 @@ public class CharacterManager : MonoBehaviour
             humanify(currentPlayer);
         }
 
-        instance.humans.Remove(human);
+        instance.RemoveHuman(human);
         GameObject humanObject = human.gameObject;
         Destroy(humanObject.GetComponent<Human>());
         human.glowEffect.gameObject.SetActive(true);
@@ -72,8 +72,8 @@ public class CharacterManager : MonoBehaviour
         GameObject go = controller.gameObject;
         if (controller is Human)
         {//is human, so player has left the character already
-            instance.humans.Remove(controller);
-            instance.infected.Remove(controller);
+            instance.RemoveHuman(controller);
+            instance.RemoveInfected(controller);
         } else if (controller is Player){ }
         else
         {
@@ -109,9 +109,18 @@ public class CharacterManager : MonoBehaviour
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
     {
+        if (looker == null)
+        {
+            throw new Exception("looker is null");
+        }
         HashSet<Controller> visible = new HashSet<Controller>();
         foreach (var controller in controllers)
         {
+            if (controller == null)
+            {
+                throw new Exception("deleted controller still in character manager");
+            }
+
             if (looker is Player)
             {
                 if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance, visionAngle: Player.infectionAngle))
@@ -137,7 +146,6 @@ public class CharacterManager : MonoBehaviour
         }
 
         return visible;
-
     }
 
     public static HashSet<Controller> getVisibleHumans(Controller looker)
@@ -160,16 +168,41 @@ public class CharacterManager : MonoBehaviour
         HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
         // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
         HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
-        // Debug.Log("num visible infected: " + infected.Count + " num infected: " + instance.infected.Count);
-        zombies.UnionWith(infected);
-        HashSet<Controller> horde = zombies;
+        bool playerVisible = false;
         if (looker.checkVisisble(Player.instance.gameObject))
         {
-            horde.Add(Player.instance.GetComponent<Controller>());
+            infected.Add(Player.instance);
+            playerVisible = true;
         }
-        // Debug.Log("num visible in horde: " + horde.Count);
         
-        return horde;
+        foreach (var inf in infected)
+        {
+            float frac = inf.character.getInfectionFrac();
+            if(frac < 0.33f){ continue; } // full incognito
+
+            if (frac < 0.66f) // partial suss/ partial incognito
+            {
+                if (looker.checkVisisble(inf.gameObject, looker.character.visionAngle / 2f,
+                    looker.character.visionDistance / 2f))
+                { // is very in view
+                    zombies.Add(inf);
+                }
+            }
+            else // full suss
+            {
+                zombies.Add(inf);
+            }
+        }
+
+        if (playerVisible)
+        {
+            if (Player.instance.character is Sauce)
+            {
+                zombies.Add(Player.instance);
+            }
+        }
+
+        return zombies;
     }
 
     public static HashSet<Controller> getVisibleOfInterest(Controller looker)
@@ -181,6 +214,25 @@ public class CharacterManager : MonoBehaviour
         else
         {
             return getVisibleHorde(looker);
+        }
+    }
+
+    public void RemoveZombie(Zombie zom)
+    {
+        zombies.Remove(zom);
+    }
+
+    public void RemoveInfected(Controller human)
+    {
+        infected.Remove(human);
+    }
+
+    public void RemoveHuman(Controller human)
+    {
+        humans.Remove(human);
+        if (humans.Count <= 0)
+        {
+            Debug.Log("WIN Level!");
         }
     }
 }

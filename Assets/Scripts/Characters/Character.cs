@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public abstract class Character : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public abstract class Character : MonoBehaviour
     public float visionDistance = 10;
     public float visionAngle = 90;
     public float infectionTime = 10; // how much time from infection until zombification
-    public float timeOfInfection = -1;  // -1 if not infected
+    [NonSerialized] public float timeOfInfection = -1;  // -1 if not infected
 
     public List<Transform> waypointTransforms;
     [NonSerialized] public List<Vector3> waypoints;
@@ -22,26 +24,34 @@ public abstract class Character : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void die()
     {
         Player player = GetComponent<Player>();
         if (player != null) {
-            throw new Exception("player died");
+            StartCoroutine(WaitAndRespawn());
+            return;
         }
         Zombie zom = GetComponent<Zombie>();
         if (zom != null)
         {
-            CharacterManager.instance.zombies.Remove(zom);
+            CharacterManager.instance.RemoveZombie(zom);
         }
         else {
             Human human = GetComponent<Human>();
             if (timeOfInfection != -1) {
-                CharacterManager.instance.infected.Remove(human);
+                CharacterManager.instance.RemoveInfected(human);
             }
-            CharacterManager.instance.humans.Remove(human);
+            CharacterManager.instance.RemoveHuman(human);
         }
         
         Destroy(gameObject);
+    }
+
+    private IEnumerator WaitAndRespawn()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public CharacterSpriteController SpriteController;
@@ -89,5 +99,14 @@ public abstract class Character : MonoBehaviour
     {
         Vector3 ejectPos = transform.position + transform.right * Player.ejectDistance;
         GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, ejectPos, transform.rotation);
+    }
+
+    public float getInfectionFrac() // -1 if not infected/ already zombie. [0,1] if turning
+    {
+        if (timeOfInfection == -1 || Time.time - timeOfInfection > infectionTime)
+        {
+            return -1;
+        }
+        return (Time.time - timeOfInfection) / infectionTime;
     }
 }
