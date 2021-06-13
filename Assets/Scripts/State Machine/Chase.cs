@@ -37,16 +37,15 @@ public class Chase : StateMachineBehaviour
             lastKnownPos = target.position;
         }
 
-        if (_character is Ranged rangedChar && target)
+        if (_character is Attacker attacker && target)
         {
-            // Debug.Log(myGameObject);
-            // Debug.Log($"targ:{target}");
             var dist = Vector2.Distance(myGameObject.transform.position, target.position);
-            if (dist < rangedChar.attackRange && rangedChar.checkCleanLineSight())
+            if (dist < attacker.attackRange && attacker.checkCleanLineSight())
             {
                 attacking = true;
+                Debug.Log("ATTACKING!!!!");
                 controller.ClearAgentPath();
-                rangedChar.Attack();
+                attacker.Attack();
             }
             else
             {
