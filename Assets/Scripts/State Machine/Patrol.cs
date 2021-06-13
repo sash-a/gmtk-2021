@@ -22,7 +22,7 @@ public class Patrol : StateMachineBehaviour
         controller = animator.GetComponent<Ai>();
         _character = animator.GetComponent<Character>();
         // controller.ClearAgentPath();
-        // controller.agent.SetDestination(_character.waypoints[wayptIdx]);
+        controller.agent.SetDestination(_character.waypoints[wayptIdx]);
     } 
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -66,9 +66,9 @@ public class Patrol : StateMachineBehaviour
         if (Vector2.Distance(transform.position, _character.waypoints[wayptIdx]) < 1)
         {
             wayptIdx++;
-            wayptIdx %= _character.waypoints.Count; 
+            wayptIdx %= _character.waypoints.Count;
+            controller.agent.SetDestination(_character.waypoints[wayptIdx]);
         }
-        controller.agent.SetDestination(_character.waypoints[wayptIdx]);
     }
     
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
