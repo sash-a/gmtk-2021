@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Patrol : StateMachineBehaviour
 {
@@ -84,6 +85,10 @@ public class Patrol : StateMachineBehaviour
             {
                 throw new System.Exception("Null controller in patrol");
             }
+        }
+        if (controller.agent == null)
+        {
+            controller.agent = controller.GetComponent<NavMeshAgent>();
         }
         if (Vector2.Distance(transform.position, targetPatrolPoint) > 3f || controller.agent.velocity.magnitude < 1)
         {

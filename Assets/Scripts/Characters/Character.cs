@@ -10,7 +10,7 @@ public abstract class Character : MonoBehaviour
     public float moveSpeed = 10;
     public float visionDistance = 10;
     public float visionAngle = 90;
-    public float infectionTime = 6; // how much time from infection until zombification
+    public float infectionTime = 8; // how much time from infection until zombification
     [NonSerialized] public float timeOfInfection = -1;  // -1 if not infected
 
     public List<Transform> waypointTransforms;
@@ -20,14 +20,22 @@ public abstract class Character : MonoBehaviour
     public GameObject greenBloodPuddle;
     public GameObject dieEffect;
     public GameObject greenDieEffect;
+    
+    public Sprite face0;
+    public Sprite face1;
+    public Sprite face2;
 
     private bool playerDead = false;
+
     private void Awake()
     {
         waypoints = new List<Vector3>();
-        foreach (var waypoint in waypointTransforms)
+        if (waypointTransforms != null)
         {
-            waypoints.Add(waypoint.position);
+            foreach (var waypoint in waypointTransforms)
+            {
+                waypoints.Add(waypoint.position);
+            }
         }
     }
 
@@ -37,7 +45,6 @@ public abstract class Character : MonoBehaviour
         Player player = GetComponent<Player>();
         if (player != null && !playerDead)
         {
-            // playerDead = true;
             Instantiate(greenBloodPuddle,transform.position, transform.rotation);
             Instantiate(greenDieEffect,transform.position, transform.rotation);
             Debug.Log("Playing!");

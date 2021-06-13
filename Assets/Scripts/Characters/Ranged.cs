@@ -59,7 +59,6 @@ public class Ranged : Attacker
 
         if (hitInfo)
         {
-            Debug.Log(hitInfo.transform.name);
             Character character = hitInfo.transform.GetComponent<Character>();
 
             if (character) {
@@ -87,10 +86,18 @@ public class Ranged : Attacker
 
     }
 
-    public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer = false)
+    public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer=false)
     {
         Debug.Log("Waiting for fire");
-        yield return new WaitForSeconds(0.5f);
+        if (!isPlayer)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
         Debug.Log("firing!");        
         SpriteController.torsoAnimator.SetBool("Attacking", false);
         DoAttack(dir, isPlayer);
