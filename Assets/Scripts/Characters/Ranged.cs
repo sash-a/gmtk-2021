@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ranged : Attacker
 {
-    public float attackRange; // distance guard will stop and shoot at
     public float bulletRange; // range of the gun
     public float fireRate;
     private float lastFire;
@@ -26,7 +25,7 @@ public class Ranged : Attacker
         if(isPlayer)
             layerMask = LayerMask.GetMask( "wall", "human");
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, attackRange, layerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, bulletRange, layerMask);
 
         if (hitInfo)
         {
