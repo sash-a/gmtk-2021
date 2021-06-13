@@ -12,6 +12,8 @@ public class Patrol : StateMachineBehaviour
     private Character _character;
 
     private int wayptIdx;
+    private float timeSinceLastSeen;
+    private Vector3 lastKnownPos;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -43,6 +45,7 @@ public class Patrol : StateMachineBehaviour
         if (CharacterManager.getVisibleHorde(controller).Count > 0)
         {
             animator.SetBool("isChasing", true);
+            animator.SetBool("isPatroling", false);
         }
 
     }
