@@ -123,6 +123,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &307965234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1861336004833532572, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+  m_PrefabInstance: {fileID: 1384667726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &307965237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307965234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26143549a2f29d8408abb597c017da34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music:
+  - name: Lab - Ambient
+    clip: {fileID: 8300000, guid: f0c9152deedb3de4395ad37142ff2c0d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Perc
+    clip: {fileID: 8300000, guid: 4de68bc72a2ed3548b666e9110d8bdbc, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Kick
+    clip: {fileID: 8300000, guid: 4c2e574d7ad208f419e8a108484045f3, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Click
+    clip: {fileID: 8300000, guid: 16b1162c4772a274998c5a1026949e07, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Stomp
+    clip: {fileID: 8300000, guid: a64d9a8fceae6d940b334466c0e7aa69, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Snare
+    clip: {fileID: 8300000, guid: 48c97022b2338e04e857a4ada8b87b11, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Rise
+    clip: {fileID: 8300000, guid: a37b4852295270e4d818c6c4e24a36a3, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Synth
+    clip: {fileID: 8300000, guid: 94aa7fef662f5394fb8801fb0296be58, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Scifi_Perc
+    clip: {fileID: 8300000, guid: 771730aa77fadfc4fa313962616c867c, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Roll
+    clip: {fileID: 8300000, guid: 70fa9d5d3e2df3849970b45fe2238e7a, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lab - Vroom
+    clip: {fileID: 8300000, guid: 17664df6e7cef0d4785b3a931bff75d3, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1001 &938149384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,16 +368,220 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 6c2442963b4b6404ebc1746687481a0e, type: 3}
     - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[13].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: sounds.Array.data[13].name
       value: sauce
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f0c9152deedb3de4395ad37142ff2c0d, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[14].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: Lab - Ambient
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[15].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4de68bc72a2ed3548b666e9110d8bdbc, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[15].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[15].name
+      value: Lab - Percs
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[16].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c2e574d7ad208f419e8a108484045f3, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[16].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[16].name
+      value: Lab - Kicks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[17].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 16b1162c4772a274998c5a1026949e07, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[17].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[17].name
+      value: Lab - Clicks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[18].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a64d9a8fceae6d940b334466c0e7aa69, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[18].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[18].name
+      value: Lab - Stomps
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[19].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 48c97022b2338e04e857a4ada8b87b11, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[19].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[19].name
+      value: Lab - Snare
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[20].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a37b4852295270e4d818c6c4e24a36a3, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[20].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[20].name
+      value: Lab - Rise
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[21].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 94aa7fef662f5394fb8801fb0296be58, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[21].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[21].name
+      value: Lab - Synth
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[22].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 771730aa77fadfc4fa313962616c867c, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[22].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[22].name
+      value: Lab - Scifi_Perc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[23].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70fa9d5d3e2df3849970b45fe2238e7a, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[23].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[23].name
+      value: Lab - Roll
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[24].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 17664df6e7cef0d4785b3a931bff75d3, type: 3}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[24].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[24].name
+      value: Lab - Vroom
       objectReference: {fileID: 0}
     - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: sounds.Array.data[13].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[14].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[15].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[16].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[17].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[18].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[19].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[20].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[21].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[22].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[23].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[24].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: sounds.Array.data[13].volume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[14].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[15].volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[16].volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[17].volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[18].volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839183574253003178, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: sounds.Array.data[19].volume
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3515964528543480432, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_ChunkCullingBounds.x
@@ -3102,6 +3390,14 @@ PrefabInstance:
     - target: {fileID: 3951106632527020568, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_LocalPosition.y
       value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059976635962905696, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059976635962905696, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4567779784584352610, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_LocalPosition.x
