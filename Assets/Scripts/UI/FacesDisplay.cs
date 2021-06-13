@@ -21,6 +21,7 @@ public class FacesDisplay : MonoBehaviour
         if (car.face0 == null)
         {
             Debug.LogError(car + " has no faces sprites");
+            return;
         }
         if (frac < 0.33f)
         {
