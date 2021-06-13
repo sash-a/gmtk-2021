@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Chase : StateMachineBehaviour
 {
 
     private Ai controller;
+    private Character _character;
     public float chaseSpeed = 10;
 
     private Vector3 lastKnownPos;
@@ -16,13 +18,15 @@ public class Chase : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Im chasing");
+        // Debug.Log("Im chasing");
         myGameObject = animator.gameObject;
 
         controller = animator.GetComponent<Ai>();
+        _character = animator.GetComponent<Character>();
         controller.ClearAgentPath();
     }
 
+    private bool attacking = false;
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -33,11 +37,46 @@ public class Chase : StateMachineBehaviour
             lastKnownPos = target.position;
         }
 
-        controller.agent.SetDestination(lastKnownPos);
-        
+        if (_character is Ranged rangedChar && target)
+        {
+            // Debug.Log(myGameObject);
+            // Debug.Log($"targ:{target}");
+            var dist = Vector2.Distance(myGameObject.transform.position, target.position);
+            if (dist < rangedChar.attackRange && rangedChar.checkCleanLineSight())
+            {
+                attacking = true;
+                controller.ClearAgentPath();
+                rangedChar.Attack();
+            }
+            else
+            {
+                // Debug.Log("Chasing");
+                controller.agent.SetDestination(lastKnownPos);
+                Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
+            }
+        }
+
+        if (!attacking)
+        {
+            // Debug.Log("Chasing");
+            if (controller == null)
+            {
+                controller = myGameObject.GetComponent<Ai>();
+                if (controller == null)
+                {
+                    throw new Exception("cannot get Ai from: " + myGameObject);
+                }
+            }
+
+            if (controller.agent == null)
+            {
+                controller.agent = controller.GetComponent<NavMeshAgent>();
+            }
+            controller.agent.SetDestination(lastKnownPos);
+            Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
+        }
         // Debug.Log($"Lastknow:{lastKnownPos}");
         
-        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
         // Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
 
         var d = Vector2.Distance(animator.transform.position, lastKnownPos);

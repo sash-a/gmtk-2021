@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Ranged : Attacker
 {
-    public float attackRange; // distance guard will stop and shoot at
     public float bulletRange; // range of the gun
+
     public GameObject muzzleFlash;
     public float framesToFlash;
     private bool _isFlashing = false;
@@ -15,19 +15,34 @@ public class Ranged : Attacker
     public GameObject sauceHitEffect;
     public GameObject bloodPuddle;
 
+    public float fireRate;
+    private float lastFire;
+
     private void Start()
     {
-        if(muzzleFlash != null)
+        if (muzzleFlash != null)
             muzzleFlash.SetActive(false);
     }
 
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+        if (Time.time - lastFire < fireRate)
+        {
+            return;
+        }
+        lastFire = Time.time;
+
+        StartCoroutine(WaitForFire(dir, isPlayer));
+    }
+    
+    public void DoAttack(Vector3 dir = new Vector3(), bool isPlayer = false)
+    {
+
         if (!_isFlashing && muzzleFlash != null)
         {
             StartCoroutine(doFlash());
         }
-        
+
         if (dir == Vector3.zero)
             dir = transform.right;
 
@@ -37,7 +52,7 @@ public class Ranged : Attacker
         if(isPlayer)
             layerMask = LayerMask.GetMask( "wall", "human");
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, attackRange, layerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, bulletRange, layerMask);
 
         if (hitInfo)
         {
@@ -47,8 +62,7 @@ public class Ranged : Attacker
             if (character) {
                 character.die();
             }
-            else
-            {
+            else {
                 Debug.Log("ranged guard hit: " + hitInfo.transform.gameObject);
             }
 
@@ -67,13 +81,18 @@ public class Ranged : Attacker
                 Instantiate(envHitEffect, hitInfo.point, Quaternion.identity);
             }
 
-            
-
-
         }
 
     }
 
+    public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer = false)
+    {
+        Debug.Log("Waiting for fire");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("firing!");
+        DoAttack(dir, isPlayer);
+    }
+    
     public bool checkCleanLineSight()
     {    
         int layerMask = LayerMask.GetMask("player", "zombie", "wall");

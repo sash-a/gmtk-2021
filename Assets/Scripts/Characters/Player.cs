@@ -144,6 +144,9 @@ public class Player : Controller
         {
             ((Ranged)character).Attack(mouseDir, isPlayer:true);
         }
-      
+        if (character is Melee)
+        {
+            ((Melee)character).Attack(mouseDir, isPlayer:true);
+        }
     }
 }

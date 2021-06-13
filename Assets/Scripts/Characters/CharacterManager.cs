@@ -109,9 +109,18 @@ public class CharacterManager : MonoBehaviour
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
     {
+        if (looker == null)
+        {
+            throw new Exception("looker is null");
+        }
         HashSet<Controller> visible = new HashSet<Controller>();
         foreach (var controller in controllers)
         {
+            if (controller == null)
+            {
+                throw new Exception("deleted controller still in character manager");
+            }
+
             if (looker is Player)
             {
                 if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance, visionAngle: Player.infectionAngle))
@@ -137,7 +146,6 @@ public class CharacterManager : MonoBehaviour
         }
 
         return visible;
-
     }
 
     public static HashSet<Controller> getVisibleHumans(Controller looker)
@@ -158,13 +166,16 @@ public class CharacterManager : MonoBehaviour
     public static HashSet<Controller> getVisibleHorde(Controller looker)
     {
         HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
+        // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
         HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
+        // Debug.Log("num visible infected: " + infected.Count + " num infected: " + instance.infected.Count);
         zombies.UnionWith(infected);
         HashSet<Controller> horde = zombies;
         if (looker.checkVisisble(Player.instance.gameObject))
         {
             horde.Add(Player.instance.GetComponent<Controller>());
         }
+        // Debug.Log("num visible in horde: " + horde.Count);
         
         return horde;
     }
