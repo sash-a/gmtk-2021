@@ -8,9 +8,9 @@ using Random = System.Random;
 
 public class Ai : Controller
 {
-    public NavMeshAgent agent;
+    [NonSerialized] public NavMeshAgent agent;
     public bool rotating;
-    
+
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,7 +27,7 @@ public class Ai : Controller
     public void FixedUpdate()
     {
         character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.right, agent.velocity);
-        character.SpriteController.legsAnimator.SetFloat("Speed", agent.velocity.magnitude);
+        character.SpriteController.legsAnimator.SetBool("walking", agent.velocity.magnitude > 0);
     }
 
     public List<Vector3> getRotationPoints(int points)
