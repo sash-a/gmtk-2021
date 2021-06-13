@@ -10,7 +10,7 @@ public abstract class Character : MonoBehaviour
     public float moveSpeed = 10;
     public float visionDistance = 10;
     public float visionAngle = 90;
-    public float infectionTime = 10; // how much time from infection until zombification
+    public float infectionTime = 6; // how much time from infection until zombification
     [NonSerialized] public float timeOfInfection = -1;  // -1 if not infected
 
     public List<Transform> waypointTransforms;
@@ -25,7 +25,8 @@ public abstract class Character : MonoBehaviour
     public Sprite face1;
     public Sprite face2;
 
-    
+    private bool playerDead = false;
+
     private void Awake()
     {
         waypoints = new List<Vector3>();
@@ -39,7 +40,7 @@ public abstract class Character : MonoBehaviour
     public void die()
     {
         Player player = GetComponent<Player>();
-        if (player != null)
+        if (player != null && !playerDead)
         {
             Instantiate(greenBloodPuddle,transform.position, transform.rotation);
             Instantiate(greenDieEffect,transform.position, transform.rotation);

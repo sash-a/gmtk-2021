@@ -5,7 +5,7 @@ using UnityEngine;
 public class Patrol : StateMachineBehaviour
 {
 
-    public float patrolRange = 10;
+    public float patrolRange = 2;
     public float patrolSpeed = 5;
     private Vector2 targetPatrolPoint;
     private Ai controller;
