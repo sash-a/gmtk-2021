@@ -132,23 +132,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 370722903445153396, guid: a5852a98f581aa447a7c824624f1bbc6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7625095
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 370722903445153396, guid: a5852a98f581aa447a7c824624f1bbc6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 370722903445153396, guid: a5852a98f581aa447a7c824624f1bbc6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 370722903445153396, guid: a5852a98f581aa447a7c824624f1bbc6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.64697707
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 370722903445153396, guid: a5852a98f581aa447a7c824624f1bbc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -80.628
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1969523293678078924, guid: a5852a98f581aa447a7c824624f1bbc6, type: 3}
       propertyPath: m_Name
@@ -2991,6 +2991,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 31.492151
       objectReference: {fileID: 0}
+    - target: {fileID: 6674994384092481044, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
 --- !u!4 &168773296 stripped
@@ -3460,6 +3464,10 @@ PrefabInstance:
     - target: {fileID: 1969523293678078924, guid: 778093357a10b404cab23058296c5f8b, type: 3}
       propertyPath: m_Name
       value: scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969523293678078924, guid: 778093357a10b404cab23058296c5f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3245081050635607555, guid: 778093357a10b404cab23058296c5f8b, type: 3}
       propertyPath: m_Materials.Array.data[0]

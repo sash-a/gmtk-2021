@@ -2290,14 +2290,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
---- !u!4 &4567779784584352610 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4567779784303633409, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
-  m_PrefabInstance: {fileID: 1878832995}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3951106632527020568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3951106631001585019, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+  m_PrefabInstance: {fileID: 1878832995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4567779784584352610 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4567779784303633409, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
   m_PrefabInstance: {fileID: 1878832995}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2239994856326847375
@@ -55714,6 +55714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5348468863117058579, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5348468863117058583, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -55797,6 +55801,22 @@ PrefabInstance:
     - target: {fileID: 5348468863117058583, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348468863181812783, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 185.063
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348468863181812783, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 133.5249
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348468863181812783, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348468863181812783, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20bf11182114b7f4e8c96be7cabaf4d0, type: 3}
