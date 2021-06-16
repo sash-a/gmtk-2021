@@ -67,6 +67,7 @@ public class CharacterManager : MonoBehaviour
         humanObject.name = "Player";
         humanObject.layer = LayerMask.NameToLayer("player");
         human.glowTimeLeft = 0;
+        human.character.tentacles.infect();
         humanObject.GetComponent<NavMeshAgent>().enabled = false;
         humanObject.GetComponent<Animator>().enabled = false;
         

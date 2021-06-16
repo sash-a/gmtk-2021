@@ -21,9 +21,13 @@ public class Player : Controller
     // ReSharper disable Unity.PerformanceAnalysis
     void Update()
     { 
-        Vector2 dir = move();
         findHosts();
         tryAttack();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 dir = move();
         handleRotation(dir);
     }
 
