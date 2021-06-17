@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,5 +64,9 @@ public class Melee : Attacker
         }
         
         SpriteController.torsoAnimator.SetBool("Attacking", false);
+    }
+
+    private void Update() // don't remove. needed to make script disablable
+    {
     }
 }

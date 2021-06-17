@@ -21,7 +21,7 @@ public class Patrol : StateMachineBehaviour
     {
         targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
         controller = animator.GetComponent<Ai>();
-        _character = animator.GetComponent<Character>();
+        _character = animator.GetComponent<Controller>().character;
         // controller.ClearAgentPath();
         controller.agent.SetDestination(_character.waypoints[wayptIdx]);
     } 

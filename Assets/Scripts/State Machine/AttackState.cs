@@ -18,7 +18,7 @@ public class AttackState : StateMachineBehaviour
         myGameObject = animator.gameObject;
 
         controller = animator.GetComponent<Ai>();
-        _character = animator.GetComponent<Character>();
+        _character = animator.GetComponent<Controller>().character;
         controller.ClearAgentPath();
     }
 

@@ -9,7 +9,7 @@ using Random = System.Random;
 public class Ai : Controller
 {
     [NonSerialized] public NavMeshAgent agent;
-    public bool rotating;
+    [NonSerialized] public bool rotating;
 
     public void Start()
     {

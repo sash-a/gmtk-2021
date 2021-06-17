@@ -7,14 +7,13 @@ using UnityEngine.SceneManagement;
 
 public abstract class Character : MonoBehaviour
 {
-    public float moveSpeed = 10;
+    public float moveSpeed = 7;
     public float visionDistance = 10;
     public float visionAngle = 90;
     public float infectionTime = 8; // how much time from infection until zombification
     [NonSerialized] public float timeOfInfection = -1;  // -1 if not infected
 
-    public List<Transform> waypointTransforms;
-    [NonSerialized] public List<Vector3> waypoints;
+    [NonSerialized] public Waypoints waypoints;
 
     public GameObject redBloodPuddle;
     public GameObject greenBloodPuddle;
@@ -29,16 +28,10 @@ public abstract class Character : MonoBehaviour
 
     public Tentacles tentacles;
 
-    private void Awake()
+    public void Awake()
     {
-        waypoints = new List<Vector3>();
-        if (waypointTransforms != null)
-        {
-            foreach (var waypoint in waypointTransforms)
-            {
-                waypoints.Add(waypoint.position);
-            }
-        }
+        waypoints = GetComponentInChildren<Waypoints>();
+        waypoints.compute();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

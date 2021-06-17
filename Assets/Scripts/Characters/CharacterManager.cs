@@ -98,32 +98,17 @@ public class CharacterManager : MonoBehaviour
         go.layer = LayerMask.NameToLayer("zombie");
         zom.GetComponent<NavMeshAgent>().enabled = true;
         zom.GetComponent<Animator>().enabled = true;
-        zom.character.tentacles.makeZombie();
-        zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
 
         if (zom.character is Ranged)
         {
             Ranged ran = (Ranged)zom.character;
-            
-            Melee mel = zom.AddComponent<Melee>();
-            GameObject hitbox = Instantiate(instance.meleeBoxPrefab, mel.transform);
-            mel.hitBox = hitbox.GetComponent<MeleeHitBox>();
-            mel.face0 = ran.face0;
-            mel.face1 = ran.face1;
-            mel.face2 = ran.face2;
-
-            mel.dieEffect = ran.dieEffect;
-            mel.greenBloodPuddle = ran.greenBloodPuddle;
-            mel.greenDieEffect = ran.greenDieEffect;
-
-            mel.redBloodPuddle = ran.redBloodPuddle;
-            mel.SpriteController = ran.SpriteController;
-            mel.attackRange = 1;
-            mel.waypointTransforms = ran.waypointTransforms;
-            zom.character = mel;
             Destroy(ran);
+            Melee mel = zom.GetComponent<Melee>();
+            mel.enabled = true;
+            zom.character = mel;
         }  // convert the ranged attacker to a melee attacker
-        // Debug.Log("zombification complete");
+        zom.character.tentacles.makeZombie();
+        zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
     }
     
     // ReSharper disable Unity.PerformanceAnalysis

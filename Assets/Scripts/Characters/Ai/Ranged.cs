@@ -18,6 +18,12 @@ public class Ranged : Attacker
     public float fireRate;
     private float lastFire;
 
+    private void Awake()
+    {
+        base.Awake();
+        GetComponent<Melee>().enabled = false;
+    }
+
     private void Start()
     {
         if (muzzleFlash != null)

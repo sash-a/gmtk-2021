@@ -20,7 +20,16 @@ public class Controller : MonoBehaviour
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        character = GetComponent<Character>();
+        Character[] characters = GetComponents<Character>();
+        foreach (var ch in characters)
+        {
+            Debug.Log(this + " found charcater: " + ch + " enabled: " + ch.enabled);
+            if (ch.enabled)
+            {
+                character = ch;
+            }
+        }
+        
         glowEffect = GetComponentInChildren<CharacterGlowEffect>();
         if (glowEffect == null)
         {
