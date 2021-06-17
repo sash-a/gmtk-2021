@@ -25,7 +25,7 @@ public class Patrol : StateMachineBehaviour
     {
         _targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
         _controller = animator.GetComponent<Ai>();
-        Debug.Log($"ctrlr (strt):{_controller} {_controller == null}");
+        //Debug.Log($"ctrlr (strt):{_controller} {_controller == null}");
         _character = animator.GetComponent<Controller>().character;
         _gameObject = animator.gameObject;
 
@@ -36,7 +36,7 @@ public class Patrol : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log($"ctrlr (upd):{_controller} {_controller == null}");
+        //Debug.Log($"ctrlr (upd):{_controller} {_controller == null}");
 
         // TODO fix - case that isn't handled when player ejects and this goes back to human AI
         //  zombiefying should be renamed infected and used as such

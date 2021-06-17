@@ -42,7 +42,7 @@ public abstract class Character : MonoBehaviour
         {
             Instantiate(greenBloodPuddle,transform.position, transform.rotation);
             Instantiate(greenDieEffect,transform.position, transform.rotation);
-            Debug.Log("Playing!");
+            //Debug.Log("Playing!");
             StartCoroutine(WaitAndRespawn());
             return;
         }
@@ -51,7 +51,7 @@ public abstract class Character : MonoBehaviour
         {
             Instantiate(greenBloodPuddle,transform.position, transform.rotation);
             Instantiate(greenDieEffect,transform.position, transform.rotation);
-            Debug.Log("Playing!");
+            //Debug.Log("Playing!");
 
             CharacterManager.instance.RemoveZombie(zom);
         }
@@ -63,8 +63,7 @@ public abstract class Character : MonoBehaviour
 
             Instantiate(redBloodPuddle,transform.position, transform.rotation);
             Instantiate(dieEffect,transform.position, transform.rotation);
-            Debug.Log("Playing!");
-
+            //Debug.Log("Playing!");
 
             CharacterManager.instance.RemoveHuman(human);
         }
@@ -127,9 +126,12 @@ public abstract class Character : MonoBehaviour
     
     public void eject() // method should be called when the player leaps out of the character
     {
-        Vector3 ejectPos = transform.position + transform.right * Player.ejectDistance;
-        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, ejectPos, transform.rotation);
-    }
+        Vector3 ejectPos = transform.position + transform.right * Player.ejectForce;
+        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, transform.position + transform.right * 0.2f, transform.rotation);
+        //newSauce.GetComponent<Rigidbody2D>().MovePosition(transform.position + ejectPos);
+        newSauce.GetComponent<Rigidbody2D>().velocity = transform.right * Player.ejectForce;
+        newSauce.GetComponent<Player>().remainingSlideTime = 0.2f;
+    }   
 
     public float getInfectionFrac() // -1 if not infected/ already zombie. [0,1] if turning
     {

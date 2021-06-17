@@ -216,7 +216,6 @@ MonoBehaviour:
   visionDistance: 3
   visionAngle: 45
   infectionTime: -1
-  waypointTransforms: []
   redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
   greenBloodPuddle: {fileID: 4227105782261398518, guid: f33abfffc99ed4ea28914bafc8486041, type: 3}
   dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
@@ -224,6 +223,7 @@ MonoBehaviour:
   face0: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
   face1: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
   face2: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
+  tentacles: {fileID: 0}
   SpriteController: {fileID: 996663334274836400}
   sauceAnimator: {fileID: 1837293775}
 --- !u!114 &4614906186400585533
@@ -311,6 +311,18 @@ PrefabInstance:
       propertyPath: torso
       value: 
       objectReference: {fileID: 1168241027554382829}
+    - target: {fileID: 2547274288637104482, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547274288637104482, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547274288637104482, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3219623872382049232, guid: d04efbdd0c62e7d6bb400860f0e11371, type: 3}
       propertyPath: m_RootOrder
       value: 4

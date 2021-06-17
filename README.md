@@ -7,7 +7,6 @@ Refactor cone of vision stats
 Death sound for people and sauce
 hit animation for many melee humans not working
 better hit animation for zombies
-ejecting from a host can throw you through walls. Dont teleport - add velocity
 add velocity leap for sauce to jump to host
 explain win condition in first levels
 no need to have separate feet for each character

@@ -9,10 +9,12 @@ public class Player : Controller
     public static Player instance;
     public static float infectionDistance = 3;
     public static float infectionAngle = 45;
-    public static float ejectDistance = 2f;
+    public static float ejectForce = 40f;
     private static readonly int Walking = Animator.StringToHash("walking");
     private static readonly int Attacking = Animator.StringToHash("Attacking");
     private static readonly int Zombiefying = Animator.StringToHash("zombiefying");
+
+    [NonSerialized] public float remainingSlideTime = 0;
 
     void Awake()
     {
@@ -30,6 +32,11 @@ public class Player : Controller
 
     private void FixedUpdate()
     {
+        if (remainingSlideTime > 0)
+        {
+            remainingSlideTime -= Time.deltaTime;
+            return;
+        }//no inputs until slide is over
         Vector2 dir = move();
         HandleRotation(dir);
     }
@@ -150,6 +157,7 @@ public class Player : Controller
 
         dir = dir.normalized;
         moveDirection(dir);
+
         return dir;
     }
 

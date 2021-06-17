@@ -94,7 +94,7 @@ public class Ranged : Attacker
 
     public IEnumerator WaitForFire(Vector3 dir = new Vector3(), bool isPlayer=false)
     {
-        Debug.Log("Waiting for fire");
+        //Debug.Log("Waiting for fire");
         if (!isPlayer)
         {
             yield return new WaitForSeconds(0.5f);
@@ -104,7 +104,7 @@ public class Ranged : Attacker
             yield return new WaitForEndOfFrame();
         }
 
-        Debug.Log("firing!");        
+        //Debug.Log("firing!");        
         SpriteController.torsoAnimator.SetBool("Attacking", false);
         DoAttack(dir, isPlayer);
     }

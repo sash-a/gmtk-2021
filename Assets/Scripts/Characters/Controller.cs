@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
         Character[] characters = GetComponents<Character>();
         foreach (var ch in characters)
         {
-            Debug.Log(this + " found charcater: " + ch + " enabled: " + ch.enabled);
+            //Debug.Log(this + " found charcater: " + ch + " enabled: " + ch.enabled);
             if (ch.enabled)
             {
                 character = ch;
