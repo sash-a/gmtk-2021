@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : Controller
 {
-
     public static Player instance;
     public static float infectionDistance = 3;
     public static float infectionAngle = 45;
     public static float ejectDistance = 2f;
-    
+    private static readonly int Walking = Animator.StringToHash("walking");
+    private static readonly int Attacking = Animator.StringToHash("Attacking");
+    private static readonly int Zombiefying = Animator.StringToHash("zombiefying");
+
     void Awake()
     {
         base.Awake();
@@ -20,40 +23,44 @@ public class Player : Controller
 
     // ReSharper disable Unity.PerformanceAnalysis
     void Update()
-    { 
-        findHosts();
-        tryAttack();
+    {
+        FindHosts();
+        TryAttack();
     }
 
     private void FixedUpdate()
     {
         Vector2 dir = move();
-        handleRotation(dir);
+        HandleRotation(dir);
     }
 
-    void handleRotation(Vector2 moveDir)
+    void HandleRotation(Vector2 moveDir)
     {
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
         if (character is Sauce)
         {
             // transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
-            ((Sauce)character).sauceAnimator.gameObject.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(-moveDir.x, moveDir.y) * Mathf.Rad2Deg);
+            transform.rotation = Quaternion.Euler(0, 0,
+                Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+            ((Sauce) character).sauceAnimator.gameObject.transform.rotation =
+                Quaternion.Euler(0, 0, Mathf.Atan2(-moveDir.x, moveDir.y) * Mathf.Rad2Deg);
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+            transform.rotation = Quaternion.Euler(0, 0,
+                Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
         }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private void findHosts()  // finds candidate host humans. checks for space input to jump
+    private void FindHosts() // finds candidate host humans. checks for space input to jump
     {
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
         if (visibleHumans.Count == 0)
-        {// noone in range
-            noHostCandidates();
+        {
+            // noone in range
+            NoHostCandidates();
             // Debug.Log("no one in range");
             return;
         }
@@ -65,7 +72,7 @@ public class Player : Controller
         {
             float distance = Vector3.Distance(transform.position, human.transform.position);
             bool canSeeYou = human.checkVisisble(gameObject);
-            
+
             if (distance < minDistance && !canSeeYou)
             {
                 minDistance = distance;
@@ -82,11 +89,11 @@ public class Player : Controller
         targetHuman.glow();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jumpToHost(targetHuman);
+            JumpToHost(targetHuman);
         }
     }
 
-    private void noHostCandidates()
+    private void NoHostCandidates()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -95,61 +102,64 @@ public class Player : Controller
                 character.eject();
                 CharacterManager.humanify(this);
             }
-        }    
+        }
     }
 
-    private void jumpToHost(Controller targetHuman)
-    { // the human should be given a player controller, and the current player object should be destroyed
+    private void JumpToHost(Controller targetHuman)
+    {
+        // the human should be given a player controller, and the current player object should be destroyed
         CharacterManager.bodySnatch(targetHuman, this);
     }
 
     Vector2 move()
     {
-      
         Vector2 dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
             dir += Vector2.left;
         }
+
         if (Input.GetKey(KeyCode.D))
         {
             dir += Vector2.right;
         }
+
         if (Input.GetKey(KeyCode.W))
         {
             dir += Vector2.up;
         }
+
         if (Input.GetKey(KeyCode.S))
         {
             dir += Vector2.down;
         }
-        
+
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
-        character.SpriteController.legsAnimator.SetBool("walking", dir.magnitude > 0);
-        character.SpriteController.torsoAnimator.SetBool("walking", dir.magnitude > 0);
+        character.SpriteController.legsAnimator.SetBool(Walking, dir.magnitude > 0);
+        character.SpriteController.torsoAnimator.SetBool(Walking, dir.magnitude > 0);
 
         if (character is Sauce)
         {
-            ((Sauce)character).sauceAnimator.SetBool("walking", dir.magnitude > 0);
+            ((Sauce) character).sauceAnimator.SetBool(Walking, dir.magnitude > 0);
 
-            if(dir.magnitude < 0)
+            if (dir.magnitude < 0)
             {
                 AudioManager.instance.Play("sauce");
             }
         }
-        
+
         dir = dir.normalized;
         moveDirection(dir);
         return dir;
     }
-    
-    private void tryAttack()
+
+    private void TryAttack()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Attack(mousePos-transform.position);
-            character.SpriteController.torsoAnimator.SetBool("Attacking", true);
+            Attack(mousePos - transform.position);
+            character.SpriteController.torsoAnimator.SetBool(Attacking, true);
         }
     }
 
@@ -157,11 +167,12 @@ public class Player : Controller
     {
         if (character is Ranged)
         {
-            ((Ranged)character).Attack(mouseDir, isPlayer:true);
+            ((Ranged) character).Attack(mouseDir, isPlayer: true);
         }
+
         if (character is Melee)
         {
-            ((Melee)character).Attack(mouseDir, isPlayer:true);
+            ((Melee) character).Attack(mouseDir, isPlayer: true);
         }
     }
 }

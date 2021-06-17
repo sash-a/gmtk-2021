@@ -15,7 +15,7 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> zombies;
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
-    public GameObject meleeBoxPrefab; 
+    public GameObject meleeBoxPrefab;
 
     // public AnimatorController zombieController;
 
@@ -36,28 +36,31 @@ public class CharacterManager : MonoBehaviour
     {
         instance.humans.Add(human);
     }
-    
+
     public static void registerZombie(Controller zombie)
     {
         instance.zombies.Add(zombie);
     }
-
+    
+    /**
+     * Player enters this controller
+     */ 
+    // TODO this should move to player
     public static void bodySnatch(Controller human, Player currentPlayer)
     {
-        AudioManager.instance.PlayRandom(new string[] {"gargle_1", "gargle_2"});
+        AudioManager.instance.PlayRandom(new[] {"gargle_1", "gargle_2"});
         // Debug.Log("body snatching " + human);
-        human.character.infect(); // star ts timer to become a zombie
-        GameObject playerObject = currentPlayer.gameObject;
-        Sauce sauce = playerObject.GetComponent<Sauce>();
+        human.character.infect(); // starts timer to become a zombie
+        Sauce sauce = currentPlayer.GetComponent<Sauce>();
         if (sauce != null) // wasn't in a body yet
         {
-            Destroy(playerObject);
+            Destroy(currentPlayer.gameObject);
         }
         else
         {
             humanify(currentPlayer);
         }
-
+    
         instance.RemoveHuman(human);
         GameObject humanObject = human.gameObject;
         Destroy(humanObject.GetComponent<Human>());
@@ -70,52 +73,59 @@ public class CharacterManager : MonoBehaviour
         human.character.tentacles.infect();
         humanObject.GetComponent<NavMeshAgent>().enabled = false;
         humanObject.GetComponent<Animator>().enabled = false;
-        
+    
         UIManager.setCurrentHost(player.character);
     }
 
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    /**
+     * Adds controller to zombie horde and turns human ai into zombie
+     */
     public static void zombify(Controller controller)
     {
-        AudioManager.instance.PlayRandom(new string[] { "groan_1", "groan_2" });
+        AudioManager.instance.PlayRandom(new[] {"groan_1", "groan_2"});
         GameObject go = controller.gameObject;
-        if (controller is Human)
-        {//is human, so player has left the character already
+        if (controller is Human) //  is human, so player has left the character already
+        {
             instance.RemoveHuman(controller);
             instance.RemoveInfected(controller);
-        } else if (controller is Player){ }
+        }
+        else if (controller is Player)
+        {
+        }
         else
         {
-            throw new Exception("unreckognised type");
+            throw new Exception("unrecognised type");
         }
-        
+
         controller.glowEffect.gameObject.SetActive(true);
         Destroy(controller);
         Zombie zom = go.AddComponent<Zombie>();
         instance.zombies.Add(zom);
         go.name = "Zombie";
         go.layer = LayerMask.NameToLayer("zombie");
-        zom.GetComponent<NavMeshAgent>().enabled = true;
-        zom.GetComponent<Animator>().enabled = true;
 
         if (zom.character is Ranged)
         {
-            Ranged ran = (Ranged)zom.character;
+            Ranged ran = (Ranged) zom.character;
             Destroy(ran);
             Melee mel = zom.GetComponent<Melee>();
             mel.enabled = true;
             zom.character = mel;
-        }  // convert the ranged attacker to a melee attacker
+        } // convert the ranged attacker to a melee attacker
+
         zom.character.tentacles.makeZombie();
         zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
+        
+        zom.GetComponent<NavMeshAgent>().enabled = true;
+        zom.GetComponent<Animator>().enabled = true;
     }
-    
-    // ReSharper disable Unity.PerformanceAnalysis
-    public static void humanify(Controller controller) // turns a host back into a human temporarily
-    {
 
-        AudioManager.instance.PlayRandom(new string[] { "cough_spit_1", "cough_spit_2" });
+    /**
+     * turns a host back into a human temporarily
+     */
+    public static void humanify(Controller controller)
+    {
+        AudioManager.instance.PlayRandom(new string[] {"cough_spit_1", "cough_spit_2"});
         GameObject hostObj = controller.gameObject;
         controller.glowEffect.gameObject.SetActive(true);
         Destroy(hostObj.GetComponent<Player>());
@@ -135,6 +145,7 @@ public class CharacterManager : MonoBehaviour
         {
             throw new Exception("looker is null");
         }
+
         HashSet<Controller> visible = new HashSet<Controller>();
         foreach (var controller in controllers)
         {
@@ -145,14 +156,16 @@ public class CharacterManager : MonoBehaviour
 
             if (looker is Player)
             {
-                if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance, visionAngle: Player.infectionAngle))
+                if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance,
+                    visionAngle: Player.infectionAngle))
                 {
                     visible.Add(controller);
                 }
             }
             else if (looker is Zombie)
             {
-                if (looker.checkVisisble(controller.gameObject, visionDistance: Zombie.visionDistance, visionAngle: Zombie.visionAngle))
+                if (looker.checkVisisble(controller.gameObject, visionDistance: Zombie.visionDistance,
+                    visionAngle: Zombie.visionAngle))
                 {
                     visible.Add(controller);
                 }
@@ -164,7 +177,6 @@ public class CharacterManager : MonoBehaviour
                     visible.Add(controller);
                 }
             }
-
         }
 
         return visible;
@@ -174,7 +186,7 @@ public class CharacterManager : MonoBehaviour
     {
         return instance.getVisibleCharacters(looker, instance.humans);
     }
-    
+
     public static HashSet<Controller> getVisibleZombies(Controller looker)
     {
         return instance.getVisibleCharacters(looker, instance.zombies);
@@ -196,17 +208,21 @@ public class CharacterManager : MonoBehaviour
             infected.Add(Player.instance);
             playerVisible = true;
         }
-        
+
         foreach (var inf in infected)
         {
             float frac = inf.character.getInfectionFrac();
-            if(frac < 0.33f){ continue; } // full incognito
+            if (frac < 0.33f)
+            {
+                continue;
+            } // full incognito
 
             if (frac < 0.66f) // partial suss/ partial incognito
             {
                 if (looker.checkVisisble(inf.gameObject, looker.character.visionAngle / 2f,
                     looker.character.visionDistance / 2f))
-                { // is very in view
+                {
+                    // is very in view
                     zombies.Add(inf);
                 }
             }

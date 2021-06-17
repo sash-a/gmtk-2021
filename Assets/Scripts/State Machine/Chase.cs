@@ -7,115 +7,55 @@ using UnityEngine.AI;
 
 public class Chase : StateMachineBehaviour
 {
-
-    private Ai controller;
+    private Ai _controller;
     private Character _character;
-    public float chaseSpeed = 10;
 
-    private Vector3 lastKnownPos;
-    private GameObject myGameObject;
+    private Vector3 _lastKnownPos;
+    private GameObject _gameObject;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    private bool _attacking;
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Debug.Log("Im chasing");
-        myGameObject = animator.gameObject;
+        _gameObject = animator.gameObject;
 
-        controller = animator.GetComponent<Ai>();
+        _controller = animator.GetComponent<Ai>();
         _character = animator.GetComponent<Controller>().character;
-        controller.ClearAgentPath();
+        _controller.ClearAgentPath();
     }
 
-    private bool attacking = false;
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Transform target = getClosestTarget(animator.transform.position);
+        // TODO maybe should linger on old target a bit
+        Transform target = GetClosestTarget(animator.transform.position);
         if (target)
         {
-            //animator.transform.position = Vector2.MoveTowards(animator.transform.position, target.position, chaseSpeed * Time.deltaTime);
-            lastKnownPos = target.position;
+            _lastKnownPos = target.position;
         }
-        
-        if (controller == null)
+
+        if (TryAttack(target)) // if attacking don't need to check anything else
         {
-            controller = myGameObject.GetComponent<Ai>();
-            if (controller == null)
-            {
-                throw new Exception("cannot get Ai from: " + myGameObject);
-            }
+            return;
         }
 
-        if (controller.agent == null)
+        if (CheckAndSwitchStates(animator)) // if switching states don't also add to destination
         {
-            controller.agent = controller.GetComponent<NavMeshAgent>();
+            return;
         }
 
-        if (_character is Attacker attacker && target)
-        {
-            var dist = Vector2.Distance(myGameObject.transform.position, target.position);
-            if (dist < attacker.attackRange && attacker.checkCleanLineSight())
-            {
-                attacking = true;
-                Debug.Log("ATTACKING!!!!");
-                controller.ClearAgentPath();
-                attacker.Attack();
-            }
-            else
-            {
-                // Debug.Log("Chasing");
-                try
-                {
-                    controller.agent.SetDestination(lastKnownPos);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e);
-                    return;
-                }
-
-                Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
-            }
-        }
-
-        if (!attacking)
-        {
-            controller.agent.SetDestination(lastKnownPos);
-            Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.red);
-        }
-        // Debug.Log($"Lastknow:{lastKnownPos}");
-        
-        // Debug.DrawLine(animator.transform.position, lastKnownPos, Color.blue);
-
-        var d = Vector2.Distance(animator.transform.position, lastKnownPos);
-        if (CharacterManager.getVisibleOfInterest(controller).Count == 0 && d < 1)
-        {
-            animator.SetBool("isChasing", false);
-            animator.SetBool("isPatroling", true);
-        }
-
+        GoTo(_lastKnownPos);
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // controller.ClearAgentPath();
-    }
-
-    Transform getClosestTarget(Vector3 currentPos)
+    Transform GetClosestTarget(Vector3 currentPos)
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;
-        if (controller == null)
+        if (_controller == null)
         {
-            controller = myGameObject.GetComponent<Ai>();
-            if (controller == null)
-            {
-                throw new Exception("cannot get Ai from: " + myGameObject);
-            }
+            _controller = _gameObject.GetComponent<Ai>();
         }
 
-        foreach (Controller controller in CharacterManager.getVisibleOfInterest(controller))
+        foreach (Controller controller in CharacterManager.getVisibleOfInterest(_controller))
         {
             float dist = Vector3.Distance(controller.transform.position, currentPos);
             if (dist < minDist)
@@ -126,8 +66,42 @@ public class Chase : StateMachineBehaviour
         }
 
         return tMin;
-
     }
 
+    private void GoTo(Vector3 target)
+    {
+        _controller.agent.SetDestination(target);
+        Debug.DrawLine(_gameObject.transform.position, _controller.agent.destination, Color.red);
+    }
 
+    private bool TryAttack(Transform target)
+    {
+        if (_character is Attacker attacker && target)
+        {
+            var dist = Vector2.Distance(_gameObject.transform.position, target.position);
+            if (dist < attacker.attackRange && attacker.checkCleanLineSight())
+            {
+                _controller.ClearAgentPath();
+                attacker.Attack();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool CheckAndSwitchStates(Animator animator)
+    {
+        var d = Vector2.Distance(_gameObject.transform.position, _lastKnownPos);
+        if (CharacterManager.getVisibleOfInterest(_controller).Count == 0 && d < 1)
+        {
+            animator.SetBool("isChasing", false);
+            animator.SetBool("isPatroling", true);
+
+            return true;
+        }
+
+
+        return false;
+    }
 }

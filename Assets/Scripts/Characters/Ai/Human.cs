@@ -14,11 +14,6 @@ public class Human : Ai
         {
             AudioManager.instance.Play("footstep_1");
         }
-        
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            character.infect();
-        }
 
         base.FixedUpdate();
     }
@@ -27,6 +22,5 @@ public class Human : Ai
     // {
     //     // Debug.DrawLine(transform.position, (transform.position + transform.forward) * 3, Color.red);
     //     // Debug.DrawLine(transform.position, transform.position + agent.velocity, Color.blue);
-    //
     // }
 }

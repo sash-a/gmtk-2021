@@ -10,6 +10,7 @@ public class Ai : Controller
 {
     [NonSerialized] public NavMeshAgent agent;
     [NonSerialized] public bool rotating;
+    private static readonly int Walking = Animator.StringToHash("walking");
 
     public void Start()
     {
@@ -27,8 +28,8 @@ public class Ai : Controller
     public void FixedUpdate()
     {
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.right, agent.velocity);
-        character.SpriteController.legsAnimator.SetBool("walking", agent.velocity.magnitude > 0);
-        character.SpriteController.torsoAnimator.SetBool("walking", agent.velocity.magnitude > 0);
+        character.SpriteController.legsAnimator.SetBool(Walking, agent.velocity.magnitude > 0);
+        character.SpriteController.torsoAnimator.SetBool(Walking, agent.velocity.magnitude > 0);
     }
 
     public List<Vector3> getRotationPoints(int points)
@@ -49,7 +50,7 @@ public class Ai : Controller
         StartCoroutine(RandRotationTime());
     }
 
-    public IEnumerator RandRotationTime()
+    private IEnumerator RandRotationTime()
     {
         var r = new Random().Next(1, 5);
         Debug.Log($"r:{r}");

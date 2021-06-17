@@ -12,3 +12,7 @@ add velocity leap for sauce to jump to host
 explain win condition in first levels
 no need to have separate feet for each character
 restart button
+On zombiefy rotate/play animation
+For zombie rand patrol make it look more natural and not go out of bounds/make if follow player (play test!)
+Add in attack state...maybe?
+Cleanup die method

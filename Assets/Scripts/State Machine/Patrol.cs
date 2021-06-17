@@ -1,106 +1,108 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Patrol : StateMachineBehaviour
 {
-
     public float patrolRange = 1;
-    public float patrolSpeed = 5;
-    private Vector2 targetPatrolPoint;
-    private Ai controller;
+    private Vector2 _targetPatrolPoint;
+
+    private Ai _controller;
     private Character _character;
+    private GameObject _gameObject;
 
-    private int wayptIdx;
-    private float timeSinceLastSeen;
-    private Vector3 lastKnownPos;
-    
+    private int _wayptIdx;
+    private float _timeSinceLastSeen;
+    private Vector3 _lastKnownPos;
+    private bool _initPatrol;
+    private float _distThresh = 1;
+
+    private static readonly int IsChasing = Animator.StringToHash("isChasing");
+    private static readonly int IsPatroling = Animator.StringToHash("isPatroling");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
-        controller = animator.GetComponent<Ai>();
+        _targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
+        _controller = animator.GetComponent<Ai>();
+        Debug.Log($"ctrlr (strt):{_controller} {_controller == null}");
         _character = animator.GetComponent<Controller>().character;
-        // controller.ClearAgentPath();
-        controller.agent.SetDestination(_character.waypoints[wayptIdx]);
-    } 
+        _gameObject = animator.gameObject;
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        _controller.ClearAgentPath();
+
+        _initPatrol = true;
+    }
+
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log($"ctrlr (upd):{_controller} {_controller == null}");
 
-        // TODO: ADD PROPER PATROL LOGIC
-        // RandomPatrol(animator.transform);
-
-        if (controller == null) {
-            controller = animator.GetComponent<Ai>();
-            if (controller == null)
-            {
-                throw new System.Exception("Null controller in patrol");
-            }
+        // TODO fix - case that isn't handled when player ejects and this goes back to human AI
+        //  zombiefying should be renamed infected and used as such
+        
+        // controller is only ever null on player ejected
+        // because for some reason start isn't called on animator.enabled = true
+        if (_controller == null)
+        {
+            _controller = animator.GetComponent<Ai>();
+        }
+        
+        if (CharacterManager.getVisibleOfInterest(_controller).Count > 0)
+        {
+            animator.SetBool(IsChasing, true);
+            animator.SetBool(IsPatroling, false);
+            return;
         }
 
-        if (controller is Zombie)
+        DoPatrol();
+    }
+
+    private void DoPatrol()
+    {
+        if (_controller is Zombie)
         {
-            RandomPatrol(animator.transform);
+            RandomPatrol(_gameObject.transform, _initPatrol);
         }
         else
         {
-            WaypointPatrol(animator.transform);
-        }
-        
-        Debug.DrawLine(animator.transform.position, _character.waypoints[wayptIdx], Color.green);
-        Debug.DrawLine(animator.transform.position, controller.agent.destination, Color.blue);
-        
-        if (CharacterManager.getVisibleOfInterest(controller).Count > 0)
-        {
-            animator.SetBool("isChasing", true);
-            animator.SetBool("isPatroling", false);
-            // Debug.Log("exiting patrol");
+            WaypointPatrol(_gameObject.transform, _initPatrol);
         }
 
+        _initPatrol = false;
     }
 
-    void WaypointPatrol(Transform transform)
+    void WaypointPatrol(Transform transform, bool initialRoute = false)
     {
-        if (Vector2.Distance(transform.position, _character.waypoints[wayptIdx]) < 1)
+        if (Vector2.Distance(transform.position, _character.waypoints[_wayptIdx]) < _distThresh || initialRoute)
         {
-            wayptIdx++;
-            wayptIdx %= _character.waypoints.Count;
-            controller.agent.SetDestination(_character.waypoints[wayptIdx]);
+            _wayptIdx++;
+            _wayptIdx %= _character.waypoints.Count;
+            _controller.agent.SetDestination(_character.waypoints[_wayptIdx]);
+            // Debug.Log($"Waypoint set at :{_character.waypoints[_wayptIdx]}");
         }
-    }
-    
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // controller.ClearAgentPath();
-    }
-    
-    void RandomPatrol(Transform transform)
-    {
-        if (controller == null) {
-            controller = _character.GetComponent<Ai>();
-            if (controller == null)
-            {
-                throw new System.Exception("Null controller in patrol");
-            }
-        }
-        if (controller.agent == null)
-        {
-            controller.agent = controller.GetComponent<NavMeshAgent>();
-        }
-        if (Vector2.Distance(transform.position, targetPatrolPoint) > 3f || controller.agent.velocity.magnitude < 1)
-        {
-            //transform.position = Vector2.MoveTowards(transform.position, targetPatrolPoint, patrolSpeed * Time.deltaTime);
-            controller.agent.SetDestination(targetPatrolPoint);
-            Debug.DrawLine(transform.position, targetPatrolPoint);
-        }
-        else
-        {
-            targetPatrolPoint = (Vector2) transform.position + Random.insideUnitCircle * patrolRange;
-        }
+
+        var position = _gameObject.transform.position;
+        Debug.DrawLine(position, _character.waypoints[_wayptIdx], Color.green);
+        Debug.DrawLine(position, _controller.agent.destination, Color.blue);
     }
 
+    void RandomPatrol(Transform transform, bool initialRoute = false)
+    {
+        if (_controller.agent == null)
+        {
+            _controller.agent = _controller.GetComponent<NavMeshAgent>();
+        }
 
+        var position = transform.position;
+
+
+        if (Vector2.Distance(position, _targetPatrolPoint) < _distThresh || initialRoute)
+        {
+            _targetPatrolPoint = (Vector2) position + Random.insideUnitCircle * patrolRange;
+            _controller.agent.SetDestination(_targetPatrolPoint);
+        }
+
+        Debug.DrawLine(position, _targetPatrolPoint, Color.blue);
+    }
 }

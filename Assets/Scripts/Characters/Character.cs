@@ -79,6 +79,8 @@ public abstract class Character : MonoBehaviour
     }
 
     public CharacterSpriteController SpriteController;
+    private static readonly int Zombiefying = Animator.StringToHash("zombiefying");
+    private static readonly int IsPatroling = Animator.StringToHash("isPatroling");
 
     public void infect()
     {
@@ -100,6 +102,7 @@ public abstract class Character : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void zombify()
     {
+        // TODO this should go in human and so should the character manager method
         // Debug.Log("zombifying " + this);
         Player player = GetComponent<Player>();
         if (player != null) // player must be ejected
@@ -116,7 +119,10 @@ public abstract class Character : MonoBehaviour
             } // else is already a zombie (don't really understand this behaviour, but it seems to work fine)
         }
 
-        
+        var anim = GetComponent<Animator>();
+        // anim.Play(Zombiefying);
+        anim.SetBool(IsPatroling, true);
+        anim.SetBool(Zombiefying, true);
     }
     
     public void eject() // method should be called when the player leaps out of the character
