@@ -45,6 +45,11 @@ public class Chase : StateMachineBehaviour
 
         GoTo(_lastKnownPos);
     }
+    
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _controller.ClearAgentPath();
+    }
 
     Transform GetClosestTarget(Vector3 currentPos)
     {

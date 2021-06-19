@@ -36,12 +36,7 @@ public class Patrol : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Debug.Log($"ctrlr (upd):{_controller} {_controller == null}");
-
-        // TODO fix - case that isn't handled when player ejects and this goes back to human AI
-        //  zombiefying should be renamed infected and used as such
-        
-        // controller is only ever null on player ejected
+        // controller is only ever null on player ejected (controller changes from `Player` to `AI`
         // because for some reason start isn't called on animator.enabled = true
         if (_controller == null)
         {
@@ -56,6 +51,11 @@ public class Patrol : StateMachineBehaviour
         }
 
         DoPatrol();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _controller.ClearAgentPath();
     }
 
     private void DoPatrol()
@@ -89,11 +89,6 @@ public class Patrol : StateMachineBehaviour
 
     void RandomPatrol(Transform transform, bool initialRoute = false)
     {
-        if (_controller.agent == null)
-        {
-            _controller.agent = _controller.GetComponent<NavMeshAgent>();
-        }
-
         var position = transform.position;
 
 
