@@ -70,9 +70,9 @@ public class Ranged : Attacker
             if (character) {
                 character.die();
             }
-            else {
-                Debug.Log("ranged guard hit: " + hitInfo.transform.gameObject);
-            }
+            //else {
+            //    Debug.Log("ranged guard hit: " + hitInfo.transform.gameObject);
+            //}
 
             // TODO: Add hit effect on impact
             if(hitInfo.transform.GetComponent<Controller>() is Human)
