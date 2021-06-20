@@ -21,7 +21,7 @@
 * On zombiefy rotate/play animation
 
 ### Movement
-* Add velocity leap for sauce to jump to host - if you hit human infect otherwise long cooldown
+* cooldown after failed leap
 * Make infection moved direction related not mouse
 
 ### AI
@@ -47,4 +47,5 @@
 
 
 ### Bugs
-* Getting `Exception: deleted controller still in character manager` if I infect, eject and then reinfect the same human
+* null controller agent in Chase
+
