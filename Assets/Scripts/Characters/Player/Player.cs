@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,9 +11,6 @@ public class Player : Controller
     public static float infectionDistance = 3;
     public static float infectionAngle = 45;
     public static float ejectForce = 40f;
-    private static readonly int Walking = Animator.StringToHash("walking");
-    private static readonly int Attacking = Animator.StringToHash("Attacking");
-    private static readonly int Zombiefying = Animator.StringToHash("zombiefying");
 
     [NonSerialized] public float remainingSlideTime = 0;
 
@@ -32,11 +30,12 @@ public class Player : Controller
 
     private void FixedUpdate()
     {
-        if (remainingSlideTime > 0)
+        if (remainingSlideTime > 0) // no inputs until slide is over
         {
             remainingSlideTime -= Time.deltaTime;
             return;
-        }//no inputs until slide is over
+        }
+
         Vector2 dir = move();
         HandleRotation(dir);
     }
@@ -79,8 +78,10 @@ public class Player : Controller
         {
             float distance = Vector3.Distance(transform.position, human.transform.position);
             bool canSeeYou = human.checkVisisble(gameObject);
+            // Should you also not be able to assimilate while searching (rotating)?
+            bool chasingYou = ((Attacker) human.character).playerState.GetBool(AnimatorFields.Chasing);
 
-            if (distance < minDistance && !canSeeYou)
+            if (distance < minDistance && !canSeeYou && !chasingYou)
             {
                 minDistance = distance;
                 targetHuman = human;
@@ -90,10 +91,9 @@ public class Player : Controller
         if (targetHuman == null)
         {
             return;
-            throw new Exception("should never happen");
         }
 
-        targetHuman.glow();
+        targetHuman.glow(); // TODO glow anyways, but maybe in red
         if (Input.GetKeyDown(KeyCode.Space))
         {
             JumpToHost(targetHuman);
@@ -144,13 +144,13 @@ public class Player : Controller
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
         if (character.SpriteController.legsAnimator.runtimeAnimatorController != null)
         {
-            character.SpriteController.legsAnimator.SetBool(Walking, dir.magnitude > 0);
-            character.SpriteController.torsoAnimator.SetBool(Walking, dir.magnitude > 0);
+            character.SpriteController.legsAnimator.SetBool(AnimatorFields.Walking, dir.magnitude > 0);
+            character.SpriteController.torsoAnimator.SetBool(AnimatorFields.Walking, dir.magnitude > 0);
         }
 
         if (character is Sauce)
         {
-            ((Sauce) character).sauceAnimator.SetBool(Walking, dir.magnitude > 0);
+            ((Sauce) character).sauceAnimator.SetBool(AnimatorFields.Walking, dir.magnitude > 0);
 
             if (dir.magnitude < 0)
             {
@@ -170,7 +170,7 @@ public class Player : Controller
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Attack(mousePos - transform.position);
-            character.SpriteController.torsoAnimator.SetBool(Attacking, true);
+            character.SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, true);
         }
     }
 

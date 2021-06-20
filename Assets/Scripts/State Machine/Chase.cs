@@ -84,7 +84,7 @@ public class Chase : StateMachineBehaviour
         if (_character is Attacker attacker && target)
         {
             var dist = Vector2.Distance(_gameObject.transform.position, target.position);
-            if (dist < attacker.attackRange && attacker.checkCleanLineSight())
+            if (dist < attacker.attackRange && attacker.CheckCleanLineSight())
             {
                 _controller.ClearAgentPath();
                 attacker.Attack();

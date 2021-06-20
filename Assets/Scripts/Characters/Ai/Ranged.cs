@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
 
 public class Ranged : Attacker
@@ -36,7 +37,7 @@ public class Ranged : Attacker
         {
             return;
         }
-        SpriteController.torsoAnimator.SetBool("Attacking", true);
+        SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, true);
         lastFire = Time.time;
 
         StartCoroutine(WaitForFire(dir, isPlayer));
@@ -105,7 +106,7 @@ public class Ranged : Attacker
         }
 
         //Debug.Log("firing!");        
-        SpriteController.torsoAnimator.SetBool("Attacking", false);
+        SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, false);
         DoAttack(dir, isPlayer);
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -78,8 +79,6 @@ public abstract class Character : MonoBehaviour
     }
 
     public CharacterSpriteController SpriteController;
-    private static readonly int Zombiefying = Animator.StringToHash("zombiefying");
-    private static readonly int IsPatroling = Animator.StringToHash("isPatroling");
 
     public void infect()
     {
@@ -126,8 +125,8 @@ public abstract class Character : MonoBehaviour
 
         var anim = GetComponent<Animator>();
         // anim.Play(Zombiefying);
-        anim.SetBool(IsPatroling, true);
-        anim.SetBool(Zombiefying, true);
+        anim.SetBool(AnimatorFields.Patrolling, true);
+        anim.SetBool(AnimatorFields.Zombiefying, true);
     }
     
     public void eject() // method should be called when the player leaps out of the character

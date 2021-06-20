@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
 
 public class Melee : Attacker
@@ -18,7 +19,7 @@ public class Melee : Attacker
             myController = GetComponent<Controller>();
         }
         
-        SpriteController.torsoAnimator.SetBool("Attacking", true);
+        SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, true);
         
         StartCoroutine(WaitAndHit(isPlayer));
     }
@@ -70,7 +71,7 @@ public class Melee : Attacker
             }
         }
         
-        SpriteController.torsoAnimator.SetBool("Attacking", false);
+        SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, false);
     }
 
     private void Update() // don't remove. needed to make script disablable

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +8,6 @@ public class Zombiefy : StateMachineBehaviour
 {
     private float _zombiefyMaxTime;
     private float _zombiefyElapsedTime;
-    private static readonly int Zombiefying = Animator.StringToHash("zombiefying");
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,7 +21,7 @@ public class Zombiefy : StateMachineBehaviour
         // TODO rotate and make weird noises!
         if (_zombiefyElapsedTime > _zombiefyMaxTime)
         {
-            animator.SetBool(Zombiefying, false);
+            animator.SetBool(AnimatorFields.Zombiefying, false);
             return;
         }
 

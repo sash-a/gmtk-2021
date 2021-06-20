@@ -7,7 +7,9 @@
 
 ### Visual
 * Infecting animation
-* Make selected human circle more visible - particle effects
+* Make selected human circle more visible
+    - particle effects 
+    - show glow even if unifectable, but make it red
 * Tint human skin
 * Fade in tentacles
 * Grow in tentacles
@@ -41,3 +43,8 @@
 ### Refactor
 * Transition manager that holds all zombify/humanify
 * Cleanup die method
+* Add singleton that holds all animation strings
+
+
+### Bugs
+* Getting `Exception: deleted controller still in character manager` if I infect, eject and then reinfect the same human

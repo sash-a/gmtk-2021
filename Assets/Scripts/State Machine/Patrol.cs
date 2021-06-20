@@ -1,3 +1,4 @@
+using State_Machine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,9 +17,6 @@ public class Patrol : StateMachineBehaviour
     private Vector3 _lastKnownPos;
     private bool _initPatrol;
     private float _distThresh = 1;
-
-    private static readonly int IsChasing = Animator.StringToHash("isChasing");
-    private static readonly int IsPatroling = Animator.StringToHash("isPatroling");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -45,8 +43,8 @@ public class Patrol : StateMachineBehaviour
         
         if (CharacterManager.getVisibleOfInterest(_controller).Count > 0)
         {
-            animator.SetBool(IsChasing, true);
-            animator.SetBool(IsPatroling, false);
+            animator.SetBool(AnimatorFields.Chasing, true);
+            animator.SetBool(AnimatorFields.Patrolling, false);
             return;
         }
 

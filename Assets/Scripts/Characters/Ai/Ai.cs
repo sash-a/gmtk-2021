@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using State_Machine;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = System.Random;
@@ -10,7 +11,6 @@ public class Ai : Controller
 {
     [NonSerialized] public NavMeshAgent agent;
     [NonSerialized] public bool rotating;
-    private static readonly int Walking = Animator.StringToHash("walking");
 
     public void Start()
     {
@@ -28,8 +28,8 @@ public class Ai : Controller
     public void FixedUpdate()
     {
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.right, agent.velocity);
-        character.SpriteController.legsAnimator.SetBool(Walking, agent.velocity.magnitude > 0);
-        character.SpriteController.torsoAnimator.SetBool(Walking, agent.velocity.magnitude > 0);
+        character.SpriteController.legsAnimator.SetBool(AnimatorFields.Walking, agent.velocity.magnitude > 0);
+        character.SpriteController.torsoAnimator.SetBool(AnimatorFields.Walking, agent.velocity.magnitude > 0);
     }
 
     public List<Vector3> getRotationPoints(int points)
