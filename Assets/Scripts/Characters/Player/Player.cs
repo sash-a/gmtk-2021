@@ -10,9 +10,10 @@ public class Player : Controller
     public static Player instance;
     public static float infectionDistance = 3;
     public static float infectionAngle = 45;
-    public static float ejectForce = 40f;
+    public static float ejectForce = 60f;
 
     [NonSerialized] public float remainingSlideTime = 0;
+    [NonSerialized] public Character exitedHost = null;
 
     void Awake()
     {
@@ -36,6 +37,7 @@ public class Player : Controller
             return;
         }
 
+        exitedHost = null;
         Vector2 dir = move();
         HandleRotation(dir);
     }
@@ -106,16 +108,47 @@ public class Player : Controller
         {
             if (GetComponent<Sauce>() == null) // cannot eject from sauce
             {
-                character.eject();
-                CharacterManager.humanify(this);
+                eject();
+                CharacterManager.humanify(this); // destroys this object
             }
         }
+    }
+    
+    public void eject(Vector3 direction=new Vector3()) // method should be called when the player leaps out of the character
+    {
+        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
+        Player newPlayer = newSauce.GetComponent<Player>();
+        newPlayer.exitedHost = character;
+        newPlayer.leap(direction);
+    }
+
+    public void leap(Vector3 direction=new Vector3()) // leaps forward, or custom direction
+    {
+        if (direction == Vector3.zero)
+        {
+            direction = transform.right;
+        }
+        else
+        {
+            direction = direction.normalized;
+        }
+        rb.velocity =  direction * Player.ejectForce;
+        remainingSlideTime = 0.2f;
     }
 
     private void JumpToHost(Controller targetHuman)
     {
         // the human should be given a player controller, and the current player object should be destroyed
-        CharacterManager.bodySnatch(targetHuman, this);
+        Vector3 dir = targetHuman.transform.position - transform.position;
+        if (character is Sauce)
+        {
+            leap(dir);
+        }
+        else
+        {
+            eject(dir);
+            CharacterManager.humanify(this); // destroys this object
+        }
     }
 
     Vector2 move()

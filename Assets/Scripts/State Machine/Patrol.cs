@@ -1,7 +1,9 @@
+using System;
 using State_Machine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Patrol : StateMachineBehaviour
 {
@@ -72,6 +74,11 @@ public class Patrol : StateMachineBehaviour
 
     void WaypointPatrol(Transform transform, bool initialRoute = false)
     {
+        if (_controller == null)
+        {
+            _controller  = _character.GetComponent<Ai>();
+        }
+
         if (Vector2.Distance(transform.position, _character.waypoints[_wayptIdx]) < _distThresh || initialRoute)
         {
             _wayptIdx++;
@@ -82,7 +89,10 @@ public class Patrol : StateMachineBehaviour
 
         var position = _gameObject.transform.position;
         Debug.DrawLine(position, _character.waypoints[_wayptIdx], Color.green);
-        Debug.DrawLine(position, _controller.agent.destination, Color.blue);
+        try
+        {
+            Debug.DrawLine(position, _controller.agent.destination, Color.blue);
+        }catch(Exception e){}
     }
 
     void RandomPatrol(Transform transform, bool initialRoute = false)

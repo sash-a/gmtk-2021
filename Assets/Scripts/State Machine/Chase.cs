@@ -75,6 +75,10 @@ public class Chase : StateMachineBehaviour
 
     private void GoTo(Vector3 target)
     {
+        if (_controller == null)
+        {
+            _controller = _gameObject.GetComponent<Ai>();
+        }
         _controller.agent.SetDestination(target);
         Debug.DrawLine(_gameObject.transform.position, _controller.agent.destination, Color.red);
     }

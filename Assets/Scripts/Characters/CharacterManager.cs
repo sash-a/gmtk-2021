@@ -192,23 +192,13 @@ public class CharacterManager : MonoBehaviour
         return instance.getVisibleCharacters(looker, instance.humans);
     }
 
-    public static HashSet<Controller> getVisibleZombies(Controller looker)
-    {
-        return instance.getVisibleCharacters(looker, instance.zombies);
-    }
-
-    public static HashSet<Controller> getVisibleInfected(Controller looker)
-    {
-        return instance.getVisibleCharacters(looker, instance.infected);
-    }
-
     public static HashSet<Controller> getVisibleHorde(Controller looker)
     {
         HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
         // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
         HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
         bool playerVisible = false;
-        if (looker.checkVisisble(Player.instance.gameObject))
+        if (looker.checkVisisble(Player.instance.gameObject) && Player.instance.remainingSlideTime <= 0) // invisible while sliding
         {
             infected.Add(Player.instance);
             playerVisible = true;

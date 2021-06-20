@@ -26,13 +26,14 @@ public abstract class Character : MonoBehaviour
     public Sprite face2;
 
     private bool playerDead = false;
-
+    [NonSerialized] public Rigidbody2D rb;
     public Tentacles tentacles;
 
     public void Awake()
     {
         waypoints = GetComponentInChildren<Waypoints>();
         waypoints.compute();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -107,11 +108,10 @@ public abstract class Character : MonoBehaviour
     private void zombify()
     {
         // TODO this should go in human and so should the character manager method
-        // Debug.Log("zombifying " + this);
         Player player = GetComponent<Player>();
         if (player != null) // player must be ejected
         {
-            eject();
+            player.eject();
             CharacterManager.zombify(player);
         }
         else
@@ -129,15 +129,6 @@ public abstract class Character : MonoBehaviour
         anim.SetBool(AnimatorFields.Zombiefying, true);
     }
     
-    public void eject() // method should be called when the player leaps out of the character
-    {
-        Vector3 ejectPos = transform.position + transform.right * Player.ejectForce;
-        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, transform.position + transform.right * 0.2f, transform.rotation);
-        //newSauce.GetComponent<Rigidbody2D>().MovePosition(transform.position + ejectPos);
-        newSauce.GetComponent<Rigidbody2D>().velocity = transform.right * Player.ejectForce;
-        newSauce.GetComponent<Player>().remainingSlideTime = 0.2f;
-    }   
-
     public float getInfectionFrac() // -1 if not infected/ already zombie. [0,1] if turning
     {
         if (timeOfInfection == -1 || Time.time - timeOfInfection > infectionTime)

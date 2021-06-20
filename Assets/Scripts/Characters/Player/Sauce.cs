@@ -10,4 +10,22 @@ public class Sauce : Character
     {
         UIManager.setCurrentHost(this);
     }
+
+    private void OnCollisionEnter2D(Collision2D other) // checks if the slime has slid into a character
+    {
+        if (Player.instance.remainingSlideTime <= 0)
+        {
+            return;
+        }
+
+        Controller cntrl = other.gameObject.GetComponent<Controller>();
+        if (cntrl is Human)
+        { // can infect human
+            if (Player.instance.exitedHost == cntrl.character)
+            {
+                return;
+            }
+            CharacterManager.bodySnatch((Human)cntrl, GetComponent<Player>());
+        }
+    }
 }
