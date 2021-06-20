@@ -15,5 +15,13 @@ public class Sound
 
     [HideInInspector]
     public AudioSource source;
-    
+
+    public Sound(string name, AudioClip clip)
+    {
+        this.name = name;
+        this.clip = clip;
+        volume = 0;
+        pitch = 1;
+        loop = true;
+    }
 }

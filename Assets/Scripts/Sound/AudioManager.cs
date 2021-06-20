@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
         }
 
         musicManager = transform.GetComponent<MusicManager>();
+        Sound[] audio = musicManager.getThemeMusic();
+        musicManager.music = audio;
         foreach (Sound m in musicManager.music)
         {
             m.source = gameObject.AddComponent<AudioSource>();

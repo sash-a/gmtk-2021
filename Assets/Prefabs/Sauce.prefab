@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9804c13dc6f7f1f93ea1d005154a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 5.5
   visionDistance: 3
   visionAngle: 45
   infectionTime: -1

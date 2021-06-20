@@ -1713,6 +1713,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  theme: Lab
 --- !u!1 &3515964527667944849
 GameObject:
   m_ObjectHideFlags: 0
