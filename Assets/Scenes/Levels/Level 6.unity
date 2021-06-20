@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236772127502297484, guid: 1830f2d9018c9367bb7e0659a0a86ea4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6236772127502297484, guid: 1830f2d9018c9367bb7e0659a0a86ea4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6030232930076707722, guid: 64ff94fa4d1343f81999873791a10753, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6030232930076707722, guid: 64ff94fa4d1343f81999873791a10753, type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,6 +359,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ff94fa4d1343f81999873791a10753, type: 3}
+--- !u!1001 &1238497323
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 186020945046414841, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_Name
+      value: KindergartenMusic Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.242783
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.429283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618032164187033925, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34b454d19f7aea284aeebe351e2c1f19, type: 3}
 --- !u!1 &1348035534
 GameObject:
   m_ObjectHideFlags: 0
@@ -36898,7 +36955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236772127502297484, guid: 1830f2d9018c9367bb7e0659a0a86ea4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6236772127502297484, guid: 1830f2d9018c9367bb7e0659a0a86ea4, type: 3}
       propertyPath: m_LocalPosition.x

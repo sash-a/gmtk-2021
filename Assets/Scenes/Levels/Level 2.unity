@@ -14162,6 +14162,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759759697}
   m_CullTransparentMesh: 1
+--- !u!1001 &843211745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 665568311121779243, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_Name
+      value: OfficeMusic Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.242783
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.429283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066389906304790167, guid: a737121eae588c793a0d997c62997174, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a737121eae588c793a0d997c62997174, type: 3}
 --- !u!1001 &1037594988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14385,7 +14442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You never have to leave their boddies [Space]
+  m_text: Jump from host to host [Space]
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14419,7 +14476,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -14448,7 +14505,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -4.9719343, w: 0}
+  m_margin: {x: -2.405693, y: 0, z: -1.6591787, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -142,8 +142,11 @@ public class Player : Controller
         }
 
         // character.SpriteController.legs.transform.rotation = Quaternion.LookRotation(transform.forward, dir);
-        character.SpriteController.legsAnimator.SetBool(Walking, dir.magnitude > 0);
-        character.SpriteController.torsoAnimator.SetBool(Walking, dir.magnitude > 0);
+        if (character.SpriteController.legsAnimator.runtimeAnimatorController != null)
+        {
+            character.SpriteController.legsAnimator.SetBool(Walking, dir.magnitude > 0);
+            character.SpriteController.torsoAnimator.SetBool(Walking, dir.magnitude > 0);
+        }
 
         if (character is Sauce)
         {
