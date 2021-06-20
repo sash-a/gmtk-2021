@@ -83,6 +83,7 @@ public abstract class Character : MonoBehaviour
 
     public void infect()
     {
+        //Debug.Log(this + " infected");
         if (Math.Abs(timeOfInfection - (-1)) < 0.00001f)
         {
             timeOfInfection = Time.time;
@@ -93,8 +94,13 @@ public abstract class Character : MonoBehaviour
 
     private IEnumerator WaitAndZombify()
     {
-        // Debug.Log("waiting to zombify");
+        //Debug.Log("waiting to zombify");
         yield return new WaitForSeconds(infectionTime);
+        while (getInfectionFrac() < 0.99f && getInfectionFrac() != -1)
+        {
+            //Debug.Log("FRAC:" + getInfectionFrac());
+            yield return new WaitForSeconds(infectionTime/3f);
+        }
         zombify();
     }
 

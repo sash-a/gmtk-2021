@@ -678,6 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2239994856391736880}
   - component: {fileID: 1288534197078783748}
+  - component: {fileID: 432010699509203244}
   m_Layer: 0
   m_Name: Stencil scene
   m_TagString: Untagged
@@ -696,8 +697,8 @@ Transform:
   m_LocalPosition: {x: 4.057945, y: -1.4921507, z: -12.508944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5391996279473179956}
   - {fileID: 2239994857010146869}
+  - {fileID: 6101366521808971539}
   - {fileID: 3515964527706256970}
   - {fileID: 2239994857078865832}
   - {fileID: 2239994857323374387}
@@ -724,6 +725,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 1790886990838979766}
+--- !u!114 &432010699509203244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239994856391736881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6444a0f55452b9d48b612a6720e9e9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2239994856650042444
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +885,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2239994856391736880}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2239994857010146866
 Camera:
@@ -883,8 +896,8 @@ Camera:
   m_GameObject: {fileID: 2239994857010146865}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1505,214 +1518,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &2447837205597682056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5391996279473179956}
-  - component: {fileID: 2254741759569707710}
-  - component: {fileID: 3704368645005020601}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5391996279473179956
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447837205597682056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.242783, y: 11.429283, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2239994856391736880}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2254741759569707710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447837205597682056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8721401eb7e4c2443938231b1f94c4f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: gunshot_1
-    clip: {fileID: 8300000, guid: 1c15317cbd783d94b8d6cb912a9b1bb2, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: gunshot_2
-    clip: {fileID: 8300000, guid: 8f12b14c5bb976a41879656706404075, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: melee_1
-    clip: {fileID: 8300000, guid: c90d9e1753afd0b40b12c46541302577, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: melee_2
-    clip: {fileID: 8300000, guid: 77dbe417b14a45547ab113dc08ecc96e, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: footstep_1
-    clip: {fileID: 8300000, guid: 98102d5260a785140a5d5495c53cd13d, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: footstep_2
-    clip: {fileID: 8300000, guid: 8d231c371b8303f49bccbadf6852cf64, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: footstep_3
-    clip: {fileID: 8300000, guid: 5908019b4c7ee4040beb274b2458e12c, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: gargle_1
-    clip: {fileID: 8300000, guid: 29bb8a0794877ca43986cfc5ad95c804, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: gargle_2
-    clip: {fileID: 8300000, guid: 0db3e656ca3bcfa4abacb6e7d5b210c9, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: groan_1
-    clip: {fileID: 8300000, guid: d16db28b23bee8e4a961a7b97411f33d, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: groan_2
-    clip: {fileID: 8300000, guid: 3590b46da77f76c4892a03634cbf85b0, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: cough_spit_1
-    clip: {fileID: 8300000, guid: e8105a5b7554ed545ae18c54f91523bd, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: cough_spit_2
-    clip: {fileID: 8300000, guid: 0947c3085b3f07047a033f05d4b9bed8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: sauce
-    clip: {fileID: 8300000, guid: 6c2442963b4b6404ebc1746687481a0e, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
---- !u!114 &3704368645005020601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447837205597682056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26143549a2f29d8408abb597c017da34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-  - name: Lab - Ambient
-    clip: {fileID: 8300000, guid: f0c9152deedb3de4395ad37142ff2c0d, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Perc
-    clip: {fileID: 8300000, guid: 4de68bc72a2ed3548b666e9110d8bdbc, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Kick
-    clip: {fileID: 8300000, guid: 4c2e574d7ad208f419e8a108484045f3, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Click
-    clip: {fileID: 8300000, guid: 16b1162c4772a274998c5a1026949e07, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Stomp
-    clip: {fileID: 8300000, guid: a64d9a8fceae6d940b334466c0e7aa69, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Snare
-    clip: {fileID: 8300000, guid: 48c97022b2338e04e857a4ada8b87b11, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Rise
-    clip: {fileID: 8300000, guid: a37b4852295270e4d818c6c4e24a36a3, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Synth
-    clip: {fileID: 8300000, guid: 94aa7fef662f5394fb8801fb0296be58, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Scifi_Perc
-    clip: {fileID: 8300000, guid: 771730aa77fadfc4fa313962616c867c, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Roll
-    clip: {fileID: 8300000, guid: 70fa9d5d3e2df3849970b45fe2238e7a, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Lab - Vroom
-    clip: {fileID: 8300000, guid: 17664df6e7cef0d4785b3a931bff75d3, type: 3}
-    volume: 0
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
 --- !u!1 &3515964527667944849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,7 +2492,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2722,6 +2527,134 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4575699492601992111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6101366521808971539}
+  - component: {fileID: 86169984756885657}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6101366521808971539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575699492601992111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.242783, y: 11.429283, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2239994856391736880}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &86169984756885657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575699492601992111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8721401eb7e4c2443938231b1f94c4f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: gunshot_1
+    clip: {fileID: 8300000, guid: 1c15317cbd783d94b8d6cb912a9b1bb2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: gunshot_2
+    clip: {fileID: 8300000, guid: 8f12b14c5bb976a41879656706404075, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: melee_1
+    clip: {fileID: 8300000, guid: c90d9e1753afd0b40b12c46541302577, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: melee_2
+    clip: {fileID: 8300000, guid: 77dbe417b14a45547ab113dc08ecc96e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: footstep_1
+    clip: {fileID: 8300000, guid: 98102d5260a785140a5d5495c53cd13d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: footstep_2
+    clip: {fileID: 8300000, guid: 8d231c371b8303f49bccbadf6852cf64, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: footstep_3
+    clip: {fileID: 8300000, guid: 5908019b4c7ee4040beb274b2458e12c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: gargle_1
+    clip: {fileID: 8300000, guid: 29bb8a0794877ca43986cfc5ad95c804, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: gargle_2
+    clip: {fileID: 8300000, guid: 0db3e656ca3bcfa4abacb6e7d5b210c9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: groan_1
+    clip: {fileID: 8300000, guid: d16db28b23bee8e4a961a7b97411f33d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: groan_2
+    clip: {fileID: 8300000, guid: 3590b46da77f76c4892a03634cbf85b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: cough_spit_1
+    clip: {fileID: 8300000, guid: e8105a5b7554ed545ae18c54f91523bd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: cough_spit_2
+    clip: {fileID: 8300000, guid: 0947c3085b3f07047a033f05d4b9bed8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sauce
+    clip: {fileID: 8300000, guid: 6c2442963b4b6404ebc1746687481a0e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &4583059629633406980
 GameObject:
   m_ObjectHideFlags: 0

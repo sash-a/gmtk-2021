@@ -32,6 +32,11 @@ public class CharacterManager : MonoBehaviour
         return humans.Count;
     }
 
+    public int getNumberUninfectedHumans()
+    {
+        return humans.Count - infected.Count;
+    }
+
     public static void registerHuman(Controller human)
     {
         instance.humans.Add(human);

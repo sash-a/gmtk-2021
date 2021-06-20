@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
     private int currentHumans;
     private List<string> musicLayers = new List<string>();
     private float ratio;
-    private MusicManager musicManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,9 +32,11 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+    }
 
-        musicManager = transform.GetComponent<MusicManager>();
-        foreach (Sound m in musicManager.music)
+    private void Start()
+    {
+        foreach (Sound m in MusicManager.instance.music)
         {
             m.source = gameObject.AddComponent<AudioSource>();
             m.source.clip = m.clip;
@@ -43,13 +44,8 @@ public class AudioManager : MonoBehaviour
             m.source.pitch = m.pitch;
             m.source.loop = m.loop;
         }
-
-
-    }
-
-    private void Start()
-    {
-        foreach(Sound s in musicManager.music)
+        
+        foreach(Sound s in MusicManager.instance.music)
         {
             musicLayers.Add(s.name);
             playMusicLayer(s.name);
@@ -62,9 +58,9 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
        
-        if(CharacterManager.instance.getNumberOfHumans() < currentHumans)
+        if(CharacterManager.instance.getNumberUninfectedHumans() < currentHumans)
         {
-            currentHumans = CharacterManager.instance.getNumberOfHumans();
+            currentHumans = CharacterManager.instance.getNumberUninfectedHumans();
             float numMusicLayers = (totalStartingHumans + 1 - currentHumans) * ratio;
             int numLayers = Mathf.Max(Mathf.RoundToInt(numMusicLayers), 1);
             numLayers = Mathf.Min(numLayers, musicLayers.Count);
@@ -78,13 +74,13 @@ public class AudioManager : MonoBehaviour
 
     void setMusicVolume(string name, float volume)
     {
-        Sound s = Array.Find(musicManager.music, sound => sound.name == name);
+        Sound s = Array.Find(MusicManager.instance.music, sound => sound.name == name);
         s.source.volume = volume;
     }
 
     public void playMusicLayer(string name)
     {
-        Sound s = Array.Find(musicManager.music, sound => sound.name == name);
+        Sound s = Array.Find(MusicManager.instance.music, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogError("Sound: " + name + " not found");

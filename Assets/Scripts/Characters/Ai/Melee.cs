@@ -60,7 +60,14 @@ public class Melee : Attacker
         }
         for (int i = 0; i < hits.Count; i++)
         {
-            hits[i].character.die();
+            try
+            {
+                hits[i].character.die();
+            }
+            catch (Exception e)
+            {// is killed during wait for delay, can throw error. is edge case
+                break;
+            }
         }
         
         SpriteController.torsoAnimator.SetBool("Attacking", false);
