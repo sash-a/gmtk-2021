@@ -65,7 +65,7 @@ public class CharacterManager : MonoBehaviour
         {
             humanify(currentPlayer);
         }
-    
+
         instance.RemoveHuman(human);
         GameObject humanObject = human.gameObject;
         Destroy(humanObject.GetComponent<Human>());
@@ -273,6 +273,10 @@ public class CharacterManager : MonoBehaviour
     public void RemoveHuman(Controller human)
     {
         humans.Remove(human);
+        if (human.character.isInfected())
+        {
+            infected.Remove(human);
+        }
         if (humans.Count <= 0)
         {
             Debug.Log("WIN Level!");

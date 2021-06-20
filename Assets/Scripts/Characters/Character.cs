@@ -146,4 +146,9 @@ public abstract class Character : MonoBehaviour
         }
         return (Time.time - timeOfInfection) / infectionTime;
     }
+
+    public bool isInfected()
+    {
+        return Math.Abs(getInfectionFrac() - (-1)) > 0.000001f;
+    }
 }
