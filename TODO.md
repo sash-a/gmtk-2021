@@ -6,6 +6,7 @@
 * explain win condition in first levels
 
 ### Visual
+* make tentacle not reach through obstacles
 * Infecting animation
 * Make selected human circle more visible
     - particle effects 
@@ -22,11 +23,11 @@
 
 ### Movement
 * cooldown after failed leap
-* Make infection moved direction related not mouse
 
 ### AI
 * A host should not be infectable while they are in search mode, else you can dart behind their back and infect them
-* When you leave human - make them stunned
+	* nuance: host should be infectable if they are seacrhing/attacking a zombie and not the player
+* When human is infected (theres an isInfected method) - make them stunned
 * You should lose anonymity when you kill someone/shoot
 * You should lose anon when someone sees you enter host
 * Add in attack state...maybe?

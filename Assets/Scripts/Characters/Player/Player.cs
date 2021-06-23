@@ -15,10 +15,17 @@ public class Player : Controller
     [NonSerialized] public float remainingSlideTime = 0;
     [NonSerialized] public Character exitedHost = null;
 
+    public TentacleArm arm;
+
     void Awake()
     {
         base.Awake();
         instance = this;
+        if (arm == null)
+        {
+            arm = GetComponentInChildren<TentacleArm>();
+            arm.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        }
     }
 
 
@@ -46,6 +53,9 @@ public class Player : Controller
     {
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+        float armLen = Vector2.Distance(mouse, transform.position);
+        armLen = Mathf.Min(armLen, infectionDistance);
+        arm.setMouseDistance(armLen);
         if (character is Sauce)
         {
             // transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
@@ -120,6 +130,7 @@ public class Player : Controller
         Player newPlayer = newSauce.GetComponent<Player>();
         newPlayer.exitedHost = character;
         newPlayer.leap(direction);
+        arm.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     public void leap(Vector3 direction=new Vector3()) // leaps forward, or custom direction
