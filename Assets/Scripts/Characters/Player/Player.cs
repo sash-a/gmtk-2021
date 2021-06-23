@@ -16,7 +16,7 @@ public class Player : Controller
     [NonSerialized] public Character exitedHost = null;
 
     public TentacleArm arm;
-
+    
     void Awake()
     {
         base.Awake();
@@ -55,7 +55,9 @@ public class Player : Controller
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
         float armLen = Vector2.Distance(mouse, transform.position);
         armLen = Mathf.Min(armLen, infectionDistance);
-        arm.setMouseDistance(armLen);
+        arm.armLength = armLen;
+        arm.updateLength();
+        
         if (character is Sauce)
         {
             // transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);

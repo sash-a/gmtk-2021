@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,21 @@ using UnityEngine;
 public class TentacleArm : MonoBehaviour
 {
     private float baseLegth;
-    // Start is called before the first frame update
+    [NonSerialized] public float armLength;
     void Start()
     {
         baseLegth = 1f / transform.parent.localScale.x;
         //Debug.Log("base len:" + baseLegth + " parent scale: " + transform.parent.localScale);
     }
 
-    public void setMouseDistance(float dist)
-    {
-        //Debug.Log("mousedist: " + dist + " tentx:  " + baseLegth * dist);
-        transform.localScale = new Vector3(baseLegth * dist, 1, 1);
+    public void updateLength()
+    { // raycast to possibly cut the tentancle short
+        int layerMask = LayerMask.GetMask("human", "wall", "obstacles");
+        var hit = Physics2D.Raycast( transform.position, transform.right, armLength, layerMask);
+        if (hit.collider != null)
+        {
+            armLength = Mathf.Min(armLength, hit.distance);
+        }
+        transform.localScale = new Vector3(baseLegth * armLength, 1, 1);
     }
 }
