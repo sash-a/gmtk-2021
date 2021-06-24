@@ -232,4 +232,12 @@ public class Player : Controller
             ((Melee) character).Attack(mouseDir, isPlayer: true);
         }
     }
+
+    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    {
+        layers = new List<string>();
+        layers.AddRange(new []{"human", "wall", "obstacles"});
+        return base.checkVisisble(go, infectionAngle, infectionDistance, layers);
+    }
+
 }

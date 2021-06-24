@@ -18,7 +18,8 @@ public class Melee : Attacker
         {
             myController = GetComponent<Controller>();
         }
-        
+        base.Attack();
+
         SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, true);
         
         StartCoroutine(WaitAndHit(isPlayer));
@@ -34,15 +35,11 @@ public class Melee : Attacker
         {
             yield return new WaitForEndOfFrame();
         }
-        if (GetComponent<Zombie>() != null)
-        {
-            yield return new WaitForSecondsRealtime(0.32f);
-        }
         else
         {
             yield return new WaitForSecondsRealtime(0.22f);
         }
-        
+
         foreach (var touched in hitBox.touchedCharacters)
         {
             if (myController is Zombie || myController is Player)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -11,5 +12,12 @@ public class Zombie : Ai
     {
         CharacterManager.registerZombie(this);
         base.Start();
+    }
+    
+    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    {
+        layers = new List<string>();
+        layers.AddRange(new []{"human", "wall"});
+        return base.checkVisisble(go, visionAngle, visionDistance, layers);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Human : Ai
@@ -18,9 +19,10 @@ public class Human : Ai
         base.FixedUpdate();
     }
 
-    // private void LateUpdate()
-    // {
-    //     // Debug.DrawLine(transform.position, (transform.position + transform.forward) * 3, Color.red);
-    //     // Debug.DrawLine(transform.position, transform.position + agent.velocity, Color.blue);
-    // }
+    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    {
+        layers = new List<string>();
+        layers.AddRange(new []{"player", "infected", "wall", "zombie"});
+        return base.checkVisisble(go, visionAngle, visionDistance, layers);
+    }
 }

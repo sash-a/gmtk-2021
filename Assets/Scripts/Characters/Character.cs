@@ -28,6 +28,8 @@ public abstract class Character : MonoBehaviour
     private bool playerDead = false;
     [NonSerialized] public Rigidbody2D rb;
     public Tentacles tentacles;
+    [NonSerialized] public float lastAttacked;
+
 
     public void Awake()
     {
@@ -141,5 +143,10 @@ public abstract class Character : MonoBehaviour
     public bool isInfected()
     {
         return Math.Abs(getInfectionFrac() - (-1)) > 0.000001f;
+    }
+
+    public virtual void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
+    {
+        lastAttacked = Time.time;
     }
 }

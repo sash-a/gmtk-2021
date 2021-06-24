@@ -16,7 +16,7 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
     public GameObject meleeBoxPrefab;
-
+    
     // public AnimatorController zombieController;
 
     private void Awake()
@@ -158,29 +158,9 @@ public class CharacterManager : MonoBehaviour
             {
                 throw new Exception("deleted controller still in character manager");
             }
-
-            if (looker is Player)
+            if (looker.checkVisisble(controller.gameObject))
             {
-                if (looker.checkVisisble(controller.gameObject, visionDistance: Player.infectionDistance,
-                    visionAngle: Player.infectionAngle))
-                {
-                    visible.Add(controller);
-                }
-            }
-            else if (looker is Zombie)
-            {
-                if (looker.checkVisisble(controller.gameObject, visionDistance: Zombie.visionDistance,
-                    visionAngle: Zombie.visionAngle))
-                {
-                    visible.Add(controller);
-                }
-            }
-            else
-            {
-                if (looker.checkVisisble(controller.gameObject))
-                {
-                    visible.Add(controller);
-                }
+                visible.Add(controller);
             }
         }
 

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using State_Machine;
 using UnityEngine;
 using UnityEngine.AI;
@@ -95,4 +94,27 @@ public class Ai : Controller
     {
         doRotation();
     }
+    
+    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    {
+        if (go.GetComponent<Sauce>() != null)
+        {
+            layers.Add("obstacles");
+        }
+        if (go.GetComponent<Player>() != null)
+        {//subject to cone of vision character stats
+            float dist = Vector2.Distance(go.transform.position, transform.position);
+            visionAngle = character.visionAngle;
+            if (dist < 2) // very close by humans can see the player in a larger cone
+            {
+                visionAngle = 270;
+            }
+            return base.checkVisisble(go, visionAngle, character.visionDistance, layers);
+        }
+        
+        //else is checking for another ai. they have 360 vision
+        return base.checkVisisble(go, 360, character.visionDistance, layers);
+
+    }
+    
 }

@@ -43,31 +43,18 @@ public class Controller : MonoBehaviour
             rb.MovePosition(((Vector2)transform.position) + dir * (character.moveSpeed * Time.deltaTime));
     }
 
-    void Attack()
-    {
-        // Get attack script
-        Attacker attacker = GetComponent<Attacker>();
-
-        // Check if attack component is attached
-        if (attacker)
-        {
-            attacker.Attack();
-        }
-          
-    }
-
-    public bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1)
+    public virtual bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
     {
         var target = (Vector2)go.transform.position;
         var pos = (Vector2)transform.position;
         if (visionDistance == -1)
         {
-            visionDistance = character.visionDistance;
+            throw new Exception();
         }
 
         if (visionAngle == -1)
         {
-            visionAngle = character.visionAngle;
+            throw new Exception();
         }
 
         float dist = Vector2.Distance(target, pos);
@@ -75,41 +62,14 @@ public class Controller : MonoBehaviour
         {
             return false;
         }
-
-        if (dist < 2) // very close by enemies are visible in a larger cone
-        {
-            visionAngle = 270;
-        }
-
+        
         float angle = Vector2.Angle(transform.right, target - pos);
         if (angle > visionAngle / 2f)
         {
             return false;
         }
 
-        int layerMask = LayerMask.GetMask(LayerMask.LayerToName(go.layer));
-        string myLayer = LayerMask.LayerToName(gameObject.layer);
-        if (myLayer == "zombie" || myLayer == "player")
-        {
-            layerMask = LayerMask.GetMask("human", "wall");
-        }
-        else if (myLayer == "human")
-        {
-            if (go.GetComponent<Sauce>() != null) // is searching for sauce. should not be able to see over obstacles
-            {
-                layerMask = LayerMask.GetMask("player", "infected", "wall", "zombie", "obstacles");
-            }
-            else
-            {
-                layerMask = LayerMask.GetMask("player", "infected", "wall", "zombie");
-            }
-        }
-        else
-        {
-            throw new Exception("unreckognised layer: " + myLayer);
-        }
-
-        var hit = Physics2D.Raycast( pos, target - pos, visionDistance, layerMask);
+        var hit = Physics2D.Raycast( pos, target - pos, visionDistance, LayerMask.GetMask(layers.ToArray()));
         // Debug.DrawLine(pos, target);
         Debug.DrawLine(pos, (Vector3)pos + transform.right * visionDistance);
         Debug.DrawLine(pos, (Vector3)pos + Quaternion.AngleAxis(visionAngle / 2f, transform.forward) * transform.right * visionDistance);

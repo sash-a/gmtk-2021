@@ -33,13 +33,14 @@ public class Ranged : Attacker
 
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
+        base.Attack();
         if (Time.time - lastFire < fireRate)
         {
             return;
         }
         SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, true);
         lastFire = Time.time;
-
+        
         StartCoroutine(WaitForFire(dir, isPlayer));
     }
     
