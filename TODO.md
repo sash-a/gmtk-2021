@@ -1,25 +1,21 @@
-* Refactor cone of vision stats
-    - make cone of vision for zombies and humans 360 when finding each other - only humans finding player needs an angle check
-
 ### Misc
 * Death sound for people and sauce
 * explain win condition in first levels
 
 ### Visual
-* make tentacle not reach through obstacles
+* make tentacle ring stretch towards humans
 * Infecting animation
-* Make selected human circle more visible
-    - particle effects 
-    - show glow even if unifectable, but make it red
 * Tint human skin
 * Fade in tentacles
 * Grow in tentacles
 * Aim reticle
 * hit animation for many melee humans not working
 * better hit animation for zombies
-* no need to have separate feet for each character
-* restart button
 * On zombiefy rotate/play animation
+
+### UI
+* restart button
+
 
 ### Movement
 * cooldown after failed leap

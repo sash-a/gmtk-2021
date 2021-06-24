@@ -10,13 +10,18 @@ public class Ai : Controller
 {
     [NonSerialized] public NavMeshAgent agent;
     [NonSerialized] public bool rotating;
-
+    [NonSerialized] public VisibilityIcon visibilityIcon;
+    
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-    }
+
+        GameObject vis = Instantiate(UIManager.instance.visibilityIconPrefab);
+        visibilityIcon = vis.GetComponent<VisibilityIcon>();
+        visibilityIcon.controller = this;
+    }   
 
     public void ClearAgentPath()
     {

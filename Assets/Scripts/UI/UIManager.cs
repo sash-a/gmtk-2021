@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     private Character currentHost = null;
     public InfectionBar mainInfectionBar;
-
+    public GameObject visibilityIconPrefab;
     private void Awake()
     {
         instance = this;

@@ -28,10 +28,11 @@ public class Patrol : StateMachineBehaviour
         //Debug.Log($"ctrlr (strt):{_controller} {_controller == null}");
         _character = animator.GetComponent<Controller>().character;
         _gameObject = animator.gameObject;
-
+        
         _controller.ClearAgentPath();
-
+        _controller.visibilityIcon.setText("");
         _initPatrol = true;
+        //Debug.Log("entering patrol");
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

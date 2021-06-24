@@ -2994,6 +2994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInfectionBar: {fileID: 4504288648887031739}
+  visibilityIconPrefab: {fileID: 5963591169146481044, guid: 36a918b5a476583e29833ad95f878c58, type: 3}
 --- !u!1 &8650151121920934380
 GameObject:
   m_ObjectHideFlags: 0
