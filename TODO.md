@@ -13,9 +13,13 @@
 * better hit animation for zombies
 * On zombiefy rotate/play animation
 
+### Sound
+* Base sound should start playing at the begining of the level
+* Very subtle sound when you highlight a player
+
 ### UI
 * restart button
-
+* as soon as you leave a character they get an exclaimation mark
 
 ### Movement
 * cooldown after failed leap
@@ -41,7 +45,6 @@
 * Transition manager that holds all zombify/humanify
 * Cleanup die method
 * Add singleton that holds all animation strings
-
 
 ### Bugs
 * null controller agent in Chase
