@@ -46,102 +46,10 @@ public class CharacterManager : MonoBehaviour
     {
         instance.zombies.Add(zombie);
     }
-    
-    /**
-     * Player enters this controller
-     */ 
-    // TODO this should move to player
-    public static void bodySnatch(Controller human, Player currentPlayer)
+
+    public static void registerInfected(Controller infected)
     {
-        AudioManager.instance.PlayRandom(new[] {"gargle_1", "gargle_2"});
-        // Debug.Log("body snatching " + human);
-        human.character.infect(); // starts timer to become a zombie
-        Sauce sauce = currentPlayer.GetComponent<Sauce>();
-        if (sauce != null) // wasn't in a body yet
-        {
-            Destroy(currentPlayer.gameObject);
-        }
-        else
-        {
-            humanify(currentPlayer);
-        }
-
-        instance.RemoveHuman(human);
-        GameObject humanObject = human.gameObject;
-        Destroy(humanObject.GetComponent<Human>());
-        human.glowEffect.gameObject.SetActive(true);
-        Player player = humanObject.AddComponent<Player>();
-        Player.instance = player;
-        humanObject.name = "Player";
-        humanObject.layer = LayerMask.NameToLayer("player");
-        human.glowTimeLeft = 0;
-        human.character.tentacles.infect();
-        humanObject.GetComponent<NavMeshAgent>().enabled = false;
-        humanObject.GetComponent<Animator>().enabled = false;
-    
-        UIManager.setCurrentHost(player.character);
-    }
-
-    /**
-     * Adds controller to zombie horde and turns human ai into zombie
-     */
-    public static void zombify(Controller controller)
-    {
-        AudioManager.instance.PlayRandom(new[] {"groan_1", "groan_2"});
-        GameObject go = controller.gameObject;
-        if (controller is Human) //  is human, so player has left the character already
-        {
-            instance.RemoveHuman(controller);
-            instance.RemoveInfected(controller);
-        }
-        else if (controller is Player)
-        {
-        }
-        else
-        {
-            throw new Exception("unrecognised type");
-        }
-
-        controller.glowEffect.gameObject.SetActive(true);
-        Destroy(controller);
-        Zombie zom = go.AddComponent<Zombie>();
-        instance.zombies.Add(zom);
-        go.name = "Zombie";
-        go.layer = LayerMask.NameToLayer("zombie");
-
-        if (zom.character is Ranged)
-        {
-            Ranged ran = (Ranged) zom.character;
-            Destroy(ran);
-            Melee mel = zom.GetComponent<Melee>();
-            mel.enabled = true;
-            zom.character = mel;
-        } // convert the ranged attacker to a melee attacker
-
-        zom.character.tentacles.makeZombie();
-        zom.character.SpriteController.torsoAnimator.SetBool("iszombie", true);
-        
-        zom.GetComponent<NavMeshAgent>().enabled = true;
-        zom.GetComponent<Animator>().enabled = true;
-    }
-
-    /**
-     * turns a host back into a human temporarily
-     */
-    public static void humanify(Controller controller)
-    {
-        AudioManager.instance.PlayRandom(new string[] {"cough_spit_1", "cough_spit_2"});
-        GameObject hostObj = controller.gameObject;
-        controller.glowEffect.gameObject.SetActive(true);
-        Destroy(hostObj.GetComponent<Player>());
-        Human human = hostObj.AddComponent<Human>();
-        human.enabled = true;
-        hostObj.name = "Infected Human";
-        hostObj.layer = LayerMask.NameToLayer("human");
-        instance.infected.Add(human);
-        instance.humans.Add(human);
-        hostObj.GetComponent<NavMeshAgent>().enabled = true;
-        hostObj.GetComponent<Animator>().enabled = true;
+        instance.infected.Add(infected);
     }
 
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)

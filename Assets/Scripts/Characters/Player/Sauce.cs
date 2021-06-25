@@ -25,7 +25,7 @@ public class Sauce : Character
             {
                 return;
             }
-            CharacterManager.bodySnatch((Human)cntrl, GetComponent<Player>());
+            TransitionManager.bodySnatch((Human)cntrl, GetComponent<Player>());
         }
     }
 }

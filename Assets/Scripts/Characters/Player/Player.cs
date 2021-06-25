@@ -121,7 +121,7 @@ public class Player : Controller
             if (GetComponent<Sauce>() == null) // cannot eject from sauce
             {
                 eject();
-                CharacterManager.humanify(this); // destroys this object
+                TransitionManager.humanify(this); // destroys this object
             }
         }
     }
@@ -160,7 +160,7 @@ public class Player : Controller
         else
         {
             eject(dir);
-            CharacterManager.humanify(this); // destroys this object
+            TransitionManager.humanify(this); // destroys this object
         }
     }
 
@@ -239,5 +239,4 @@ public class Player : Controller
         layers.AddRange(new []{"human", "wall", "obstacles"});
         return base.checkVisisble(go, infectionAngle, infectionDistance, layers);
     }
-
 }

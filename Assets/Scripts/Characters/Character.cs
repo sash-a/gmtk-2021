@@ -114,14 +114,14 @@ public abstract class Character : MonoBehaviour
         if (player != null) // player must be ejected
         {
             player.eject();
-            CharacterManager.zombify(player);
+            TransitionManager.zombify(player);
         }
         else
         { // player has already left
             Human human = GetComponent<Human>();
             if (human != null)
             {
-                CharacterManager.zombify(human);
+                TransitionManager.zombify(human);
             } // else is already a zombie (don't really understand this behaviour, but it seems to work fine)
         }
 
