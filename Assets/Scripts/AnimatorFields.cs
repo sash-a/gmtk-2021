@@ -9,5 +9,6 @@ namespace State_Machine
         public static readonly int Zombiefying = Animator.StringToHash("zombiefying");
         public static readonly int Chasing = Animator.StringToHash("isChasing");
         public static readonly int Patrolling = Animator.StringToHash("isPatroling");
+        public static readonly int Searching = Animator.StringToHash("isSearching");
     }
 }

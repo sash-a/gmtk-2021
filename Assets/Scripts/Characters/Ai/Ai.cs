@@ -9,7 +9,7 @@ using Random = System.Random;
 public class Ai : Controller
 {
     [NonSerialized] public NavMeshAgent agent;
-    [NonSerialized] public bool rotating;
+    [NonSerialized] public bool autoRotate;
     [NonSerialized] public VisibilityIcon visibilityIcon;
     
     public void Start()
@@ -35,35 +35,10 @@ public class Ai : Controller
         character.SpriteController.legsAnimator.SetBool(AnimatorFields.Walking, agent.velocity.magnitude > 0);
         character.SpriteController.torsoAnimator.SetBool(AnimatorFields.Walking, agent.velocity.magnitude > 0);
     }
-
-    public List<Vector3> getRotationPoints(int points)
-    {
-        List<Vector3> v3s = new List<Vector3>();
-        for (int i = 0; i < points; i++)
-        {
-            float angle = i / (points * 1f) * 360f;
-            v3s.Add(new Vector3((float)Math.Sin(angle), (float)Math.Cos(angle), 0));
-        }
-
-        return v3s;
-    }
     
-    public void rotate360()
+    private void LateUpdate()
     {
-        rotating = true;
-        StartCoroutine(RandRotationTime());
-    }
-
-    private IEnumerator RandRotationTime()
-    {
-        var r = new Random().Next(1, 5);
-        Debug.Log($"r:{r}");
-        yield return new WaitForSeconds(r);
-        rotating = false;
-    }
-    public void StopRotating()
-    {
-        rotating = false;
+        doRotation();
     }
 
     private void rotateTowards(Vector3 targetPosition)
@@ -84,23 +59,13 @@ public class Ai : Controller
 
     private void doRotation()
     {
-        // Debug.Log(rotating);
-
-        if (rotating)
-        {
-            transform.RotateAround(transform.position, Vector3.forward, 100 * Time.deltaTime);
-        }
-        else
+        if (autoRotate)
         {
             rotateTowardsVel();
         }
     }
-    private void LateUpdate()
-    {
-        doRotation();
-    }
-    
-    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+
+    public override bool checkVisible(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
     {
         if (go.GetComponent<Sauce>() != null)
         {
@@ -114,12 +79,10 @@ public class Ai : Controller
             {
                 visionAngle = 270;
             }
-            return base.checkVisisble(go, visionAngle, character.visionDistance, layers);
+            return base.checkVisible(go, visionAngle, character.visionDistance, layers);
         }
         
         //else is checking for another ai. they have 360 vision
-        return base.checkVisisble(go, 360, character.visionDistance, layers);
-
+        return base.checkVisible(go, 360, character.visionDistance, layers);
     }
-    
 }

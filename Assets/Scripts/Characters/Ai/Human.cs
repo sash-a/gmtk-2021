@@ -19,10 +19,10 @@ public class Human : Ai
         base.FixedUpdate();
     }
 
-    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    public override bool checkVisible(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
     {
         layers = new List<string>();
         layers.AddRange(new []{"player", "infected", "wall", "zombie"});
-        return base.checkVisisble(go, visionAngle, visionDistance, layers);
+        return base.checkVisible(go, visionAngle, visionDistance, layers);
     }
 }

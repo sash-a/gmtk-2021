@@ -1,50 +1,67 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Search : StateMachineBehaviour
 {
-    Ai controller;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    private Ai _controller;
+    private int _maxSearchTime;
+    private float _searchTimePassed;
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller = animator.GetComponent<Ai>();
-        Debug.Log("in searching");
-        controller.rotate360();
+        _controller = animator.GetComponent<Ai>();
+        _controller.autoRotate = false;
+
+        _maxSearchTime = Random.Range(2, 5);
+        _searchTimePassed = 0f;
+        _controller.visibilityIcon.setText(_controller is Zombie ? "" : "?");
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (CharacterManager.getVisibleOfInterest(controller).Count > 0)
+        _searchTimePassed += Time.deltaTime;
+        if (_searchTimePassed > _maxSearchTime)
         {
-            controller.StopRotating();
-            animator.SetBool("isChasing", true);
-            animator.SetBool("isPatroling", false);
+            Patrol(animator);
+            return;
         }
 
-        if (!controller.rotating)
+        if (CharacterManager.getVisibleOfInterest(_controller).Count > 0)
         {
-            animator.SetBool("isChasing", false);
-            animator.SetBool("isPatroling", true);
+            Chase(animator);
+            return;
         }
+
+        animator.transform.RotateAround(animator.transform.position, Vector3.forward, 100 * Time.deltaTime);
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller.StopRotating();
+        _controller.autoRotate = true;
+        _controller.visibilityIcon.setText("");
     }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+    private void Chase(Animator anim)
+    {
+        anim.SetBool(AnimatorFields.Chasing, true);
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+        anim.SetBool(AnimatorFields.Searching, false);
+        anim.SetBool(AnimatorFields.Patrolling, false);
+
+        anim.Play("Chase");
+    }
+
+    private void Patrol(Animator anim)
+    {
+        anim.SetBool(AnimatorFields.Patrolling, true);
+
+        anim.SetBool(AnimatorFields.Searching, false);
+        anim.SetBool(AnimatorFields.Chasing, false);
+
+        anim.Play("Patrol");
+    }
 }

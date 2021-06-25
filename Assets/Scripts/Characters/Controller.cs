@@ -43,7 +43,7 @@ public class Controller : MonoBehaviour
             rb.MovePosition(((Vector2)transform.position) + dir * (character.moveSpeed * Time.deltaTime));
     }
 
-    public virtual bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    public virtual bool checkVisible(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
     {
         var target = (Vector2)go.transform.position;
         var pos = (Vector2)transform.position;

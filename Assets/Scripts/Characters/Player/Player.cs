@@ -16,7 +16,7 @@ public class Player : Controller
     [NonSerialized] public Character exitedHost = null;
 
     public TentacleArm arm;
-    
+
     void Awake()
     {
         base.Awake();
@@ -57,19 +57,16 @@ public class Player : Controller
         armLen = Mathf.Min(armLen, infectionDistance);
         arm.armLength = armLen;
         arm.updateLength();
+
+        transform.rotation = Quaternion.Euler(0, 0,
+            Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
         
-        if (character is Sauce)
+        if (character is Sauce sauce)
         {
             // transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
-            transform.rotation = Quaternion.Euler(0, 0,
-                Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
-            ((Sauce) character).sauceAnimator.gameObject.transform.rotation =
+
+            sauce.sauceAnimator.gameObject.transform.rotation =
                 Quaternion.Euler(0, 0, Mathf.Atan2(-moveDir.x, moveDir.y) * Mathf.Rad2Deg);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0,
-                Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
         }
     }
 
@@ -91,7 +88,7 @@ public class Player : Controller
         foreach (var human in visibleHumans)
         {
             float distance = Vector3.Distance(transform.position, human.transform.position);
-            bool canSeeYou = human.checkVisisble(gameObject);
+            bool canSeeYou = human.checkVisible(gameObject);
             // Should you also not be able to assimilate while searching (rotating)?
             bool chasingYou = ((Attacker) human.character).playerState.GetBool(AnimatorFields.Chasing);
 
@@ -125,17 +122,19 @@ public class Player : Controller
             }
         }
     }
-    
-    public void eject(Vector3 direction=new Vector3()) // method should be called when the player leaps out of the character
+
+    public void
+        eject(Vector3 direction = new Vector3()) // method should be called when the player leaps out of the character
     {
-        GameObject newSauce = Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
+        GameObject newSauce =
+            Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
         Player newPlayer = newSauce.GetComponent<Player>();
         newPlayer.exitedHost = character;
         newPlayer.leap(direction);
         arm.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
-    public void leap(Vector3 direction=new Vector3()) // leaps forward, or custom direction
+    public void leap(Vector3 direction = new Vector3()) // leaps forward, or custom direction
     {
         if (direction == Vector3.zero)
         {
@@ -145,7 +144,8 @@ public class Player : Controller
         {
             direction = direction.normalized;
         }
-        rb.velocity =  direction * Player.ejectForce;
+
+        rb.velocity = direction * Player.ejectForce;
         remainingSlideTime = 0.2f;
     }
 
@@ -233,10 +233,11 @@ public class Player : Controller
         }
     }
 
-    public override bool checkVisisble(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)
+    public override bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1,
+        List<string> layers = null)
     {
         layers = new List<string>();
-        layers.AddRange(new []{"human", "wall", "obstacles"});
-        return base.checkVisisble(go, infectionAngle, infectionDistance, layers);
+        layers.AddRange(new[] {"human", "wall", "obstacles"});
+        return base.checkVisible(go, infectionAngle, infectionDistance, layers);
     }
 }

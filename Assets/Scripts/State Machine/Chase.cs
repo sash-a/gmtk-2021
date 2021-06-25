@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -103,8 +105,8 @@ public class Chase : StateMachineBehaviour
         {
             if (d < 1) // has arrived at last seen
             {
-                animator.SetBool("isChasing", false);
-                animator.SetBool("isPatroling", true);
+                animator.SetBool(AnimatorFields.Chasing, false);
+                animator.SetBool(AnimatorFields.Searching, true);
             }
             else
             {

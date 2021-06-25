@@ -66,7 +66,7 @@ public class CharacterManager : MonoBehaviour
             {
                 throw new Exception("deleted controller still in character manager");
             }
-            if (looker.checkVisisble(controller.gameObject))
+            if (looker.checkVisible(controller.gameObject))
             {
                 visible.Add(controller);
             }
@@ -86,7 +86,7 @@ public class CharacterManager : MonoBehaviour
         // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
         HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
         bool playerVisible = false;
-        if (looker.checkVisisble(Player.instance.gameObject) && Player.instance.remainingSlideTime <= 0) // invisible while sliding
+        if (looker.checkVisible(Player.instance.gameObject) && Player.instance.remainingSlideTime <= 0) // invisible while sliding
         {
             infected.Add(Player.instance);
             playerVisible = true;
@@ -102,7 +102,7 @@ public class CharacterManager : MonoBehaviour
 
             if (frac < 0.66f) // partial suss/ partial incognito
             {
-                if (looker.checkVisisble(inf.gameObject, looker.character.visionAngle / 2f,
+                if (looker.checkVisible(inf.gameObject, looker.character.visionAngle / 2f,
                     looker.character.visionDistance / 2f))
                 {
                     // is very in view
