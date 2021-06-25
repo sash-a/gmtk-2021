@@ -22,17 +22,7 @@ public class Chase : StateMachineBehaviour
         _controller = animator.GetComponent<Ai>();
         _character = animator.GetComponent<Controller>().character;
         _controller.ClearAgentPath();
-        if (_controller is Zombie)
-        {
-            _controller.visibilityIcon.setText("");
-        }
-        else
-        {        
-            _controller.visibilityIcon.setText("!");
-        }
-
-        
-        //Debug.Log("entering chase");
+        _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -55,11 +45,6 @@ public class Chase : StateMachineBehaviour
         }
 
         GoTo(_lastKnownPos);
-    }
-    
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        _controller.ClearAgentPath();
     }
 
     Transform GetClosestTarget(Vector3 currentPos)
@@ -90,6 +75,7 @@ public class Chase : StateMachineBehaviour
         {
             _controller = _gameObject.GetComponent<Ai>();
         }
+
         _controller.agent.SetDestination(target);
         Debug.DrawLine(_gameObject.transform.position, _controller.agent.destination, Color.red);
     }
@@ -113,36 +99,23 @@ public class Chase : StateMachineBehaviour
     private bool CheckAndSwitchStates(Animator animator)
     {
         var d = Vector2.Distance(_gameObject.transform.position, _lastKnownPos);
-        if (CharacterManager.getVisibleOfInterest(_controller).Count == 0)
-        { // lost visibility
-            if (d < 1)
-            { // has arrived at last seen
+        if (CharacterManager.getVisibleOfInterest(_controller).Count == 0) // lost visibility
+        {
+            if (d < 1) // has arrived at last seen
+            {
                 animator.SetBool("isChasing", false);
                 animator.SetBool("isPatroling", true);
             }
             else
             {
-                if (_controller is Zombie)
-                {
-                    _controller.visibilityIcon.setText("");
-                }
-                else
-                {        
-                    _controller.visibilityIcon.setText("?");
-                }
+                _controller.visibilityIcon.setText(_controller is Zombie ? "" : "?");
             }
 
 
             return true;
         }
-        if (_controller is Zombie)
-        {
-            _controller.visibilityIcon.setText("");
-        }
-        else
-        {        
-            _controller.visibilityIcon.setText("!");
-        }
+
+        _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
 
         return false;
     }
