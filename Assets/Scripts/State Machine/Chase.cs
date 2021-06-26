@@ -1,124 +1,120 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using State_Machine;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class Chase : StateMachineBehaviour
+namespace State_Machine
 {
-    private Ai _controller;
-    private Character _character;
-
-    private Vector3 _lastKnownPos;
-    private GameObject _gameObject;
-
-    private bool _attacking;
-
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class Chase : StateMachineBehaviour
     {
-        _gameObject = animator.gameObject;
+        private Ai _controller;
+        private Character _character;
 
-        _controller = animator.GetComponent<Ai>();
-        _character = animator.GetComponent<Controller>().character;
-        _controller.ClearAgentPath();
-        _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
-    }
+        private Vector3 _lastKnownPos;
+        private GameObject _gameObject;
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // TODO maybe should linger on old target a bit
-        Transform target = GetClosestTarget(animator.transform.position);
-        if (target)
+        private bool _attacking;
+
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _lastKnownPos = target.position;
+            _gameObject = animator.gameObject;
+
+            _controller = animator.GetComponent<Ai>();
+            _character = animator.GetComponent<Controller>().character;
+            _controller.ClearAgentPath();
+            _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
         }
 
-        if (TryAttack(target)) // if attacking don't need to check anything else
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            return;
-        }
-
-        if (CheckAndSwitchStates(animator)) // if switching states don't also add to destination
-        {
-            return;
-        }
-
-        GoTo(_lastKnownPos);
-    }
-
-    Transform GetClosestTarget(Vector3 currentPos)
-    {
-        Transform tMin = null;
-        float minDist = Mathf.Infinity;
-        if (_controller == null)
-        {
-            _controller = _gameObject.GetComponent<Ai>();
-        }
-
-        foreach (Controller controller in CharacterManager.getVisibleOfInterest(_controller))
-        {
-            float dist = Vector3.Distance(controller.transform.position, currentPos);
-            if (dist < minDist)
+            // TODO maybe should linger on old target a bit
+            Transform target = GetClosestTarget(animator.transform.position);
+            if (target)
             {
-                tMin = controller.transform;
-                minDist = dist;
+                _lastKnownPos = target.position;
             }
-        }
 
-        return tMin;
-    }
-
-    private void GoTo(Vector3 target)
-    {
-        if (_controller == null)
-        {
-            _controller = _gameObject.GetComponent<Ai>();
-        }
-
-        _controller.agent.SetDestination(target);
-        Debug.DrawLine(_gameObject.transform.position, _controller.agent.destination, Color.red);
-    }
-
-    private bool TryAttack(Transform target)
-    {
-        if (_character is Attacker attacker && target)
-        {
-            var dist = Vector2.Distance(_gameObject.transform.position, target.position);
-            if (dist < attacker.attackRange && attacker.CheckCleanLineSight())
+            if (TryAttack(target)) // if attacking don't need to check anything else
             {
-                _controller.ClearAgentPath();
-                attacker.Attack();
+                return;
+            }
+
+            if (CheckAndSwitchStates(animator)) // if switching states don't also add to destination
+            {
+                return;
+            }
+
+            GoTo(_lastKnownPos);
+        }
+
+        Transform GetClosestTarget(Vector3 currentPos)
+        {
+            Transform tMin = null;
+            float minDist = Mathf.Infinity;
+            if (_controller == null)
+            {
+                _controller = _gameObject.GetComponent<Ai>();
+            }
+
+            foreach (Controller controller in CharacterManager.getVisibleOfInterest(_controller))
+            {
+                float dist = Vector3.Distance(controller.transform.position, currentPos);
+                if (dist < minDist)
+                {
+                    tMin = controller.transform;
+                    minDist = dist;
+                }
+            }
+
+            return tMin;
+        }
+
+        private void GoTo(Vector3 target)
+        {
+            if (_controller == null)
+            {
+                _controller = _gameObject.GetComponent<Ai>();
+            }
+
+            _controller.agent.SetDestination(target);
+            Debug.DrawLine(_gameObject.transform.position, _controller.agent.destination, Color.red);
+        }
+
+        private bool TryAttack(Transform target)
+        {
+            if (_character is Attacker attacker && target)
+            {
+                var dist = Vector2.Distance(_gameObject.transform.position, target.position);
+                if (dist < attacker.attackRange && attacker.CheckCleanLineSight())
+                {
+                    _controller.ClearAgentPath();
+                    attacker.Attack();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool CheckAndSwitchStates(Animator animator)
+        {
+            var d = Vector2.Distance(_gameObject.transform.position, _lastKnownPos);
+            if (CharacterManager.getVisibleOfInterest(_controller).Count == 0) // lost visibility
+            {
+                if (d < 1) // has arrived at last seen
+                {
+                    animator.SetBool(AnimatorFields.Chasing, false);
+                    animator.SetBool(AnimatorFields.Searching, true);
+                }
+                else
+                {
+                    _controller.visibilityIcon.setText(_controller is Zombie ? "" : "?");
+                }
+
+
                 return true;
             }
+
+            _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
+
+            return false;
         }
-
-        return false;
-    }
-
-    private bool CheckAndSwitchStates(Animator animator)
-    {
-        var d = Vector2.Distance(_gameObject.transform.position, _lastKnownPos);
-        if (CharacterManager.getVisibleOfInterest(_controller).Count == 0) // lost visibility
-        {
-            if (d < 1) // has arrived at last seen
-            {
-                animator.SetBool(AnimatorFields.Chasing, false);
-                animator.SetBool(AnimatorFields.Searching, true);
-            }
-            else
-            {
-                _controller.visibilityIcon.setText(_controller is Zombie ? "" : "?");
-            }
-
-
-            return true;
-        }
-
-        _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
-
-        return false;
     }
 }

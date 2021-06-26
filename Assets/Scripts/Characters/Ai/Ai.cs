@@ -9,7 +9,6 @@ using Random = System.Random;
 public class Ai : Controller
 {
     [NonSerialized] public NavMeshAgent agent;
-    [NonSerialized] public bool autoRotate;
     [NonSerialized] public VisibilityIcon visibilityIcon;
     
     public void Start()
@@ -59,7 +58,7 @@ public class Ai : Controller
 
     private void doRotation()
     {
-        if (autoRotate)
+        if (agent.velocity != Vector3.zero)
         {
             rotateTowardsVel();
         }

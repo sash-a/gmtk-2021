@@ -123,9 +123,9 @@ public class Player : Controller
         }
     }
 
-    public void
-        eject(Vector3 direction = new Vector3()) // method should be called when the player leaps out of the character
+    public void eject(Vector3 direction = new Vector3())
     {
+        // method should be called when the player leaps out of the character
         GameObject newSauce =
             Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
         Player newPlayer = newSauce.GetComponent<Player>();
@@ -222,19 +222,18 @@ public class Player : Controller
 
     void Attack(Vector3 mouseDir)
     {
-        if (character is Ranged)
+        if (character is Ranged ranged)
         {
-            ((Ranged) character).Attack(mouseDir, isPlayer: true);
+            ranged.Attack(mouseDir, true);
         }
 
-        if (character is Melee)
+        if (character is Melee melee)
         {
-            ((Melee) character).Attack(mouseDir, isPlayer: true);
+            melee.Attack(mouseDir, true);
         }
     }
 
-    public override bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1,
-        List<string> layers = null)
+    public override bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1, List<string> layers = null)
     {
         layers = new List<string>();
         layers.AddRange(new[] {"human", "wall", "obstacles"});
