@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -32,6 +33,12 @@ namespace State_Machine
             _controller.visibilityIcon.setText("");
             _initPatrol = true;
             //Debug.Log("entering patrol");
+            if (_controller is Zombie)  // random patrol each time the zombie starts a new patrol
+            {
+                List<Vector3> randomPatrol = _character.waypoints.wayGen.getCircleAroundPoint(7, 3, 0.6f);
+                _character.waypoints.useGeneratedWaypoints = true;
+                _character.waypoints.setWaypoints(randomPatrol);
+            }
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -62,7 +69,8 @@ namespace State_Machine
         {
             if (_controller is Zombie)
             {
-                FollowPatrol();
+                //FollowPatrol();
+                WaypointPatrol(_gameObject.transform, _initPatrol);
                 // RandomPatrol(_gameObject.transform, _initPatrol);
             }
             else
@@ -98,19 +106,6 @@ namespace State_Machine
             {
                 /* ignored */
             }
-        }
-
-        void RandomPatrol(Transform transform, bool initialRoute = false)
-        {
-            var position = transform.position;
-
-            if (Vector2.Distance(position, _targetPatrolPoint) < _distThresh || initialRoute)
-            {
-                _targetPatrolPoint = (Vector2) position + Random.insideUnitCircle * patrolRange;
-                _controller.agent.SetDestination(_targetPatrolPoint);
-            }
-
-            Debug.DrawLine(position, _targetPatrolPoint, Color.blue);
         }
 
         void FollowPatrol()
