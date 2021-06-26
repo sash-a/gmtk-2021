@@ -29,10 +29,15 @@ public abstract class Character : MonoBehaviour
     [NonSerialized] public Rigidbody2D rb;
     public Tentacles tentacles;
     [NonSerialized] public float lastAttacked;
+    
+    [NonSerialized] public float glowTimeLeft = 0;
+    public static float glowTime = 0.25f;
+    public CharacterGlowEffect glowEffect;
 
 
     public void Awake()
     {
+        glowEffect = GetComponentInChildren<CharacterGlowEffect>();
         waypoints = GetComponentInChildren<Waypoints>();
         waypoints.compute();
         rb = GetComponent<Rigidbody2D>();
@@ -148,5 +153,26 @@ public abstract class Character : MonoBehaviour
     public virtual void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
         lastAttacked = Time.time;
+    }
+    
+    public void glow()
+    {
+        glowTimeLeft = glowTime;
+        if (! glowEffect.gameObject.activeSelf) // not currently glowing
+        {
+            glowTimeLeft = glowTime;
+            glowEffect.gameObject.SetActive(true);
+            StartCoroutine(glowForTime());
+        }
+    }
+    
+    private IEnumerator glowForTime()
+    {
+        while (glowTimeLeft > 0)
+        {
+            yield return new WaitForSeconds(0.05f);
+            glowTimeLeft -= 0.05f;
+        }
+        glowEffect.gameObject.SetActive(false);
     }
 }

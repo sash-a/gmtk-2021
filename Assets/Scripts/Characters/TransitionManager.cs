@@ -31,8 +31,8 @@ public class TransitionManager : MonoBehaviour
         humanObject.name = "Player";
         humanObject.layer = LayerMask.NameToLayer("player");
         
-        human.glowEffect.gameObject.SetActive(true);
-        human.glowTimeLeft = 0;
+        human.character.glowTimeLeft = 0;
+        human.character.glowEffect.gameObject.SetActive(false);
         human.character.tentacles.infect();
         
         UIManager.setCurrentHost(player.character);
@@ -45,7 +45,7 @@ public class TransitionManager : MonoBehaviour
     {
         AudioManager.instance.PlayRandom(new[] {"groan_1", "groan_2"});
         GameObject go = controller.gameObject;
-        controller.glowEffect.gameObject.SetActive(true);
+        controller.character.glowEffect.gameObject.SetActive(true);
         
         switch (controller)
         {
@@ -88,7 +88,7 @@ public class TransitionManager : MonoBehaviour
     {
         AudioManager.instance.PlayRandom(new[] {"cough_spit_1", "cough_spit_2"});
         GameObject hostObj = controller.gameObject;
-        controller.glowEffect.gameObject.SetActive(true);
+        controller.character.glowEffect.gameObject.SetActive(true);
 
         Destroy(hostObj.GetComponent<Player>());
 

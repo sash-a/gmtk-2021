@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a702336badbd6ba0942d2426c7ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glowEffect: {fileID: 8926009901735570403}
 --- !u!50 &7476834709593673494
 Rigidbody2D:
   serializedVersion: 4

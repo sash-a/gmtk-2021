@@ -104,10 +104,25 @@ public class Player : Controller
             return;
         }
 
-        targetHuman.glow(); // TODO glow anyways, but maybe in red
+        targetHuman.character.glow(); // TODO glow anyways, but maybe in red
         if (Input.GetKeyDown(KeyCode.Space))
         {
             JumpToHost(targetHuman);
+        }
+    }
+    
+    private void JumpToHost(Controller targetHuman)
+    {
+        // the human should be given a player controller, and the current player object should be destroyed
+        Vector3 dir = targetHuman.transform.position - transform.position;
+        if (character is Sauce)
+        {
+            leap(dir);
+        }
+        else
+        {
+            eject(dir);
+            TransitionManager.humanify(this); // destroys this object
         }
     }
 
@@ -140,28 +155,11 @@ public class Player : Controller
         {
             direction = transform.right;
         }
-        else
-        {
-            direction = direction.normalized;
-        }
+        direction = direction.normalized;
+        
 
         rb.velocity = direction * Player.ejectForce;
         remainingSlideTime = 0.2f;
-    }
-
-    private void JumpToHost(Controller targetHuman)
-    {
-        // the human should be given a player controller, and the current player object should be destroyed
-        Vector3 dir = targetHuman.transform.position - transform.position;
-        if (character is Sauce)
-        {
-            leap(dir);
-        }
-        else
-        {
-            eject(dir);
-            TransitionManager.humanify(this); // destroys this object
-        }
     }
 
     Vector2 move()

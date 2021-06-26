@@ -56,7 +56,7 @@ public class WaypointsGenerator : MonoBehaviour
             throw new Exception("can't find any waypoints");
         }
 
-        print("found " + circle.Count + "/" + numPoints+ " waypoints");
+        //print("found " + circle.Count + "/" + numPoints+ " waypoints");
         return circle;
     }
 

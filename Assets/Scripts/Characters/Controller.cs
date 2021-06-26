@@ -12,10 +12,6 @@ public class Controller : MonoBehaviour
     
     [NonSerialized] public Character character;
     [NonSerialized] public Rigidbody2D rb;
-    [NonSerialized] public CharacterGlowEffect glowEffect;
-    
-    [NonSerialized] public float glowTimeLeft = 0;
-    public static float glowTime = 0.25f;
 
     public void Awake()
     {
@@ -29,13 +25,7 @@ public class Controller : MonoBehaviour
                 character = ch;
             }
         }
-        
-        glowEffect = GetComponentInChildren<CharacterGlowEffect>();
-        if (glowEffect == null)
-        {
-            throw new Exception("no glow effect on character");
-        }
-        glowEffect.gameObject.SetActive(false);
+
     }
 
     public void moveDirection(Vector2 dir)
@@ -83,24 +73,5 @@ public class Controller : MonoBehaviour
         return false;
     }
 
-    public void glow()
-    {
-        glowTimeLeft = glowTime;
-        if (! glowEffect.gameObject.activeSelf) // not currently glowing
-        {
-            glowTimeLeft = glowTime;
-            glowEffect.gameObject.SetActive(true);
-            StartCoroutine(glowForTime());
-        }
-    }
     
-    private IEnumerator glowForTime()
-    {
-        while (glowTimeLeft > 0)
-        {
-            yield return new WaitForSeconds(0.05f);
-            glowTimeLeft -= 0.05f;
-        }
-        glowEffect.gameObject.SetActive(false);
-    }
 }
