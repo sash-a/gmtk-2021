@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace State_Machine
@@ -114,7 +115,18 @@ namespace State_Machine
 
         void FollowPatrol()
         {
-            _controller.agent.SetDestination(Player.instance.transform.position);
+            Vector3 target = Player.instance.transform.position;
+            float dist = Vector2.Distance(target, _gameObject.transform.position);
+            float followDist = 3f;
+
+            if (dist <= followDist)
+            { // close enough
+                _controller.agent.SetDestination(_gameObject.transform.position);
+            }
+            else
+            {
+                _controller.agent.SetDestination(target);
+            }
         }
     }
 }

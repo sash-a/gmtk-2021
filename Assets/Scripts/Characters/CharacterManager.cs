@@ -15,7 +15,6 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> zombies;
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
-    public GameObject meleeBoxPrefab;
     
     // public AnimatorController zombieController;
 
