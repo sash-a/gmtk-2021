@@ -20,6 +20,11 @@ namespace State_Machine
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (_controller == null)
+            {
+                _controller = animator.GetComponent<Ai>();
+            }
+
             _searchTimePassed += Time.deltaTime;
             if (_searchTimePassed > _maxSearchTime)
             {

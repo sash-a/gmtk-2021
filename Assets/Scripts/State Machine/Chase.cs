@@ -10,7 +10,7 @@ namespace State_Machine
         private Vector3 _lastKnownPos;
         private GameObject _gameObject;
 
-        private bool _attacking;
+        private float _rotateTowardsThresh = 3;
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -20,6 +20,8 @@ namespace State_Machine
             _character = animator.GetComponent<Controller>().character;
             _controller.ClearAgentPath();
             _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
+
+            _rotateTowardsThresh = 3;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -42,6 +44,11 @@ namespace State_Machine
             }
 
             GoTo(_lastKnownPos);
+        }
+
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            _controller.autorotate = true;
         }
 
         Transform GetClosestTarget(Vector3 currentPos)
@@ -71,6 +78,16 @@ namespace State_Machine
             if (_controller == null)
             {
                 _controller = _gameObject.GetComponent<Ai>();
+            }
+
+            if (Vector2.Distance(target, _gameObject.transform.position) < _rotateTowardsThresh)
+            {
+                _controller.autorotate = false;
+                _controller.rotateTowards(target);
+            }
+            else
+            {
+                _controller.autorotate = true;
             }
 
             _controller.agent.SetDestination(target);

@@ -637,7 +637,7 @@ MonoBehaviour:
   face2: {fileID: -272576515103492663, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
   tentacles: {fileID: 715699256863503468}
   SpriteController: {fileID: 6420992555809472160}
-  attackRange: 2.4
+  attackRange: 1
   hitBox: {fileID: 6395434566458854124}
 --- !u!114 &658313175268897503
 MonoBehaviour:
