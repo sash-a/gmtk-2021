@@ -112,7 +112,7 @@ public abstract class Character : MonoBehaviour
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private void zombify()
+    public void zombify()
     {
         // TODO this should go in human and so should the character manager method
         Player player = GetComponent<Player>();
@@ -135,7 +135,7 @@ public abstract class Character : MonoBehaviour
         anim.SetBool(AnimatorFields.Patrolling, true);
         anim.SetBool(AnimatorFields.Zombiefying, true);
     }
-    
+
     public float getInfectionFrac() // -1 if not infected/ already zombie. [0,1] if turning
     {
         if (timeOfInfection == -1 || Time.time - timeOfInfection > infectionTime)
@@ -174,5 +174,16 @@ public abstract class Character : MonoBehaviour
             glowTimeLeft -= 0.05f;
         }
         glowEffect.gameObject.SetActive(false);
+    }
+
+    public void humanify()
+    {
+        StartCoroutine(changeToHumanLayer());
+    }
+    
+    private IEnumerator changeToHumanLayer()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        gameObject.layer = LayerMask.NameToLayer("human");
     }
 }

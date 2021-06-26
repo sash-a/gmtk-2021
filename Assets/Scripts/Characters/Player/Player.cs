@@ -132,7 +132,7 @@ public class Player : Controller
         {
             if (GetComponent<Sauce>() == null) // cannot eject from sauce
             {
-                eject();
+                eject(transform.right);
                 TransitionManager.humanify(this); // destroys this object
             }
         }
