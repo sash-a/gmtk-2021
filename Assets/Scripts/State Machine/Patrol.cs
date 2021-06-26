@@ -61,7 +61,8 @@ namespace State_Machine
         {
             if (_controller is Zombie)
             {
-                RandomPatrol(_gameObject.transform, _initPatrol);
+                FollowPatrol();
+                // RandomPatrol(_gameObject.transform, _initPatrol);
             }
             else
             {
@@ -92,13 +93,15 @@ namespace State_Machine
             {
                 Debug.DrawLine(position, _controller.agent.destination, Color.blue);
             }
-            catch (Exception) { /* ignored */ }
+            catch (Exception)
+            {
+                /* ignored */
+            }
         }
 
         void RandomPatrol(Transform transform, bool initialRoute = false)
         {
             var position = transform.position;
-
 
             if (Vector2.Distance(position, _targetPatrolPoint) < _distThresh || initialRoute)
             {
@@ -107,6 +110,11 @@ namespace State_Machine
             }
 
             Debug.DrawLine(position, _targetPatrolPoint, Color.blue);
+        }
+
+        void FollowPatrol()
+        {
+            _controller.agent.SetDestination(Player.instance.transform.position);
         }
     }
 }
