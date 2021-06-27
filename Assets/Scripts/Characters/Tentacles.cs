@@ -31,10 +31,18 @@ public class Tentacles : MonoBehaviour
 
     private IEnumerator GrowTentacles()
     {
-        for (int i = 0; i < 50; i++)
+        int its = 100;
+        float alphaInc = (1 - startColour.a) / its;
+        for (int i = 0; i < its; i++)
         {
             yield return new WaitForSeconds(0.15f);
-            transform.localScale += Vector3.one * 0.01f;
+            transform.localScale += Vector3.one * 0.0035f;
+            foreach (var sprite in sprites)
+            {
+                Color next = sprite.color;
+                next.a += alphaInc;
+                sprite.color = next;
+            }        
         }
     }
 }
