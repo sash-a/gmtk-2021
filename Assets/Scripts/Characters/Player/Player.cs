@@ -60,7 +60,7 @@ public class Player : Controller
 
         transform.rotation = Quaternion.Euler(0, 0,
             Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
-        
+
         if (character is Sauce sauce)
         {
             // transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg);
@@ -110,7 +110,7 @@ public class Player : Controller
             JumpToHost(targetHuman);
         }
     }
-    
+
     private void JumpToHost(Controller targetHuman)
     {
         // the human should be given a player controller, and the current player object should be destroyed
@@ -155,8 +155,9 @@ public class Player : Controller
         {
             direction = transform.right;
         }
+
         direction = direction.normalized;
-        
+
 
         rb.velocity = direction * Player.ejectForce;
         remainingSlideTime = 0.2f;
@@ -231,7 +232,8 @@ public class Player : Controller
         }
     }
 
-    public override bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1, List<string> layers = null)
+    public override bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1,
+        List<string> layers = null)
     {
         layers = new List<string>();
         layers.AddRange(new[] {"human", "wall", "obstacles"});

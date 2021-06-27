@@ -6,6 +6,7 @@ using UnityEngine;
 public class Sauce : Character
 {
     public Animator sauceAnimator;
+
     private void Awake()
     {
         UIManager.setCurrentHost(this);
@@ -15,12 +16,14 @@ public class Sauce : Character
     {
         Controller cntrl = other.gameObject.GetComponent<Controller>();
         if (cntrl is Human)
-        { // can infect human
+        {
+            // can infect human
             if (Player.instance.exitedHost == cntrl.character)
             {
                 return;
             }
-            TransitionManager.bodySnatch((Human)cntrl, GetComponent<Player>());
+
+            TransitionManager.bodySnatch((Human) cntrl, GetComponent<Player>());
         }
     }
 }

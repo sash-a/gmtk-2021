@@ -636,6 +636,7 @@ MonoBehaviour:
   face1: {fileID: 5960844483514330289, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
   face2: {fileID: -272576515103492663, guid: e5ab855aca363f749996a2c4af8563d6, type: 3}
   tentacles: {fileID: 715699256863503468}
+  glowEffect: {fileID: 0}
   SpriteController: {fileID: 6420992555809472160}
   attackRange: 1
   hitBox: {fileID: 6395434566458854124}
@@ -651,7 +652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a702336badbd6ba0942d2426c7ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowEffect: {fileID: 8926009901735570403}
 --- !u!50 &7476834709593673494
 Rigidbody2D:
   serializedVersion: 4
@@ -660,7 +660,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688877501144233084}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
