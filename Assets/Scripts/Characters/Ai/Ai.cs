@@ -94,6 +94,11 @@ public class Ai : Controller
         }
 
         //else is checking for another ai. they have 360 vision
-        return base.checkVisible(go, 360, character.visionDistance, layers);
+        float Ai2AiVision = 180;
+        if (((Attacker) character).playerState.GetBool(AnimatorFields.Chasing))
+        { // if I am chasing, i am alert, so I have a full FOV
+            Ai2AiVision = 360;
+        }
+        return base.checkVisible(go, Ai2AiVision, character.visionDistance, layers);
     }
 }
