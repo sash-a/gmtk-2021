@@ -21,6 +21,8 @@ namespace State_Machine
         private bool _initPatrol;
         private float _distThresh = 1;
 
+        private bool isFollowing = false;  // for zombie only
+        private float zombiePickupDist = 2f;
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
@@ -39,6 +41,8 @@ namespace State_Machine
                 _character.waypoints.useGeneratedWaypoints = true;
                 _character.waypoints.setWaypoints(randomPatrol);
             }
+             isFollowing = false;  // zombies have bad memories. They forget you when distracted
+
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -69,9 +73,18 @@ namespace State_Machine
         {
             if (_controller is Zombie)
             {
-                //FollowPatrol();
-                WaypointPatrol(_gameObject.transform, _initPatrol);
-                // RandomPatrol(_gameObject.transform, _initPatrol);
+                Vector3 target = Player.instance.transform.position;
+                float dist = Vector2.Distance(target, _gameObject.transform.position);
+                //Debug.Log("zombies distance to player: " + dist);
+                if (isFollowing || dist <= zombiePickupDist)
+                {
+                    isFollowing = true;
+                    FollowPatrol();
+                }
+                else
+                {
+                    WaypointPatrol(_gameObject.transform, _initPatrol);
+                }
             }
             else
             {

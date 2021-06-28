@@ -86,7 +86,7 @@ public class CharacterManager : MonoBehaviour
         bool playerVisible = false;
         if (Player.instance.character is Sauce && Player.instance.remainingSlideTime <= 0)
         {
-            print("player is sauce");
+            //print("player is sauce");
             if (looker.checkVisible(Player.instance.gameObject)) // invisible while sliding
             {
                 zombies.Add(Player.instance);
