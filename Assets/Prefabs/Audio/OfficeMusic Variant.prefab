@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: music.Array.data[7].pitch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3624556158344033160, guid: aca2ca8b9bd6aa4e6af53d65709ae57f, type: 3}
+      propertyPath: music.Array.data[0].volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5472354261069755141, guid: aca2ca8b9bd6aa4e6af53d65709ae57f, type: 3}
       propertyPath: m_RootOrder
       value: 0

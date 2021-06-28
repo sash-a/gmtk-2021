@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
             numLayers = Mathf.Min(numLayers, musicLayers.Count);
             for (int i = 0; i < numLayers; i++)
             {
-                setMusicVolume(musicLayers[(int)i], 0.5f);
+                setMusicVolume(musicLayers[(int)i], MusicManager.instance.volume);
             }     
         }
     }

@@ -12695,6 +12695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LabMusic Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6244796039210064546, guid: 57e6b985e8b6310b8bcbbff6703980be, type: 3}
+      propertyPath: music.Array.data[0].volume
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e6b985e8b6310b8bcbbff6703980be, type: 3}
 --- !u!1 &1437732861
