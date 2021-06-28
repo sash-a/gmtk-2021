@@ -83,45 +83,15 @@ public class CharacterManager : MonoBehaviour
     {
         HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
         // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
-        HashSet<Controller> infected = instance.getVisibleCharacters(looker, instance.infected);
         bool playerVisible = false;
-        if (looker.checkVisible(Player.instance.gameObject) && Player.instance.remainingSlideTime <= 0) // invisible while sliding
+        if (Player.instance.character is Sauce && Player.instance.remainingSlideTime <= 0)
         {
-            infected.Add(Player.instance);
-            playerVisible = true;
-        }
-
-        foreach (var inf in infected)
-        {
-            float frac = inf.character.getInfectionFrac();
-            if (frac < 0.33f)
-            {
-                continue;
-            } // full incognito
-
-            if (frac < 0.66f) // partial suss/ partial incognito
-            {
-                if (looker.checkVisible(inf.gameObject, looker.character.visionAngle / 2f,
-                    looker.character.visionDistance / 2f))
-                {
-                    // is very in view
-                    zombies.Add(inf);
-                }
-            }
-            else // full suss
-            {
-                zombies.Add(inf);
-            }
-        }
-
-        if (playerVisible)
-        {
-            if (Player.instance.character is Sauce)
+            print("player is sauce");
+            if (looker.checkVisible(Player.instance.gameObject)) // invisible while sliding
             {
                 zombies.Add(Player.instance);
             }
         }
-
         return zombies;
     }
 

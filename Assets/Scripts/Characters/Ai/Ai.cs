@@ -12,6 +12,7 @@ public class Ai : Controller
     [NonSerialized] public VisibilityIcon visibilityIcon;
     [NonSerialized] public bool autorotate;
 
+    public static float closebyVisionAngle = 200;
 
     public void Awake()
     {
@@ -86,7 +87,7 @@ public class Ai : Controller
             visionAngle = character.visionAngle;
             if (dist < 2) // very close by humans can see the player in a larger cone
             {
-                visionAngle = 270;
+                visionAngle = closebyVisionAngle;
             }
 
             return base.checkVisible(go, visionAngle, character.visionDistance, layers);

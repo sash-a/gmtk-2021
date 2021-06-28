@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using State_Machine;
 using UnityEngine;
 
 public class Sauce : Character
@@ -18,12 +19,17 @@ public class Sauce : Character
         if (cntrl is Human)
         {
             // can infect human
-            if (Player.instance.exitedHost == cntrl.character)
-            {
+            if (Player.instance.exitedHost == cntrl.character && Player.instance.remainingSlideTime >0)
+            {  //just slid out this host
                 return;
             }
-
-            TransitionManager.bodySnatch((Human) cntrl, GetComponent<Player>());
+            bool canSeeYou = cntrl.checkVisible(gameObject);
+            // Should you also not be able to assimilate while searching (rotating)?
+            bool chasingYou = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Chasing);
+            if (!canSeeYou && !chasingYou)
+            {
+                TransitionManager.bodySnatch((Human) cntrl, GetComponent<Player>());
+            }
         }
     }
 }
