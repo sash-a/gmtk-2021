@@ -24,9 +24,9 @@ public class Sauce : Character
                 return;
             }
             bool canSeeYou = cntrl.checkVisible(gameObject);
-            // Should you also not be able to assimilate while searching (rotating)?
-            bool chasingYou = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Chasing);
-            if (!canSeeYou && !chasingYou)
+            bool chasingSomeone = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Chasing);
+            bool searchingSomeone = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Searching);
+            if (!canSeeYou && !chasingSomeone && !searchingSomeone)
             {
                 TransitionManager.bodySnatch((Human) cntrl, GetComponent<Player>());
             }
