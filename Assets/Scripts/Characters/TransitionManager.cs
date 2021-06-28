@@ -90,7 +90,7 @@ public class TransitionManager : MonoBehaviour
     public static void humanify(Controller host)
     {
         AudioManager.instance.PlayRandom(new[] {"cough_spit_1", "cough_spit_2"});
-        GameObject hostGo = host.gameObject;
+        GameObject hostGo = host.gameObject; 
         host.character.glowEffect.gameObject.SetActive(false);
 
         host.character.humanify();
