@@ -224,6 +224,7 @@ public class Player : Controller
         if (character is Ranged ranged)
         {
             ranged.Attack(mouseDir, true);
+            character.lastShot = Time.time;
         }
 
         if (character is Melee melee)

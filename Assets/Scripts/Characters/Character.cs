@@ -28,8 +28,10 @@ public abstract class Character : MonoBehaviour
     private bool playerDead = false;
     [NonSerialized] public Rigidbody2D rb;
     public Tentacles tentacles;
-    [NonSerialized] public float lastAttacked;
-    
+    [NonSerialized] public float lastShot;
+    public static float shotSoundDistance = 10;
+    public static float shotSoundTime = 0.1f;
+
     [NonSerialized] public float glowTimeLeft = 0;
     public static float glowTime = 0.25f;
     public CharacterGlowEffect glowEffect;
@@ -41,6 +43,7 @@ public abstract class Character : MonoBehaviour
         waypoints = GetComponentInChildren<Waypoints>();
         waypoints.compute();
         rb = GetComponent<Rigidbody2D>();
+        lastShot = -1;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -152,7 +155,7 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
-        lastAttacked = Time.time;
+        lastShot = Time.time;
     }
     
     public void glow()

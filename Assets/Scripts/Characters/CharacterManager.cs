@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 // using UnityEditor.Animations;
 // using UnityEditor.U2D.Path.GUIFramework;
-using UnityEngine.AI;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -81,18 +78,34 @@ public class CharacterManager : MonoBehaviour
 
     public static HashSet<Controller> getVisibleHorde(Controller looker)
     {
-        HashSet<Controller> zombies = instance.getVisibleCharacters(looker, instance.zombies);
+        HashSet<Controller> visible_zombies = instance.getVisibleCharacters(looker, instance.zombies);
         // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
         bool playerVisible = false;
-        if (Player.instance.character is Sauce && Player.instance.remainingSlideTime <= 0)
+        if (Player.instance.character is Sauce)
         {
-            //print("player is sauce");
-            if (looker.checkVisible(Player.instance.gameObject)) // invisible while sliding
+            if (Player.instance.remainingSlideTime <= 0)
             {
-                zombies.Add(Player.instance);
+                if (looker.checkVisible(Player.instance.gameObject)) 
+                {
+                    visible_zombies.Add(Player.instance);
+                }
             }
         }
-        return zombies;
+        else
+        { // is in human. is visible if has shot recently
+            //Debug.Log("player is human");
+            if (Time.time - Player.instance.character.lastShot < Character.shotSoundTime && Player.instance.character.lastShot != -1)
+            {//human has shot recently
+                //Debug.Log("player has shot. shot time " + Player.instance.character.lastShot + " time: " + Time.time);
+                float distance = Vector2.Distance(Player.instance.transform.position, looker.transform.position);
+                if (distance < Character.shotSoundDistance)
+                {// looker is close enough to hear the gun shot
+                    visible_zombies.Add(Player.instance);
+                }
+            }
+        }
+
+        return visible_zombies;
     }
 
     public static HashSet<Controller> getVisibleOfInterest(Controller looker)
