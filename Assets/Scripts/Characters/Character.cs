@@ -155,7 +155,7 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
-        lastShot = Time.time;
+        //lastShot = Time.time;
     }
     
     public void glow()

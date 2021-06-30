@@ -19,7 +19,14 @@ namespace State_Machine
             _controller = animator.GetComponent<Ai>();
             _character = animator.GetComponent<Controller>().character;
             _controller.ClearAgentPath();
-            _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
+            if (_controller is Human && _controller.character.getInfectionFrac() == -1)
+            { // non infected human
+                _controller.visibilityIcon.setText("!");
+            }
+            else
+            {
+                _controller.visibilityIcon.setText("");
+            }
 
             _rotateTowardsThresh = 3;
         }
@@ -122,15 +129,28 @@ namespace State_Machine
                 }
                 else
                 {
-                    _controller.visibilityIcon.setText(_controller is Zombie ? "" : "?");
+                    if (_controller is Human && _controller.character.getInfectionFrac() == -1)
+                    { // non infected human
+                        _controller.visibilityIcon.setText("?");
+                    }
+                    else
+                    {
+                        _controller.visibilityIcon.setText("");
+                    }
                 }
 
 
                 return true;
             }
 
-            _controller.visibilityIcon.setText(_controller is Zombie ? "" : "!");
-
+            if (_controller is Human && _controller.character.getInfectionFrac() == -1)
+            { // non infected human
+                _controller.visibilityIcon.setText("!");
+            }
+            else
+            {
+                _controller.visibilityIcon.setText("");
+            }
             return false;
         }
     }

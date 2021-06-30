@@ -15,7 +15,14 @@ namespace State_Machine
 
             _maxSearchTime = Random.Range(2, 5);
             _searchTimePassed = 0f;
-            _controller.visibilityIcon.setText(_controller is Zombie ? "" : "?");
+            if (_controller is Human && _controller.character.getInfectionFrac() == -1)
+            { // non infected human
+                _controller.visibilityIcon.setText("?");
+            }
+            else
+            {
+                _controller.visibilityIcon.setText("");
+            }
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

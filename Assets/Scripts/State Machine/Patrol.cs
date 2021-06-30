@@ -42,7 +42,6 @@ namespace State_Machine
                 _character.waypoints.setWaypoints(randomPatrol);
             }
              isFollowing = false;  // zombies have bad memories. They forget you when distracted
-
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
