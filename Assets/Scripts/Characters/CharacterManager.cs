@@ -76,36 +76,70 @@ public class CharacterManager : MonoBehaviour
         return instance.getVisibleCharacters(looker, instance.humans);
     }
 
+    public static HashSet<Controller> getAllWitnesses(Controller perpetrator=null)
+    { // gets all humans who can see the player/perp
+        
+        HashSet<Controller> witnesses = new HashSet<Controller>();
+        foreach (var human in instance.humans)
+        {
+            if (human.checkVisible(perpetrator.gameObject))
+            {
+                witnesses.Add(human);
+            }
+        }
+
+        return witnesses;
+    }
+
     public static HashSet<Controller> getVisibleHorde(Controller looker)
-    {
+    { //looker must be a human
         HashSet<Controller> visible_zombies = instance.getVisibleCharacters(looker, instance.zombies);
-        // Debug.Log("num visible zombies: " + zombies.Count + " num zombies: " + instance.zombies.Count);
-        bool playerVisible = false;
+        if (isPlayerEffectivelyVisible(looker))
+        {
+            visible_zombies.Add(Player.instance);
+        }        
+
+        return visible_zombies;
+    }
+
+    public static bool isPlayerEffectivelyVisible(Controller looker) // includes logic around when player can be seen/ is incognito
+    {
         if (Player.instance.character is Sauce)
         {
-            if (Player.instance.remainingSlideTime <= 0)
+            if (Player.instance.remainingSlideTime <= 0) // done sliding
             {
-                if (looker.checkVisible(Player.instance.gameObject)) 
+                if (looker.checkVisible(Player.instance.gameObject))
                 {
-                    visible_zombies.Add(Player.instance);
+                    return true;
                 }
             }
         }
         else
-        { // is in human. is visible if has shot recently
-            //Debug.Log("player is human");
-            if (Time.time - Player.instance.character.lastShot < Character.shotSoundTime && Player.instance.character.lastShot != -1)
-            {//human has shot recently
-                //Debug.Log("player has shot. shot time " + Player.instance.character.lastShot + " time: " + Time.time);
+        {
+            // is in human
+            if (((Human) looker).sussPeople.Contains(Player.instance.character))
+            {
+                // this human has seen this host do something suss
+                if (looker.checkVisible(Player.instance.gameObject)) // is suspicious and in line of sight
+                {  // once sussed, always recognisable
+                    return true;
+                }
+            }
+
+            if (Time.time - Player.instance.character.lastShot < Character.shotSoundTime &&
+                Player.instance.character.lastShot != -1)
+            {
+                //human has shot recently
                 float distance = Vector2.Distance(Player.instance.transform.position, looker.transform.position);
                 if (distance < Character.shotSoundDistance)
-                {// looker is close enough to hear the gun shot
-                    visible_zombies.Add(Player.instance);
+                {
+                    // looker is close enough to hear the gun shot
+                    return true;
                 }
             }
         }
 
-        return visible_zombies;
+        return false;
     }
 
     public static HashSet<Controller> getVisibleOfInterest(Controller looker)

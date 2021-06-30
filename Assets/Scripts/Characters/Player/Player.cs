@@ -114,6 +114,7 @@ public class Player : Controller
     private void JumpToHost(Controller targetHuman)
     {
         // the human should be given a player controller, and the current player object should be destroyed
+        alertWitnesses(targetHuman); // assumes the infection will be sucessful
         Vector3 dir = targetHuman.transform.position - transform.position;
         if (character is Sauce)
         {
@@ -141,6 +142,7 @@ public class Player : Controller
     public void eject(Vector3 direction = new Vector3())
     {
         // method should be called when the player leaps out of the character
+        alertWitnesses();// if anyone saw you leave this host, it will be sussed
         GameObject newSauce =
             Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
         Player newPlayer = newSauce.GetComponent<Player>();
@@ -230,6 +232,20 @@ public class Player : Controller
         if (character is Melee melee)
         {
             melee.Attack(mouseDir, true);
+            alertWitnesses();
+        }
+    }
+
+    public void alertWitnesses(Controller perpetrator=null)  // called whenever the player does something suss
+    {
+        if (perpetrator == null)
+        {
+            perpetrator = this;
+        }
+        HashSet<Controller> witnesses = CharacterManager.getAllWitnesses(perpetrator);
+        foreach (var witness in witnesses)
+        {
+            ((Human) witness).sussPeople.Add(perpetrator.character);
         }
     }
 

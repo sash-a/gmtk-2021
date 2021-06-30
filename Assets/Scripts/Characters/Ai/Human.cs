@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Human : Ai
 {
+    [NonSerialized] public HashSet<Character> sussPeople;
     private void Start()
     {
+        sussPeople = new HashSet<Character>();
         CharacterManager.registerHuman(this);
         base.Start();   
     }
