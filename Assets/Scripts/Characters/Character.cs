@@ -29,7 +29,7 @@ public abstract class Character : MonoBehaviour
     [NonSerialized] public Rigidbody2D rb;
     public Tentacles tentacles;
     [NonSerialized] public float lastShot;
-    public static float shotSoundDistance = 10;
+    public static float shotSoundDistance = 15;
     public static float shotSoundTime = 0.1f;
 
     [NonSerialized] public float glowTimeLeft = 0;
