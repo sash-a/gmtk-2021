@@ -119,16 +119,22 @@ namespace State_Machine
 
         private bool CheckAndSwitchStates(Animator animator)
         {
+            //Debug.Log("in chase");
             var d = Vector2.Distance(_gameObject.transform.position, _lastKnownPos);
             if (CharacterManager.getVisibleOfInterest(_controller).Count == 0) // lost visibility
             {
+                //Debug.Log("no targets");
                 if (d < 1) // has arrived at last seen
                 {
+                    //Debug.Log("close to last seen");
                     animator.SetBool(AnimatorFields.Chasing, false);
                     animator.SetBool(AnimatorFields.Searching, true);
                 }
                 else
                 {
+                    GoTo(_lastKnownPos);
+
+                    //Debug.Log("far away. last seen: " + _lastKnownPos + " at: " + _gameObject.transform.position);
                     if (_controller is Human && _controller.character.getInfectionFrac() == -1)
                     { // non infected human
                         _controller.visibilityIcon.setText("?");
@@ -142,7 +148,7 @@ namespace State_Machine
 
                 return true;
             }
-
+            //Debug.Log("has targets");
             if (_controller is Human && _controller.character.getInfectionFrac() == -1)
             { // non infected human
                 _controller.visibilityIcon.setText("!");

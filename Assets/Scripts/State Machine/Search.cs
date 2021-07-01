@@ -31,7 +31,7 @@ namespace State_Machine
             {
                 _controller = animator.GetComponent<Ai>();
             }
-
+            //Debug.Log("searching");
             _searchTimePassed += Time.deltaTime;
             if (_searchTimePassed > _maxSearchTime)
             {
@@ -44,6 +44,7 @@ namespace State_Machine
                 Chase(animator);
                 return;
             }
+            //Debug.Log("no targets");
 
             animator.transform.RotateAround(animator.transform.position, Vector3.forward, 100 * Time.deltaTime);
         }
