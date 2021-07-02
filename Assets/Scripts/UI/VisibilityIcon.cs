@@ -8,17 +8,19 @@ public class VisibilityIcon : MonoBehaviour
 {
     [NonSerialized] public Ai controller;
     private TextMeshPro text;
+    private RectTransform _rectTransform;
 
     private void Awake()
     {
         text = GetComponent<TextMeshPro>();
+        _rectTransform = GetComponent<RectTransform>();
     }
 
     private void Update()
     {
         try
         {
-            GetComponent<RectTransform>().position = controller.transform.position + new Vector3(0, 1, 0);
+            _rectTransform.position = controller.transform.position + new Vector3(0, 1, 0);
         }
         catch (MissingReferenceException e)
         {

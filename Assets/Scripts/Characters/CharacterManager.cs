@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 // using UnityEditor.Animations;
 // using UnityEditor.U2D.Path.GUIFramework;
@@ -48,6 +49,11 @@ public class CharacterManager : MonoBehaviour
         instance.infected.Add(infected);
     }
 
+    public HashSet<Controller> getAllAI()
+    {
+        return new HashSet<Controller>(instance.humans.Union(instance.infected).Union(instance.zombies));
+    }
+    
     private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
     {
         if (looker == null)
