@@ -3,27 +3,27 @@ using UnityEngine;
 namespace State_Machine
 {
     public class Zombiefy : StateMachineBehaviour
-    { 
-        private float _zombiefyMaxTime;
-        private float _zombiefyElapsedTime;
+    {
+        private Ai controller;
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.GetComponent<Ai>().ClearAgentPath();
-            _zombiefyElapsedTime = 0;
-            _zombiefyMaxTime = 1;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (controller == null)
+            {
+                controller = animator.GetComponent<Ai>();
+                controller.ClearAgentPath();
+                controller.visibilityIcon.setText("");
+            }
             // TODO rotate and make weird noises!
-            if (_zombiefyElapsedTime > _zombiefyMaxTime)
+            if (!controller.character.isInfected())
             {
                 animator.SetBool(AnimatorFields.Zombiefying, false);
-                return;
+                animator.SetBool(AnimatorFields.Patrolling, true);
             }
-
-            _zombiefyElapsedTime += Time.deltaTime;
         }
     }
 }

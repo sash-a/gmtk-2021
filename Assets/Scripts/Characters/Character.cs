@@ -98,6 +98,9 @@ public abstract class Character : MonoBehaviour
         {
             timeOfInfection = Time.time;
         }
+        
+        var anim = GetComponent<Animator>();
+        anim.SetBool(AnimatorFields.Zombiefying, true);
 
         StartCoroutine(WaitAndZombify());
     }
@@ -133,10 +136,6 @@ public abstract class Character : MonoBehaviour
             } // else is already a zombie (don't really understand this behaviour, but it seems to work fine)
         }
 
-        var anim = GetComponent<Animator>();
-        // anim.Play(Zombiefying);
-        anim.SetBool(AnimatorFields.Patrolling, true);
-        anim.SetBool(AnimatorFields.Zombiefying, true);
     }
 
     public float getInfectionFrac() // -1 if not infected/ already zombie. [0,1] if turning
