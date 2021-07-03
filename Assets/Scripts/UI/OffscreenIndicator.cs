@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class OffscreenIndicator : MonoBehaviour
@@ -15,6 +16,14 @@ public class OffscreenIndicator : MonoBehaviour
     {
         foreach (var controller in CharacterManager.instance.getAllAI())
         {
+            if (controller == null)
+            {
+                throw new Exception("null controller in character manager");
+            }
+            if (controller.offScreenIndicator == null)
+            {
+                throw new Exception("null off screen indicator on " + controller);
+            }
             var screenPos = _cam.WorldToScreenPoint(controller.transform.position);
             if (screenPos.x > 0 && screenPos.y > 0 && screenPos.x < Screen.width && screenPos.y < Screen.height)
             {
