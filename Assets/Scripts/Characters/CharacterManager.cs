@@ -81,6 +81,11 @@ public class CharacterManager : MonoBehaviour
     {
         return instance.getVisibleCharacters(looker, instance.humans);
     }
+    
+    public static HashSet<Controller> getVisibleInfected(Controller looker)
+    {
+        return instance.getVisibleCharacters(looker, instance.infected);
+    }
 
     public static HashSet<Controller> getAllWitnesses(Controller perpetrator=null)
     { // gets all humans who can see the player/perp
@@ -132,10 +137,10 @@ public class CharacterManager : MonoBehaviour
                 }
             }
 
-            if (Time.time - Player.instance.character.lastShot < Character.shotSoundTime &&
-                Player.instance.character.lastShot != -1)
+            if (Time.time - Player.instance.character.lastShotTime < Character.shotSoundTime &&
+                Player.instance.character.lastShotTime != -1)
             {
-                //human has shot recently
+                //human has shot very recently. we will add them to nearby humans suss list
                 float distance = Vector2.Distance(Player.instance.transform.position, looker.transform.position);
                 if (distance < Character.shotSoundDistance)
                 {

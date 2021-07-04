@@ -74,6 +74,8 @@ public class Player : Controller
     private void FindHosts() // finds candidate host humans. checks for space input to jump
     {
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
+        HashSet<Controller> visibleInfected = CharacterManager.getVisibleInfected(this);
+        
         if (visibleHumans.Count == 0)
         {
             // noone in range
@@ -89,10 +91,19 @@ public class Player : Controller
         {
             float distance = Vector3.Distance(transform.position, human.transform.position);
             bool canSeeYou = human.checkVisible(gameObject);
-            // Should you also not be able to assimilate while searching (rotating)?
             bool chasingYou = ((Attacker) human.character).playerState.GetBool(AnimatorFields.Chasing);
 
             if (distance < minDistance && !canSeeYou && !chasingYou)
+            {
+                minDistance = distance;
+                targetHuman = human;
+            }
+        }
+        foreach (var human in visibleInfected)
+        {
+            float distance = Vector3.Distance(transform.position, human.transform.position);
+
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 targetHuman = human;
@@ -226,7 +237,7 @@ public class Player : Controller
         if (character is Ranged ranged)
         {
             ranged.Attack(mouseDir, true);
-            character.lastShot = Time.time;
+            character.lastShotTime = Time.time;
         }
 
         if (character is Melee melee)

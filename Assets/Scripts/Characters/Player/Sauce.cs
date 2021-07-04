@@ -26,7 +26,10 @@ public class Sauce : Character
             bool canSeeYou = cntrl.checkVisible(gameObject);
             bool chasingSomeone = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Chasing);
             bool searchingSomeone = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Searching);
-            if (!canSeeYou && !chasingSomeone && !searchingSomeone)
+            bool isZombifying = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Zombiefying);
+
+            bool isUnaware = !canSeeYou && !chasingSomeone && !searchingSomeone;
+            if (isUnaware || isZombifying)
             {
                 TransitionManager.bodySnatch((Human) cntrl, GetComponent<Player>());
             }

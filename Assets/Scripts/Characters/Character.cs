@@ -28,7 +28,8 @@ public abstract class Character : MonoBehaviour
     private bool playerDead = false;
     [NonSerialized] public Rigidbody2D rb;
     public Tentacles tentacles;
-    [NonSerialized] public float lastShot;
+    [NonSerialized] public float lastShotTime;
+    
     public static float shotSoundDistance = 15;
     public static float shotSoundTime = 0.1f;
 
@@ -43,7 +44,7 @@ public abstract class Character : MonoBehaviour
         waypoints = GetComponentInChildren<Waypoints>();
         waypoints.compute();
         rb = GetComponent<Rigidbody2D>();
-        lastShot = -1;
+        lastShotTime = -1;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
