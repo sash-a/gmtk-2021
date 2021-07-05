@@ -145,6 +145,10 @@ public class CharacterManager : MonoBehaviour
                 if (distance < Character.shotSoundDistance)
                 {
                     // looker is close enough to hear the gun shot
+                    if (looker.checkVisible(Player.instance.gameObject, visionAngle:360))
+                    {  // clean line of sight to the shooter, they are added to the suss list
+                        ((Human) looker).sussPeople.Add(Player.instance.character);
+                    }
                     return true;
                 }
             }
