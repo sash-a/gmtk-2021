@@ -75,13 +75,22 @@ public class Ai : Controller
     public override bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1,
         List<string> layers = null)
     {
-        if (go.GetComponent<Sauce>() != null)
+        Player player = go.GetComponent<Player>();
+        if (player != null)  // go is the player
         {
-            layers.Add("obstacles");
-        }
-
-        if (go.GetComponent<Player>() != null)
-        {
+            Character character = go.GetComponent<Character>();
+            if (character is Sauce) // if the player is not in a host, they cannot be seen behind obstacles
+            {
+                layers.Add("obstacles");
+            }
+            else
+            { // for a small time when entering a host, obstacles continue to hide you
+                if (player.timeOfCharacterChange - Time.time < 0.05f)
+                {
+                    layers.Add("obstacles");
+                }
+            }
+            
             //subject to cone of vision character stats
             float dist = Vector2.Distance(go.transform.position, transform.position);
             visionAngle = character.visionAngle;

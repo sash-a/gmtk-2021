@@ -14,6 +14,7 @@ public class Player : Controller
 
     [NonSerialized] public float remainingSlideTime = 0;
     [NonSerialized] public Character exitedHost = null;
+    [NonSerialized] public float timeOfCharacterChange = -1;
 
     public TentacleArm arm;
 
@@ -26,6 +27,8 @@ public class Player : Controller
             arm = GetComponentInChildren<TentacleArm>();
             arm.GetComponentInChildren<SpriteRenderer>().enabled = true;
         }
+
+        timeOfCharacterChange = Time.time;
     }
 
 
