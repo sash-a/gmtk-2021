@@ -233,6 +233,22 @@ public class Player : Controller
             Attack(mousePos - transform.position);
             character.SpriteController.torsoAnimator.SetBool(AnimatorFields.Attacking, true);
         }
+        if (character is Ranged)
+        {
+            Vector3 mouseScreen = Input.mousePosition;
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+            mouse.z = 10;
+            Crosshair.instance.gameObject.SetActive(true);
+            Crosshair.instance.transform.position = mouse;
+            //Debug.Log("setting cross hair pos to: " + mouse);
+        }
+        else
+        {
+            Crosshair.instance.gameObject.SetActive(false);
+        }
+
+
+
     }
 
     void Attack(Vector3 mouseDir)

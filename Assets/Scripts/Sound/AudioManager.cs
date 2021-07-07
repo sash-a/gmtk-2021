@@ -60,8 +60,10 @@ public class AudioManager : MonoBehaviour
        
         if(CharacterManager.instance.getNumberUninfectedHumans() < currentHumans)
         {
+            //Debug.Log("humans lost one. starting: " + totalStartingHumans + " current: " + currentHumans);
             currentHumans = CharacterManager.instance.getNumberUninfectedHumans();
             float numMusicLayers = (totalStartingHumans + 1 - currentHumans) * ratio;
+            //Debug.Log("num music layers: " + numMusicLayers + "ratio: " + ratio);
             int numLayers = Mathf.Max(Mathf.RoundToInt(numMusicLayers), 1);
             numLayers = Mathf.Min(numLayers, musicLayers.Count);
             for (int i = 0; i < numLayers; i++)
@@ -95,9 +97,10 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         totalStartingHumans = CharacterManager.instance.getNumberOfHumans();
+        //Debug.Log("num humans: " + totalStartingHumans);
         currentHumans = totalStartingHumans;
-        ratio = musicLayers.Count / totalStartingHumans;
-
+        ratio = (float)musicLayers.Count / (float)totalStartingHumans;
+        //Debug.Log("num music layers: " + musicLayers.Count + " ratio: " + ratio);
     }
 
    public void Play(string name)
