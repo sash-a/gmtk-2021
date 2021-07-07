@@ -21,8 +21,9 @@ namespace State_Machine
         private bool _initPatrol;
         private float _distThresh = 1;
 
-        private bool isFollowing = false;  // for zombie only
+        private bool isFollowing = false; // for zombie only
         private float zombiePickupDist = 2f;
+
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _targetPatrolPoint = (Vector2) animator.transform.position + Random.insideUnitCircle * patrolRange;
@@ -35,13 +36,14 @@ namespace State_Machine
             _controller.visibilityIcon.setText("");
             _initPatrol = true;
             //Debug.Log("entering patrol");
-            if (_controller is Zombie)  // random patrol each time the zombie starts a new patrol
+            if (_controller is Zombie) // random patrol each time the zombie starts a new patrol
             {
                 List<Vector3> randomPatrol = _character.waypoints.wayGen.getCircleAroundPoint(7, 3, 0.6f);
                 _character.waypoints.useGeneratedWaypoints = true;
                 _character.waypoints.setWaypoints(randomPatrol);
             }
-             isFollowing = false;  // zombies have bad memories. They forget you when distracted
+
+            isFollowing = false; // zombies have bad memories. They forget you when distracted
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -74,7 +76,6 @@ namespace State_Machine
             {
                 Vector3 target = Player.instance.transform.position;
                 float dist = Vector2.Distance(target, _gameObject.transform.position);
-                //Debug.Log("zombies distance to player: " + dist);
                 if (isFollowing || dist <= zombiePickupDist)
                 {
                     isFollowing = true;
@@ -123,17 +124,12 @@ namespace State_Machine
         void FollowPatrol()
         {
             Vector3 target = Player.instance.transform.position;
-            float dist = Vector2.Distance(target, _gameObject.transform.position);
+            var position = _gameObject.transform.position;
+
+            float dist = Vector2.Distance(target, position);
             float followDist = 3f;
 
-            if (dist <= followDist)
-            { // close enough
-                _controller.agent.SetDestination(_gameObject.transform.position);
-            }
-            else
-            {
-                _controller.agent.SetDestination(target);
-            }
+            _controller.agent.SetDestination(dist <= followDist ? position : target);
         }
     }
 }

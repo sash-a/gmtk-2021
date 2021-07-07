@@ -9,7 +9,6 @@ public class Controller : MonoBehaviour
 {
     [NonSerialized] public Character character;
     [NonSerialized] public Rigidbody2D rb;
-    public SpriteRenderer offScreenIndicator;
 
     public void Awake()
     {

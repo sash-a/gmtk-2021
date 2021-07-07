@@ -38,7 +38,7 @@ public class TransitionManager : MonoBehaviour
         human.character.tentacles.infect();
 
         UIManager.setCurrentHost(player.character);
-        Player.instance.alertWitnesses();// if anyone saw you enter this character you will be sussed
+        Player.instance.alertWitnesses(); // if anyone saw you enter this character you will be sussed
     }
 
     /**
@@ -83,6 +83,7 @@ public class TransitionManager : MonoBehaviour
 
         zom.GetComponent<NavMeshAgent>().enabled = true;
         zom.GetComponent<Animator>().enabled = true;
+        zom.GetComponentInChildren<OffscreenIndicator>().SpriteRenderer.color = Color.green;
     }
 
     /**
@@ -91,7 +92,7 @@ public class TransitionManager : MonoBehaviour
     public static void humanify(Controller host)
     {
         AudioManager.instance.PlayRandom(new[] {"cough_spit_1", "cough_spit_2"});
-        GameObject hostGo = host.gameObject; 
+        GameObject hostGo = host.gameObject;
         host.character.glowEffect.gameObject.SetActive(false);
 
         host.character.humanify();
