@@ -4,50 +4,51 @@ using UnityEngine;
 public class OffscreenIndicator : MonoBehaviour
 {
     private Camera _cam;
+    private Transform _agentTransform;
+
+    [NonSerialized] public SpriteRenderer SpriteRenderer;
+
     public float margin = 0.95f;
+    public float maxDist = 30;
 
     void Start()
     {
         _cam = Camera.main;
+        _agentTransform = transform.parent;
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // TODO move this onto the indicator!
     void Update()
     {
-        foreach (var controller in CharacterManager.instance.getAllAI())
+        var screenPos = _cam.WorldToScreenPoint(_agentTransform.position);
+        if (screenPos.x > 0 && screenPos.y > 0 && screenPos.x < Screen.width && screenPos.y < Screen.height)
         {
-            if (controller == null)
-            {
-                throw new Exception("null controller in character manager");
-            }
-            if (controller.offScreenIndicator == null)
-            {
-                throw new Exception("null off screen indicator on " + controller);
-            }
-            var screenPos = _cam.WorldToScreenPoint(controller.transform.position);
-            if (screenPos.x > 0 && screenPos.y > 0 && screenPos.x < Screen.width && screenPos.y < Screen.height)
-            {
-                controller.offScreenIndicator.enabled = false;
-                continue;
-            }
-
-            // offscreen
-            var center = new Vector3(Screen.width, Screen.height, 0) / 2;
-            var bounds = center * margin;
-            screenPos -= center; // moving 0,0 from bottom left to screen center
-            var angle = Mathf.Atan2(screenPos.y, screenPos.x);
-
-            var intersectionPoint = findBoxIntersection(screenPos, bounds) + (Vector2) center;
-            var intersectionPointWorld = _cam.ScreenToWorldPoint(intersectionPoint);
-            intersectionPointWorld.z = 0;
-
-            Debug.DrawLine(Player.instance.transform.position, intersectionPointWorld, Color.red);
-            controller.offScreenIndicator.transform.position = intersectionPointWorld;
-            controller.offScreenIndicator.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
-            controller.offScreenIndicator.color = controller is Zombie ? Color.green : Color.red;
-            controller.offScreenIndicator.enabled = true;
-            // print($"Drawing line to {screenPos}");
+            SpriteRenderer.enabled = false;
+            return; // ignore if onscreen
         }
+
+        // offscreen
+        SpriteRenderer.enabled = true;
+
+        var center = new Vector3(Screen.width, Screen.height, 0) / 2;
+        var bounds = center * margin;
+        screenPos -= center; // moving 0,0 from bottom left to screen center
+        var angle = Mathf.Atan2(screenPos.y, screenPos.x);
+
+        var intersectionPoint = findBoxIntersection(screenPos, bounds) + (Vector2) center;
+        var intersectionPointWorld = _cam.ScreenToWorldPoint(intersectionPoint);
+        intersectionPointWorld.z = 0;
+
+        Debug.DrawLine(Player.instance.transform.position, intersectionPointWorld, Color.red);
+        transform.position = intersectionPointWorld;
+        transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
+
+        // setting alpha based on dist
+        Color oldColour = SpriteRenderer.color;
+        float distToPlayer = Vector2.Distance(Player.instance.transform.position, _agentTransform.position);
+        oldColour.a = distToPlayer > maxDist ? 0 : 1 - distToPlayer / maxDist;
+        SpriteRenderer.color = oldColour;
     }
 
     /*
