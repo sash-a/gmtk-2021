@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: face2
       value: 
       objectReference: {fileID: 3888805300379643871, guid: f8277b2cddc6b37428e5c173a07d8d1b, type: 3}
+    - target: {fileID: 3561319690997008535, guid: 64559396398e03782a6621b445cb8892, type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4701475823104450051, guid: 64559396398e03782a6621b445cb8892, type: 3}
       propertyPath: m_Controller
       value: 

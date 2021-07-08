@@ -653,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a702336badbd6ba0942d2426c7ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offScreenIndicator: {fileID: 320384947595286391}
 --- !u!50 &7476834709593673494
 Rigidbody2D:
   serializedVersion: 4
@@ -719,7 +718,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1688877501144233084}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -6756,10 +6755,5 @@ PrefabInstance:
 --- !u!4 &8052677517508869820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1647736010563790301, guid: 24083586c3f3097f6a750b3b58bc6ea3, type: 3}
-  m_PrefabInstance: {fileID: 8727189524924717921}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &320384947595286391 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9038452649160690710, guid: 24083586c3f3097f6a750b3b58bc6ea3, type: 3}
   m_PrefabInstance: {fileID: 8727189524924717921}
   m_PrefabAsset: {fileID: 0}
