@@ -105,6 +105,15 @@ public abstract class Character : MonoBehaviour
 
         StartCoroutine(WaitAndZombify());
     }
+    
+    public void eject()
+    { // called when player leaves te host
+        float timeSinceInfection = Time.time - timeOfInfection;
+        float remainingInfectionTime = infectionTime - timeSinceInfection;
+        remainingInfectionTime /= 2f;
+        // set the time of infection retroactively to end infection twice as soon
+        timeOfInfection = Time.time + remainingInfectionTime - infectionTime;
+    }
 
     private IEnumerator WaitAndZombify()
     {

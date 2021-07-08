@@ -161,6 +161,7 @@ public class Player : Controller
             Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
         Player newPlayer = newSauce.GetComponent<Player>();
         newPlayer.exitedHost = character;
+        character.eject();
         newPlayer.leap(direction);
         arm.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
