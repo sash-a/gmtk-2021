@@ -24,15 +24,17 @@ public class WeaponDisplay : MonoBehaviour
 
         if (Player.instance.character is Ranged)
         {
+            float size = 2f;
             display.sprite = gun;
             display.color = Color.white;
-            display.gameObject.transform.localScale = new Vector3(2, 2, 2);
+            display.gameObject.transform.localScale = new Vector3(size, size, size);
         }
         if (Player.instance.character is Melee)
         {
+            float size = 3.3f;
             display.sprite = fist;
             display.color = Color.white;
-            display.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            display.gameObject.transform.localScale = new Vector3(size, size, size);
         }
     }
 }

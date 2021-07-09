@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using State_Machine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Ranged : Attacker
 {
@@ -16,8 +17,8 @@ public class Ranged : Attacker
     public GameObject sauceHitEffect;
     // public GameObject bloodPuddle;
 
-    public float fireRate;
-    private float lastFire;
+    [FormerlySerializedAs("fireRate")] public float firePeriod;
+    public float lastFire;
 
     private void Awake()
     {
@@ -34,7 +35,7 @@ public class Ranged : Attacker
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
         base.Attack();
-        if (Time.time - lastFire < fireRate)
+        if (Time.time - lastFire < firePeriod)
         {
             return;
         }

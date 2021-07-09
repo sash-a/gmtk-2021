@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class InfectionBar : MonoBehaviour
 {
     public Slider slider;
-    public Character infectedCharacter;
+    [NonSerialized] public Character infectedCharacter;
     private void Update()
     {
         if (infectedCharacter is Sauce)
