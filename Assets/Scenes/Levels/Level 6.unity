@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -742,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -909,6 +909,10 @@ PrefabInstance:
     - target: {fileID: 2239994856391736881, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_Name
       value: Stencil scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288558921606656737, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.710022
       objectReference: {fileID: 0}
     - target: {fileID: 3515964527667944850, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
       propertyPath: m_Size.x
@@ -37434,7 +37438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37560,7 +37564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x

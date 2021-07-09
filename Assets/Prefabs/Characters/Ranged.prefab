@@ -24,6 +24,7 @@ MonoBehaviour:
   face1: {fileID: 8919160789938114315, guid: a41d368b003595b4682a4cd9d08817e3, type: 3}
   face2: {fileID: -3909371523463689329, guid: a41d368b003595b4682a4cd9d08817e3, type: 3}
   tentacles: {fileID: 848575593965588826, guid: 3ec75ae086547b54699c172ecbb0cc51, type: 3}
+  glowEffect: {fileID: 0}
   SpriteController: {fileID: 7275224045496807794}
   attackRange: 5
   bulletRange: 15
@@ -32,7 +33,8 @@ MonoBehaviour:
   humanHitEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
   envHitEffect: {fileID: 3161923594832771667, guid: 534c1bd94aec6a3449c3c39462a17976, type: 3}
   sauceHitEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
-  fireRate: 0.5
+  firePeriod: 0.5
+  lastFire: 0
 --- !u!1001 &4462287731057545170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47,6 +49,10 @@ PrefabInstance:
     - target: {fileID: 2026777141094713788, guid: 64559396398e03782a6621b445cb8892, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026777141094713788, guid: 64559396398e03782a6621b445cb8892, type: 3}
+      propertyPath: attackRange
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4701475823104450051, guid: 64559396398e03782a6621b445cb8892, type: 3}
       propertyPath: m_Controller

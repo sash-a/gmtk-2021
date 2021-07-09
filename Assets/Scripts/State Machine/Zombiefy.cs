@@ -19,10 +19,16 @@ namespace State_Machine
                 controller.visibilityIcon.setText("");
             }
             // TODO rotate and make weird noises!
-            if (!controller.character.isInfected())
+            if (controller == null)
             {
+                controller = animator.GetComponent<Ai>();
+            }
+
+            if (controller is Zombie)
+            {
+                //Debug.Log("turning into zombie. Ctrl: " + animator.gameObject.GetComponent<Controller>() + " inf frac: " + controller.character.getInfectionFrac());
                 animator.SetBool(AnimatorFields.Zombiefying, false);
-                animator.SetBool(AnimatorFields.Patrolling, true);
+                animator.SetBool(AnimatorFields.Patrolling, true);  
             }
         }
     }

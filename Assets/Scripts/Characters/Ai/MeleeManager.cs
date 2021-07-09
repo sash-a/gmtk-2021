@@ -13,7 +13,7 @@ public class MeleeManager : MonoBehaviour
     //One a hit has occured, a timer begins, after which, if the hit was reciprocal, the fight is decided probabilistically 
     // if the timer passes and the hit is one way only, then the hitter kills the receiver 
 
-    public static float delayTime = 0.6f;  // how long to wait for a reciprocal hit
+    public static float delayTime = 0.3f;  // how long to wait for a reciprocal hit
     public static float zombieWinChance = 0.5f;
 
     private Melee _me;
@@ -54,7 +54,7 @@ public class MeleeManager : MonoBehaviour
         bool iWin = false;
         if (hasHitMe.Contains(receiver))
         { // this hit was reciprocal
-            Debug.Log("symetrical hit");
+            //Debug.Log("symetrical hit");
             float myWinChance = me.myController is Zombie ? zombieWinChance : (1 - zombieWinChance);
             if (Random.Range(0f, 1f) < myWinChance)
             {
@@ -63,7 +63,7 @@ public class MeleeManager : MonoBehaviour
         }   
         else
         { // one sided hit
-            Debug.Log("one sided hit");
+            //Debug.Log("one sided hit");
             iWin = true;
         }
 
