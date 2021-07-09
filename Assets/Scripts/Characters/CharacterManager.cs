@@ -13,6 +13,8 @@ public class CharacterManager : MonoBehaviour
     private HashSet<Controller> zombies;
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
+
+    public float levelStartTime;
     
     // public AnimatorController zombieController;
 
@@ -22,6 +24,7 @@ public class CharacterManager : MonoBehaviour
         humans = new HashSet<Controller>();
         zombies = new HashSet<Controller>();
         infected = new HashSet<Controller>();
+        levelStartTime = Time.time;
     }
 
     public int getNumberOfHumans()
@@ -32,6 +35,11 @@ public class CharacterManager : MonoBehaviour
     public int getNumberUninfectedHumans()
     {
         return humans.Count - infected.Count;
+    }
+    
+    public int getNumberInfected()
+    {
+        return infected.Count + zombies.Count;
     }
 
     public static void registerHuman(Controller human)

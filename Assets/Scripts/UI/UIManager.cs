@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,10 @@ public class UIManager : MonoBehaviour
     private Character currentHost = null;
     public InfectionBar mainInfectionBar;
     public GameObject visibilityIconPrefab;
+
+    public TextMeshProUGUI remainingHumansText;
+    public TextMeshProUGUI remainingZombiesText;
+    public TextMeshProUGUI timeText;
     private void Awake()
     {
         instance = this;
@@ -19,5 +24,12 @@ public class UIManager : MonoBehaviour
     {
         instance.currentHost = host;
         instance.mainInfectionBar.infectedCharacter = host;
+    }
+
+    private void Update()
+    {
+        timeText.text = "Time: " + (int)(Time.time - CharacterManager.instance.levelStartTime);
+        remainingHumansText.text = "Humans: " + CharacterManager.instance.getNumberUninfectedHumans();
+        remainingZombiesText.text = "Zombies: " + CharacterManager.instance.getNumberInfected();
     }
 }
