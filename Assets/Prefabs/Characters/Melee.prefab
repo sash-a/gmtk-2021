@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 1677910115784400849}
   - component: {fileID: 7658933793883109701}
   - component: {fileID: 3561319690997008535}
+  - component: {fileID: 350122539012184447}
   m_Layer: 8
   m_Name: Melee
   m_TagString: Untagged
@@ -639,8 +640,10 @@ MonoBehaviour:
   tentacles: {fileID: 715699256863503468}
   glowEffect: {fileID: 0}
   SpriteController: {fileID: 6420992555809472160}
-  attackRange: 1
+  attackRange: 1.8
   hitBox: {fileID: 6395434566458854124}
+  myController: {fileID: 0}
+  aiMeleeManager: {fileID: 0}
 --- !u!114 &658313175268897503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +734,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &350122539012184447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688877501144233084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91c42d2cca4dbd1db27ad8da2b7dcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2449965680891249753
 GameObject:
   m_ObjectHideFlags: 0

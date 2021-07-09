@@ -7,7 +7,14 @@ using UnityEngine;
 public class Melee : Attacker
 {
     public MeleeHitBox hitBox;
-    private Controller myController;
+    public Controller myController;
+    public MeleeManager aiMeleeManager;
+    
+    public new void Awake()
+    {
+        base.Awake();
+        aiMeleeManager = GetComponent<MeleeManager>();
+    }
     
     public override void Attack(Vector3 dir = new Vector3(), bool isPlayer = false)
     {
@@ -31,7 +38,7 @@ public class Melee : Attacker
         List<Controller> hits = new List<Controller>();
 
 
-        if (isPlayer)
+        if (isPlayer )
         {
             yield return new WaitForEndOfFrame();
         }
@@ -42,17 +49,42 @@ public class Melee : Attacker
 
         foreach (var touched in hitBox.touchedCharacters)
         {
-            if (myController is Zombie || myController is Player)
+            if (myController is Zombie)
+            {
+                
+                if (touched is Human)
+                {
+                    if (touched.character is Melee)
+                    {  // melee X melee fight, should be handled by the melee manager
+                        ((Melee)myController.character).aiMeleeManager.hitAi((Melee)touched.character);
+                    }
+                    else
+                    {
+                        hits.Add(touched);
+                    }
+                }
+            }
+
+            if (myController is Player)
             {
                 if (touched is Human)
                 {
                     hits.Add(touched);
                 }
             }
-            else{ // my controller is human
-                if (touched is Zombie || touched is Player)
+
+            if (myController is Human)
+            {
+                if (touched is Zombie)
                 {
-                    hits.Add(touched);
+                    if (touched.character is Melee)
+                    {  // melee X melee fight, should be handled by the melee manager
+                        ((Melee)myController.character).aiMeleeManager.hitAi((Melee)touched.character);
+                    }
+                    else
+                    {
+                        hits.Add(touched);
+                    }
                 }
             }
         }

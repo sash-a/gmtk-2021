@@ -191,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.09
@@ -251,6 +255,10 @@ PrefabInstance:
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_Name
       value: Guard Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -731,6 +739,10 @@ PrefabInstance:
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_Name
       value: Guard Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37394,6 +37406,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -17.28
       objectReference: {fileID: 0}
+    - target: {fileID: 7989096976869474852, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989096976869474852, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7adaa60f6ab22e54daa8040501d4d2c9, type: 3}
 --- !u!224 &1635006901 stripped
@@ -37411,6 +37431,10 @@ PrefabInstance:
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_Name
       value: Guard Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37533,6 +37557,10 @@ PrefabInstance:
     - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_Name
       value: Guard Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
