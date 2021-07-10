@@ -8,6 +8,12 @@ namespace State_Machine
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (controller == null)
+            {
+                controller = animator.GetComponent<Ai>();
+                controller.ClearAgentPath();
+                controller.visibilityIcon.setText("");
+            }        
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

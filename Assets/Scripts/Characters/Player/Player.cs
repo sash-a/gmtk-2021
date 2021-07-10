@@ -77,8 +77,7 @@ public class Player : Controller
     private void FindHosts() // finds candidate host humans. checks for space input to jump
     {
         HashSet<Controller> visibleHumans = CharacterManager.getVisibleHumans(this);
-        HashSet<Controller> visibleInfected = CharacterManager.getVisibleInfected(this);
-        
+        visibleHumans.UnionWith(CharacterManager.getVisibleInfected(this));
         if (visibleHumans.Count == 0)
         {
             // noone in range
@@ -92,20 +91,12 @@ public class Player : Controller
         float minDistance = float.MaxValue;
         foreach (var human in visibleHumans)
         {
-            float distance = Vector3.Distance(transform.position, human.transform.position);
-            bool canSeeYou = human.checkVisible(gameObject);
-            bool chasingYou = ((Attacker) human.character).playerState.GetBool(AnimatorFields.Chasing);
-
-            if (distance < minDistance && !canSeeYou && !chasingYou)
+            if (!canInfectHost(human))
             {
-                minDistance = distance;
-                targetHuman = human;
+                continue;
             }
-        }
-        foreach (var human in visibleInfected)
-        {
+            
             float distance = Vector3.Distance(transform.position, human.transform.position);
-
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -123,6 +114,15 @@ public class Player : Controller
         {
             JumpToHost(targetHuman);
         }
+    }
+
+    public bool canInfectHost(Controller human)
+    {
+        bool canSeeYou = human.checkVisible(gameObject);
+        bool chasingSomeone = ((Attacker) human.character).playerState.GetBool(AnimatorFields.Chasing);
+        bool isZombifying = ((Attacker) human.character).playerState.GetBool(AnimatorFields.Zombiefying);
+
+        return !canSeeYou || isZombifying;
     }
 
     private void JumpToHost(Controller targetHuman)

@@ -11,7 +11,6 @@ public class Zombie : Ai
     private void Start()
     {
         CharacterManager.registerZombie(this);
-        base.Start();
     }
     
     public override bool checkVisible(GameObject go, float visionAngle=-1, float visionDistance=-1, List<string> layers = null)

@@ -9,7 +9,6 @@ public class Human : Ai
     {
         sussPeople = new HashSet<Character>();
         CharacterManager.registerHuman(this);
-        base.Start();   
     }
 
     private void FixedUpdate()

@@ -21,10 +21,7 @@ public class Ai : Controller
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         autorotate = true;
-    }
-
-    public void Start()
-    {
+        
         GameObject vis = Instantiate(UIManager.instance.visibilityIconPrefab);
         visibilityIcon = vis.GetComponent<VisibilityIcon>();
         visibilityIcon.controller = this;

@@ -72,9 +72,11 @@ public class CharacterManager : MonoBehaviour
         HashSet<Controller> visible = new HashSet<Controller>();
         foreach (var controller in controllers)
         {
-            if (controller == null)
+            if (controller == null)  // recover and try again
             {
-                throw new Exception("deleted controller still in character manager");
+                Debug.LogWarning("null controllers in character manager. Recovering");
+                refreshSets();
+                return getVisibleCharacters(looker, controllers);
             }
             if (looker.checkVisible(controller.gameObject))
             {
@@ -83,6 +85,28 @@ public class CharacterManager : MonoBehaviour
         }
 
         return visible;
+    }
+
+    private void refreshSets()
+    {   // there are some null elements in our sets. refresh them
+        humans = getRefreshedSet(humans);
+        zombies = getRefreshedSet(zombies); 
+        infected = getRefreshedSet(infected);
+    }
+
+    private HashSet<Controller> getRefreshedSet(HashSet<Controller> controllers)
+    {
+        HashSet<Controller> _controllers = new HashSet<Controller>();
+        foreach (var controller in controllers)
+        {
+            if (controller == null)
+            {
+                continue;
+            }
+            _controllers.Add(controller);
+        }
+
+        return _controllers;
     }
 
     public static HashSet<Controller> getVisibleHumans(Controller looker)

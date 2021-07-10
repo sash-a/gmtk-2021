@@ -23,13 +23,8 @@ public class Sauce : Character
             {  //just slid out this host
                 return;
             }
-            bool canSeeYou = cntrl.checkVisible(gameObject);
-            bool chasingSomeone = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Chasing);
-            bool searchingSomeone = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Searching);
-            bool isZombifying = ((Attacker) cntrl.character).playerState.GetBool(AnimatorFields.Zombiefying);
-
-            bool isUnaware = !canSeeYou && !chasingSomeone && !searchingSomeone;
-            if (isUnaware || isZombifying)
+            
+            if (Player.instance.canInfectHost(cntrl))
             {
                 TransitionManager.bodySnatch((Human) cntrl, GetComponent<Player>());
             }
