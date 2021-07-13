@@ -97,9 +97,13 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         totalStartingHumans = CharacterManager.instance.getNumberOfHumans();
-        //Debug.Log("num humans: " + totalStartingHumans);
-        currentHumans = totalStartingHumans;
+        currentHumans = totalStartingHumans + 1;
+        // we modify the starting number of humans so that at start of level, the song prgression
+        // matches the startFrac value [0,1] stored in MusicManaer for this level
+        totalStartingHumans = Mathf.CeilToInt(currentHumans * MusicManager.instance.startFrac / (1-MusicManager.instance.startFrac ));
         ratio = (float)musicLayers.Count / (float)totalStartingHumans;
+        //Debug.Log("total: " + totalStartingHumans + " current: " + currentHumans + " ratio: " + ratio); 
+
         //Debug.Log("num music layers: " + musicLayers.Count + " ratio: " + ratio);
     }
 
