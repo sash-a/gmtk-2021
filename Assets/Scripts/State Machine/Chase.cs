@@ -110,7 +110,7 @@ namespace State_Machine
                 bool targetIsSauce = target.GetComponent<Character>() is Sauce;
                 if (targetIsSauce && _character is Melee)  // shorter range for smaller sauce
                 {
-                    Debug.Log("melee attacking player. decreasing attack range");
+                    //Debug.Log("melee attacking player. decreasing attack range");
                     range /= 2f;
                 }
 
