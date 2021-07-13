@@ -13,11 +13,14 @@ namespace State_Machine
                 controller = animator.GetComponent<Ai>();
                 controller.ClearAgentPath();
                 controller.visibilityIcon.setText("");
-            }        
+            }     
+            //Debug.Log("entered zombify");
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            //Debug.Log("stay zombify");
+
             if (controller == null)
             {
                 controller = animator.GetComponent<Ai>();

@@ -49,7 +49,7 @@ public class Melee : Attacker
 
         foreach (var touched in hitBox.touchedCharacters)
         {
-            //Debug.Log(myController + " touching " + touched);
+            Debug.Log(myController + " touching " + touched);
             if (myController is Zombie)
             {
                 
@@ -86,6 +86,11 @@ public class Melee : Attacker
                     {
                         hits.Add(touched);
                     }
+                }
+
+                if (touched is Player)
+                {
+                    hits.Add(touched);
                 }
             }
         }

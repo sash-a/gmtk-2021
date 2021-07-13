@@ -23,10 +23,6 @@ PrefabInstance:
       propertyPath: face2
       value: 
       objectReference: {fileID: -2740723314528508877, guid: 34e5c74be2b04a74f8ca2901ca3e555e, type: 3}
-    - target: {fileID: 2026777141094713788, guid: 64559396398e03782a6621b445cb8892, type: 3}
-      propertyPath: attackRange
-      value: 1.4
-      objectReference: {fileID: 0}
     - target: {fileID: 4701475823104450051, guid: 64559396398e03782a6621b445cb8892, type: 3}
       propertyPath: m_Controller
       value: 

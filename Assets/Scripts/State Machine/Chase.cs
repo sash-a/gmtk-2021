@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace State_Machine
@@ -105,8 +106,16 @@ namespace State_Machine
         {
             if (_character is Attacker attacker && target)
             {
+                float range = attacker.attackRange;
+                bool targetIsSauce = target.GetComponent<Character>() is Sauce;
+                if (targetIsSauce && _character is Melee)  // shorter range for smaller sauce
+                {
+                    Debug.Log("melee attacking player. decreasing attack range");
+                    range /= 2f;
+                }
+
                 var dist = Vector2.Distance(_gameObject.transform.position, target.position);
-                if (dist < attacker.attackRange && attacker.CheckCleanLineSight())
+                if (dist < range && attacker.CheckCleanLineSight())
                 {
                     _controller.ClearAgentPath();
                     attacker.Attack();

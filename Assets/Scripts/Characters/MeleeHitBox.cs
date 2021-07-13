@@ -17,6 +17,7 @@ public class MeleeHitBox : MonoBehaviour
         Controller ctrl = other.gameObject.GetComponent<Controller>();
         if (ctrl != null)
         {
+            Debug.Log(gameObject + " touched " + ctrl);
             touchedCharacters.Add(ctrl);
         }
     }
@@ -26,6 +27,7 @@ public class MeleeHitBox : MonoBehaviour
         Controller ctrl = other.gameObject.GetComponent<Controller>();
         if (ctrl != null)
         {
+            Debug.Log(gameObject + " untouched " + ctrl);
             touchedCharacters.Remove(ctrl);
         }    
     }
