@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9804c13dc6f7f1f93ea1d005154a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5.5
+  moveSpeed: 6.5
   visionDistance: 3
   visionAngle: 45
   infectionTime: -1
@@ -596,6 +596,7 @@ MonoBehaviour:
   face1: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
   face2: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
   tentacles: {fileID: 0}
+  glowEffect: {fileID: 0}
   SpriteController: {fileID: 996663334274836400}
   sauceAnimator: {fileID: 1837293775}
 --- !u!114 &4614906186400585533
