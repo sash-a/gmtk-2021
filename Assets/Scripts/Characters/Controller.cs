@@ -32,6 +32,6 @@ public class Controller : MonoBehaviour
     public virtual bool checkVisible(GameObject go, float visionAngle = -1, float visionDistance = -1,
         List<string> layers = null)
     {
-        return VisibilityManager.canLookerSeeObject(gameObject, go, visionAngle, visionAngle, layers);
+        return VisibilityManager.canLookerSeeObject(gameObject, go, visionAngle, visionDistance, layers);
     }
 }
