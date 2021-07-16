@@ -94,8 +94,6 @@ public class TransitionManager : MonoBehaviour
         AudioManager.instance.PlayRandom(new[] {"cough_spit_1", "cough_spit_2"});
         GameObject hostGo = host.gameObject;
         host.character.glowEffect.gameObject.SetActive(false);
-
-        host.character.humanify();
         host.rb.isKinematic = true;
 
         Destroy(hostGo.GetComponent<Player>());
@@ -103,6 +101,8 @@ public class TransitionManager : MonoBehaviour
         Human human = hostGo.AddComponent<Human>();
         human.enabled = true;
         hostGo.name = "Infected Human";
+        hostGo.layer = LayerMask.NameToLayer("infected");
+
 
         CharacterManager.registerInfected(human);
         CharacterManager.registerHuman(human);

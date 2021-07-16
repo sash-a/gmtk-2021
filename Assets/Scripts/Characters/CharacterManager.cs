@@ -137,6 +137,14 @@ public class CharacterManager : MonoBehaviour
     public static HashSet<Controller> getVisibleHorde(Controller looker)
     { //looker must be a human
         HashSet<Controller> visible_zombies = instance.getVisibleCharacters(looker, instance.zombies);
+        HashSet<Controller> visible_infected = instance.getVisibleCharacters(looker, instance.infected);
+        foreach (var inf in visible_infected)
+        {
+            if (((Human) looker).sussPeople.Contains(inf.character))
+            { // this infected person was sussed
+                visible_zombies.Add(inf);
+            }
+        }
         if (isPlayerEffectivelyVisible(looker))
         {
             visible_zombies.Add(Player.instance);

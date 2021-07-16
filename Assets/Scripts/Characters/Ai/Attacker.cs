@@ -23,7 +23,7 @@ public abstract class Attacker : Character
         }
         else
         {
-            layerMask = LayerMask.GetMask("player", "zombie", "wall"); 
+            layerMask = LayerMask.GetMask("player", "zombie", "wall", "infected"); 
         }
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, attackRange, layerMask);
         if (hitInfo)

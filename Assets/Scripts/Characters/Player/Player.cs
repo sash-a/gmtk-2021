@@ -284,7 +284,7 @@ public class Player : Controller
         List<string> layers = null)
     {
         layers = new List<string>();
-        layers.AddRange(new[] {"human", "wall", "obstacles"});
+        layers.AddRange(new[] {"human", "wall", "obstacles", "infected"});
         return base.checkVisible(go, infectionAngle, infectionDistance, layers);
     }
 }

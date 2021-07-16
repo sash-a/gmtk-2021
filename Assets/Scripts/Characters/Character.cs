@@ -187,15 +187,4 @@ public abstract class Character : MonoBehaviour
         }
         glowEffect.gameObject.SetActive(false);
     }
-
-    public void humanify()
-    {
-        StartCoroutine(changeToHumanLayer());
-    }
-    
-    private IEnumerator changeToHumanLayer()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
-        gameObject.layer = LayerMask.NameToLayer("human");
-    }
 }

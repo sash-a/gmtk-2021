@@ -35,7 +35,7 @@ public class Melee : Attacker
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator WaitAndHit(bool isPlayer)
     {
-        List<Controller> hits = new List<Controller>();
+        List<Controller> instantHits = new List<Controller>();
 
 
         if (isPlayer )
@@ -61,7 +61,7 @@ public class Melee : Attacker
                     }
                     else
                     {
-                        hits.Add(touched);
+                        instantHits.Add(touched);
                     }
                 }
             }
@@ -70,7 +70,7 @@ public class Melee : Attacker
             {
                 if (touched is Human)
                 {
-                    hits.Add(touched);
+                    instantHits.Add(touched);
                 }
             }
 
@@ -84,21 +84,29 @@ public class Melee : Attacker
                     }
                     else
                     {
-                        hits.Add(touched);
+                        instantHits.Add(touched);
                     }
                 }
 
                 if (touched is Player)
                 {
-                    hits.Add(touched);
+                    instantHits.Add(touched);
+                }
+
+                if (touched is Human human)
+                {
+                    if (human.character.isInfected())
+                    {
+                        instantHits.Add(touched);
+                    }
                 }
             }
         }
-        for (int i = 0; i < hits.Count; i++)
+        for (int i = 0; i < instantHits.Count; i++)
         {
             try
             {
-                hits[i].character.die();
+                instantHits[i].character.die();
             }
             catch (Exception e)
             {// is killed during wait for delay, can throw error. is edge case
