@@ -44,9 +44,11 @@ public class Player : Controller
         if (remainingSlideTime > 0) // no inputs until slide is over
         {
             remainingSlideTime -= Time.deltaTime;
+            gameObject.layer = LayerMask.NameToLayer("sliding");
             return;
         }
-
+        
+        gameObject.layer = LayerMask.NameToLayer("player");
         exitedHost = null;
         Vector2 dir = move();
         HandleRotation(dir);
@@ -157,8 +159,13 @@ public class Player : Controller
     {
         // method should be called when the player leaps out of the character
         alertWitnesses();// if anyone saw you leave this host, it will be sussed
+        if (direction == Vector3.zero)
+        {
+            direction = transform.right;
+        }
+
         GameObject newSauce =
-            Instantiate(CharacterManager.instance.saucePrefab, transform.position, transform.rotation);
+            Instantiate(CharacterManager.instance.saucePrefab, transform.position + direction *  -0.5f, transform.rotation);
         Player newPlayer = newSauce.GetComponent<Player>();
         newPlayer.exitedHost = character;
         character.eject();
@@ -247,9 +254,6 @@ public class Player : Controller
         {
             Crosshair.instance.gameObject.SetActive(false);
         }
-
-
-
     }
 
     void Attack(Vector3 mouseDir)

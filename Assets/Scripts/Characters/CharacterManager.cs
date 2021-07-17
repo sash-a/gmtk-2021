@@ -62,7 +62,7 @@ public class CharacterManager : MonoBehaviour
         return new HashSet<Controller>(instance.humans.Union(instance.infected).Union(instance.zombies));
     }
     
-    private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers)
+    private HashSet<Controller> getVisibleCharacters(Controller looker, HashSet<Controller> controllers, bool recoveryMode=false)
     {
         if (looker == null)
         {
@@ -75,8 +75,12 @@ public class CharacterManager : MonoBehaviour
             if (controller == null)  // recover and try again
             {
                 Debug.LogWarning("null controllers in character manager. Recovering");
+                if (recoveryMode)
+                {
+                    throw new Exception("null controllers in character manager. Recovery failed");
+                }
                 refreshSets();
-                return getVisibleCharacters(looker, controllers);
+                return getVisibleCharacters(looker, controllers, recoveryMode:true);
             }
             if (looker.checkVisible(controller.gameObject))
             {
