@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI remainingHumansText;
     public TextMeshProUGUI remainingZombiesText;
     public TextMeshProUGUI timeText;
+
+    public GameObject characterInfectionBars;
     private void Awake()
     {
         instance = this;

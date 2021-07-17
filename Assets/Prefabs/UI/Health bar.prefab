@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 6295555565582202607}
-  infectedCharacter: {fileID: 0}
+  topImage: {fileID: 1654682224033507696}
+  bottomImage: {fileID: 6492154567468709361}
 --- !u!1 &6067757285200572605
 GameObject:
   m_ObjectHideFlags: 0

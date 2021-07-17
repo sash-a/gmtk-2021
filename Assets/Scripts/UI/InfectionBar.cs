@@ -8,6 +8,16 @@ public class InfectionBar : MonoBehaviour
 {
     public Slider slider;
     [NonSerialized] public Character infectedCharacter;
+    [NonSerialized] public RectTransform _rectTransform;
+    public Image topImage;
+    public Image bottomImage;
+    public bool isMainBar;
+
+    private void Awake()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+    }
+
     private void Update()
     {
         if (infectedCharacter is Sauce)
@@ -15,12 +25,35 @@ public class InfectionBar : MonoBehaviour
             slider.value = 1;
             return; 
         }
-
-        if (Math.Abs(infectedCharacter.timeOfInfection - (-1)) < 0.0001f)
+        if (!isMainBar)
         {
-            throw new Exception("uninfected character cannot  have infection bar");
+            if (!infectedCharacter.isInfected())
+            {
+                hide();
+            }
+            else
+            {
+                if (infectedCharacter != Player.instance.character)
+                { // don't display secondary bars while in host
+                    show();
+                }
+            }
         }
 
+        
+
         slider.value = infectedCharacter.getInfectionFrac();
+    }
+
+    private void show()
+    {
+        topImage.enabled = true;
+        bottomImage.enabled = true;
+    }
+
+    public void hide()
+    {
+        topImage.enabled = false;
+        bottomImage.enabled = false;
     }
 }

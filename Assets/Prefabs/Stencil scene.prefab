@@ -243,6 +243,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 12.508944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6319781872994861827}
   - {fileID: 6844688759578908917}
   m_Father: {fileID: 2239994856391736880}
   m_RootOrder: 11
@@ -449,6 +450,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1555580552612804684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6319781872994861827}
+  m_Layer: 5
+  m_Name: CharacterInfectionBars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6319781872994861827
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555580552612804684}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.47962964, y: 0.47962964, z: 0.47962964}
+  m_Children: []
+  m_Father: {fileID: 5931260041302457851}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 279.6821, y: 250.9197}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2239994855618031862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,7 +2821,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5931260041302457851}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3595,6 +3631,7 @@ MonoBehaviour:
   remainingHumansText: {fileID: 6304164474388740420}
   remainingZombiesText: {fileID: 5157788281963677810}
   timeText: {fileID: 811049169399363863}
+  characterInfectionBars: {fileID: 1555580552612804684}
 --- !u!1 &8122748557088623939
 GameObject:
   m_ObjectHideFlags: 0
