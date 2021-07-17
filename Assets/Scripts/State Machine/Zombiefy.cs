@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace State_Machine
+namespace State_Machine 
 {
     public class Zombiefy : StateMachineBehaviour
     {
