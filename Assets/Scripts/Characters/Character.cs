@@ -118,11 +118,11 @@ public abstract class Character : MonoBehaviour
     private IEnumerator WaitAndZombify()
     {
         //Debug.Log("waiting to zombify");
-        yield return new WaitForSeconds(infectionTime);
+        yield return new WaitForSeconds(infectionTime * 0.5f);
         while (getInfectionFrac() < 0.99f && getInfectionFrac() != -1)
         {
             //Debug.Log("FRAC:" + getInfectionFrac());
-            yield return new WaitForSeconds(infectionTime/3f);
+            yield return new WaitForSeconds(infectionTime/30f);
         }
         zombify();
     }
