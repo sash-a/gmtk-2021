@@ -16,7 +16,19 @@ public class GameManager : MonoBehaviour
 
     public void SwitchScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        string currentSceneName = LevelLoader.instance.getSceneName(SceneManager.GetActiveScene().buildIndex);
+        string name;
+        if (LevelLoader.instance.isSceneInCampaign(currentSceneName))
+        {
+            int nextLevel = int.Parse(currentSceneName.Split(' ')[1]) + 1;
+            name = "Level " + nextLevel;
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            SceneManager.LoadScene("Start");
+        }
+
     }
 
     public void Restart()

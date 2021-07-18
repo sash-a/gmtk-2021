@@ -22,7 +22,7 @@ public class LevelLoader : MonoBehaviour
         instance = this;
         specialLevels = getAllLevels(getSpecialLevels: true);
         campaignLevels = getAllLevels(getSpecialLevels: false);
-        campaignLevels.Sort();
+        //campaignLevels.Sort();  // sort by level num, not alpha
     }
 
     public List<string> getAllLevels(bool getSpecialLevels=false)
@@ -36,7 +36,7 @@ public class LevelLoader : MonoBehaviour
                 continue;
             }
 
-            bool isInCampaign = Regex.Match(sceneName, @"(Level)\s\d").Success;
+            bool isInCampaign = isSceneInCampaign(sceneName);
             if (isInCampaign && !getSpecialLevels)
             {
                 levels.Add(sceneName);
@@ -46,6 +46,17 @@ public class LevelLoader : MonoBehaviour
             }
         }
         return levels;
+    }
+
+    public bool isSceneInCampaign(string sceneName)
+    {
+        bool isInCampaign = Regex.Match(sceneName, @"(Level)\s\d").Success;
+        return isInCampaign;
+    }
+
+    public string getSceneName(int buildID)
+    {
+        return System.IO.Path.GetFileNameWithoutExtension( UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex( buildID ) );
     }
     
     public string[] getAllBuildSceneNames(){
