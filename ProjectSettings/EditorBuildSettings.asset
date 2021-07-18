@@ -6,45 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Start.unity
+    path: Assets/Scenes/Start.unity
     guid: d196c85a2952a2a86879f405efb49348
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 1.unity
+    path: Assets/Levels/Level 1.unity
     guid: 28744578b60fe7fd39cb66867300d646
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 2.unity
+    path: Assets/Levels/Level 2.unity
     guid: 979b46aad847b07ff8bc3b1412218f8b
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 3.unity
+    path: Assets/Levels/Level 3.unity
     guid: 7d2d40b2bcd84134fae8a191a6525bd3
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 4.unity
+    path: Assets/Levels/Level 4.unity
     guid: fd2c415eaf85d2f4d9954fca9cce6ac6
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 5.unity
+    path: Assets/Levels/Level 5.unity
     guid: 679d58860150b4b418b369e2b641a781
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 6.unity
+    path: Assets/Levels/Level 6.unity
     guid: 23c6ada5c8ddd0851ad622fb03523534
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 7.unity
+    path: Assets/Levels/Level 7.unity
     guid: e6615bc69ed357825bfbdbd1dd458bf8
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 8.unity
+    path: Assets/Levels/Level 8.unity
     guid: 5939f379ff803dd9f9c4ee40cf2ee544
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 9.unity
+    path: Assets/Levels/Level 9.unity
     guid: a1773f15fe6fe586eb6b349a6fc1bcd7
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 10.unity
+    path: Assets/Levels/Level 10.unity
     guid: 9ca10575cf59c98238149eb5f5119f62
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 11.unity
+    path: Assets/Levels/Level 11.unity
     guid: 3bdf0b6e778e4b9b5bf71a541589fee5
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Levels/Level 12.unity
+    path: Assets/Levels/Level 12.unity
     guid: 5721eb67ed47cbacfb1a7605d83c57cd
   - enabled: 1
-    path: Assets/Scenes/GameScenes/Win Scene.unity
+    path: Assets/Scenes/Win Scene.unity
     guid: 87ffade9fbe0e05bd8d2d6c9245859e6
   m_configObjects: {}
