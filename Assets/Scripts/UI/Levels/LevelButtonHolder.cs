@@ -1,23 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelButtonHolder : MonoBehaviour
 {
     public GameObject levelButtonPrefab;
     public RectTransform startOfList;
     public RectTransform buttonsPanel;
+
+    public bool isSpecialLevelsHolder;
     private void Start()
     {
-        string[] levels = new string[12];
-        for (int i = 1; i < levels.Length + 1; i++)
+        if (isSpecialLevelsHolder)
         {
-            levels[i-1] = "Level " + i;
+            spawnLevels(LevelLoader.instance.specialLevels.ToArray());
         }
-
-        spawnLevels(levels);
+        else
+        {
+            spawnLevels(LevelLoader.instance.campaignLevels.ToArray());
+        }
     }
 
     public void spawnLevels(string[] levelNames)
