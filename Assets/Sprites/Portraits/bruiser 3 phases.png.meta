@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 85902edc60e45d67c8713fb3b28747fc
+guid: e5e3f2d0af3116e13916a89f92312983
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3240212457556336114
-    second: INFECTED BLOOD_0
+      213: 3491817627305328238
+    second: bruiser 3 phases_0
+  - first:
+      213: 2364526379094754739
+    second: bruiser 3 phases_1
+  - first:
+      213: -3568036310820758394
+    second: bruiser 3 phases_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -35,7 +41,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -44,17 +50,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.69137084, y: 0.78995585}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -106,50 +112,69 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: INFECTED BLOOD_0
+      name: bruiser 3 phases_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 700
-        height: 700
+        width: 1151
+        height: 1000
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -334, y: 63}
-        - {x: -334, y: 337}
-        - {x: -28, y: 337}
-        - {x: -28, y: 63}
-      - - {x: -6, y: 64}
-        - {x: -6, y: 340}
-        - {x: 269, y: 340}
-        - {x: 269, y: 64}
-      - - {x: -326, y: -217}
-        - {x: -326, y: 57}
-        - {x: -24, y: 57}
-        - {x: -24, y: -217}
-      - - {x: 112, y: -202}
-        - {x: 17, y: -180}
-        - {x: -9, y: 43}
-        - {x: 145, y: 48}
-        - {x: 215, y: -13}
-        - {x: 225, y: -123}
-        - {x: 180, y: -173}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fdd071101c87fc20800000000000000
-      internalID: 3240212457556336114
+      spriteID: e6e3bffa1ad657030800000000000000
+      internalID: 3491817627305328238
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline:
-    - - {x: 13, y: 58}
-      - {x: 13, y: 337}
-      - {x: 268, y: 337}
-      - {x: 268, y: 58}
+    - serializedVersion: 2
+      name: bruiser 3 phases_1
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 0
+        width: 1152
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5cbf7c63c70d020800000000000000
+      internalID: 2364526379094754739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bruiser 3 phases_2
+      rect:
+        serializedVersion: 2
+        x: 2714
+        y: 0
+        width: 1515
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c55db21e9cb7ec0800000000000000
+      internalID: -3568036310820758394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
