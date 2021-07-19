@@ -35,7 +35,6 @@ public class TransitionManager : MonoBehaviour
         human.rb.isKinematic = false;
         human.character.glowTimeLeft = 0;
         human.character.glowEffect.gameObject.SetActive(false);
-        human.character.tentacles.infect();
 
         UIManager.setCurrentHost(player.character);
         Player.instance.alertWitnesses(); // if anyone saw you enter this character you will be sussed

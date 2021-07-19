@@ -60,6 +60,14 @@ public abstract class Character : MonoBehaviour
             return;
         }
         Zombie zom = GetComponent<Zombie>();
+        HazmatGuy hazmatGuy = GetComponent<HazmatGuy>();
+        if (hazmatGuy != null)
+        {
+            if (isInfected() || zom != null)
+            {
+                hazmatGuy.explode();
+            }
+        }
         if (zom != null)
         {
             Instantiate(greenBloodPuddle,transform.position, transform.rotation);
@@ -95,11 +103,13 @@ public abstract class Character : MonoBehaviour
     public void infect()
     {
         //Debug.Log(this + " infected");
-        if (Math.Abs(timeOfInfection - (-1)) < 0.00001f)
+        if (isInfected())
         {
-            timeOfInfection = Time.time;
+            return;
         }
-        
+        timeOfInfection = Time.time;
+        tentacles.infect();
+
         var anim = GetComponent<Animator>();
         anim.SetBool(AnimatorFields.Zombiefying, true);
 

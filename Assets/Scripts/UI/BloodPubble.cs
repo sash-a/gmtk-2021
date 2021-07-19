@@ -6,7 +6,7 @@ using UnityEngine;
 public class BloodPubble : MonoBehaviour
 {
     private float spawnTime;
-    public static float lifetime = 3;
+    public static float lifetime = 30;
     public static float fadeFac = 0.99f;
     public SpriteRenderer renderer;
     
