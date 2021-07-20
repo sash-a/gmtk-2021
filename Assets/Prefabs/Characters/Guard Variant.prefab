@@ -264,9 +264,17 @@ PrefabInstance:
       propertyPath: muzzleFlash
       value: 
       objectReference: {fileID: 611966353027840373}
+    - target: {fileID: 1112692029877577237, guid: 414e4de964cd7fb87bbf22eb90fe09ed, type: 3}
+      propertyPath: visionDistance
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1355700839710392101, guid: 414e4de964cd7fb87bbf22eb90fe09ed, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435801018086311534, guid: 414e4de964cd7fb87bbf22eb90fe09ed, type: 3}
+      propertyPath: visionDistance
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3070648107061296046, guid: 414e4de964cd7fb87bbf22eb90fe09ed, type: 3}
       propertyPath: m_Name

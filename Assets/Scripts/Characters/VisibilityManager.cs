@@ -31,11 +31,7 @@ public class VisibilityManager : MonoBehaviour
         {
             return false;
         }
-
-        if (visionDistance > 10)
-        {
-            throw new Exception("weh");
-        }
+        
         Debug.DrawLine(pos, (Vector3) pos + looker.transform.right * visionDistance);
         Debug.DrawLine(pos,
             (Vector3) pos + Quaternion.AngleAxis(visionAngle / 2f, looker.transform.forward) * looker.transform.right *
