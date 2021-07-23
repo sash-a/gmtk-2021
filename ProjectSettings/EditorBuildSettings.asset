@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Win Scene.unity
     guid: 87ffade9fbe0e05bd8d2d6c9245859e6
+  - enabled: 1
+    path: Assets/Levels/HazmatGuyLevel.unity
+    guid: b813fa9ee7b422218b25753212980e99
   m_configObjects: {}

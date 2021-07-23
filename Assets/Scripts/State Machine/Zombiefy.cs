@@ -11,9 +11,10 @@ namespace State_Machine
             if (controller == null)
             {
                 controller = animator.GetComponent<Ai>();
-                controller.ClearAgentPath();
-                controller.visibilityIcon.setText("");
-            }     
+            }
+            controller.visibilityIcon.setText("");
+            controller.ClearAgentPath();
+
             //Debug.Log("entered zombify");
         }
 
@@ -24,14 +25,9 @@ namespace State_Machine
             if (controller == null)
             {
                 controller = animator.GetComponent<Ai>();
-                controller.ClearAgentPath();
-                controller.visibilityIcon.setText("");
             }
-            // TODO rotate and make weird noises!
-            if (controller == null)
-            {
-                controller = animator.GetComponent<Ai>();
-            }
+            controller.ClearAgentPath();
+            controller.visibilityIcon.setText("");
 
             if (controller is Zombie)
             {
