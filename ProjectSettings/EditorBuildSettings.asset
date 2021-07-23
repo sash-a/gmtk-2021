@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/HazmatGuyLevel.unity
     guid: b813fa9ee7b422218b25753212980e99
+  - enabled: 1
+    path: Assets/Levels/Juice.unity
+    guid: e358f782100e101f0bdac61c2f33ca26
   m_configObjects: {}

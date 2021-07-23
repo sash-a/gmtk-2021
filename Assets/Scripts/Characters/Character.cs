@@ -109,6 +109,7 @@ public abstract class Character : MonoBehaviour
         }
         timeOfInfection = Time.time;
         tentacles.infect();
+        CharacterManager.instance.RemoveHuman(GetComponent<Human>());
 
         var anim = GetComponent<Animator>();
         anim.SetBool(AnimatorFields.Zombiefying, true);

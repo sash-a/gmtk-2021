@@ -20,7 +20,6 @@ public class TransitionManager : MonoBehaviour
         }
 
         // Get game object ref and remove human AI script from it
-        CharacterManager.instance.RemoveHuman(human);
         GameObject humanObject = human.gameObject;
         Destroy(humanObject.GetComponent<Human>());
         humanObject.GetComponent<NavMeshAgent>().enabled = false;

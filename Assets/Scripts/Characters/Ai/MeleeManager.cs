@@ -18,10 +18,13 @@ public class MeleeManager : MonoBehaviour
 
     private Melee _me;
     HashSet<Melee> hasHitMe;
+    HashSet<Melee> unresolvedHits;
+
 
     private void Awake()
     {
         hasHitMe = new HashSet<Melee>();
+        unresolvedHits = new HashSet<Melee>();
     }
 
     public Melee me
@@ -37,10 +40,16 @@ public class MeleeManager : MonoBehaviour
         }
     }
 
-    public void hitAi(Melee receiver)
+    public void hitAi(Melee receiver) // me hits receiver
     {
         if (receiver.aiMeleeManager.hasHitMe.Contains(me))
         { // this ai has already hit the receiver
+            return;
+        }
+        
+        float sucessChance = Mathf.Pow(0.5f, unresolvedHits.Count);
+        if (Random.Range(0f, 1f) > sucessChance) // double/tripple kills ect get increasingly unlikely
+        {
             return;
         }
 
@@ -51,6 +60,7 @@ public class MeleeManager : MonoBehaviour
     private IEnumerator resolveMyHit(Melee receiver) // I have hit this ai
     {
         yield return new WaitForSecondsRealtime(delayTime); // sufficient time passed for reciprocation
+        unresolvedHits.Remove(receiver);
         bool iWin = false;
         if (hasHitMe.Contains(receiver))
         { // this hit was reciprocal
@@ -66,6 +76,9 @@ public class MeleeManager : MonoBehaviour
             //Debug.Log("one sided hit");
             iWin = true;
         }
+
+        hasHitMe.Remove(receiver);
+        receiver.aiMeleeManager.hasHitMe.Remove(me);
 
         if (iWin)
         {
