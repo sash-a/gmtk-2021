@@ -50,6 +50,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2026777141094713788, guid: 64559396398e03782a6621b445cb8892, type: 3}
+      propertyPath: visionDistance
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4701475823104450051, guid: 64559396398e03782a6621b445cb8892, type: 3}
       propertyPath: m_Controller
       value: 

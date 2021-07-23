@@ -75,28 +75,7 @@ public class Ai : Controller
         Player player = go.GetComponent<Player>();
         if (player != null)  // go is the player
         {
-            Character character = go.GetComponent<Character>();
-            if (character is Sauce) // if the player is not in a host, they cannot be seen behind obstacles
-            {
-                layers.Add("obstacles");
-            }
-            else
-            { // for a small time when entering a host, obstacles continue to hide you
-                if (player.timeOfCharacterChange - Time.time < 0.05f)
-                {
-                    layers.Add("obstacles");
-                }
-            }
-            
-            //subject to cone of vision character stats
-            float dist = Vector2.Distance(go.transform.position, transform.position);
-            visionAngle = character.visionAngle;
-            if (dist < 2) // very close by humans can see the player in a larger cone
-            {
-                visionAngle = closebyVisionAngle;
-            }
-
-            return base.checkVisible(go, visionAngle, character.visionDistance, layers);
+            return checkIfPlayerVisisble(player, layers);
         }
 
         //else is checking for another ai. they have 360 vision
@@ -107,4 +86,33 @@ public class Ai : Controller
         }
         return base.checkVisible(go, Ai2AiVision, character.visionDistance, layers);
     }
+
+    private bool checkIfPlayerVisisble(Player player, List<string> layers)
+    {
+        float visionAngle;
+        Character playerCharacter = player.character;
+        if (playerCharacter is Sauce) // if the player is not in a host, they cannot be seen behind obstacles
+        {
+            layers.Add("obstacles");
+        }
+        else
+        {
+            // for a small time when entering a host, obstacles continue to hide you
+            if (player.timeOfCharacterChange - Time.time < 0.05f)
+            {
+                layers.Add("obstacles");
+            }
+        }
+
+        //subject to cone of vision character stats
+        float dist = Vector2.Distance(playerCharacter.transform.position, transform.position);
+        visionAngle = playerCharacter.visionAngle;
+        if (dist < 2) // very close by humans can see the player in a larger cone
+        {
+            visionAngle = closebyVisionAngle;
+        }
+
+        return base.checkVisible(playerCharacter.gameObject, visionAngle, character.visionDistance, layers);
+    }
+    
 }
