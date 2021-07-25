@@ -17881,6 +17881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3095732149279616808, guid: b40179363af47589f890d169ab04c57a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4648068266917931812, guid: b40179363af47589f890d169ab04c57a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.64
@@ -19294,6 +19298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start Guy
       objectReference: {fileID: 0}
+    - target: {fileID: 3840212247075355898, guid: 1830f2d9018c9367bb7e0659a0a86ea4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4475375716460593466, guid: 1830f2d9018c9367bb7e0659a0a86ea4, type: 3}
       propertyPath: infectionTime
       value: 3
@@ -19516,6 +19524,10 @@ PrefabInstance:
     - target: {fileID: 4329277341952985326, guid: a208d64189584db209495f2cd8323f17, type: 3}
       propertyPath: m_Name
       value: HazmatGuy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329277341952985326, guid: a208d64189584db209495f2cd8323f17, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6904850883609255320, guid: a208d64189584db209495f2cd8323f17, type: 3}
       propertyPath: m_RootOrder
@@ -20373,6 +20385,10 @@ PrefabInstance:
     - target: {fileID: 3488578201033563900, guid: 64ff94fa4d1343f81999873791a10753, type: 3}
       propertyPath: m_Name
       value: Teacher Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488578201033563900, guid: 64ff94fa4d1343f81999873791a10753, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6030232930076707722, guid: 64ff94fa4d1343f81999873791a10753, type: 3}
       propertyPath: m_RootOrder

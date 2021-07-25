@@ -38,12 +38,35 @@ namespace State_Machine
             //Debug.Log("entering patrol");
             if (_controller is Zombie) // random patrol each time the zombie starts a new patrol
             {
-                List<Vector3> randomPatrol = _character.waypoints.wayGen.getCircleAroundPoint(7, 3, 0.6f);
-                _character.waypoints.useGeneratedWaypoints = true;
-                _character.waypoints.setWaypoints(randomPatrol);
+                updateZombieWaypoints();
             }
 
             isFollowing = false; // zombies have bad memories. They forget you when distracted
+        }
+
+        public void updateZombieWaypoints()
+        {
+            if (_controller == null)
+            {
+                _controller = _gameObject.GetComponent<Ai>();
+            }
+            Vector3 centerPoint = Vector3.zero;
+            if (ZombiePointManager.zombiePointsMap.ContainsKey(_controller))
+            {
+                ZombiePoint point = ZombiePointManager.zombiePointsMap[_controller];
+                centerPoint = point.transform.position;
+            }
+            else
+            {
+                centerPoint = _controller.transform.position;
+            }
+                
+            int layerMask = LayerMask.GetMask(new string[] {"wall", "obstacles"});
+            List<Vector3> randomPatrol = WaypointsGenerator.getCircleAroundPoint(_controller, centerPoint, 7, 3, 0.6f,
+                layerMask);
+            Debug.Log("found " + randomPatrol.Count + "waypoints");
+            _character.waypoints.useGeneratedWaypoints = true;
+            _character.waypoints.setWaypoints(randomPatrol);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -74,17 +97,19 @@ namespace State_Machine
         {
             if (_controller is Zombie)
             {
-                Vector3 target = Player.instance.transform.position;
-                float dist = Vector2.Distance(target, _gameObject.transform.position);
-                if (isFollowing || dist <= zombiePickupDist)
-                {
-                    isFollowing = true;
-                    FollowPatrol();
-                }
-                else
-                {
-                    WaypointPatrol(_gameObject.transform, _initPatrol);
-                }
+                //Vector3 target = Player.instance.transform.position;
+                //float dist = Vector2.Distance(target, _gameObject.transform.position);
+                //if (isFollowing || dist <= zombiePickupDist)
+                //{
+                //    isFollowing = true;
+                //    FollowPatrol();
+                //}
+                //else
+                //{
+                //    WaypointPatrol(_gameObject.transform, _initPatrol);
+                //}
+                WaypointPatrol(_gameObject.transform, _initPatrol);
+
             }
             else
             {
@@ -100,14 +125,13 @@ namespace State_Machine
             {
                 _controller = _character.GetComponent<Ai>();
             }
-
             if (Vector2.Distance(transform.position, _character.waypoints[_wayptIdx]) < _distThresh || initialRoute)
             {
                 _wayptIdx++;
                 _wayptIdx %= _character.waypoints.Count;
-                _controller.agent.SetDestination(_character.waypoints[_wayptIdx]);
-                // Debug.Log($"Waypoint set at :{_character.waypoints[_wayptIdx]}");
             }
+            _controller.agent.SetDestination(_character.waypoints[_wayptIdx]);
+
 
             var position = _gameObject.transform.position;
             Debug.DrawLine(position, _character.waypoints[_wayptIdx], Color.green);

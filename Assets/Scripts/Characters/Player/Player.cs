@@ -37,6 +37,15 @@ public class Player : Controller
     {
         FindHosts();
         TryAttack();
+        HandleZombiePoints();
+    }
+
+    private void HandleZombiePoints()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ZombiePointManager.spawnZombiePoint(this, arm.tip);
+        }    
     }
 
     private void FixedUpdate()

@@ -7,6 +7,7 @@ public class TentacleArm : MonoBehaviour
 {
     private float baseLegth;
     [NonSerialized] public float armLength;
+    public Transform tip;
     void Start()
     {
         baseLegth = 1f / transform.parent.localScale.x;

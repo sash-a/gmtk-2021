@@ -10,11 +10,11 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager instance;
 
     private HashSet<Controller> humans;
-    private HashSet<Controller> zombies;
+    public HashSet<Controller> zombies;
     private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
     public GameObject saucePrefab;
 
-    public float levelStartTime;
+    [NonSerialized] public float levelStartTime;
     
     // public AnimatorController zombieController;
 
