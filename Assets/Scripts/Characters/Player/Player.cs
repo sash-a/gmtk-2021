@@ -174,7 +174,7 @@ public class Player : Controller
         }
 
         GameObject newSauce =
-            Instantiate(CharacterManager.instance.saucePrefab, transform.position + direction *  -0.5f, transform.rotation);
+            Instantiate(PrefabManager.instance.saucePrefab, transform.position + direction *  -0.5f, transform.rotation);
         Player newPlayer = newSauce.GetComponent<Player>();
         newPlayer.exitedHost = character;
         character.eject();

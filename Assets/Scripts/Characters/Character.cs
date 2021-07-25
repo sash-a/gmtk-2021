@@ -16,11 +16,6 @@ public abstract class Character : MonoBehaviour
 
     [NonSerialized] public Waypoints waypoints;
 
-    public GameObject redBloodPuddle;
-    public GameObject greenBloodPuddle;
-    public GameObject dieEffect;
-    public GameObject greenDieEffect;
-    
     public Sprite face0;
     public Sprite face1;
     public Sprite face2;
@@ -53,8 +48,8 @@ public abstract class Character : MonoBehaviour
         Player player = GetComponent<Player>();
         if (player != null && !playerDead)
         {
-            Instantiate(greenBloodPuddle,transform.position, transform.rotation);
-            Instantiate(greenDieEffect,transform.position, transform.rotation);
+            Instantiate(PrefabManager.instance.greenBloodPuddle,transform.position, transform.rotation);
+            Instantiate(PrefabManager.instance.greenDieEffect,transform.position, transform.rotation);
             //Debug.Log("Playing!");
             StartCoroutine(WaitAndRespawn());
             return;
@@ -70,8 +65,8 @@ public abstract class Character : MonoBehaviour
         }
         if (zom != null)
         {
-            Instantiate(greenBloodPuddle,transform.position, transform.rotation);
-            Instantiate(greenDieEffect,transform.position, transform.rotation);
+            Instantiate(PrefabManager.instance.greenBloodPuddle,transform.position, transform.rotation);
+            Instantiate(PrefabManager.instance.greenDieEffect,transform.position, transform.rotation);
             //Debug.Log("Playing!");
 
             CharacterManager.instance.RemoveZombie(zom);
@@ -82,8 +77,8 @@ public abstract class Character : MonoBehaviour
                 CharacterManager.instance.RemoveInfected(human);
             }
 
-            Instantiate(redBloodPuddle,transform.position, transform.rotation);
-            Instantiate(dieEffect,transform.position, transform.rotation);
+            Instantiate(PrefabManager.instance.redBloodPuddle,transform.position, transform.rotation);
+            Instantiate(PrefabManager.instance.dieEffect,transform.position, transform.rotation);
             //Debug.Log("Playing!");
 
             CharacterManager.instance.RemoveHuman(human);

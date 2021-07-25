@@ -3870,6 +3870,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePoint: {fileID: 1053073319453106341, guid: 3e6cbd11b93be795fa32d5f3ad6e16ec, type: 3}
+  redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
+  greenBloodPuddle: {fileID: 5963781245385592966, guid: 17bb4ae286e97aed493075fb75a026bb, type: 3}
+  dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
+  greenDieEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
 --- !u!1001 &787092503341227410
 PrefabInstance:
   m_ObjectHideFlags: 0

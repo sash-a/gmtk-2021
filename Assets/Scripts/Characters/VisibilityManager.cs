@@ -60,4 +60,48 @@ public class VisibilityManager : MonoBehaviour
 
         return false;
     }
+
+    public static bool isPlayerEffectivelyVisible(Controller looker) // includes logic around when player can be seen/ is incognito
+    {
+        if (Player.instance.character is Sauce)
+        {
+            if (Player.instance.remainingSlideTime <= 0) // done sliding
+            {
+                if (looker.checkVisible(Player.instance.gameObject))
+                {
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            // is in human
+            if (((Human) looker).sussPeople.Contains(Player.instance.character))
+            {
+                // this human has seen this host do something suss
+                if (looker.checkVisible(Player.instance.gameObject)) // is suspicious and in line of sight
+                {  // once sussed, always recognisable
+                    return true;
+                }
+            }
+
+            if (Time.time - Player.instance.character.lastShotTime < Character.shotSoundTime &&
+                Player.instance.character.lastShotTime != -1)
+            {
+                //human has shot very recently. we will add them to nearby humans suss list
+                float distance = Vector2.Distance(Player.instance.transform.position, looker.transform.position);
+                if (distance < Character.shotSoundDistance)
+                {
+                    // looker is close enough to hear the gun shot
+                    if (looker.checkVisible(Player.instance.gameObject, visionAngle:360))
+                    {  // clean line of sight to the shooter, they are added to the suss list
+                        ((Human) looker).sussPeople.Add(Player.instance.character);
+                    }
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

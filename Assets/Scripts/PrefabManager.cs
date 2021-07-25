@@ -8,6 +8,14 @@ public class PrefabManager : MonoBehaviour
     public static PrefabManager instance;
 
     public GameObject zombiePoint;
+    
+    public GameObject redBloodPuddle;
+    public GameObject greenBloodPuddle;
+    public GameObject dieEffect;
+    public GameObject greenDieEffect;
+    
+    public GameObject saucePrefab;
+
 
     private void Awake()
     {
