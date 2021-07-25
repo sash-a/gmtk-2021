@@ -71,7 +71,8 @@ public class CharacterManager : MonoBehaviour
                 Debug.LogWarning("null controllers in character manager. Recovering");
                 if (recoveryMode)
                 {
-                    throw new Exception("null controllers in character manager. Recovery failed");
+                    Debug.LogError("null controllers in character manager. Recovery failed");
+                    continue;
                 }
                 refreshSets();
                 return getVisibleCharacters(looker, controllers, recoveryMode:true);

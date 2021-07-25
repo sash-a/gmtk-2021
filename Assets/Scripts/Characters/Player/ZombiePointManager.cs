@@ -6,7 +6,7 @@ using UnityEngine;
 public class ZombiePointManager : MonoBehaviour
 {
     public static ZombiePointManager instance;
-    public static float callDistance = 15;
+    public static float callDistance = 25;
     public static Dictionary<Controller, ZombiePoint> zombiePointsMap; 
     private void Awake()
     {
@@ -20,15 +20,13 @@ public class ZombiePointManager : MonoBehaviour
          * gets all zombies which are in line of sight of both the player and the waypoint
          */
         List<string> layers = new List<string>();
-        layers.Add("zombie");
         layers.Add("wall");
 
         HashSet<Controller> groupZombies = new HashSet<Controller>(); 
         foreach (var zombie in CharacterManager.instance.zombies)
         {
-            bool canSeePlayer = VisibilityManager.canLookerSeeObject(player.transform, zombie.gameObject, 360, callDistance, layers);
-            bool canSeeTip = VisibilityManager.canLookerSeeObject(armTip, zombie.gameObject, 360, callDistance, layers);
-
+            bool canSeePlayer = VisibilityManager.isLineClear(player.transform.position, zombie.transform.position, layers);
+            bool canSeeTip = VisibilityManager.isLineClear(armTip.position, zombie.transform.position, layers);
             if (canSeePlayer || canSeeTip)
             {
                 groupZombies.Add(zombie);

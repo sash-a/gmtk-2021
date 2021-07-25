@@ -64,7 +64,6 @@ namespace State_Machine
             int layerMask = LayerMask.GetMask(new string[] {"wall", "obstacles"});
             List<Vector3> randomPatrol = WaypointsGenerator.getCircleAroundPoint(_controller, centerPoint, 7, 3, 0.6f,
                 layerMask);
-            Debug.Log("found " + randomPatrol.Count + "waypoints");
             _character.waypoints.useGeneratedWaypoints = true;
             _character.waypoints.setWaypoints(randomPatrol);
         }

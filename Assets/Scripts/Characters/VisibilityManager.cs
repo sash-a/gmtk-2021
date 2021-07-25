@@ -61,6 +61,13 @@ public class VisibilityManager : MonoBehaviour
         return false;
     }
 
+    public static bool isLineClear(Vector3 start, Vector3 end, List<string> layers = null)
+    {
+        Vector3 dir = end - start;
+        var hit = Physics2D.Raycast(start, dir, dir.magnitude, LayerMask.GetMask(layers.ToArray()));
+        return hit.collider == null;
+    }
+
     public static bool isPlayerEffectivelyVisible(Controller looker) // includes logic around when player can be seen/ is incognito
     {
         if (Player.instance.character is Sauce)

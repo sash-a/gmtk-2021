@@ -48,13 +48,13 @@ public class LevelLoader : MonoBehaviour
         return levels;
     }
 
-    public bool isSceneInCampaign(string sceneName)
+    public static bool isSceneInCampaign(string sceneName)
     {
         bool isInCampaign = Regex.Match(sceneName, @"(Level)\s\d").Success;
         return isInCampaign;
     }
 
-    public string getSceneName(int buildID)
+    public static string getSceneName(int buildID)
     {
         return System.IO.Path.GetFileNameWithoutExtension( UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex( buildID ) );
     }
