@@ -11,4 +11,16 @@ public class Crosshair : MonoBehaviour
     {
         instance = this;
     }
+
+    public void activate()
+    {
+        gameObject.SetActive(true);
+        Cursor.visible = false;
+    }
+
+    public void deactivate()
+    {
+        gameObject.SetActive(false);
+        Cursor.visible = true;
+    }
 }
