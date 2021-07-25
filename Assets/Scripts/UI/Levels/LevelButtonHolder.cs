@@ -11,15 +11,15 @@ public class LevelButtonHolder : MonoBehaviour
     {
         if (isSpecialLevelsHolder)
         {
-            spawnLevels(LevelLoader.instance.specialLevels.ToArray());
+            spawnLevelButtons(LevelLoader.instance.specialLevels.ToArray());
         }
         else
         {
-            spawnLevels(LevelLoader.instance.campaignLevels.ToArray());
+            spawnLevelButtons(LevelLoader.instance.campaignLevels.ToArray());
         }
     }
 
-    public void spawnLevels(string[] levelNames)
+    public void spawnLevelButtons(string[] levelNames)
     { // create a new button for each level and add them to the UI list
         float totalHeight = Mathf.Max(buttonsPanel.rect.height, startOfList.rect.height * (1+levelNames.Length));
         buttonsPanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight); 

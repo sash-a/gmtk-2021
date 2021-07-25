@@ -224,7 +224,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -371363994066133863, guid: c4eb82943ab4b631ea235814ccd9fa05, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.13333334}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.27058825}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -620,10 +620,6 @@ MonoBehaviour:
   visionDistance: 3
   visionAngle: 45
   infectionTime: -1
-  redBloodPuddle: {fileID: 4227105782261398518, guid: 03f7cb596da70a84d9de4676c2b06350, type: 3}
-  greenBloodPuddle: {fileID: 5963781245385592966, guid: 17bb4ae286e97aed493075fb75a026bb, type: 3}
-  dieEffect: {fileID: 6856226985930117604, guid: cb8bbc278e7c8714187831e295c9bdf2, type: 3}
-  greenDieEffect: {fileID: 6627703767601224119, guid: e2e96af65c725c04f80bc53ebf80e333, type: 3}
   face0: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
   face1: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
   face2: {fileID: 3870905437554649972, guid: b3c45666b7ba44f4ca99595b67919ec4, type: 3}
