@@ -42,6 +42,10 @@ public class LevelLoader : MonoBehaviour
                 levels.Add(sceneName);
             }
             else if (!isInCampaign && getSpecialLevels) {
+                if (sceneName[0] == '_')  // ignore level
+                {
+                    continue;
+                }
                 levels.Add(sceneName);
             }
         }
