@@ -7,11 +7,11 @@ public class ZombiePointManager : MonoBehaviour
 {
     public static ZombiePointManager instance;
     public static float callDistance = 25;
-    public static Dictionary<Controller, ZombiePoint> zombiePointsMap; 
+    public static Dictionary<Character, ZombiePoint> zombiePointsMap; 
     private void Awake()
     {
         instance = this;
-        zombiePointsMap = new Dictionary<Controller, ZombiePoint>();
+        zombiePointsMap = new Dictionary<Character, ZombiePoint>();
     }
     
     public static HashSet<Controller> getGroupZombies(Player player, Transform armTip)
@@ -22,8 +22,10 @@ public class ZombiePointManager : MonoBehaviour
         List<string> layers = new List<string>();
         layers.Add("wall");
 
-        HashSet<Controller> groupZombies = new HashSet<Controller>(); 
-        foreach (var zombie in CharacterManager.instance.zombies)
+        HashSet<Controller> groupZombies = new HashSet<Controller>();
+        HashSet<Controller> zombies = CharacterManager.instance.zombies;
+        zombies.UnionWith(CharacterManager.instance.infected);
+        foreach (var zombie in zombies)
         {
             bool canSeePlayer = VisibilityManager.isLineClear(player.transform.position, zombie.transform.position, layers);
             bool canSeeTip = VisibilityManager.isLineClear(armTip.position, zombie.transform.position, layers);
@@ -35,7 +37,7 @@ public class ZombiePointManager : MonoBehaviour
 
         return groupZombies;
     }
-
+    
     public static GameObject spawnZombiePoint(Player player, Transform armTip)
     {
         HashSet<Controller> groupedZombies = getGroupZombies(player, armTip);
@@ -56,16 +58,16 @@ public class ZombiePointManager : MonoBehaviour
         //remove each newly grouped zombie from their old zombie points
         foreach (var zom in groupedZombies)
         {
-            if (zombiePointsMap.ContainsKey(zom))
+            if (zombiePointsMap.ContainsKey(zom.character))
             {
-                ZombiePoint point = zombiePointsMap[zom];
+                ZombiePoint point = zombiePointsMap[zom.character];
                 point.removeZombie(zom);
             }
         }
 
         foreach (Controller zom in groupedZombies) // override the zombie-> point map
         {
-            zombiePointsMap[zom] = zPoint;
+            zombiePointsMap[zom.character] = zPoint;
         }
         
         zPoint.addZombies(groupedZombies);  // adds the new groups to the new zombie point

@@ -51,9 +51,9 @@ namespace State_Machine
                 _controller = _gameObject.GetComponent<Ai>();
             }
             Vector3 centerPoint = Vector3.zero;
-            if (ZombiePointManager.zombiePointsMap.ContainsKey(_controller))
+            if (ZombiePointManager.zombiePointsMap.ContainsKey(_controller.character))
             {
-                ZombiePoint point = ZombiePointManager.zombiePointsMap[_controller];
+                ZombiePoint point = ZombiePointManager.zombiePointsMap[_controller.character];
                 centerPoint = point.transform.position;
             }
             else

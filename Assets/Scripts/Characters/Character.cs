@@ -68,9 +68,9 @@ public abstract class Character : MonoBehaviour
             Instantiate(PrefabManager.instance.greenBloodPuddle,transform.position, transform.rotation);
             Instantiate(PrefabManager.instance.greenDieEffect,transform.position, transform.rotation);
             //Debug.Log("Playing!");
-            if (ZombiePointManager.zombiePointsMap.ContainsKey(zom))
+            if (ZombiePointManager.zombiePointsMap.ContainsKey(zom.character))
             {
-                ZombiePointManager.zombiePointsMap[zom].removeZombie(zom);
+                ZombiePointManager.zombiePointsMap[zom.character].removeZombie(zom);
             }
             CharacterManager.instance.RemoveZombie(zom);
         }

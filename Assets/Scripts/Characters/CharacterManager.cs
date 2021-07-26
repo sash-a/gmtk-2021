@@ -11,7 +11,7 @@ public class CharacterManager : MonoBehaviour
 
     private HashSet<Controller> humans;
     public HashSet<Controller> zombies;
-    private HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
+    public HashSet<Controller> infected; // a subset of the humans set, for all humans which are infected
 
     [NonSerialized] public float levelStartTime;
     
